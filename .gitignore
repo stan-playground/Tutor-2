@@ -1,0 +1,4 @@
+# Temporary HighGrade commands, reports and continuation; keep project records tracked.
+/.highgrade/local/
+/.highgrade/project/survey.lock
+/.highgrade/project/survey.next

@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "current": {
+    "number": 1,
+    "content": {
+      "goal": "Connect HighGrade to this existing Tutor Copilot product-documentation repository with minimal integration; preserve all product text and implement no product features.",
+      "scope": [
+        "."
+      ],
+      "stage": "completed",
+      "next": "",
+      "decisions": [
+        {
+          "id": "purpose",
+          "state": "confirmed",
+          "description": "Continue this existing project and adopt HighGrade as its development workflow.",
+          "basis": [
+            "User explicitly requested connection of this existing project."
+          ],
+          "sources": [
+            "Product Decisions.md"
+          ],
+          "blocks": []
+        },
+        {
+          "id": "scope",
+          "state": "confirmed",
+          "description": "Survey and prepare this repository root only; do not scan or modify adjacent projects.",
+          "basis": [
+            "User request and current workspace root."
+          ],
+          "sources": [
+            "Product Decisions.md"
+          ],
+          "blocks": []
+        },
+        {
+          "id": "preservation",
+          "state": "confirmed",
+          "description": "Preserve Product Decisions.md bytes, Git history, English prose, documented/proposed distinctions and unresolved #to-decide items.",
+          "basis": [
+            "User requested preservation; complete product document read."
+          ],
+          "sources": [
+            "Product Decisions.md"
+          ],
+          "blocks": []
+        },
+        {
+          "id": "changes",
+          "state": "confirmed",
+          "description": "Add minimal process/navigation/configuration files and generated UI launchers; no product code, test scaffolds or mass requirement conversion.",
+          "basis": [
+            "User authorized minimum project integration and prohibited product features."
+          ],
+          "sources": [
+            "Product Decisions.md"
+          ],
+          "blocks": []
+        },
+        {
+          "id": "local_rules",
+          "state": "confirmed",
+          "description": "HighGrade owns the development route; preserve the user's explanation, small-step verification, library/documentation, delegation, secrets and commit-consent rules.",
+          "basis": [
+            "User instructions in this chat."
+          ],
+          "sources": [
+            "Product Decisions.md"
+          ],
+          "blocks": []
+        },
+        {
+          "id": "environment",
+          "state": "confirmed",
+          "description": "Use local macOS, existing Git/Python/sh and installed HighGrade v0-4-1. No external services, uploads, paid runs or new dependencies are needed.",
+          "basis": [
+            "Executed global-status; python3 --version; git --version; sh --version."
+          ],
+          "sources": [],
+          "blocks": []
+        },
+        {
+          "id": "mandate",
+          "state": "confirmed",
+          "description": "Repository/process preparation is authorized. Product implementation, commit, push and deployment require their own requests.",
+          "basis": [
+            "User's init request and supplied AGENTS instructions."
+          ],
+          "sources": [
+            "Product Decisions.md"
+          ],
+          "blocks": []
+        }
+      ],
+      "sections": {
+        "adaptation": [
+          {
+            "id": "minimum-foundation",
+            "state": "confirmed",
+            "description": "Prepared the minimum foundation with combined documentation roles, the original product source unchanged, native workflow selected for future authorized requirements, and no fabricated specification/runner. Defined delivery authority and explicit budget/publication/product limits.",
+            "basis": [
+              "Actual prepared files and current instruction. User authorized process preparation only."
+            ],
+            "sources": [
+              ".gitignore",
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "HighGrade UI.cmd",
+              "HighGrade UI.sh",
+              "Product Decisions.md",
+              "README.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "components": [
+          {
+            "id": "existing-content",
+            "state": "confirmed",
+            "description": "Initial inventory contains Product Decisions.md and Git metadata; no application source, manifests, test suite, CI, local skills or remote are configured.",
+            "basis": [
+              "inventory --mode structure; rg --files --hidden with private-name exclusions; git ls-files; git remote -v."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          },
+          {
+            "id": "prepared-files",
+            "state": "confirmed",
+            "description": "README, AGENTS, local instruction, document registry and narrow ignores now exist; the installed CLI generated both root UI launchers. No product code or specification catalog was created.",
+            "basis": [
+              "Files created and read; ui-launcher preview then apply returned passed."
+            ],
+            "sources": [
+              ".gitignore",
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "HighGrade UI.cmd",
+              "HighGrade UI.sh",
+              "README.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "findings": [
+          {
+            "id": "product-questions",
+            "state": "unknown",
+            "description": "Initial tutor segment, first preparation journey and other #to-decide choices remain unresolved. They limit future product work and are outside this init's required outcome.",
+            "basis": [
+              "Product Decisions.md explicitly labels proposals and recommended discussion order."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          },
+          {
+            "id": "budgets",
+            "state": "unknown",
+            "description": "Documentation and route-size budgets have not been agreed; record null budgets and retain diagnostic unknowns rather than inventing accepted ceilings.",
+            "basis": [
+              "No budget decision in the user request or existing document."
+            ],
+            "sources": [],
+            "blocks": []
+          },
+          {
+            "id": "external-sources",
+            "state": "confirmed",
+            "description": "The product document links two absolute paths outside this checkout. Preserve those provenance links; their content and cross-machine availability are not reverified by this init.",
+            "basis": [
+              "Read the product document's Sources section; no adjacent project scanned."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          },
+          {
+            "id": "link-check-scope",
+            "state": "confirmed",
+            "description": "An initial all-source registry inspection failed on the product analysis's two UnsupportedOrAbsoluteLink references. Preserve the source bytes and hash it in the survey; process registry lint covers only new process documents. Existing provenance targets are checked separately. Do not claim complete product-link linting.",
+            "basis": [
+              "User requested preservation/minimum integration; tool rejects absolute provenance links; both targets exist."
+            ],
+            "sources": [
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "Product Decisions.md",
+              "README.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "knowledge": [
+          {
+            "id": "product-owner",
+            "state": "confirmed",
+            "description": "Product Decisions.md owns the sourced product analysis and proposed discussion order. It is not proof of implementation or fresh acceptance.",
+            "basis": [
+              "Read all 378 lines, including source/proposal qualifications and sources section."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          },
+          {
+            "id": "new-owners",
+            "state": "confirmed",
+            "description": "README owns purpose/current structure/commands/evidence; AGENTS owns agent and engineering rules; local instruction owns adaptation/delivery; the registry maps those roles without duplicate placeholder documents.",
+            "basis": [
+              "Read prepared documentation and registry."
+            ],
+            "sources": [
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "README.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "observations": [
+          {
+            "id": "baseline",
+            "state": "confirmed",
+            "description": "2026-10-31: source SHA 36b907a; initial Git status clean on main; product SHA-256 fb392201efe85a1264b16ec3e9e2bf256e6f6740b4ab2c7be6f850fb0d255b3c. Bootstrap validation passed with expected missing foundation paths; overall inspect failed before adaptation. Doctor returned unknown for absent connection and legacy cargo/openspec probes.",
+            "basis": [
+              "Actual git, shasum, inventory, inspect --bootstrap, doctor and global-status outputs."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          },
+          {
+            "id": "provenance-targets",
+            "state": "confirmed",
+            "description": "2026-10-31: both existing absolute source targets are files on this machine. Their contents and portability were not assessed; no adjacent directory was scanned.",
+            "basis": [
+              "Targeted pathlib.Path.is_file on the two exact paths already linked in Product Decisions.md."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "processes": [
+          {
+            "id": "existing-checks",
+            "state": "confirmed",
+            "description": "Existing work is documentation-only. Git diff --check is available; no repository formatter, application runner, linter, test command or CI exists.",
+            "basis": [
+              "Initial inventory and repository content; Git 2.39.5 observed."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          },
+          {
+            "id": "prepared-checks",
+            "state": "confirmed",
+            "description": "Doctor now passes schema compatibility. Process registry inspection has zero structural errors and exactly three BudgetNotAgreed unknowns. Launcher shell syntax and registry JSON parsing pass. No application tests were run because none exist.",
+            "basis": [
+              "Actual doctor, registry inspect, sh -n and python3 -m json.tool outputs saved temporarily in .highgrade/local/."
+            ],
+            "sources": [
+              ".highgrade/project/documents.json",
+              "HighGrade UI.sh",
+              "README.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "routes": [
+          {
+            "id": "next-request",
+            "state": "proposed",
+            "description": "After init, use highgrade-task to discuss the first tutor segment and complete preparation journey (PD-01, PD-03, PD-37). Create a native specification only for an explicitly requested, sufficiently agreed requirement; do not import the whole product document.",
+            "basis": [
+              "Existing proposed discussion order. No new product requirements requested."
+            ],
+            "sources": [
+              "Product Decisions.md"
+            ],
+            "blocks": []
+          }
+        ],
+        "skills": [
+          {
+            "id": "workflow-owner",
+            "state": "confirmed",
+            "description": "Use highgrade-task/spec/work/planner for requested work; retain distinct specialist skills when relevant. Do not run a second full development workflow in parallel.",
+            "basis": [
+              "User selected HighGrade; no local skill directories found."
+            ],
+            "sources": [],
+            "blocks": []
+          }
+        ]
+      },
+      "source_paths": [
+        ".gitignore",
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "HighGrade UI.cmd",
+        "HighGrade UI.sh",
+        "Product Decisions.md",
+        "README.md"
+      ],
+      "areas": []
+    },
+    "snapshot": {
+      "files": {
+        ".gitignore": "943fdeaf7b88a9baff4112ddee893b4070a98b6e137d9db38a4964d48832c8ba",
+        ".highgrade/project/INSTRUCTIONS.md": "7a14e3450573e3a3e36057df48d2d5f37e01abb08565dba6e7c79fad898a64d3",
+        ".highgrade/project/documents.json": "a184b895be81f3695ac01719ff91587adf737c54acc48de5fa7c9173314ffd0f",
+        "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+        "HighGrade UI.cmd": "095d08f9d77b164539f5fe04ab89b94151cc6118f661fffaf46d9fff66ebd848",
+        "HighGrade UI.sh": "8645eb427ca8d404645241e6f78c878d850c81f15b41cf87b3a867c9bf0b158b",
+        "Product Decisions.md": "fb392201efe85a1264b16ec3e9e2bf256e6f6740b4ab2c7be6f850fb0d255b3c",
+        "README.md": "d6407bd6b9e4607068d06463a4a270118f3217558eb6dee9ddaaa96dd342a7a3"
+      },
+      "areas": {},
+      "exclusions_sha256": null
+    },
+    "review": {
+      "reviewer": "Codex independent subagent init_review",
+      "verdict": "go",
+      "conclusion": "GO: independently read eight new files and complete original product document, reviewed original local reports, and reran read-only checks. Product SHA and all eight snapshot source hashes match; real commands work; process links, JSON, shell syntax/executable bit and whitespace pass. Doctor and installation status pass. Registry has exactly three BudgetNotAgreed unknowns and no structural errors. The documented original-provenance lint boundary is proportionate. No product code, invented specification or unauthorized delivery action. Limits: unagreed budgets; Windows/browser interaction not executed; no application/CI/catalog exists; external source contents not re-audited. This confirms current instruction content, not future agent reliability or human acceptance.",
+      "content_sha256": "6f2c0fb449638daebf0affb96b10dee676430c5de020ee95c24e21053f08f935",
+      "snapshot_sha256": "bbc4c1e79f77e6fb80c6a5fb673232de9654ccc9715da4fc003d2a3434424878"
+    }
+  },
+  "history": []
+}

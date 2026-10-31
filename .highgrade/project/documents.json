@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "documents": [
+    {
+      "id": "readme",
+      "path": "README.md",
+      "roles": ["purpose-navigation", "current-architecture", "commands-procedures"],
+      "loading": "entry",
+      "scope": [],
+      "budget": null
+    },
+    {
+      "id": "agents",
+      "path": "AGENTS.md",
+      "roles": ["agent-rules", "engineering-rules"],
+      "loading": "entry",
+      "scope": [],
+      "budget": null
+    }
+  ],
+  "additional_sources": [
+    {
+      "path": ".highgrade/project/INSTRUCTIONS.md",
+      "role": "project-adaptation",
+      "active": true,
+      "loading": "entry",
+      "scope": [".highgrade/project/documents.json"]
+    }
+  ],
+  "route_budget": null
+}
