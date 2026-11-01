@@ -1,0 +1,26 @@
+{
+  "scope": "Product feedback decision, architecture/spec/plan alignment and repository/tooling plan only",
+  "baseline_revision": "9d8d15a166f892a8710f7384dfaf97dac5579aab",
+  "inputs": {
+    "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+    "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+    "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+    "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+    "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+    "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+    "specs/datasets.md": "dfecf8885e4a4fdbf20f88d2d83925f5437ae6a8f01de637d825cc0b7b710c3f",
+    "specs/changes/HG-0006/spec.json": "d029ea28d2c4601d44acacf80a0c0b2630abacfb84e31578dd63a022072f2252",
+    "specs/changes/HG-0007/spec.json": "e56c7b48cc8a864c1cb0a8e414365a3afb00250ccb68b0227a961f244d83e0f4",
+    "specs/changes/HG-0008/spec.json": "d2872fe74c3beff4d0de54d21babafb56994be7ef6e19e07e793b21fba8fc75e",
+    "specs/changes/HG-0009/spec.json": "11668a82637ee3b8ba8b729350a70dba7286067da1059c7d7dd2f3089c8919ed",
+    "specs/changes/HG-0010/spec.json": "350657ecf22eb2b71582baa1c7fd962212269cce35604fc177f8b4aff3c57fef"
+  },
+  "observed": [
+    "PD-01 through PD-37 retained exactly once; PD-38 added; no unresolved #to-decide introduced.",
+    "PD-08/09 rate/trend rules and PD-28 privacy policy are unchanged; feedback references them.",
+    "HG-0003/0004/0005 remain byte-identical to HEAD; shared unintegrated HG-0006/0007/0008 refined; HG-0010 is an unfinished app draft.",
+    "All current relative links, authored whitespace and JSON parse; git diff --check passed.",
+    "Native spec-validate passes for all ten changes. No app results or implementation/scaffold created."
+  ],
+  "limits": "Static text and structure checks establish intended contracts only; no datasets/approved labels, model/framework/runtime, Justfile, dependencies, auth/privacy/replay controls or app behavior executed."
+}

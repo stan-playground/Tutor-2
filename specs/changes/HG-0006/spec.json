@@ -2,9 +2,9 @@
   "id": "HG-0006",
   "title": "Durable preparation, tutor review and approved export",
   "tags": [],
-  "goal": "Let tutors clarify, revise and approve homework across durable human pauses.",
+  "goal": "Let tutors clarify, revise and approve homework and post-lesson feedback across durable human pauses.",
   "rationale": "LangGraph execution continuity must preserve exact application-owned tutor decisions.",
-  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-18–23/26/27; Architecture sections 4/7–8/12. LangGraph with PostgreSQL checkpoints; domain records own approval. Detailed graph/API contracts are deferred.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-18–23/26/27; Architecture sections 4/7–8/12. LangGraph with PostgreSQL checkpoints; domain records own approval. Detailed graph/API contracts are deferred. Shared review/export also supports HG-0010 feedback with its own schema; homework remains first.",
   "questions": [],
   "depends_on": [
     {
@@ -19,7 +19,7 @@
       "requirement": {
         "id": "HG-0006-R1",
         "title": "Durable preparation, tutor review and approved export",
-        "statement": "Use a small LangGraph for preparation and durable clarification/review pauses. Persist exact draft/part decisions in PostgreSQL, reject stale/duplicate effects and require valid tutor-approved retained parts for student export. Part approval alone calls no model; substantive edits regenerate and revalidate. Failed active generation requires a manual new request.",
+        "statement": "Use a small LangGraph for preparation and durable clarification/review pauses. Persist exact draft/part decisions in PostgreSQL, reject stale/duplicate effects and require valid tutor-approved retained parts for student export. Part approval alone calls no model; substantive edits regenerate and revalidate. Failed active generation requires a manual new request. Reuse these boundaries for post-lesson feedback with job-specific validation and student fields, without a homework-duration/exercise requirement; feedback approval never confirms performance observations.",
         "scenarios": [
           {
             "id": "HG-0006-S1",
@@ -48,6 +48,13 @@
             "when": "The tutor chooses retry.",
             "then": "Failure is visible; retry creates a new request with current evidence and no carried approvals, rather than silently resuming mid-generation.",
             "verification": "Future worker-failure and manual-retry observation."
+          },
+          {
+            "id": "HG-0006-S5",
+            "given": "A validated feedback draft has no homework duration or exercises and contains private tutor notes.",
+            "when": "The tutor approves its exact sections and requests student copy.",
+            "then": "The shared review path accepts the feedback schema, exports only valid approved student fields, excludes private notes and leaves performance evidence and homework allowance unchanged.",
+            "verification": "Future job-typed review/export integration with synthetic canaries, row comparisons and separate accounting."
           }
         ]
       }

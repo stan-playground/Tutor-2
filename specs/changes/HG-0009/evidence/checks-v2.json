@@ -1,0 +1,26 @@
+{
+  "scope": "Final static document/specification content only",
+  "inputs": {
+    "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+    "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+    "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+    "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+    "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+    "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+    "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed",
+    "specs/changes/HG-0006/spec.json": "d029ea28d2c4601d44acacf80a0c0b2630abacfb84e31578dd63a022072f2252",
+    "specs/changes/HG-0007/spec.json": "e56c7b48cc8a864c1cb0a8e414365a3afb00250ccb68b0227a961f244d83e0f4",
+    "specs/changes/HG-0008/spec.json": "d2872fe74c3beff4d0de54d21babafb56994be7ef6e19e07e793b21fba8fc75e",
+    "specs/changes/HG-0009/spec.json": "11668a82637ee3b8ba8b729350a70dba7286067da1059c7d7dd2f3089c8919ed",
+    "specs/changes/HG-0010/spec.json": "350657ecf22eb2b71582baa1c7fd962212269cce35604fc177f8b4aff3c57fef",
+    ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f"
+  },
+  "observations": [
+    "Final relative links/whitespace and JSON pass; native structures passed all ten changes.",
+    "All twelve core reviewed hashes still match; dataset wording correction is included.",
+    "Independent evaluation, pedagogy and safety content reviews GO; separate registry owner review GO.",
+    "Registry has no classification/structural errors and retains three BudgetNotAgreed unknowns.",
+    "No scaffold, Justfile, runtime app evidence, gold labels, live services or implementation created."
+  ],
+  "limits": "Text review is evidence of normative content only; application HG-0003\u20130008/0010 tasks stay unfinished. Later HG-0009 task/evidence metadata changes do not alter the reviewed requirement text."
+}

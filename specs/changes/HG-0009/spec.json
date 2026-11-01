@@ -1,0 +1,77 @@
+{
+  "id": "HG-0009",
+  "title": "Record post-lesson feedback in product decisions and delivery priority",
+  "tags": [],
+  "goal": "Record the owner-confirmed feedback job and reconcile product delivery priority without claiming implementation.",
+  "rationale": "The product now has four major jobs; feedback needs evidence, review and rollout boundaries distinct from homework.",
+  "scope": "Documentation contract only: Product Decisions.md and cross-document scope alignment. Preserve PD-01–37 and original source distinctions; add PD-38. Application behavior is separately drafted in HG-0010.",
+  "questions": [],
+  "depends_on": [],
+  "related_to": [
+    {
+      "id": "HG-0010",
+      "reason": "The separate feedback application draft follows this owner-confirmed product decision."
+    }
+  ],
+  "operations": [
+    {
+      "action": "modify",
+      "requirement": {
+        "id": "HG-0001-R1",
+        "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+        "statement": "Product Decisions.md must present the current owner-confirmed priorities and explicitly delegated product defaults, retain PD-01–PD-37, add PD-38 for the feedback decision, and retain historical provenance, distinguish defaults from validated results, and preserve unresolved questions only where the owner has not authorized their resolution. The document owns product descriptions; this contract governs documentation, not application implementation.",
+        "scenarios": [
+          {
+            "id": "HG-0001-S1",
+            "given": "The prior product document describes three preparation jobs; the owner now adds post-lesson feedback after homework and before lesson planning.",
+            "when": "The reader opens the revised product document.",
+            "then": "Before the detailed decisions the reader finds four major jobs in delivery order: homework, post-lesson feedback, lesson planning and urgent replanning, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+            "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+          },
+          {
+            "id": "HG-0001-S2",
+            "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+            "when": "The current principles and corresponding detailed entries are reconciled.",
+            "then": "Affected entries distinguish owner-confirmed decisions, explicitly delegated defaults and historical sources; all prior 37 IDs and unrelated decisions remain, with PD-38 added. Online production observations do not require gold answers. There are no implementation, measured-benefit or compliance-certification claims. Questions authorized for resolution become concrete decisions rather than remaining proposals.",
+            "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+          },
+          {
+            "id": "HG-0002-S1",
+            "given": "The owner explicitly delegates common-sense resolution of the 28 marked product questions in the current concise document.",
+            "when": "The assistant resolves those questions in Product Decisions.md.",
+            "then": "Each formerly marked entry has a concrete delegated decision covering its original question: pilot segment and scope, learner evidence and priorities, material/output suitability, review/revision/recovery, data access and retention, evaluation/KPIs, content ownership, interface scope and pilot charging. The document contains no unresolved #to-decide markers. Explicit pilot exclusions and numerical starting policies are labeled as decisions, not claimed evidence or application implementation.",
+            "verification": "Compare the exact pre-edit document and final document by ID; independent reviewers verify every prior marked topic has a concrete resolution, current priorities are preserved and numeric/data policies are honestly qualified."
+          },
+          {
+            "id": "HG-0009-S1",
+            "given": "The owner requests feedback from the selected transcript, saved learning curve/state and subskill-use metrics.",
+            "when": "The product priorities and detailed scope are updated.",
+            "then": "PD-38 and the opening describe transcript-grounded feedback as the second delivery priority; accuracy/required-use/avoidance remain distinct. Tutor-reviewed feedback cannot confirm observations or change metrics, requires no prior homework request and preserves missing/conflicting evidence and privacy limits. Existing homework cohort metrics/allowance remain homework-specific.",
+            "verification": "Executor and independent reviewers compare the exact document diff with the owner messages and PD-08/09/22/25/28; this proves normative content only."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0009-T1",
+      "description": "Record PD-38 and reconcile the opening, tutor-review and rollout statements while preserving earlier decisions/provenance.",
+      "done": true
+    },
+    {
+      "id": "HG-0009-T2",
+      "description": "Verify the product-contract diff and cross-document alignment through structural checks and independent semantic review.",
+      "done": true
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {
+    "HG-0001-R1": "b481e6c597ed8397d95dd8efad3d7604e6da0bf22e64f65c5332dafb2f2a8744"
+  },
+  "scoped_baseline": true,
+  "created_at": 1793533518,
+  "archived": true,
+  "abandoned_reason": null
+}

@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Evaluate every active stage and release a bounded, measurable homework pilot.",
   "rationale": "A working graph or valid reference does not prove suitable teaching or saved tutor effort.",
-  "scope": "Specification only; no application implementation, approved gold labels or acceptance claimed. Sources: PD-28/31/34–37; Architecture section 10. Concrete homework dataset construction, review and release contracts are detailed in specs/datasets.md. Five invited tutors, adult A2–B2 English homework and free allowance remain unchanged; other jobs and detailed pilot instrumentation are outside this refinement.",
+  "scope": "Specification only; no approved gold labels or app behavior claimed. PD-28/31/34–38 and Architecture section 10. Concrete datasets in specs/datasets.md cover homework and the next feedback job separately. Five-tutor free homework cohort and its allowance remain unchanged. Other teaching jobs and feedback commercial/rollout terms are not implicitly activated.",
   "questions": [],
   "depends_on": [
     {
@@ -16,14 +16,19 @@
       "reason": "Real-data pilot and evaluation require the data-lifecycle boundary."
     }
   ],
-  "related_to": [],
+  "related_to": [
+    {
+      "id": "HG-0010",
+      "reason": "Feedback must meet these job-specific gates before activation; it does not block the first homework-only release."
+    }
+  ],
   "operations": [
     {
       "action": "add",
       "requirement": {
         "id": "HG-0008-R1",
         "title": "Evaluation gates and invitation-only homework pilot",
-        "statement": "Use reviewed golden cases for every active stage and the whole homework job, with Langfuse offline experiments and permitted online evaluation. Keep mandatory draft validation separate from sampled monitoring. Before real use, require access/privacy/review/recovery checks. Track tutor effort and actual assignment; the free pilot allows 20 approved preparations per tutor with no automatic charging.",
+        "statement": "Use reviewed golden cases for every active stage and the complete job, separately for homework and feedback, with Langfuse offline experiments and permitted online evaluation. Keep mandatory draft validation separate from sampled monitoring. Before real use, require access/privacy/review/recovery checks. Track tutor effort and actual assignment; the homework pilot allows 20 approved homework preparations per tutor with no automatic charging.",
         "scenarios": [
           {
             "id": "HG-0008-S1",
@@ -54,7 +59,7 @@
       "requirement": {
         "id": "HG-0008-R2",
         "title": "Typed, reproducible evaluation items with withheld labels",
-        "statement": "Use tutor-copilot/homework-gold for complete-job and isolated stage items, and tutor-copilot/judge-calibration for human-labeled candidate outputs. Enforce the input/expectedOutput/metadata contract and stage vocabulary in datasets.md. Pin synthetic identities, clock, evidence, asset revisions and scripted tutor actions where relevant; resolve fixtures without production data. Keep gold labels/reviewer reasons out of task inputs, proposed keys out of independent-solver inputs and human verdicts out of judge inputs. Open tasks use required criteria and accepted alternatives rather than exact reference prose.",
+        "statement": "Use tutor-copilot/homework-gold and tutor-copilot/feedback-gold for job-specific complete-job/stage items, and tutor-copilot/judge-calibration for human-labeled candidate outputs. Enforce the job-specific input/expectedOutput/metadata contract and stage vocabulary in datasets.md. Pin synthetic identities, clock, evidence, asset revisions and scripted tutor actions where relevant; resolve fixtures without production data. Keep gold labels/reviewer reasons out of task inputs, proposed keys out of independent-solver inputs and human verdicts out of judge inputs. Open tasks use required criteria and accepted alternatives rather than exact reference prose.",
         "scenarios": [
           {
             "id": "HG-0008-S4",
@@ -85,7 +90,7 @@
       "requirement": {
         "id": "HG-0008-R3",
         "title": "Twelve homework families and explicit stage coverage",
-        "statement": "Before pilot use, author the twelve synthetic adult A2–B2 homework families HW-01–HW-12 in datasets.md: practice/maintenance, domain adaptation/required use, correct avoidance/open tasks, missing/stale evidence, conflicting evidence/clarification cap, asset gap, safety/adult eligibility, access/privacy, key correctness/separation, instruction-like transcript, rejection/stale revision and duration edit/duplicate finalize. Include four families per level, six ordinary and six critical base families plus explicitly required variants. Review intermediate expectations for extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation and review/revision, and complete-job outcomes. Each active stage needs ordinary-success and relevant critical-failure coverage; add isolated fixtures rather than pretending every family visits every stage. Numeric fixtures cover PD-08/09 boundaries, windows, corrections and mixed measures. Other preparation jobs need equivalent coverage before enabling.",
+        "statement": "Before pilot use, author the twelve synthetic adult A2–B2 homework families HW-01–HW-12 in datasets.md: practice/maintenance, domain adaptation/required use, correct avoidance/open tasks, missing/stale evidence, conflicting evidence/clarification cap, asset gap, safety/adult eligibility, access/privacy, key correctness/separation, instruction-like transcript, rejection/stale revision and duration edit/duplicate finalize. Include four families per level, six ordinary and six critical base families plus explicitly required variants. Review intermediate expectations for extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation and review/revision, and complete-job outcomes. Each active stage needs ordinary-success and relevant critical-failure coverage; add isolated fixtures rather than pretending every family visits every stage. Numeric fixtures cover PD-08/09 boundaries, windows, corrections and mixed measures. Other preparation jobs need equivalent coverage before enabling. Before feedback activation, add FB-01–FB-08 plus required variants and isolated cases per datasets.md; cover source context, extraction, comparison, composition, validation and review/E2E without imposing exercise-only stages. Existing homework coverage remains unchanged.",
         "scenarios": [
           {
             "id": "HG-0008-S7",
@@ -147,7 +152,7 @@
       "requirement": {
         "id": "HG-0008-R5",
         "title": "Frozen release manifest and case-level gates",
-        "statement": "Freeze required item IDs/revisions/content hashes, dataset timestamp, stage membership/severity/stops, source corpus/fixtures/clock, schema/rubric/evaluator definitions and hashes, application/configuration/prompt/model/embedding versions and accepted-baseline per-case verdicts before running. Pin schemas separately because Langfuse item timestamps do not version schemas. A case passes only if every required assertion/criterion passes. Require all critical items/variants, at least ceil(90% × N) ordinary passes separately per stage and end-to-end, no newly failing accepted passing baseline case, and every required score present/valid. Zero coverage is a gap; missing/error cannot use the ordinary-failure allowance. Only reviewed expected stops are not-applicable. Record absent first baseline explicitly; never auto-promote the candidate or silently change labels/retire cases to erase regressions.",
+        "statement": "Freeze required item IDs/revisions/content hashes, dataset timestamp, stage membership/severity/stops, source corpus/fixtures/clock, schema/rubric/evaluator definitions and hashes, application/configuration/prompt/model/embedding versions and accepted-baseline per-case verdicts before running. Pin schemas separately because Langfuse item timestamps do not version schemas. A case passes only if every required assertion/criterion passes. Require all critical items/variants, at least ceil(90% × N) ordinary passes separately per job, applicable stage and end-to-end, no newly failing accepted passing baseline case, and every required score present/valid. Zero coverage is a gap; missing/error cannot use the ordinary-failure allowance. Only reviewed expected stops are not-applicable. Record absent first baseline explicitly; never auto-promote the candidate or silently change labels/retire cases to erase regressions.",
         "scenarios": [
           {
             "id": "HG-0008-S13",
@@ -178,7 +183,7 @@
       "requirement": {
         "id": "HG-0008-R6",
         "title": "Human judge calibration and permitted online evaluation",
-        "statement": "Before relying on a semantic judge, prepare at least 20 distinct human-labeled candidate outputs overall, with criterion-level labels/reasons and both human pass/fail examples per evaluated criterion. Count unique outputs separately from multiple labels. Apply gold review/provenance rules, hide human verdicts from the judge and keep related family/variant outputs in one development or held-out partition. Report split/criterion/severity counts, false acceptance, false rejection, agreement and invalid/missing verdicts; inspect both error directions. After tuning on holdout content, obtain fresh human-labeled holdout outputs. Do not invent a universal reliability threshold from twenty examples. Judges remain advisory and cannot waive hard gates. Online evaluation records every deterministic gate and tutor decision, additionally samples 10% of permitted runs, and reports eligible/sampled/completed/missing counts. Weekly review every critical flag/failure plus five random permitted unflagged outputs, or all available with an explicit shortfall. Automatic live-to-gold promotion is prohibited.",
+        "statement": "Before relying on a semantic judge, prepare at least 20 distinct human-labeled candidate outputs overall, with criterion-level labels/reasons and both human pass/fail examples per evaluated criterion. Count unique outputs separately from multiple labels. Apply gold review/provenance rules, hide human verdicts from the judge and keep related family/variant outputs in one development or held-out partition. Report split/criterion/severity counts, false acceptance, false rejection, agreement and invalid/missing verdicts; inspect both error directions. After tuning on holdout content, obtain fresh human-labeled holdout outputs. Do not invent a universal reliability threshold from twenty examples. Judges remain advisory and cannot waive hard gates. Online evaluation records every deterministic gate and tutor decision, additionally samples 10% of permitted runs, and reports eligible/sampled/completed/missing counts. Weekly review every critical flag/failure plus five random permitted unflagged outputs, or all available with an explicit shortfall. Automatic live-to-gold promotion is prohibited. Calibration reports include job-specific criterion coverage; related outputs sharing a learner/source remain in one split even across jobs. Homework labels do not automatically calibrate feedback grounding/attribution.",
         "scenarios": [
           {
             "id": "HG-0008-S16",
@@ -200,6 +205,13 @@
             "when": "Weekly monitoring is reported.",
             "then": "Review both critical flags and all three available random candidates, state the shortfall of two, retain the missing result in coverage, and keep flagged/random rates separate. No output becomes gold without permission and full review.",
             "verification": "Future fixed monitoring-cohort observation of selection, coverage counts, review records and admission behavior."
+          },
+          {
+            "id": "HG-0008-S19",
+            "given": "Homework passes all gates but the feedback suite has an omitted critical variant or missing required comparison-stage score.",
+            "when": "The two job release reports are evaluated.",
+            "then": "Feedback cannot activate; homework scores cannot compensate, exercise-only stages are excluded by declared applicability, and job-specific calibration/usage coverage remains visible.",
+            "verification": "Future fixed two-job manifest/gate/calibration cases with distinct denominators and missing/invalid results."
           }
         ]
       }

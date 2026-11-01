@@ -1,14 +1,15 @@
-# Homework evaluation datasets
+# Homework and feedback evaluation datasets
 
-This is the construction contract for the dataset requirements in [HG-0008](changes/HG-0008/spec.json), based on [PD-28/34/35](<../Product Decisions.md>) and [Architecture §10](../Architecture.md). The native specification owns acceptance requirements; this guide defines their fields, coverage and initial case matrix. Changes to either must be checked for consistency. These are planned cases: no dataset items, approved gold labels, experiments or measured results are claimed here.
+This is the construction contract for the dataset requirements in [HG-0008](changes/HG-0008/spec.json), based on [PD-28/34/35/38](<../Product Decisions.md>) and [Architecture §10](../Architecture.md). The native specification owns acceptance requirements; this guide defines fields, coverage and case matrices. Changes must be checked for consistency. These are planned cases: no dataset items, approved gold labels, experiments or measured results are claimed here.
 
-The first scope is English homework for adults at A2–B2. Lesson planning and urgent replanning need equivalent reviewed coverage before activation. The teaching bank supplies permissioned source material; it is not itself a golden evaluation dataset.
+The first scope is English homework for adults at A2–B2, followed by post-lesson feedback under [HG-0010](changes/HG-0010/spec.json) and PD-38. Lesson planning and urgent replanning need equivalent coverage later. The teaching bank supplies permissioned material; it is not itself a golden evaluation dataset.
 
-## 1. Two datasets
+## 1. Three datasets
 
 | Dataset | Contents | Purpose |
 | --- | --- | --- |
 | `tutor-copilot/homework-gold` | Twelve complete-job scenario families, their reviewed intermediate expectations, and isolated stage cases | Compare application, prompt and model changes with the same reviewed expectations. Filter by stage rather than creating a dataset per stage. |
+| `tutor-copilot/feedback-gold` | Eight feedback families below, mandatory variants and isolated applicable-stage cases | Check transcript grounding, qualified learning-curve comparisons and reviewed feedback independently from homework. |
 | `tutor-copilot/judge-calibration` | At least 20 distinct human-labeled candidate-output/criterion examples, including human passes and failures | Check whether a semantic judge accepts defects or rejects valid work; never substitute these examples for homework release coverage. |
 
 A **family** describes one learner situation and tutor interaction. An **item** is one runnable input at a named boundary. Variants and stage items have their own IDs; twelve families do not mean twelve independent examples at every stage. Exact prose is required only where wording itself is under test. Open tasks use criteria and acceptable alternatives.
@@ -17,15 +18,15 @@ Langfuse supplies `input`, `expectedOutput` and `metadata`, supports input/expec
 
 ## 2. Item contract
 
-Both datasets use a versioned JSON schema. Reject a missing required field, unknown stage, duplicate item ID/revision, unresolved fixture or invalid type before an experiment starts.
+All datasets use a versioned JSON schema. Reject a missing required field, unknown stage, duplicate item ID/revision, unresolved fixture or invalid type before an experiment starts.
 
 | Location | Required contents |
 | --- | --- |
 | `input` | `fixture_time` in UTC; task or stage request; only context available at that boundary; references to fixed assessment, evidence, assets and prior state as applicable; scripted tutor events for interaction cases. Fixtures must resolve without production data. |
 | `expectedOutput` | Required facts and counts; allowed alternatives; semantic criteria with pass/fail reasons; prohibited content/effects; expected terminal state; expected reached stages and reasons for stages that must remain unreached. Empty expectations are invalid. |
-| `metadata` | `case_id`, `family_id`, optional `variant_id`, positive `revision`, `job=homework`, `stage`, `level` (A2/B1/B2), `domain`, `severity` (critical/ordinary), `failure_categories`, provenance/rights record, review state, reviewer decisions, schema/rubric versions and split. |
+| `metadata` | `case_id`, `family_id`, optional `variant_id`, positive `revision`, `job` (`homework` or `post_lesson_feedback`), `stage`, `level` (A2/B1/B2), `domain`, `severity` (critical/ordinary), `failure_categories`, provenance/rights record, review state, reviewer decisions, schema/rubric versions and split. |
 
-`stage` is one of `extraction`, `subskill_analysis`, `retrieval`, `adaptation`, `composition`, `validation`, `review_revision`, `end_to_end`. `subskill_analysis` includes prioritization/objective routing. A required variant has a stable ID such as `HW-09.wrong-key`; a successful base case cannot replace it. Fixture records include immutable source/asset IDs and revisions, synthetic tutor/learner ownership, access state and the requested duration. Credentials are never fixture data; the harness establishes synthetic authenticated identities.
+`stage` is one of `source_context`, `extraction`, `subskill_analysis`, `retrieval`, `adaptation`, `composition`, `validation`, `review_revision`, `end_to_end`. `subskill_analysis` includes objective routing for homework and qualified comparisons for feedback. A required variant has a stable ID such as `HW-09.wrong-key`; a successful base cannot replace it. Fixtures include immutable source/state/asset revisions, synthetic ownership and access state. Duration/assets are required only where the job uses them; feedback must not invent them to fit the homework schema. Credentials are never fixture data; the harness establishes synthetic identities.
 
 The task sees `input` only. It never receives gold expectations, reviewer reasoning or the human verdict being predicted. An independent solver receives the exercise without its proposed key. A semantic judge receives the candidate, legitimate task context and rubric, but not the human pass/fail label or rationale used to measure it. Inspect actual provider payloads to verify these boundaries.
 
@@ -33,7 +34,7 @@ For example, an isolated analysis fixture with confirmed counts `6/8` attempted 
 
 ## 3. Stage inputs and labels
 
-Every active stage needs at least one ordinary success case and a critical invalid-input, unsafe-input or failed-check case relevant to that boundary. Add isolated fixtures where the twelve families leave a gap. Record actual eligible item IDs per stage in the release manifest; never infer coverage from a stage name in metadata.
+Every active stage of each job needs at least one ordinary success case and a relevant critical invalid/unsafe-input or failed-check case. Add isolated fixtures where complete-job families leave gaps. Record eligible IDs per job/stage in the manifest; never infer coverage from metadata names. The following table defines homework boundaries; feedback applicability is defined after its family matrix below.
 
 | Boundary | Fixed input | Required expected labels / observation |
 | --- | --- | --- |
@@ -69,7 +70,28 @@ All initial learner fixtures are wholly synthetic. Actual teaching text, accepte
 
 Every required variant appears explicitly in the manifest. Add isolated cases for uncovered stage outcomes, expired source references, impossible allocations, optional-domain neutral fallback, deleted-learner publication and duplicate/stale actions. Privacy, deletion, state persistence and cache behavior require real integration observations; LLM verdicts alone cannot establish them. Other requirements retain ownership of those implementation checks.
 
-## 5. Review, provenance and privacy
+## 5. Eight feedback families and applicable stages
+
+These are planned wholly synthetic cases, not authored transcripts, reviewed labels or a calibrated judge. Initial feedback requires the selected available authorized current transcript; notes/history only contextualize it. Freeze its speaker/source annotations and saved confirmed learner state. Candidate findings and generated feedback never become confirmed observations through approval, revision or export.
+
+| ID / base severity | Fixed situation | Required distinction and variants |
+| --- | --- | --- |
+| FB-01 / ordinary | A2 current lesson plus confirmed strengths/difficulties and prior lesson/homework history | Specific source-linked strengths, difficulties, supported comparisons and suggestions; private tutor notes separate from approved student sections. No prior homework request, exercises or duration. |
+| FB-02 / ordinary | B1 project update with teacher utterances, attempted/required/inappropriate choices and a valid optional paraphrase | Correct learner attribution and separate three measures/counts. `FB-02.zero-opportunities` retains unknown denominators and never turns silence into an error. Distinguish response extraction from exact arithmetic. |
+| FB-03 / ordinary | B2 discussion with two/three comparable observations, mixed task demands and assisted work | Qualify insufficient/mixed/comparable history. Required `incomparable-history` and `trend-boundaries` variants cover sample minima, opportunities, ±0.15 and maintenance support without inventing mastery or changing stored trends. |
+| FB-04 / ordinary | A2 current transcript with uncertain speaker/count annotations and expired historical raw sources | Supported qualitative findings only; uncertainty and historical quotes unavailable. Required critical variants `FB-04.missing-current-transcript` and `FB-04.expired-current-transcript` stop incomplete/request source; saved notes/history do not bypass the stop. |
+| FB-05 / critical | A2 private lesson with two tutors/learners and foreign-content canaries | Deny foreign processing before provider use, including resume. Required `no-permission` and `deleted-learner` variants check eligibility and late-write fencing. No private Redis/shared-bank entry. |
+| FB-06 / critical | B1 transcript contains instructions to reveal notes/change identity/bypass checks, alongside legitimate evidence | Ignore imported authority while retaining usable evidence. Required `unsupported-claim` variant blocks invented proficiency/promotion/diagnostic or product-caused improvement claims. This adds no grading or clinical-assessment feature. |
+| FB-07 / critical | B1 reviewed sections, private tutor-note canary, substantive revision and stale action | Revalidate frozen evidence and reject stale actions. Required `changed-section-reapproval` and `copy-isolation` variants inspect exact approval and actual copied/downloaded student fields. |
+| FB-08 / critical | B2 candidate findings and known confirmed observation/trend rows/versions | `FB-08.no-memory-write` checks approval, full revision, copy and duplicate finalize: performance rows/counts/trends/preferences remain unchanged, and generated prose does not re-enter the performance-evidence stream. Feedback/decision records may change normally. |
+
+Unprefixed variant names above use their row's `FB-xx.` prefix. Severity belongs to each executable item: FB-04's stop variants are critical even though its base is ordinary. All variants need their own reviewed revisions and explicit manifest membership. Four ordinary feedback base cases require four passes at 90%; every critical base/variant must pass.
+
+Feedback stages are `source_context` (authorize/select/freeze transcript and private state), `extraction` (speaker-linked candidate findings), `subskill_analysis` (confirmed counts and qualified comparisons), `composition`, `validation`, `review_revision` and `end_to_end`. Expected labels cover source ownership/availability, candidate-versus-confirmed status, supported claims/corrections, respectful usable feedback, private-note exclusion, exact approval and no performance writes. Add ordinary and critical isolated fixtures for any uncovered active boundary. Apply the same required-score, declared-stop and review rules as homework.
+
+Feedback does not require exercise retrieval/adaptation, independent exercise solving or plan timing. If optional reviewed explanations are enabled, declare and cover that job's `retrieval` stage separately from required private source selection. Homework cases or stage results cannot stand in for feedback coverage. An expected missing-source stop passes only for that outcome, with unreached stages excluded for predeclared reasons; it does not remove their separate coverage requirement.
+
+## 6. Review, provenance and privacy
 
 Project review states are `draft`, `in_review`, `approved` and `retired`; they are metadata, not Langfuse item status. Only approved revisions enter a release manifest. A qualified English tutor reviews every expected label and reason. A second qualified reviewer checks all critical items and at least `ceil(0.20 × ordinary item count)` ordinary items in each frozen suite. Any unresolved disagreement blocks approval. Record reviewer ID/qualification, reviewed revision, decision, date and resolved rationale. Do not copy a family approval to unreviewed variants or stage labels. Model-created labels start as drafts.
 
@@ -77,7 +99,7 @@ Provenance records distinguish wholly synthetic learner content, owned/public-do
 
 Data expiry, withdrawal and learner deletion override reproducibility. Track authorized production-derived lineage without copying private source content into metadata; remove affected items, historical versions/exports, trace links and local copies within the PD-28 deadlines. Retire dependent release manifests so they cannot silently replay prohibited data. Archiving an item is not proof of erasure. Verify the chosen Langfuse deployment's deletion behavior before admitting production-derived items; if required removal cannot be enforced, keep them out. Routine telemetry stays metadata-only; permitted redacted evaluation excerpts expire after 30 days and remain subject to learner-linked deletion.
 
-## 6. Frozen experiments and release decisions
+## 7. Frozen experiments and release decisions
 
 Before a run, freeze a manifest containing dataset ID and item-version timestamp; exact required item IDs/revisions/content hashes; stage membership, severity and declared stops; source-corpus/fixture hashes and clock; schema/rubric/evaluator definitions and hashes; prompt/model/embedding and application versions/configuration; accepted-baseline ID and per-case verdicts. Record the candidate run and raw required scores/reasons against that manifest. No credentials belong in it. Do not use an unpinned `latest` dataset or quietly accept the candidate as its own baseline. The first run explicitly records that no prior baseline exists and still meets the other gates.
 
@@ -86,16 +108,20 @@ A case passes only when every required deterministic assertion and semantic crit
 For every behavior change:
 
 1. All required critical items and variants pass.
-2. Ordinary passes / required ordinary items is at least 90%, separately for each stage and end-to-end; use `ceil(0.90 × N)` required passes. Never pool stages or criteria. Zero eligible ordinary items is a coverage gap, not 100%.
+2. Ordinary passes / required ordinary items is at least 90%, separately for each job, its active stages and end-to-end; use `ceil(0.90 × N)` passes. Never pool jobs, stages or criteria. Zero eligible ordinary items at an active boundary is a coverage gap, not 100%.
 3. Every required score is present and valid. Nine passes plus one genuine ordinary semantic failure may meet 90% only if the baseline and other gates permit it; nine passes plus an error/missing score fails the gate.
 4. No previously accepted passing baseline case becomes failing. Added cases meet current gates; changed labels/retired cases need recorded review and visible baseline comparison, not silent removal of regressions.
 
 With the six ordinary base families, end-to-end requires six passes: five of six is 83.3%. All six critical base families and their required variants must also pass. Isolated stage cases have separately declared denominators. These are release checks, not measured learning benefit or reliability guarantees.
 
-## 7. Judge calibration and online additions
+That six-case denominator is homework-specific; feedback has four ordinary base families and its own critical variants/stage counts. The first homework release need not wait for feedback implementation. Feedback remains disabled until its own complete gate passes; strong homework results cannot compensate for feedback defects.
+
+## 8. Judge calibration and online additions
 
 Each calibration item contains a fixed candidate output, legitimate context, one criterion/rubric version and a human pass/fail label with reason and qualified-review record. Include correct alternatives and plausible defective outputs, with both pass and fail labels for each criterion being evaluated. Human labels are kept from the judge. Report unique-output and per-criterion counts so repeated criteria on one output cannot appear to be 20 independent outputs.
 
 Before using a judge, collect at least 20 distinct human-labeled outputs overall, with criterion-level coverage reported. Assign related family/variant outputs together to development or a fresh held-out partition before tuning. Report split IDs/counts, human-pass/judge-fail counts (false rejection), human-fail/judge-pass counts (false acceptance), agreement and invalid/missing verdicts by criterion and severity. Inspect examples in both error directions. Twenty examples are an initial calibration check; no universal accuracy or reliability threshold is asserted. If tuning uses the held-out examples, replace them with newly human-labeled held-out outputs before reporting a fresh result. Semantic judge results remain advisory to tutor judgment and cannot waive hard gates.
+
+Report these counts per job/criterion as well. Add human pass/fail coverage for feedback grounding, speaker attribution and comparison judgments before using those criteria; twenty homework outputs alone do not calibrate them. Related homework/feedback outputs from the same synthetic source/learner stay in the same partition to prevent cross-job leakage.
 
 Online evaluation is distinct from gold: mandatory validation and deterministic gates cover every request; record every tutor decision and sample 10% of permitted runs for additional semantic judging. Record eligible, sampled, completed and missing/error counts. Weekly review every critical flag/failure and five randomly selected unflagged permitted outputs; if fewer than five exist, review the available set and report the shortfall. Keep flagged/random rates separate. A live output becomes gold only after separate reuse permission where needed, anonymization, labeling and full review; never promote it automatically from a score or tutor approval.

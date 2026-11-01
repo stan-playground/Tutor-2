@@ -1,0 +1,118 @@
+{
+  "id": "HG-0010",
+  "title": "Evidence-grounded post-lesson feedback and tutor approval",
+  "tags": [],
+  "goal": "Generate tutor-reviewed post-lesson feedback grounded in the selected transcript and saved learner evidence/state.",
+  "rationale": "Feedback follows homework before lesson planning; explaining the learning curve must not generate fresh performance evidence.",
+  "scope": "Initial unimplemented application draft. Adult A2–B2 English; PD-38/04/08/09/22/25/28/34 and Architecture feedback route. No prior homework request, exercise list, key or plan duration required. Feedback activation/use measurement is separate from the homework cohort/allowance.",
+  "questions": [],
+  "depends_on": [
+    {
+      "id": "HG-0003",
+      "reason": "Needs authenticated transcript access and confirmed learner evidence/measures."
+    },
+    {
+      "id": "HG-0006",
+      "reason": "Reuses durable requests, exact part review and approved-copy boundaries delivered for homework first."
+    },
+    {
+      "id": "HG-0007",
+      "reason": "Feedback artifacts, excerpts and notes need the same permission/retention/deletion controls."
+    }
+  ],
+  "related_to": [
+    {
+      "id": "HG-0008",
+      "reason": "Uses the shared evaluation policy with independent feedback stage/job gates."
+    },
+    {
+      "id": "HG-0009",
+      "reason": "Records the owner-confirmed feedback product decision."
+    }
+  ],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0010-R1",
+        "title": "Grounded post-lesson feedback with exact tutor approval",
+        "statement": "On tutor-selected job_kind=post_lesson_feedback, authorize and freeze the selected current transcript plus assessment/preferences and saved confirmed observations/state. Compute PD-08/09 accuracy, required use, avoidance and comparable trends; preserve unknown/mixed/insufficient status. Draft source-linked strengths, difficulties, supported progress and next-step suggestions as student sections, with private tutor evidence notes. Validate support, linguistic/pedagogical correctness, suitability and note separation; require exact-version approval of every retained student section before manual copying. Generated findings/approval/export never confirm observations or write counts, mastery, trends or preferences. New evidence starts a new request; wording revisions retain the snapshot. Reuse durable review/failure/privacy rules with job-specific validation, no homework timing/assets requirement or auto-send. Enable feedback only after its independently reviewed applicable-stage and complete-job evaluation gates pass.",
+        "scenarios": [
+          {
+            "id": "HG-0010-S1",
+            "given": "An authorized transcript and confirmed lesson/homework history include comparable subskill observations.",
+            "when": "A tutor requests feedback without preceding homework.",
+            "then": "Draft supported current findings and qualified comparisons with distinct accuracy/use/avoidance counts, source references and suggestions. Separate student sections/private notes and leave canonical performance unchanged; no exercise/key/duration is required.",
+            "verification": "Future reviewed synthetic stage/E2E cases, exact arithmetic and before/after persisted performance rows."
+          },
+          {
+            "id": "HG-0010-S2",
+            "given": "History is missing, a denominator is zero or tasks/assistance/history conflict or are incomparable.",
+            "when": "Feedback describes the learning curve.",
+            "then": "Keep supported current findings and mark unknown/insufficient/mixed comparisons. Invent no prior work, trend, mastery, learning gain or pronunciation/listening result from text.",
+            "verification": "Future reviewed sparse/conflicting/threshold and speaker-attribution fixtures."
+          },
+          {
+            "id": "HG-0010-S3",
+            "given": "The selected current transcript is absent/expired, foreign-owned, or processing permission/adult eligibility is missing.",
+            "when": "Context is loaded.",
+            "then": "Refuse unauthorized/ineligible processing before provider use; missing/expired current source gives a visible incomplete/request-source outcome. Notes/history do not replace it and expired quotes are not reconstructed.",
+            "verification": "Future actual access/provider/expiry boundaries with synthetic canaries."
+          },
+          {
+            "id": "HG-0010-S4",
+            "given": "A transcript contains instructions to bypass rules, or feedback invents progress or includes private tutor notes.",
+            "when": "Validation and student export run.",
+            "then": "Treat instructions as evidence; block unsafe/unsupported sections and exclude private notes. An LLM score or tutor approval cannot waive a hard gate.",
+            "verification": "Future seeded-defect validator and actual student serialization/download cases."
+          },
+          {
+            "id": "HG-0010-S5",
+            "given": "Sections are approved/rejected, substantive wording changes are requested, and stale/duplicate actions occur across restart.",
+            "when": "Feedback is revised/resumed/finalized.",
+            "then": "Regenerate/revalidate the draft against frozen evidence, invalidate affected approvals and export only exact valid approved sections. Stale actions change nothing, duplicates repeat no effects, approval alone calls no model, and canonical observations/counts/trends/preferences remain unchanged.",
+            "verification": "Future persistence/interrupt/export integration and provider-call counts plus no-performance-write observations."
+          },
+          {
+            "id": "HG-0010-S6",
+            "given": "Evidence is corrected after the snapshot, or a source/learner becomes unavailable during review.",
+            "when": "The tutor resumes or copies feedback.",
+            "then": "New evidence requires a new request; no silent evidence refresh. Deletion/expiry blocks prohibited access/publication, covers notes/checkpoints/evaluations and fences late writes under PD-28.",
+            "verification": "Future source-correction/deletion/expiry cases across database, worker and approved-copy boundaries."
+          },
+          {
+            "id": "HG-0010-S7",
+            "given": "Homework gates pass but feedback has missing scores, critical failures or missing applicable-stage coverage.",
+            "when": "Feedback activation is evaluated.",
+            "then": "Keep feedback disabled; apply HG-0008 gates to feedback separately. Exercise-only stages are not required. Report feedback use separately and do not silently consume homework allowance or count feedback as homework assignment.",
+            "verification": "Future fixed per-job manifests/gate decisions and usage-accounting observations."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0010-T1",
+      "description": "Implement frozen transcript/state findings with deterministic comparisons and no performance-state writes.",
+      "done": false
+    },
+    {
+      "id": "HG-0010-T2",
+      "description": "Compose/validate feedback fields through shared durable section review and approved export.",
+      "done": false
+    },
+    {
+      "id": "HG-0010-T3",
+      "description": "Author/review feedback gold and verify independent activation, privacy/replay and job-specific usage boundaries.",
+      "done": false
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793533518,
+  "archived": false,
+  "abandoned_reason": null
+}

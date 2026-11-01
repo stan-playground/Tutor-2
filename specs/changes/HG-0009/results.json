@@ -1,0 +1,595 @@
+{
+  "acceptance": [],
+  "evidence": {
+    "HG-0001-S1": {
+      "captured_at": "2026-11-01T12:10:31.905834Z",
+      "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+      "files": {
+        "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+        "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30"
+      },
+      "input_paths": [
+        "Product Decisions.md",
+        "specs/changes/HG-0009/evidence/before-product.md",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md"
+      ],
+      "method": "manual",
+      "observation": "Actual document-content reconfirmation only: Four-job opening and all retained priorities unchanged.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+      "scenario": "HG-0001-S1",
+      "scenario_sha256": "fd7a2e7b6216c568ea42bcdd0542be00048cfc5e603dbf200448743efd1a6d3f"
+    },
+    "HG-0001-S2": {
+      "captured_at": "2026-11-01T12:10:31.906435Z",
+      "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+      "files": {
+        "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+        "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30"
+      },
+      "input_paths": [
+        "Product Decisions.md",
+        "specs/changes/HG-0009/evidence/before-product.md",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md"
+      ],
+      "method": "manual",
+      "observation": "Actual document-content reconfirmation only: PD01–38, provenance and qualified policies unchanged.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+      "scenario": "HG-0001-S2",
+      "scenario_sha256": "f635ff62a6afce509d62c7890d1a21dbe3a9af52d88b0c09f96f6febf1dcbc28"
+    },
+    "HG-0002-S1": {
+      "captured_at": "2026-11-01T12:10:31.906476Z",
+      "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+      "files": {
+        "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+        "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30"
+      },
+      "input_paths": [
+        "Product Decisions.md",
+        "specs/changes/HG-0009/evidence/before-product.md",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md"
+      ],
+      "method": "manual",
+      "observation": "Actual document-content reconfirmation only: Prior delegated choices remain resolved with no new implementation or benefit claims.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+      "scenario": "HG-0002-S1",
+      "scenario_sha256": "1cc904beca1cfc77c2627ac38094825053d5baecda0ace5e75c36c2b3f1d94fe"
+    },
+    "HG-0009-S1": {
+      "captured_at": "2026-11-01T12:10:31.906510Z",
+      "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+      "files": {
+        ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+        "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+        "Implementation Plan.md": "9e6e4a0c73e64cb019cf65ba085012674362c81c9410d031ce9fd2d06e5ce4d2",
+        "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+        "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+        "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+        "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+        "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30",
+        "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+      },
+      "input_paths": [
+        ".highgrade/project/documents.json",
+        "Architecture.md",
+        "Implementation Plan.md",
+        "Product Decisions.md",
+        "README.md",
+        "Repository Structure.md",
+        "specs/README.md",
+        "specs/changes/HG-0009/evidence/before-product.md",
+        "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+        "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+        "specs/datasets.md"
+      ],
+      "method": "manual",
+      "observation": "Actual document-content reconfirmation only: Refined 8a/8b/8c sequencing preserves feedback inputs, exact review/no-performance-write boundaries and independent stage9 activation before lesson planning.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+      "scenario": "HG-0009-S1",
+      "scenario_sha256": "ce4a829243b27f680243e3a45298231266fa52ede88331e6a353e94bc0918f50"
+    }
+  },
+  "history": [
+    {
+      "evidence": {},
+      "recorded_at": 1793534443,
+      "review": null
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Opening retains all priority principles and now orders four jobs homework, feedback, lesson planning and urgent replanning; supported by executor and three independent normative reviews. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "fd7a2e7b6216c568ea42bcdd0542be00048cfc5e603dbf200448743efd1a6d3f"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "PD01–37 and historical provenance preserved, PD38 added; existing metric/privacy policies unchanged and no implementation/benefit certification introduced. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "f635ff62a6afce509d62c7890d1a21dbe3a9af52d88b0c09f96f6febf1dcbc28"
+        },
+        "HG-0002-S1": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Prior delegated topics stay resolved with no #to-decide; homework pilot policies remain labeled defaults and exclusions remain explicit. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0002-S1",
+          "scenario_sha256": "1cc904beca1cfc77c2627ac38094825053d5baecda0ace5e75c36c2b3f1d94fe"
+        },
+        "HG-0009-S1": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Feedback is grounded in the selected authorized transcript and saved learning curve/state, with distinct measures, exact tutor-reviewed student sections and no confirmed-performance writes; coupled architecture/spec/plans align. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0009-S1",
+          "scenario_sha256": "ce4a829243b27f680243e3a45298231266fa52ede88331e6a353e94bc0918f50"
+        }
+      },
+      "recorded_at": 1793534596,
+      "review": null
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Opening retains all priority principles and now orders four jobs homework, feedback, lesson planning and urgent replanning; supported by executor and three independent normative reviews. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "fd7a2e7b6216c568ea42bcdd0542be00048cfc5e603dbf200448743efd1a6d3f"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "PD01–37 and historical provenance preserved, PD38 added; existing metric/privacy policies unchanged and no implementation/benefit certification introduced. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "f635ff62a6afce509d62c7890d1a21dbe3a9af52d88b0c09f96f6febf1dcbc28"
+        },
+        "HG-0002-S1": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Prior delegated topics stay resolved with no #to-decide; homework pilot policies remain labeled defaults and exclusions remain explicit. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0002-S1",
+          "scenario_sha256": "1cc904beca1cfc77c2627ac38094825053d5baecda0ace5e75c36c2b3f1d94fe"
+        },
+        "HG-0009-S1": {
+          "captured_at": "2026-11-01T11:59:51Z",
+          "command": "Executor and independent semantic comparison of the document diff with owner feedback requests, baseline policy and cross-document scope; static links/JSON/ID/whitespace/native-structure checks",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "138c957d435a3f1196649f7da5e08e783e82ab2c63a68909ae54ca6e711692c9",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/checks-v2.json": "0e351ffcce938418deb156b65089a6e7da590bf22416c5dcc9531cd40d0335a7",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md": "d17f6475975154f4d6c775652c3dc5fc6c1af7ea7e2bb2e05c8e5742d392effb",
+            "specs/changes/HG-0009/evidence/executor-review-v1.md": "27191eac9f1528729349dab696d8470f8510ab52f2c3d67ccbc60871cda977db",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md": "bb13b8c621b9744ec473f5ff04b0590c822923419d745f7e3d4f90aa19326c1f",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md": "65823b4686a27860b043dda802ccfb456586ea589d1db3d703398fcdd78f72c0",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md": "95c1d0d296aa07347a1225a8792169f397a0aec281b457b93dc927d36cca52a1",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/checks-v2.json",
+            "specs/changes/HG-0009/evidence/evaluation-review-v1.md",
+            "specs/changes/HG-0009/evidence/pedagogy-review-v1.md",
+            "specs/changes/HG-0009/evidence/registry-review-v1.md",
+            "specs/changes/HG-0009/evidence/safety-review-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Feedback is grounded in the selected authorized transcript and saved learning curve/state, with distinct measures, exact tutor-reviewed student sections and no confirmed-performance writes; coupled architecture/spec/plans align. This observes document content only; no application behavior executed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/executor-review-v1.md",
+          "scenario": "HG-0009-S1",
+          "scenario_sha256": "ce4a829243b27f680243e3a45298231266fa52ede88331e6a353e94bc0918f50"
+        }
+      },
+      "recorded_at": 1793535031,
+      "review": {
+        "change_sha256": "04afc405f796fdabb936c265daa46914b6e03384c9adc4bac5a56383aca17792",
+        "conclusion": "Independent evaluation, pedagogy, safety and registry content reviews GO, with final evidence review in specs/changes/HG-0009/evidence/native-evidence-review-v1.md confirming four current document-only observations. Original reports bind unchanged requirements and source hashes. This records product/document alignment only: no app behavior, gold data, Justfile execution, human acceptance or launch is approved.",
+        "reviewer": "independent evaluation, pedagogy and safety reviewers",
+        "verdict": "go"
+      }
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01T12:10:31.905834Z",
+          "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+          "files": {
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30"
+          },
+          "input_paths": [
+            "Product Decisions.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md"
+          ],
+          "method": "manual",
+          "observation": "Actual document-content reconfirmation only: Four-job opening and all retained priorities unchanged.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "fd7a2e7b6216c568ea42bcdd0542be00048cfc5e603dbf200448743efd1a6d3f"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01T12:10:31.906435Z",
+          "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+          "files": {
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30"
+          },
+          "input_paths": [
+            "Product Decisions.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md"
+          ],
+          "method": "manual",
+          "observation": "Actual document-content reconfirmation only: PD01–38, provenance and qualified policies unchanged.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "f635ff62a6afce509d62c7890d1a21dbe3a9af52d88b0c09f96f6febf1dcbc28"
+        },
+        "HG-0002-S1": {
+          "captured_at": "2026-11-01T12:10:31.906476Z",
+          "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+          "files": {
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30"
+          },
+          "input_paths": [
+            "Product Decisions.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md"
+          ],
+          "method": "manual",
+          "observation": "Actual document-content reconfirmation only: Prior delegated choices remain resolved with no new implementation or benefit claims.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+          "scenario": "HG-0002-S1",
+          "scenario_sha256": "1cc904beca1cfc77c2627ac38094825053d5baecda0ace5e75c36c2b3f1d94fe"
+        },
+        "HG-0009-S1": {
+          "captured_at": "2026-11-01T12:10:31.906510Z",
+          "command": "Reconfirm unchanged product-document outcomes and review feedback plan refinement against PD-38/Architecture/HG-0010; verify exact source hashes, links and whitespace",
+          "files": {
+            ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f",
+            "Architecture.md": "6ac846e2c1b5a709a915f27c07ea6b042dd8b8883c7a2480010b8d05ddb03b0d",
+            "Implementation Plan.md": "9e6e4a0c73e64cb019cf65ba085012674362c81c9410d031ce9fd2d06e5ce4d2",
+            "Product Decisions.md": "d0b6b484a49aa9469bbd0d6aa839b9e40a1b26a2b8b77d3a1afc15241c3674f0",
+            "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+            "Repository Structure.md": "b571d7937d1b38f6ae42ca1497bfa896afc1786d22b94dc4c6862c6a68f584f2",
+            "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+            "specs/changes/HG-0009/evidence/before-product.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json": "cde75fe0c53ca8606f46bd3167caf3bfce152d094ba3c1b47b2198575c96a2c2",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md": "996b155e080ca0b38dd3d59e5ccd5f32277b99af3fd0ea3d1ca610676d25af30",
+            "specs/datasets.md": "53c9f503bb4dc276750de34120ab71e356cb313b63f23add7d9e835cf63b2fed"
+          },
+          "input_paths": [
+            ".highgrade/project/documents.json",
+            "Architecture.md",
+            "Implementation Plan.md",
+            "Product Decisions.md",
+            "README.md",
+            "Repository Structure.md",
+            "specs/README.md",
+            "specs/changes/HG-0009/evidence/before-product.md",
+            "specs/changes/HG-0009/evidence/plan-refinement-checks.json",
+            "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+            "specs/datasets.md"
+          ],
+          "method": "manual",
+          "observation": "Actual document-content reconfirmation only: Refined 8a/8b/8c sequencing preserves feedback inputs, exact review/no-performance-write boundaries and independent stage9 activation before lesson planning.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0009/evidence/plan-refinement-executor-v1.md",
+          "scenario": "HG-0009-S1",
+          "scenario_sha256": "ce4a829243b27f680243e3a45298231266fa52ede88331e6a353e94bc0918f50"
+        }
+      },
+      "recorded_at": 1793535113,
+      "review": {
+        "change_sha256": "04afc405f796fdabb936c265daa46914b6e03384c9adc4bac5a56383aca17792",
+        "conclusion": "Independent evaluation, pedagogy, safety and registry content reviews GO, with final evidence review in specs/changes/HG-0009/evidence/native-evidence-review-v1.md confirming four current document-only observations. Original reports bind unchanged requirements and source hashes. This records product/document alignment only: no app behavior, gold data, Justfile execution, human acceptance or launch is approved.",
+        "reviewer": "independent evaluation, pedagogy and safety reviewers",
+        "verdict": "go"
+      }
+    }
+  ],
+  "review": {
+    "change_sha256": "046fb70559b00c7babc1f78fc42225e10b2d4832317e671d025722e252aaca77",
+    "conclusion": "GO for refined feedback implementation order and four current document-only observations; original report specs/changes/HG-0009/evidence/plan-refinement-review-v1.md. Source/hash and causal-input review passed; requirements unchanged and application evidence remains unexecuted. No human acceptance or activation.",
+    "reviewer": "independent evaluation and sequencing reviewer",
+    "verdict": "go"
+  },
+  "runs": []
+}

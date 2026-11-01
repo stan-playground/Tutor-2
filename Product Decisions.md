@@ -6,14 +6,14 @@ Tutor Copilot · Source extraction: 28 October 2026 · Product priorities update
 
 The product owner confirmed the following principles on 1 November 2026. They take precedence over conflicting historical source descriptions below. They describe the intended product; they do not claim that it is implemented.
 
-1. **Support three main preparation jobs:** lesson planning, including the first lesson; homework preparation; and urgent replanning for a deadline or external event.
+1. **Support four major jobs, in delivery-priority order:** homework preparation → post-lesson feedback generation → lesson planning, including the first lesson → urgent replanning for a deadline or external event. Feedback uses the selected lesson transcript, the learning curve derived from saved learner observations/state, and subskill accuracy, required-use and correct-avoidance measures. See PD-38.
 2. **Track performance at the subskill level.** Record accuracy, whether the learner uses the subskill when needed, and whether they correctly avoid using it when it is inappropriate. Non-use counts as evidence only when the task creates a meaningful choice; silence or an unrelated task does not establish mastery. See PD-08.
 3. **Use both lesson and homework evidence to change priorities.** Combine recent observations with saved subskill performance and trends. Make missing or conflicting evidence visible rather than inventing it. See PD-09.
 4. **Keep the learner information needed for personalized preparation.** The system holds the initial language assessment obtained before the first lesson, student preferences, and saved subskill performance and trends. Keep assessment results, preferences and later observations distinguishable. See PD-06 and PD-07.
 5. **Retrieve from several asset types in the vector database:** homework exercises, speaking exercises, explanations and lesson transcripts. Explanations and exercises may need adaptation. Student transcripts remain subject to the access and privacy boundary in PD-28; indexing them does not turn them into shared teaching material. See PD-33.
 6. **Adapt exercises to the student's preferred domain.** For example, adapt a suitable activity to the student's professional field or interests while preserving the target subskill and learning mechanism. Adapt explanations when needed for the same teaching context. See PD-13 and PD-14.
 7. **Validate material for safety, age suitability and teaching quality.** Check the selected or adapted material and constructed plan for safety, age appropriateness, level and objective fit, pedagogical correctness, factual support and tutor constraints before approval. The adult-pilot blocking and warning policy is defined in PD-17.
-8. **Give the tutor final approval or disapproval of individual parts of lesson and homework plans.** The tutor can accept or reject a section, exercise or explanation and request changes to rejected parts. A ready plan contains only tutor-approved parts; automatic checks do not replace that decision. See PD-04 and PD-18.
+8. **Give the tutor final approval or disapproval of individual parts of plans and feedback.** The tutor can accept or reject a section, exercise, explanation or feedback section and request changes. A ready artifact contains only tutor-approved parts; automatic checks do not replace that decision. See PD-04, PD-18 and PD-38.
 9. **Use golden datasets for every part of the pipeline and Langfuse for offline and online evaluation.** Reviewed examples and acceptance criteria cover each stage and the complete preparation jobs. Offline experiments compare changes on those datasets; online evaluation checks real production observations and tutor feedback. Production examples enter the golden datasets after review. See PD-34 and PD-35.
 
 The delegated pilot defaults below settle the operating choices. Their numerical settings are starting policies to review with pilot evidence, not validated pedagogical, commercial or reliability claims.
@@ -32,7 +32,7 @@ All decisions describe intent, not verified implementation or results. Source ke
 
 **Documented decision.** Help language tutors prepare personalized lessons and homework while retaining responsibility for student-facing material.
 
-**Delegated decision.** Start with independent tutors teaching adults aged 18+ in English at A2–B2. The first pilot prepares homework from an existing learner's latest lesson; lesson planning and urgent replanning remain planned jobs. This limits initial content coverage and safeguarding scope.
+**Delegated decision.** Start with independent tutors teaching adults aged 18+ in English at A2–B2. The first pilot prepares homework from an existing learner's latest lesson. **Current priority update:** post-lesson feedback follows homework, before lesson planning and urgent replanning; each job needs its own readiness checks. The initial adult/English scope remains.
 
 Source: A, pp. 1-2, 6; D.
 
@@ -44,15 +44,17 @@ Source: A, pp. 1-2, 6; D.
 
 Source: A, pp. 1-2; D.
 
-### PD-03. Support three main preparation jobs
+### PD-03. Support four major preparation and feedback jobs
 
 **Documented decision.** Prepare lessons, generate homework from learner and lesson history, and replan for urgent events. Duration is requested by the tutor; 60-minute lessons and 35-minute homework are examples. Choose the first release under PD-37.
 
-Source: A, pp. 1-5; I, “Tool contracts” and “RunContext.”
+**Current decision.** Add post-lesson feedback generation as a major job. Deliver homework first, feedback second, lesson planning third and urgent replanning fourth. This is delivery priority, not a requirement to run homework before generating feedback for a lesson. Feedback inputs and boundaries are in PD-38; teaching-plan timing rules do not impose a duration on feedback.
+
+Source: A, pp. 1-5; I, “Tool contracts” and “RunContext”; U (feedback priority).
 
 ### PD-04. The copilot prepares; the tutor decides
 
-**Current decision.** The copilot proposes; the tutor owns teaching and progression decisions and approves or rejects individual plan parts (PD-18). The earlier proposal for LLM-owned plan judgment was removed.
+**Current decision.** The copilot proposes; the tutor owns teaching and progression decisions and approves or rejects individual plan and feedback parts (PD-18/38). The earlier proposal for LLM-owned plan judgment was removed.
 
 Source: A, pp. 1, 6; I, “HITL: interrupts, resume and regeneration”; U.
 
@@ -181,7 +183,7 @@ Source: A, pp. 7, 17-18; I, “validate_output,” “Stop conditions and caps�
 
 ### PD-18. Show the tutor the draft and the reasons for it
 
-**Current decision.** Tutors approve/reject sections, exercises and explanations or request changes. Only approved retained parts form a ready plan.
+**Current decision.** Tutors approve/reject sections, exercises, explanations and feedback sections or request changes. Only approved retained parts form a ready artifact; student-facing feedback follows PD-38.
 
 **Documented detail.** Show objectives/reasons, actionable warnings, gaps, learner alerts and alternatives. Whole-draft rejection, editing and choosing a variant remain available.
 
@@ -317,6 +319,8 @@ Source: A, pp. 8-12, 16-18; U; D.
 
 **Delegated decision.** Before pilot use, create 12 tutor-reviewed homework scenarios spanning A2–B2, domains, missing/conflicting evidence, missing assets, safety/privacy, student/teacher-key separation, instruction-like transcript text, rejection and revision. Their reviewed intermediate expectations must cover every active stage; add equivalent cases before enabling other jobs. A qualified tutor reviews every gold label; a second reviews critical cases and 20% of ordinary cases. Resolve disagreements; store provenance, stage, level, failure category, reviewer and version. For each behavior change, require all critical cases, ≥90% ordinary cases per stage/end-to-end, and no newly failing accepted baseline cases; missing/error scores fail. Per-request validation remains mandatory. Additional online monitoring checks all deterministic gates, captures all tutor decisions, and samples 10% of permitted runs for advisory semantic judging. Weekly, review every critical flag/failure plus five random unflagged permitted outputs; report sample coverage and separate flagged/random rates. Compare judges with at least 20 human-labeled pass/fail outputs, inspect both error directions, and use fresh held-out examples after tuning. Small samples provide an initial check, not reliability assurance.
 
+**Current feedback extension.** Add reviewed transcript-to-feedback cases before enabling feedback, including its evidence selection, trend interpretation, composition, validation and tutor review. Report release gates separately per job and applicable stage; homework success cannot hide feedback failures. Exercise retrieval/adaptation and closed-answer solving are not mandatory feedback stages.
+
 Source: A, pp. 8-11, 18-19; I, “Later steps: Evals and tracing”; U; D.
 
 ### PD-35. Numerical quality goals are provisional, and technical scores do not prove teaching value
@@ -348,19 +352,29 @@ Source: A, pp. 30-33; I, “Time limits and failure handling” and “Later ste
 
 **Historical scope.** I plans a runnable repository and review flow with simulated data/models/material. Real retrieval, evidence ingestion, mastery updates, authentication, alert delivery and some recovery remain deferred. No implementation is established here; current product choices remain agreed despite historical deferral.
 
-**Delegated decision.** Pilot the complete homework journey: initial assessment/profile → tutor lesson notes or authorized transcript → draft and separate answer guide → validation → per-part tutor review/revision → manual student handoff. Require authentication, reviewed material, privacy controls, failure recovery and stage/end-to-end evaluation before real use. Start with five invited tutors; add lesson planning including first lessons next, then urgent replanning, only after equivalent checks. No application or integration is implemented by this document.
+**Delegated decision.** Pilot the complete homework journey: initial assessment/profile → tutor lesson notes or authorized transcript → draft and separate answer guide → validation → per-part tutor review/revision → manual student handoff. Require authentication, reviewed material, privacy controls, failure recovery and stage/end-to-end evaluation before real use. Start with five invited tutors. **Current priority update:** add post-lesson feedback next, then lesson planning including first lessons, then urgent replanning, each after equivalent checks. Initial homework cohort metrics and allowance remain homework-specific; feedback activation and its outcome measurements are separate. No application or integration is implemented by this document.
 
 Source: I, “Scope and assumptions,” “Step 2,” “Testing” and “Later steps.”; D.
+
+### PD-38. Generate post-lesson feedback from the transcript and the learner's learning curve
+
+**Current decision.** Make post-lesson feedback the next major use case after homework and before lesson planning. Use the selected authorized lesson transcript together with saved learner evidence/state and the learning curve derived from subskill measures. Keep accuracy, use when required and correct avoidance separate, with counts, dates, task/assistance context and uncertainty under PD-08/09. Saved state is source-linked learner information, not an unexplained model memory or a new mastery score.
+
+**Product default.** Draft concise student-facing sections on demonstrated strengths, difficulties, supported progress and suggested next steps, alongside private tutor evidence notes. Tie specific corrections and learner claims to transcript/evidence references; distinguish observed performance, qualified historical comparisons and suggestions. Insufficient, conflicting or noncomparable evidence stays visible. Text transcripts do not establish pronunciation/listening ability, and one lesson does not prove learning gain or mastery.
+
+**Review boundary.** The tutor controls which feedback sections reach the student, with validation and exact-version approval before manual copying. Feedback approval does not confirm extracted observations, change performance counts/trends, promote mastery or alter profile preferences. Evidence confirmation/correction remains a separate action; new evidence requires a new request, while wording revisions use the frozen evidence. Do not create exercises, impose homework timing rules, send feedback automatically or require a preceding homework request. Missing or expired transcript content is reported unavailable rather than reconstructed from the summary.
+
+Source: U (post-lesson feedback, transcript, saved learning curve/state and subskill-use metrics); D (bounded output/review defaults consistent with PD-04/08/09/22/25/28).
 
 ## Pilot review and deferred scope
 
 Review these defaults after the first cohort of at least five tutors with five requests each, or sooner after a critical failure. Check saved tutor effort, actual use, repeated content gaps and reviewer disagreement before expanding scope. A critical safety, access or approval defect stops the affected feature until corrected.
 
-The pilot is free homework preparation for adult A2–B2 English learners. Lesson planning and urgent replanning follow after equivalent checks. Live tutoring, MCP/calendar/email integrations, unrelated original exercise generation and paid billing are excluded. Technology selection and implementation remain separate work, not open product questions in this document.
+The first pilot is free homework preparation for adult A2–B2 English learners. Post-lesson feedback follows before lesson planning and urgent replanning, after its own evidence, review, privacy and evaluation checks. Live tutoring, MCP/calendar/email integrations, unrelated original exercise generation and paid billing remain excluded. Technology selection and implementation remain separate work, not open product questions in this document.
 
 ## Sources
 
-- **U:** Owner's 1 November 2026 priority update and confirmation to use both lesson and homework evidence.
+- **U:** Owner's 1 November 2026 priority updates, confirmation to use both lesson and homework evidence, and addition of post-lesson feedback after homework and before lesson planning.
 - **D:** Defaults chosen under the owner's explicit instruction to resolve the open decisions. They supersede conflicting historical assumptions. Unrelated original-generation proposals remain outside the pilot.
 - **A:** [Tutor Copilot — Merged Architecture Doc, 14 October 2026, 33 pages](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Merged Architecture Doc.pdf>).
 - **I:** [Tutor Copilot — Implementation Plan Repo + LangGraph HITL, dated 17 October, revised 18 October 2026](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Implementation Plan Repo + LangGraph HITL.md>).

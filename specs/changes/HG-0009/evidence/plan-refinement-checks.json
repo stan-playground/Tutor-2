@@ -1,0 +1,10 @@
+{
+  "scope": "Implementation Plan.md only; existing feedback requirement unchanged",
+  "sha256": "9e6e4a0c73e64cb019cf65ba085012674362c81c9410d031ce9fd2d06e5ce4d2",
+  "observations": [
+    "Split existing feedback stage into transcript/comparison, draft/validation and tutor-review/copy delivery slices tied to existing HG-0010 tasks.",
+    "Clarified stage6 is homework-only readiness and feedback can be developed alongside homework pilot; stage9 remains independent feedback activation barrier.",
+    "Current relative links, authored whitespace and git diff --check pass."
+  ],
+  "limits": "Planning text only; no implementation, provider/library integration, commands or runtime checks executed."
+}

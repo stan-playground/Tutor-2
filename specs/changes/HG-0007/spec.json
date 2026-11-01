@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Keep learner data private and remove every retained copy according to policy.",
   "rationale": "Graph checkpoints and telemetry must not escape the same access/deletion boundary as source data.",
-  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-28; Architecture section 9. Applies to sources, derived records, embeddings, graph history, backups and permitted evaluation excerpts. Provider setup remains implementation work.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-28; Architecture section 9. Applies to sources, derived records, embeddings, graph history, backups and permitted evaluation excerpts. Provider setup remains implementation work. Covers feedback artifacts, private tutor notes, transcript references and evaluation/checkpoint copies as well as homework.",
   "questions": [],
   "depends_on": [],
   "related_to": [],

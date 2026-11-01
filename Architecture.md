@@ -8,7 +8,7 @@ The recommendation is **one Python application, FastAPI, a separate worker runni
 
 ## 1. What the architecture must accomplish
 
-The first pilot serves independent tutors preparing homework for adult A2–B2 English learners. It must complete the journey from learner evidence to checked material, tutor review and a copyable student artifact. Lesson planning, including first lessons, and urgent replanning are the next product jobs; they need equivalent coverage before activation (PD-01, PD-37).
+The first pilot serves independent tutors preparing homework for adult A2–B2 English learners. Post-lesson feedback is the next major job, before lesson planning (including first lessons) and urgent replanning. Each needs its own checked journey through tutor review and a copyable approved artifact before activation (PD-01/37/38). This is delivery order; a feedback request does not require a prior homework request.
 
 The difficult problems are preserving the meaning of learner evidence, finding suitable teaching material, adapting it correctly, and ensuring that the tutor approves exactly what reaches the student. More agents do not solve these problems by themselves.
 
@@ -16,6 +16,7 @@ The difficult problems are preserving the meaning of learner evidence, finding s
 | --- | --- |
 | Accuracy, required use and appropriate non-use are separate measures | Store observations and denominators explicitly; never ask a model to maintain an unexplained mastery score. |
 | Both lessons and homework change priorities | Build an evidence snapshot from both sources before selecting objectives. |
+| Feedback uses the transcript and the learning curve so far | Freeze the selected authorized transcript and source-linked learner state; compute qualified comparisons from saved observations before generating feedback. Approval never writes performance observations. |
 | Retrieval includes exercises, explanations and transcripts | Separate reusable teaching material from private learner evidence, even within one database. |
 | Domain adaptation preserves the learning mechanism | Pass the original objective, task demands and answer criteria into adaptation; validate the result independently. |
 | Tutor approves individual parts | Store immutable draft versions and explicit decisions per part. A chat message saying “looks good” is insufficient. |
@@ -48,21 +49,30 @@ The [Council of Europe action-oriented approach](https://www.coe.int/en/web/comm
 | Job | Inputs and teaching emphasis | Composition and scope |
 | --- | --- | --- |
 | **Homework — pilot** | Selected lesson, recent lesson/homework observations, assessment, preferences and tutor requirements | Choose recheck, focused practice, transfer or maintenance sections as evidence warrants. Produce student instructions and a separate tutor key. |
-| **First lesson — next stage** | Pre-lesson assessment and preferences; uncertain subskills | Retrieve diagnostic teaching activities and compose observation points. Do not invent prior performance or administer a claimed validated placement test. |
-| **Ordinary lesson — next stage** | Both evidence streams, trends, ongoing goals and postponed objectives | Compose a coherent teaching sequence with explanation/support, meaningful practice and feedback where useful. Do not impose one lesson formula on every need. |
+| **Post-lesson feedback — next stage** | Selected authorized transcript, confirmed learner observations/state, comparable subskill rates/trends, goals and tutor constraints | Compose evidence-linked strengths, difficulties, supported progress and next-step suggestions. Separate student feedback sections from private tutor evidence notes. No exercises, plan-duration requirement or automatic metric updates. |
+| **First lesson — after feedback** | Pre-lesson assessment and preferences; uncertain subskills | Retrieve diagnostic teaching activities and compose observation points. Do not invent prior performance or administer a claimed validated placement test. |
+| **Ordinary lesson — after feedback** | Both evidence streams, trends, ongoing goals and postponed objectives | Compose a coherent teaching sequence with explanation/support, meaningful practice and feedback where useful. Do not impose one lesson formula on every need. |
 | **Urgent replan — later stage** | Tutor-confirmed event, date, goal and current learning summary | Temporarily prioritize relevant reviewed tasks, retain postponed work and request an outcome at the next preparation after the event. Do not invent employer/exam requirements or background reminders. |
 
-The tutor explicitly selects the job. Dispatch on a validated `job_kind`; enable only `homework` in the pilot. First-lesson versus ordinary-lesson handling uses the learner's confirmed situation, not merely whether a transcript exists. An ambiguous free-text request can produce a proposed job for tutor confirmation; a model must not silently switch jobs or enable a deferred feature. Within a job, route by evidence need and then by content mode. These are ordinary conditional branches, not three different agent systems.
+The tutor explicitly selects the job. Dispatch on validated `job_kind`: `homework` first, then `post_lesson_feedback` when its checks pass; lesson/replan routes remain disabled. First-lesson versus ordinary-lesson handling uses the learner's confirmed situation, not merely whether a transcript exists. An ambiguous request can propose a job for tutor confirmation; a model must not silently switch jobs or enable a deferred feature. These are conditional branches in the same application and LangGraph, not separate agent systems.
+
+### Post-lesson feedback path
+
+Authorize the selected transcript and learner → freeze transcript/profile/observation revisions → compute rates and comparable history → select supported findings → compose feedback sections and private tutor notes → validate → persist the exact draft → pause for tutor review → export approved student fields. The latest lesson is the default; selecting another lesson changes the request context. Missing or expired current transcript makes the request incomplete; notes and saved summaries cannot silently replace it or reconstruct quotes.
+
+Saved learner state means confirmed observations, assessment/preferences and derived PD-08/09 views. The learning curve is a qualified comparison, not model-maintained memory: retain accuracy, required use and correct avoidance, task/assistance distinctions, counts, dates and mixed/insufficient status. New transcript interpretations remain candidate findings until separately confirmed. Generating, approving, regenerating or exporting feedback cannot create observations, recount the same transcript or change mastery/trends. Correcting evidence starts a new request; wording revisions reuse the frozen snapshot.
+
+Use `HomeworkDraft` and `FeedbackDraft` as job-specific output schemas with shared version/part-review records. Homework claims material provenance and timings; feedback claims transcript/observation references and explicitly marked suggestions. Validate them by job. Feedback may retrieve authorized source excerpts and optional reviewed explanations; it does not require exercise retrieval, domain adaptation, closed-answer solving or a fictitious exercise ID. Check that a suggested next step is not presented as assigned homework or a confirmed learner fact. Private tutor notes never enter the student serializer.
 
 Delayed recall and feedback are plausible maintenance choices. [AERO’s spacing and retrieval guide](https://www.edresearch.edu.au/guides-resources/practice-guides/spacing-and-retrieval-practice-guide-full-publication) primarily addresses school teaching; applying it to adult language homework is a hypothesis to evaluate, not evidence of a learning gain here.
 
 ### Make generation useful without making it unrestricted
 
-Use three content modes: **reuse**, **adapt a reviewed asset**, and **compose a plan from checked parts**. Explanations, transitions, instructions, tutor notes and answer guides can be generated within those boundaries. Every adapted exercise retains its reviewed source version; derived explanations identify their source material.
+For teaching plans, use **reuse**, **adapt a reviewed asset**, and **compose a plan from checked parts**. Explanations, transitions, instructions, tutor notes and answer guides can be generated within those boundaries. Every adapted exercise retains its reviewed source version; derived explanations identify their source material. Feedback is a separate adopted composition mode grounded in learner evidence (PD-38), with claim provenance rather than an invented teaching-asset reference.
 
 For each objective: search eligible material → reuse an adequate match → adapt an eligible match if necessary → validate → retain or disclose a gap. Search broadening cannot change a hard requirement. Retrieve explanations separately when the exercise needs teaching support; do not add explanation text simply to make an output longer.
 
-**Future proposal, excluded from the pilot:** original roleplays, mock interviews, dialogues, novel diagnostic items or feedback packages unrelated to reviewed assets. These could address real content gaps, but require a product change, a separate generated-artifact provenance/status model, tutor content review and suitable gold cases. Failed retrieval must not silently enter this mode (PD-14, PD-16).
+**Future proposal, excluded from the pilot:** unrelated original exercises, roleplays, mock interviews, dialogues or novel diagnostic items. These could address content gaps, but require a product change, content provenance/review and suitable gold cases. Failed retrieval must not silently enter this mode (PD-14/16). Evidence-grounded post-lesson feedback is now explicitly in scope; invented learner histories and assessments remain prohibited.
 
 ## 3. Architecture alternatives
 
@@ -143,11 +153,13 @@ These are record responsibilities, not a table or class for every phrase.
 | Subskill observation | Source, task type, assistance level, date, confirmation status and three numerator/denominator pairs. Deduplicate observations and supersede corrections rather than double-counting them. |
 | Teaching asset/version | Kind, exact subskill/confusion, level/task demands, domain, communicative outcome, response type, expected choice, answer criteria, review and license restrictions. Preserve exercise/instruction/key relationships when chunking. |
 | Preparation request | Job, tutor/learner, brief, constraints, profile/evidence version references, status, question/revision counts, graph thread/version, exact pause/interrupt identity, expiry and worker lease. |
-| Draft version/parts | Objectives and reasons, timed parts, provenance, separate student/tutor content, validation findings and the context needed to determine whether approval can carry forward. |
+| Draft version/parts | Job-specific content: homework objectives/timed parts or feedback sections/evidence-linked findings; separate student/tutor fields, validation and the context governing approval carryover. Feedback references existing evidence; it is not a new observation record. |
 | Tutor decision / ready artifact | Actor, exact version/part, approve/reject/edit, time and idempotency key; approved manifest and student copy derived only from approved student fields. |
 | Graph checkpoint / transition receipt | Execution position and bounded references, plus identities linking saved tutor actions to queued continuations. The receipt prevents a repeated resume from repeating domain effects; it does not grant access. |
 
 **Observations are the evidence; trends are derived views.** Apply the evidence windows and provisional rules in PD-08/09 without creating another independently editable “memory” score. Expected choices in an exercise describe its design; actual learner responses or clear tutor observations establish performance denominators. Recognition, drills and spontaneous production remain distinguishable. Transcripts alone cannot establish pronunciation, prosody or listening skill.
+
+For feedback, version the selected transcript and saved learner-state references along with the draft. Keep candidate findings distinct from confirmed observations; enforce the no-performance-write boundary in the feedback service/transaction, including retries and finalization. Reuse ordinary relational records with a job discriminator; do not add a separate memory database, feedback vector store or generic artifact framework.
 
 Keep shared reviewed assets, private tutor assets and private learner evidence in separate ownership scopes. Never search a combined unfiltered pool and remove unauthorized results afterward. Authorization precedes similarity ranking. Source text, filenames and model output cannot supply the authenticated tenant identity.
 
@@ -163,16 +175,17 @@ The worker executes this sequence as a small LangGraph. Stage names describe nod
 | --- | --- | --- |
 | Ingest/confirm evidence | Authorized notes/upload → candidate observations and tutor-confirmed records | Intake calls this before preparation. Separating interpretation from planning prevents guessed facts becoming persistent evidence. Unsupported or ambiguous observations remain unconfirmed. |
 | Freeze evidence | Tutor identity, learner, job and selected lesson → versioned evidence/profile references | The preparation worker loads both lesson and homework evidence. Missing assessment/permissions block real use; other gaps stay explicit. New evidence starts a new request. |
+| Interpret feedback evidence | Frozen selected transcript and confirmed state → supported findings, separate rates/comparisons and uncertainties | The feedback branch uses existing arithmetic/evidence selection; interpretation is bounded. Missing current transcript stops the draft; candidate interpretations cannot update performance. |
 | Select objectives/routes | Snapshot and tutor constraints → objective proposals, reasons and teaching routes | The worker applies deterministic priority/eligibility rules, with typed model suggestions where interpretation helps. Conflicting essential inputs lead to a useful bundled clarification. |
 | Retrieve material | Objectives/routes and authenticated scope → eligible asset versions or gaps | The worker may reuse an eligible query embedding from Redis, then searches current authorized PostgreSQL material. No candidate means adaptation of an eligible near match, a meaningful tutor choice, or a visible gap. |
 | Adapt and compose | Eligible assets, objectives and duration → draft parts, student text, tutor guide and provenance | Generate only needed changes and narrative connections. Full composition makes the result coherent; typed output errors receive at most one bounded format-repair attempt. Persistent errors produce an incomplete/failed result. |
-| Validate | Exact draft and context → part/plan findings | Deterministic checks plus bounded semantic/independent-solution checks. Unknown references, wrong keys and other PD-17 failures block readiness; uncertainty is not silently treated as a pass. |
+| Validate | Exact job-specific draft and context → part/artifact findings | Shared safety/access/provenance gates plus homework timing/key checks or feedback claim-support/comparison/private-note checks. Independent solving applies to closed exercises; uncertainty is never silently a pass. |
 | Save and wait for review | Validated or explicitly incomplete draft → immutable review version, then a checkpointed review interrupt | Save the artifact idempotently before entering a separate wait node. Record its exact interrupt identity and release the worker; no model session or live coroutine remains open. |
 | Apply tutor decision | Authenticated structured decision and exact version → saved decisions and, when actionable, queued graph continuation | The web process validates and writes the decision once. The graph reads the saved decision to regenerate or finalize; a client resume payload is not authorization. |
 
 Model prompts receive the learning objective, evidence references/qualifications, relevant asset text, output schema and applicable constraints. Do not send the whole learner history or tutor guide to every stage. Task text may quote instruction-like material, but cannot grant permissions or change validation rules.
 
-The initial HTTP surface needs learner/profile and evidence intake, preparation creation, preparation status/review reads, structured tutor decisions and approved-copy reads. Creation returns a request ID promptly; status refresh reads persisted state. Every learner-scoped operation resolves ownership server-side. Return validation errors for malformed input, conflicts for stale decisions and explicit incomplete/failure states for preparation problems; model prose is never an HTTP authorization decision.
+The HTTP surface needs learner/profile and evidence intake, job-typed preparation creation, status/review reads, structured tutor decisions and approved-copy reads. Feedback reuses that surface with a transcript selection and feedback schema, without a required homework duration or exercise list. Creation returns a request ID promptly; status refresh reads persisted state. Every learner-scoped operation resolves ownership server-side. Return malformed-input errors, conflicts for stale actions and explicit incomplete/failure states; model prose is never an authorization decision.
 
 Use `asyncio` in the worker for bounded independent provider/retrieval checks. Respect stage dependencies: composition waits for objectives and material; approval waits for validation. The compiled graph, checkpointer, pools and model clients live for the process; database transactions, loaded state and authorization context live for an invocation/active segment. Persisted thread records survive invocations. Never share an ORM session between concurrent tasks. A bounded thread is appropriate only for blocking parsing; multiprocessing needs measured CPU work. See [Python task/cancellation guidance](https://docs.python.org/3/library/asyncio-task.html).
 
@@ -204,7 +217,7 @@ An incomplete draft is saved and readable; the tutor can supply checked material
 
 **Approval:** approve the part’s exact content and relevant objective/timing/constraint context. Full regeneration creates a new version; retain an earlier approval only when that entire relevant context is unchanged (PD-22). New requests/retries retain none. A typo/layout correction needs validation and renewed approval of the edited part. Critical validation failures cannot be waived by an approval action.
 
-**Ready artifact:** the graph's finalize node calls the application's transaction that confirms every retained part passes its gates and has approval, creates the manifest and records completion once. Removing a part also requires the remaining plan to meet the requested time/objectives, or an explicit scope change. Student copy reads the immutable approved student fields, never a generic draft object with the teacher key hidden in the UI. Recheck access and deletion status when copying. Count the completed-preparation allowance once, transactionally, on the first ready result for a request; graph replay and revisions do not consume extra allowance.
+**Ready artifact:** the finalize node calls the application transaction that verifies all retained parts pass their job-specific gates and have approval, creates the manifest and records completion once. For timed plans, removal must preserve required time/objectives or require explicit scope revision; feedback instead rechecks supported, coherent student sections. Student copy reads only immutable approved student fields, excluding teacher keys and private feedback notes. Recheck access/deletion when copying. Count the homework allowance once on the first ready homework result; replay/revisions add no count. Feedback completion does not silently consume that allowance or invent a new quota; its operating terms are settled before activation.
 
 ## 9. Privacy and retention affect every component
 
@@ -231,10 +244,13 @@ Use Langfuse as the evaluation/trace system; do not introduce a second primary e
 | Retrieval | Permission/review eligibility, exact teaching need, candidate coverage and honest gaps |
 | Adaptation | Preserved learning mechanism, level, domain, solvability, accepted alternatives and provenance |
 | Composition | Coherence, usable instructions, requested timing, appropriate support and student/key separation |
+| Feedback findings/composition | Transcript attribution, qualified learning-curve comparison, separate measures, useful respectful feedback, private-note exclusion and no evidence writes |
 | Validation/review | Detection of seeded defects, stale/double resumes, approval invalidation, failed/deleted learner behavior and exact approved export |
 | Complete job | Tutor active effort, first-draft usability, confirmed assignment, failures, calls, latency and total cost |
 
 Preserve PD-34’s 12 initial homework scenarios, intermediate labels, critical-case gates, ordinary-case threshold, second review and judge-calibration limits. Per-request validation applies to every draft; the 10% semantic monitoring sample is additional. Count one initial returned draft per request for first-draft usability, excluding revision drafts. Failures and missing scores must not disappear from denominators.
+
+Add a distinct feedback gold dataset and job-tagged judge cases before feedback activation. Gate each job and applicable stage separately; a homework average cannot compensate for a feedback failure. Feedback need not run exercise-only stages, but every active feedback stage has reviewed expectations. Keep homework allowance, assignment and pilot targets separate from feedback approval/manual-use measurements; do not silently count feedback as homework success or assume a new allowance policy.
 
 Use routine metadata-only observations: stage, outcome, versions, counts, model identity, usage, latency and failure category. Choose opaque correlation IDs and no learner names/raw prompts. Disable automatic input/output capture and sanitize exception messages as well as ordinary payloads. Permitted evaluation excerpts require minimum redaction, explicit retention and learner-linked deletion; production-to-gold reuse requires the separate permission/review in PD-28. [Langfuse masking](https://langfuse.com/docs/observability/features/masking) supports filtering before export; every exporter needs its own verified protection.
 
@@ -244,7 +260,7 @@ Select the generation model using the same reviewed cases for extraction, adapta
 
 ## 11. Build order and reasons to change the design
 
-Implement small complete blocks: authenticated learner/evidence intake; versioned asset retrieval; one checked homework graph; durable PostgreSQL checkpoint and clarification/review pauses; per-part decisions and approved export; then queue/crash reconciliation, retention/deletion and full evaluation gates before real learner use. Each block gets its actual boundary check before the next depends on it. Do not enable a real-data pilot merely because a demo generates text.
+Implement the homework blocks first, including durable review, failure/lifecycle controls and full evaluation before real use. Then add the feedback branch using the same evidence/metrics/review infrastructure and its own claim schema, validation and gold cases, before lesson planning. [Implementation Plan.md](<Implementation Plan.md>) owns delivery order; [Repository Structure.md](<Repository Structure.md>) plans the code/tooling layout. Each block needs its actual boundary check before another depends on it.
 
 Essential implementation checks include opportunity-denominator cases, retrieval tenancy, adaptation with wrong/ambiguous keys, duration conflicts, pause/resume across a process restart, concurrent approval/revision, stale same-thread interrupts, repeated resume effects, crashes between domain/checkpoint writes, late writes after deletion, key isolation and retention across all checkpoint copies. Confirm that part approvals do not call the model and abandoned generation still requires manual restart. Check repeated-query cache reuse, TTL/config-version misses, private-input bypass, Redis outage fallback and fresh retrieval after material/access changes. Use actual PostgreSQL/API/worker/cache boundaries; model examples alone cannot prove them.
 
@@ -269,7 +285,7 @@ flowchart TD
     Decisions --> DB
     DB --> Worker[Worker runs LangGraph start or resume]
     Worker <--> Checkpoints[(PostgreSQL graph checkpoints)]
-    Worker --> Graph[Evidence, objectives, retrieval, adaptation and validation]
+    Worker --> Graph[Selected homework or feedback workflow]
     Graph <--> Cache[(Redis: generic query embeddings only)]
     Graph <--> Model[Provider SDK with Pydantic output schemas]
     Graph --> Wait[Clarification or review interrupt]
@@ -286,10 +302,13 @@ The graph's teaching and human-review path is:
 
 ```mermaid
 flowchart TD
-    Evidence[Load frozen evidence and select objectives] --> Clarify{Essential clarification?}
+    Evidence[Load frozen evidence for selected job] --> Clarify{Essential clarification?}
     Clarify -->|Yes| Question[Pause for tutor answer]
     Question -->|Validated saved answer| Evidence
-    Clarify -->|No| Generate[Retrieve, adapt and compose]
+    Clarify -->|No| Job{job_kind}
+    Job -->|homework| Generate[Select objectives, retrieve, adapt and compose]
+    Job -->|post_lesson_feedback| Feedback[Interpret transcript and learning curve, compose feedback]
+    Feedback --> Validate
     Generate --> Validate[Validate exact draft]
     Validate --> Review[Pause for tutor review of parts]
     Review -->|Substantive revision| Evidence
@@ -299,4 +318,4 @@ flowchart TD
 
 **Choose one small LangGraph workflow with application-owned teaching and approval records.** FastAPI serves the tutor interface; the worker starts/resumes the graph using PostgreSQL checkpoints. PostgreSQL domain tables own learner evidence, draft versions, decisions, validation and approved export; pgvector retrieves eligible material and private evidence within their separate access scopes. Redis reuses generic query embeddings and can be bypassed without losing state. Model nodes use one provider integration and Pydantic schemas. Langfuse remains the evaluation system.
 
-The pilot generates value by selecting the right teaching response, adapting reviewed materials and composing usable homework. It retains tutor approval, explicit gaps and manual handoff. LangGraph handles the repeated human pauses without introducing agent crews or model-owned approval. Redis is the sole additional cache; PydanticAI, a broker, another vector store and unrestricted authoring are not initial dependencies. This is the revised design to implement next, not a claim that the application exists.
+Homework selects the teaching response, adapts reviewed material and composes practice. The next branch generates post-lesson feedback from the authorized transcript and saved learning curve without changing that evidence. Both retain validation, exact tutor approval, explicit gaps and manual handoff. LangGraph handles human pauses without agent crews or model-owned approval. Redis is the sole cache; PydanticAI, a broker, another vector store and unrelated original exercise authoring are not initial dependencies. These are designs, not implemented features.

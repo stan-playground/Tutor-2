@@ -1,6 +1,6 @@
 # Tutor Copilot — product preparation
 
-This existing repository contains product analysis for a tutor-facing assistant for lesson preparation, homework and urgent replanning. [Product Decisions.md](<Product Decisions.md>) is the product source: it distinguishes owner-confirmed priorities, delegated pilot defaults, historical source decisions and estimates. Product decisions describe intent, not implementation or measured results.
+This repository prepares a tutor-facing assistant, with delivery priority homework → post-lesson feedback → lesson planning → urgent replanning. [Product Decisions.md](<Product Decisions.md>) owns product scope and distinguishes owner-confirmed priorities, delegated defaults, historical decisions and estimates. These describe intent, not implementation or measured results.
 
 ## Current structure
 
@@ -9,6 +9,7 @@ There is no application implementation, dependency manifest, test suite, formatt
 - [Product Decisions.md](<Product Decisions.md>): product priorities, delegated pilot defaults and deferred scope; preserve their provenance and evidence limits.
 - [Architecture.md](Architecture.md): proposed framework, storage, human-review and caching choices with trade-offs.
 - [Implementation Plan.md](<Implementation Plan.md>): high-level delivery order, dependencies and completion barriers.
+- [Repository Structure.md](<Repository Structure.md>): planned package layout, Justfile and basic developer tools; no scaffold exists yet.
 - [Initial specifications](specs/README.md): draft homework-pilot contracts, including the [dataset specification](specs/datasets.md).
 - [AGENTS.md](AGENTS.md): engineering rules, task routing and authority.
 - [HighGrade project instruction](.highgrade/project/INSTRUCTIONS.md): local adaptation and delivery boundaries.
@@ -61,4 +62,4 @@ The launcher starts a local server and opens the browser; Ctrl+C stops the serve
 
 Keep significant original check reports and any unrecoverable inputs with the relevant task. When a native change exists, use `specs/changes/<ID>/evidence/`; retain the originals while current results, review, decisions or delivery depend on them. Ordinary setup checks need no duplicate permanent report set: the survey records their outcomes. Temporary diagnostics belong in `.highgrade/local/` and are not delivered automatically. Before an authorized handoff, verify required reports and links are included; do not upload automatically or delete the only needed evidence.
 
-Initialization did not create or migrate product specifications. [HG-0001](specs/changes/HG-0001/spec.json) records the priority update; [HG-0002](specs/changes/HG-0002/spec.json) records the delegated resolution of open product choices. Neither implements product features or mass-converts the analysis into specifications. For later requests, use `$highgrade-task`, `$highgrade-spec` for agreed new/changed requirements, and `$highgrade-work` within the request's authority. The selected pilot serves independent tutors preparing homework for adult A2–B2 English learners; implementation remains separate work.
+Initialization did not create or migrate product specifications. HG-0001/0002 record earlier documentation changes; [HG-0009](specs/changes/HG-0009/spec.json) records the feedback product update. [HG-0010](specs/changes/HG-0010/spec.json) drafts post-lesson feedback after the homework foundation for adult A2–B2 English learners. None implements application behavior. For later work, use `$highgrade-task`, `$highgrade-spec` for agreed changed requirements, and `$highgrade-work` within the request's authority.
