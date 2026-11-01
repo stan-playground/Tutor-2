@@ -36,14 +36,14 @@
       "requirement": {
         "id": "HG-0010-R1",
         "title": "Grounded post-lesson feedback with exact tutor approval",
-        "statement": "On tutor-selected job_kind=post_lesson_feedback, authorize and freeze the selected current transcript plus assessment/preferences and saved confirmed observations/state. Compute PD-08/09 accuracy, required use, avoidance and comparable trends; preserve unknown/mixed/insufficient status. Draft source-linked strengths, difficulties, supported progress and next-step suggestions as student sections, with private tutor evidence notes. Validate support, linguistic/pedagogical correctness, suitability and note separation; require exact-version approval of every retained student section before manual copying. Generated findings/approval/export never confirm observations or write counts, mastery, trends or preferences. New evidence starts a new request; wording revisions retain the snapshot. Reuse durable review/failure/privacy rules with job-specific validation, no homework timing/assets requirement or auto-send. Enable feedback only after its independently reviewed applicable-stage and complete-job evaluation gates pass.",
+        "statement": "On tutor-selected job_kind=post_lesson_feedback, authorize and freeze the selected current transcript plus assessment/preferences and saved confirmed observations/state. Load known sources/history directly by authorized references and PD-08/09 selection rules; cover the selected transcript, using source-linked segments when needed. Semantic top matches cannot replace lesson coverage or choose trend denominators. Source loading and metric calculation require no embedding call. Compute PD-08/09 accuracy, required use, avoidance and comparable trends; preserve unknown/mixed/insufficient status. Draft source-linked strengths, difficulties, supported progress and next-step suggestions as student sections, with private tutor evidence notes. Validate support, linguistic/pedagogical correctness, suitability and note separation; require exact-version approval of every retained student section before manual copying. Generated findings/approval/export never confirm observations or write counts, mastery, trends or preferences. New evidence starts a new request; wording revisions retain the snapshot. Reuse durable review/failure/privacy rules with job-specific validation, no homework timing/assets requirement or auto-send. Enable feedback only after its independently reviewed applicable-stage and complete-job evaluation gates pass.",
         "scenarios": [
           {
             "id": "HG-0010-S1",
             "given": "An authorized transcript and confirmed lesson/homework history include comparable subskill observations.",
             "when": "A tutor requests feedback without preceding homework.",
-            "then": "Draft supported current findings and qualified comparisons with distinct accuracy/use/avoidance counts, source references and suggestions. Separate student sections/private notes and leave canonical performance unchanged; no exercise/key/duration is required.",
-            "verification": "Future reviewed synthetic stage/E2E cases, exact arithmetic and before/after persisted performance rows."
+            "then": "Load the selected source and confirmed history directly, covering source-linked segments when needed; source loading and metric calculation make no embedding call. Draft supported current findings and qualified comparisons with distinct accuracy/use/avoidance counts, source references and suggestions. Separate student sections/private notes and leave canonical performance unchanged; no exercise/key/duration is required.",
+            "verification": "Future reviewed synthetic stage/E2E cases, direct source-selection/embedding-call observations, contradictory evidence outside top-match excerpts, exact arithmetic and before/after persisted performance rows."
           },
           {
             "id": "HG-0010-S2",
@@ -94,7 +94,7 @@
   "tasks": [
     {
       "id": "HG-0010-T1",
-      "description": "Implement frozen transcript/state findings with deterministic comparisons and no performance-state writes.",
+      "description": "Load/freeze authorized transcript and confirmed history directly; cover source-linked segments and derive deterministic comparisons without embedding-based selection or performance-state writes.",
       "done": false
     },
     {

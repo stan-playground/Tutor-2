@@ -130,6 +130,8 @@ Use a maintained PostgreSQL driver and migration tool during implementation; do 
 
 **Cache only query embeddings initially.** Revisions can repeat the same teaching search, so reuse its embedding rather than call the embedding provider again. This is a plausible saving to measure, not a demonstrated performance requirement for the pilot. Redis loss must never lose a draft or prevent a valid preparation.
 
+Here, a query is the application-built teaching-search description defined in section 6. It is not the tutor's entire request, a SQL statement or a learner transcript. Asset embeddings are created during ingestion and stored with asset versions; a query embedding represents the current search description in the compatible vector space. Direct learner-record loading and metric calculation do not use this cache.
+
 | Item | Initial policy |
 | --- | --- |
 | Eligible input | Generic teaching-search text assembled from a controlled, non-sensitive skill/level/domain vocabulary. Free-text tutor input, private asset text, learner source text and free-form summaries bypass this cache. |
@@ -163,9 +165,39 @@ For feedback, version the selected transcript and saved learner-state references
 
 Keep shared reviewed assets, private tutor assets and private learner evidence in separate ownership scopes. Never search a combined unfiltered pool and remove unauthorized results afterward. Authorization precedes similarity ranking. Source text, filenames and model output cannot supply the authenticated tenant identity.
 
-For teaching retrieval, filter by permission, review/license status, asset type, target confusion and task demands; combine exact metadata/text matching with vector similarity, then check candidate suitability. Start with exact vector search over the eligible subset. [pgvector](https://github.com/pgvector/pgvector) supports exact and approximate search; approximate search with filtering has recall trade-offs. Add HNSW or a learned reranker only after measured latency or ranking failures justify it.
+### Load known learner records directly
 
-Retrieve private transcript excerpts only when a selected evidence question needs them; recent structured observations should cover routine prioritization. A transcript match is evidence, never a reusable exercise or an instruction to the system. Review teaching assets before indexing them as eligible; indexing itself is not approval.
+The worker loads the selected transcript by its authorized source/version reference and confirmed observations by learner, date, subskill and task/assistance context under PD-08/09. Database selection establishes the evidence window; deterministic calculations produce counts, rates and qualified comparisons. A similarity score must not select which observations enter a denominator or learning trend.
+
+Post-lesson feedback uses this path before interpretation/composition. Cover the selected transcript; if it exceeds a model context limit, process source-linked segments with explicit coverage and combine supported findings. Taking only the top few similar passages could hide contradictory evidence and cannot establish lesson coverage. Preserve uncertainty, attribution and unavailable-source markers. Missing/expired current transcript still stops feedback; other records do not replace it.
+
+A private semantic search is optional for a specific question such as finding earlier examples of a particular confusion. Restrict it to authorized, available learner sources and retain exact references. Its matches supplement the question's context; they do not substitute for required source coverage or confirmed history. A transcript match remains evidence, never a teaching asset or an instruction to the system.
+
+### Construct and execute a teaching-material search
+
+The preparation graph calls application functions in `retrieval.py`; no autonomous search agent or model-written SQL is needed. The initial sequence is selected objective → structured search fields → application-built description and filters → embedding → eligible asset candidates → suitability checks.
+
+| Step and caller | Inputs → outputs | Responsibility and failure boundary |
+| --- | --- | --- |
+| Select an objective, in the homework/lesson branch | Frozen evidence and tutor requirements → subskill/confusion, teaching response, level/task demands, domain preference/requirement and evidence references | Rules own arithmetic and eligibility. The LLM may propose an interpretation/teaching response; validate it against evidence and constraints before using it. Missing essential information stays incomplete or needs clarification. |
+| Build the search, called by that branch | Selected objective and authenticated scope → search description, separate filters and objective reference | Application code formats controlled, non-sensitive teaching terms into a versioned template. Keep learner IDs, quotations and private summaries out of the embedding text. Authenticated scope comes from server state, never model output. |
+| Search the teaching bank, called by the worker | Validated description/filters → candidate asset IDs/versions, permitted content, teaching metadata and source/rights references, or an explicit gap | Reuse an eligible cached query vector or call the embedding model; execute parameterized database queries. Enforce permission/review/license eligibility before ranking, then check objective/task fit. A close vector match is not approval. |
+
+For example, high form accuracy with inappropriate present-perfect use may select **contrastive choice practice**, not more positive present-perfect examples. The formatted search text could be: “Choose present perfect or past simple, including contexts where present perfect is inappropriate; contrastive practice for project updates.” Separate fields carry B1 task demands, exercise/explanation type, required constraints and whether the project-update domain is preferred or required. Evidence references link the objective to the learner without entering the search text. Search an explanation separately only when it is needed.
+
+Keep hard restrictions separate from ranking preferences. Domain similarity cannot override the target confusion, rights or access. An eligible near match may enter the existing checked adaptation path; it is not permission to silently relax a requirement. Return a content gap when nothing eligible can satisfy it. An embedding/provider/database error is a failure, not evidence that no material exists; reject invalid search fields before provider use. Review teaching assets before indexing them as eligible; indexing itself is not approval.
+
+Combine metadata/text matching with exact vector search over the eligible subset. [pgvector](https://github.com/pgvector/pgvector) accepts a query vector supplied by the application; it does not decide the learning objective. Approximate indexes and rerankers wait for measured latency/ranking problems. Record the objective reference, search-format/embedding configuration and selected asset revisions with the request for diagnosis under normal retention rules. Operational logs need stage/outcome, candidate counts and latency, not private text or full search strings. Pools/embedding clients live for the process; search fields, authorization context and database transactions belong to the active request segment.
+
+### Alternatives and selection
+
+| Approach | Benefit and cost | Initial choice |
+| --- | --- | --- |
+| Application-built descriptions from structured objectives | Inspectable, repeatable and easy to keep aligned with hard constraints; limited by the vocabulary and objective quality | Use first, with reviewed retrieval cases covering exact confusions and task needs. |
+| LLM query rewriting | Can express nuanced teaching needs or alternative wording; adds a call, nondeterminism and the risk of losing a constraint | Deferred. Enable only after reviewed comparisons show a concrete relevance benefit with no constraint/privacy regression. The application would still validate fields and execute the search. |
+| Model-directed repeated tool searches | Can investigate open-ended information needs; adds stopping rules, cost and more state to a bounded preparation job | Do not add without an observed need. A bounded workflow already knows when material is required. |
+
+Metadata-only search is a useful cheap baseline for a small well-tagged bank; vector similarity can find relevant descriptions with different wording. Compare suitable candidate coverage and honest gaps, not similarity scores alone. Keep direct record loading independent of either search strategy; neither requires a new service or generic retrieval layer.
 
 ## 7. Preparation flow and component contracts
 
@@ -174,10 +206,11 @@ The worker executes this sequence as a small LangGraph. Stage names describe nod
 | Stage | Inputs → outputs | Who calls it, why it is separate, and failure behavior |
 | --- | --- | --- |
 | Ingest/confirm evidence | Authorized notes/upload → candidate observations and tutor-confirmed records | Intake calls this before preparation. Separating interpretation from planning prevents guessed facts becoming persistent evidence. Unsupported or ambiguous observations remain unconfirmed. |
-| Freeze evidence | Tutor identity, learner, job and selected lesson → versioned evidence/profile references | The preparation worker loads both lesson and homework evidence. Missing assessment/permissions block real use; other gaps stay explicit. New evidence starts a new request. |
+| Freeze evidence | Tutor identity, learner, job and selected lesson → versioned evidence/profile references | Load selected records directly under PD-08/09, without a query embedding. Missing assessment/permissions block real use; other gaps stay explicit. New evidence starts a new request. |
 | Interpret feedback evidence | Frozen selected transcript and confirmed state → supported findings, separate rates/comparisons and uncertainties | The feedback branch uses existing arithmetic/evidence selection; interpretation is bounded. Missing current transcript stops the draft; candidate interpretations cannot update performance. |
 | Select objectives/routes | Snapshot and tutor constraints → objective proposals, reasons and teaching routes | The worker applies deterministic priority/eligibility rules, with typed model suggestions where interpretation helps. Conflicting essential inputs lead to a useful bundled clarification. |
-| Retrieve material | Objectives/routes and authenticated scope → eligible asset versions or gaps | The worker may reuse an eligible query embedding from Redis, then searches current authorized PostgreSQL material. No candidate means adaptation of an eligible near match, a meaningful tutor choice, or a visible gap. |
+| Build material search | Selected objective/route and authenticated scope → controlled search description and separate filters | Application code constructs the search under section 6. LLM interpretation can inform the objective; query rewriting and autonomous search loops are deferred. Feedback source loading does not enter this step. |
+| Retrieve material | Validated search description/filters → eligible asset versions or gaps | The worker may reuse an eligible query embedding from Redis, then searches current authorized PostgreSQL material. Check suitability before reuse/adaptation; distinguish a genuine content gap from a provider/database failure. |
 | Adapt and compose | Eligible assets, objectives and duration → draft parts, student text, tutor guide and provenance | Generate only needed changes and narrative connections. Full composition makes the result coherent; typed output errors receive at most one bounded format-repair attempt. Persistent errors produce an incomplete/failed result. |
 | Validate | Exact job-specific draft and context → part/artifact findings | Shared safety/access/provenance gates plus homework timing/key checks or feedback claim-support/comparison/private-note checks. Independent solving applies to closed exercises; uncertainty is never silently a pass. |
 | Save and wait for review | Validated or explicitly incomplete draft → immutable review version, then a checkpointed review interrupt | Save the artifact idempotently before entering a separate wait node. Record its exact interrupt identity and release the worker; no model session or live coroutine remains open. |

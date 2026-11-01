@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Find eligible teaching material for the actual learning problem.",
   "rationale": "Topic similarity alone does not establish teaching suitability or permission to reuse content.",
-  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Reviewed homework/speaking exercises and explanations; private transcripts remain learner evidence. Sources: PD-13/15/16/33; Architecture section 6. Ranking/index tuning is deferred.",
+  "scope": "Initial unimplemented draft. Reviewed homework/speaking exercises and explanations. Application-owned search construction from selected objectives, controlled embedding text, separate authorization/eligibility filters and explicit candidate/gap/failure outcomes. Direct private evidence loading and metrics stay separate. Sources: PD-13/15/16/28/33 and Architecture section 6. LLM query rewriting, autonomous search loops and ranking/index tuning are deferred.",
   "questions": [],
   "depends_on": [
     {
@@ -19,7 +19,7 @@
       "requirement": {
         "id": "HG-0004-R1",
         "title": "Reviewed teaching assets and authorized retrieval",
-        "statement": "Retrieve permissioned, reviewed material by target subskill/confusion, level and task needs, with source/version references. Apply access and license restrictions before ranking; never turn private transcripts into shared teaching assets or invent missing exercise references.",
+        "statement": "Retrieve permissioned, reviewed material by target subskill/confusion, level and task needs, with source/version references. Apply access and license restrictions before ranking; never turn private transcripts into shared teaching assets or invent missing exercise references. The application constructs a controlled teaching-search description and separate filters from a selected structured objective, calls the embedding model and executes the authorized database search. Initial search construction uses no chat-model rewriting or autonomous search loop; model suggestions cannot supply authorization or relax hard constraints. Learner-record loading and metric calculation are separate operations.",
         "scenarios": [
           {
             "id": "HG-0004-S1",
@@ -34,6 +34,20 @@
             "when": "The workflow retrieves material.",
             "then": "Those items are not returned as eligible; the content gap remains explicit.",
             "verification": "Future retrieval eligibility and no-match cases."
+          },
+          {
+            "id": "HG-0004-S3",
+            "given": "A selected contrastive-choice objective has level/task/domain constraints and evidence references; private learner text and untrusted model-supplied scope are also present in the surrounding context.",
+            "when": "The worker constructs and executes its teaching-material search.",
+            "then": "Application code builds a non-sensitive description preserving the teaching distinction and separate validated filters; authenticated server context owns scope. Private learner text stays out of the embedding input, and initial query construction makes no chat-model call. Return eligible asset IDs/versions and provenance for suitability checks; topic similarity cannot override hard constraints. Invalid search fields are rejected before provider use.",
+            "verification": "Future search-construction and actual provider/database-boundary checks with fixed objectives, private canaries, scope manipulation, malformed fields and call counts."
+          },
+          {
+            "id": "HG-0004-S4",
+            "given": "The embedding provider or database fails during an otherwise valid material search.",
+            "when": "The worker handles the retrieval outcome.",
+            "then": "Report a preparation failure rather than an empty-bank/content-gap result; no invented vector, candidate reference or ready material is produced.",
+            "verification": "Future injected provider/database failures contrasted with a successful search returning no eligible candidates."
           }
         ]
       }
@@ -47,7 +61,7 @@
     },
     {
       "id": "HG-0004-T2",
-      "description": "Retrieve eligible candidates with provenance and explicit gaps.",
+      "description": "Build and check controlled descriptions/filters from selected objectives, then connect authorized candidate retrieval with provenance, honest gaps and distinct provider failures.",
       "done": false
     }
   ],

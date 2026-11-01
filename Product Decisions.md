@@ -147,6 +147,8 @@ Source: A, pp. 3-5, 17; I, “Tool contracts” and validation rules; D.
 
 **Delegated decision.** Context defaults to preferred; tutors may mark it required. Adapt suitable material or disclose neutral context when a preferred domain is unavailable. Never silently relax required context or the learning objective. Remove automatic ±1-level substitution: neighboring-level material requires checked adaptation to the learner's actual task demands and visible tutor review; otherwise leave a gap.
 
+**Search boundary.** The system derives a material search from the selected learning objective: exact confusion, level, task demands and domain constraints. The tutor need not write a search query. Similarity helps find candidates; it does not choose learning priorities or establish teaching suitability. Learner evidence informs the objective without being copied into a shared teaching-bank search.
+
 Source: A, pp. 4-5, 8, 15; I, “Routing”; U; D.
 
 ### PD-14. Reuse suitable exercises and adapt their context when necessary
@@ -361,6 +363,8 @@ Source: I, “Scope and assumptions,” “Step 2,” “Testing” and “Later
 **Current decision.** Make post-lesson feedback the next major use case after homework and before lesson planning. Use the selected authorized lesson transcript together with saved learner evidence/state and the learning curve derived from subskill measures. Keep accuracy, use when required and correct avoidance separate, with counts, dates, task/assistance context and uncertainty under PD-08/09. Saved state is source-linked learner information, not an unexplained model memory or a new mastery score.
 
 **Product default.** Draft concise student-facing sections on demonstrated strengths, difficulties, supported progress and suggested next steps, alongside private tutor evidence notes. Tie specific corrections and learner claims to transcript/evidence references; distinguish observed performance, qualified historical comparisons and suggestions. Insufficient, conflicting or noncomparable evidence stays visible. Text transcripts do not establish pronunciation/listening ability, and one lesson does not prove learning gain or mastery.
+
+**Evidence selection.** Use the selected transcript and relevant confirmed history directly, preserving their source/version and PD-08/09 evidence-selection rules. A few semantically similar excerpts cannot stand in for the lesson or determine which observations count in a trend. Optional searches answer specific evidence questions or find reviewed explanations; feedback does not require a teaching-bank search.
 
 **Review boundary.** The tutor controls which feedback sections reach the student, with validation and exact-version approval before manual copying. Feedback approval does not confirm extracted observations, change performance counts/trends, promote mastery or alter profile preferences. Evidence confirmation/correction remains a separate action; new evidence requires a new request, while wording revisions use the frozen evidence. Do not create exercises, impose homework timing rules, send feedback automatically or require a preceding homework request. Missing or expired transcript content is reported unavailable rather than reconstructed from the summary.
 

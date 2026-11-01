@@ -1,0 +1,83 @@
+{
+  "captured_at": "2026-11-01T14:23:52.476228+00:00",
+  "baseline": "36143855e7db5faf6b2352792fcd50096c1424ee",
+  "scope": "Normative documentation and draft-contract checks only; no application runtime/provider/data operations.",
+  "inputs_sha256": {
+    "Product Decisions.md": "841b580a37c4c79fa87610a99ee26823e2f6391493e1ac7f69bc63a4aaab240c",
+    "Architecture.md": "def960762308c98fe843b6ea1821ef75ff60021736ec09fc18c781bb0eb5bf88",
+    "Implementation Plan.md": "1829d5fb00b4f6d17f76a3b15ae8cebad77ff605e687c481ceb261ac2802ba9f",
+    "Repository Structure.md": "4e67f390cd24096a4f6a572072a4f12bbf375ff977777733d27f62e51b7db656",
+    "specs/datasets.md": "42909969ebb779a30e07d9399eae5901eb921bb03279a0f00872d0f59bf56130",
+    "specs/changes/HG-0004/spec.json": "aa793a173054273b886659472232c56f2adb3ab7f71a96a0d3c6ffcaa8f76709",
+    "specs/changes/HG-0010/spec.json": "db777e2f4dc726b89bbd110c082eb43b63f8672f69e72eae1b6311c72c72e4d7",
+    "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+    "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+    ".highgrade/project/documents.json": "b397e19c92f765ce86b622b250c2fe12480ea50e4172245c23c4a887cd8b920f"
+  },
+  "commands": [
+    {
+      "command": "highgrade doctor --root /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2",
+      "exit_code": 0,
+      "status": "passed",
+      "findings": []
+    },
+    {
+      "command": "highgrade inspect --root /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2 --registry .highgrade/project/documents.json",
+      "exit_code": 2,
+      "status": "unknown",
+      "findings": [
+        {
+          "code": "BudgetNotAgreed",
+          "location": "README.md",
+          "message": "\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0435 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d.",
+          "status": "unknown"
+        },
+        {
+          "code": "BudgetNotAgreed",
+          "location": "AGENTS.md",
+          "message": "\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0435 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d.",
+          "status": "unknown"
+        },
+        {
+          "code": "BudgetNotAgreed",
+          "location": "context-route",
+          "message": "\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0435 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d.",
+          "status": "unknown"
+        }
+      ]
+    },
+    {
+      "command": "highgrade spec-validate --root /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2",
+      "exit_code": 0,
+      "status": "passed",
+      "findings": []
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    },
+    {
+      "command": "sh -n HighGrade UI.sh",
+      "exit_code": 0
+    }
+  ],
+  "json": "Tracked JSON parsed successfully, including both edited native drafts.",
+  "meaning_preservation": "All 38 product IDs remain; only PD-13 and PD-38 bodies changed; opening and all other decisions unchanged from reviewed HEAD. All seven application drafts remain unimplemented without scenario evidence.",
+  "relative_links_checked": 56,
+  "external_provenance": [
+    {
+      "from": "Product Decisions.md",
+      "path": "/Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot \u2014 Merged Architecture Doc.pdf",
+      "status": "unchanged external provenance; not re-audited"
+    },
+    {
+      "from": "Product Decisions.md",
+      "path": "/Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot \u2014 Implementation Plan Repo + LangGraph HITL.md",
+      "status": "unchanged external provenance; not re-audited"
+    }
+  ],
+  "limitations": [
+    "Three unagreed size budgets remain unknown.",
+    "No application, teaching corpus or approved new gold fixtures exists; retrieval, provider payloads, transcript coverage and cache benefit are untested."
+  ]
+}
