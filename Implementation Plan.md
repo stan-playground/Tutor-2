@@ -10,7 +10,7 @@ This is an ordinary plan prepared under a plan-only request. No application work
 
 ## Sources and scope
 
-[Product Decisions](<Product Decisions.md>) owns policy; [Architecture](Architecture.md) owns the design proposal. The [native specs](specs/README.md) own requirements: HG-0003–0008 cover the homework foundation/shared controls, HG-0009 records the product update and HG-0010 adds feedback. The [dataset contract](specs/datasets.md) defines each job's planned cases; [Repository Structure](<Repository Structure.md>) plans modules, Justfile and basic tools. This plan coordinates delivery order rather than duplicating those contracts.
+[Product Decisions](Product Decisions.md) owns policy; [Architecture](Architecture.md) owns the design proposal. The [native specs](specs/README.md) own requirements: HG-0003–0008 cover the homework foundation/shared controls, HG-0009 records the product update and HG-0010 adds feedback. The [dataset contract](specs/datasets.md) defines each job's planned cases; [Repository Structure](Repository Structure.md) plans modules, Justfile and basic tools. This plan coordinates delivery order rather than duplicating those contracts.
 
 Use one Python codebase with FastAPI/Jinja, a separate LangGraph worker, PostgreSQL/pgvector, Redis for generic query embeddings, Pydantic output schemas and Langfuse. Application records own evidence, decisions and export; graph checkpoints own execution position. Finish a small coherent block, integrate it and check its real boundary before another block depends on it.
 
