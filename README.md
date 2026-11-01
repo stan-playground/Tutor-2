@@ -4,13 +4,14 @@ This repository prepares a tutor-facing assistant, with delivery priority homewo
 
 ## Current structure
 
-Stage 0 implements a local synthetic development foundation: an installed Python package, FastAPI health endpoints, a separate worker startup shell, PostgreSQL/pgvector migrations, disposable Redis, safe console observations and real checks. [Stage 0](docs/stage-0.md) records scope and evidence. Learner intake, authentication, generation, queue processing and graph execution remain future work. Architecture.md records the broader design; production deployment and provider integrations remain unverified.
+Stages 0–1 implement a local synthetic development foundation and tutor-owned learner evidence: FastAPI, a separate worker startup shell, PostgreSQL/pgvector, disposable Redis, local Keycloak login, learner/profile/source intake, confirmed observation/activity revisions, recent performance, frozen cumulative context and data cleanup. [Stage 0](docs/stage-0.md) and [Stage 1](docs/stage-1.md) record scope and evidence. Material retrieval, generation, queue processing and graph execution remain future work. Architecture.md records the broader design; production deployment and real-learner activation remain unverified.
 
 - [Product Decisions.md](<Product Decisions.md>): product priorities, delegated pilot defaults and deferred scope; preserve their provenance and evidence limits.
 - [Architecture.md](Architecture.md): proposed framework, storage, human-review and caching choices with trade-offs.
 - [Implementation Plan.md](<Implementation Plan.md>): high-level delivery order, dependencies and completion barriers.
 - [Repository Structure.md](<Repository Structure.md>): target package responsibilities and developer tools; add modules only with their first working operation.
-- `src/tutor_copilot/`, `migrations/`, `tests/`: implemented local startup, migration and verification boundaries.
+- `src/tutor_copilot/`, `migrations/`, `tests/`: implemented local startup, authentication, evidence/history, lifecycle and verification boundaries.
+- `dev/keycloak/`: non-secret synthetic realm template and disposable credential preparation; generated credentials stay ignored and are never printed by commands/tests.
 - [evaluation/README.md](evaluation/README.md): two draft synthetic fixtures and reviewer assignments; no approved gold or model-quality result.
 - [Initial specifications](specs/README.md): draft homework-pilot contracts, including the [dataset specification](specs/datasets.md).
 - [AGENTS.md](AGENTS.md): engineering rules, task routing and authority.
@@ -25,15 +26,17 @@ This README owns purpose/navigation, current structure and reproducible commands
 
 ## Local commands
 
-Run from the repository root. Application development requires Python 3.12, uv, Just and Docker Compose with a running Docker engine. The locked dependencies and service image digests define the tested set. Initial setup downloads public packages/images; runtime uses loopback ports 8000, 55432 and 56379. Services use local trust access and synthetic data only. No credentials or `.env` loading are configured.
+Run from the repository root. Application development requires Python 3.12, uv, Just and Docker Compose with a running Docker engine. The locked dependencies and service image digests define the tested set. Initial setup downloads public packages/images; runtime uses loopback ports 8000, 55432, 56379 and 58080. PostgreSQL uses local trust access and synthetic data only. No `.env` loading is configured. Keycloak preparation generates disposable synthetic login credentials under ignored `.highgrade/local/keycloak/`, with restrictive file permissions; commands and tests never display them or access existing account secrets.
 
 ```bash
 just                 # List recipes; starts nothing.
 just setup           # uv sync --locked; does not install Git hooks.
 just up              # Start PostgreSQL and Redis, waiting for health checks.
+just auth-up         # Prepare synthetic identities and start Keycloak; wait for readiness.
 just migrate         # Migrate the fixed local development database.
 just check           # Ruff formatting/lint, strict mypy, deterministic unit checks.
-just integration     # Actual API/PostgreSQL/Redis/worker checks; no paid providers.
+just integration     # Actual API/PostgreSQL/Redis/worker/Keycloak checks; no paid providers.
+just cleanup         # Physically purge expired source bodies/sessions and inactive learners.
 ```
 
 Start the two roles in separate terminals:
@@ -51,9 +54,11 @@ curl -i http://127.0.0.1:8000/health/live
 curl -i http://127.0.0.1:8000/health/ready
 ```
 
-The live endpoint returns `{"status":"alive"}`. Readiness returns HTTP 200 with `ready` when PostgreSQL, migration `0001`, pgvector and Redis are available. Redis failure yields HTTP 200 `degraded`; database/schema failure yields HTTP 503 `unavailable`. Each HTTP request has a fresh `X-Correlation-ID` matching its console observation. Logs contain only fixed metadata fields, never paths, query strings, headers, bodies or exception text. No Langfuse exporter/model client is installed yet.
+The live endpoint returns `{"status":"alive"}`. Readiness returns HTTP 200 with `ready` when PostgreSQL, migration `0003`, pgvector and Redis are available. Redis failure yields HTTP 200 `degraded`; database/schema failure yields HTTP 503 `unavailable`. Keycloak failure is reported by login as HTTP 503; startup readiness checks database/cache only. Each HTTP request has a fresh `X-Correlation-ID` matching its console observation. Logs contain only fixed metadata fields, never paths, query strings, headers, bodies or exception text. No Langfuse exporter/model client is installed yet.
 
-Integration tests create random `tc_test_<uuid>` databases and temporary Redis keys and remove them afterward. They never downgrade the application database or flush Redis. Services must be running; unavailable services fail the checks. If a test process is forcibly killed, its temporary database may need operator cleanup. `just down` stops services and retains the PostgreSQL volume. Redis has no persistence and its contents are disposable. `just format` deliberately formats Python files. The optional `.pre-commit-config.yaml` invokes the same locked Ruff tools; hooks are not installed automatically. Evaluation recipes wait for a prepared experiment target.
+The Stage 1 surface is an authenticated JSON API; a learner-management browser form is not yet implemented. [Stage 1](docs/stage-1.md#http-operations) lists operations and revision/confirmation rules. Browser login starts at `http://127.0.0.1:8000/auth/login`; `/auth/me` returns the session's CSRF token. All writes require `X-CSRF-Token`. The app cookie uses an explicit HTTP-loopback development exception, with HttpOnly, SameSite=Lax, server sessions and CSRF; production HTTPS configuration is not implemented. Keycloak's two synthetic invited subjects are seeded by migration. Automated login tests consume generated credentials internally; public registration and an administrator are disabled. The provider container has no persistent realm volume. Keep this configuration local and synthetic.
+
+Integration tests create random `tc_test_<uuid>` databases and temporary Redis keys and remove them afterward. They never downgrade the application database or flush Redis. Run `just up` and `just auth-up` first; unavailable services fail the checks. If a test process is forcibly killed, its temporary database may need operator cleanup. `just down` stops all three services and retains the PostgreSQL volume. Redis and Keycloak have no persistence and are disposable. `just cleanup` uses the fixed local maintenance account; request handling uses the restricted `tutor_app` role with row-level security. No cleanup daemon is installed: run cleanup at least daily while synthetic services are active. Expiry guards block reads before cleanup. `just format` deliberately formats Python files. The optional `.pre-commit-config.yaml` invokes the same locked Ruff tools; hooks are not installed automatically. Evaluation recipes wait for a prepared experiment target.
 
 HighGrade checks require Git, Python 3 and the installed global HighGrade CLI. They do not require Cargo/OpenSpec or model providers.
 
@@ -80,7 +85,7 @@ Read the report as well as the exit code: `1` is failed and `2` is unknown. Docu
 
 The registry checks the process documents. The product analysis remains outside that lint scope: its two original absolute provenance links are unsupported by HighGrade's link checker. The initialization survey preserves its historical hash; current task evidence records later edits. Check the exact source paths separately before using the originals, and record unavailable targets as gaps. A passing process-link check does not establish source-document accessibility or re-audit their content.
 
-`git diff --check` checks tracked changes; review new untracked files too before committing. Application checks above verify the implemented stage-0 boundaries; they do not establish later product scenarios or teaching quality.
+`git diff --check` checks tracked changes; review new untracked files too before committing. Application checks above verify the implemented stage-0/1 boundaries; they do not establish later product scenarios or teaching quality.
 
 To open the project UI on this Mac, run:
 

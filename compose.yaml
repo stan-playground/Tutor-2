@@ -26,5 +26,27 @@ services:
       interval: 2s
       timeout: 3s
       retries: 30
+  keycloak:
+    profiles: ["auth"]
+    image: quay.io/keycloak/keycloak:26.8.1@sha256:3f3c5f8e03c614774b4bd9173b88391fefa4153bfc010d8012d59ad825377332
+    command: ["start-dev", "--import-realm", "--http-port=8080", "--hostname=http://127.0.0.1:58080"]
+    ports:
+      - "127.0.0.1:58080:8080"
+    volumes:
+      - ./.highgrade/local/keycloak:/opt/keycloak/data/import:ro
+    environment:
+      KC_LOG_LEVEL: error
+      KC_HTTP_ACCESS_LOG_ENABLED: "false"
+      KC_HEALTH_ENABLED: "true"
+    healthcheck:
+      test:
+        - CMD
+        - /bin/bash
+        - -c
+        - '{ printf "HEAD /health/ready HTTP/1.0\r\n\r\n" >&0; grep "HTTP/1.0 200"; } 0<>/dev/tcp/localhost/9000'
+      interval: 2s
+      timeout: 3s
+      retries: 60
+      start_period: 10s
 volumes:
   postgres-data:

@@ -5,8 +5,12 @@ from uuid import uuid4
 
 import uvicorn
 from fastapi import FastAPI, Request, Response
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+from sqlalchemy.exc import IntegrityError
 
+from tutor_copilot.auth import install_auth
+from tutor_copilot.intake import router
 from tutor_copilot.runtime import open_resources, readiness
 from tutor_copilot.settings import Settings
 from tutor_copilot.telemetry import Outcome, configure_logging, observe
@@ -23,6 +27,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         observe("startup", "stopped", correlation_id)
 
     app = FastAPI(lifespan=lifespan, docs_url=None, redoc_url=None, openapi_url=None)
+    app.state.settings = settings or Settings()
+    install_auth(app)
+    app.include_router(router)
+
+    @app.exception_handler(RequestValidationError)
+    async def invalid_input(request: Request, error: RequestValidationError) -> JSONResponse:
+        return JSONResponse({"detail": "Invalid request fields"}, status_code=422)
+
+    @app.exception_handler(IntegrityError)
+    async def conflict(request: Request, error: IntegrityError) -> JSONResponse:
+        return JSONResponse({"detail": "Record identity conflict"}, status_code=409)
 
     @app.middleware("http")
     async def request_metadata(
@@ -39,6 +54,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             response = JSONResponse({"status": "error"}, status_code=500)
             outcome = "failed"
         response.headers["X-Correlation-ID"] = str(correlation_id)
+        response.headers["Cache-Control"] = "no-store"
         observe(
             "request",
             outcome,

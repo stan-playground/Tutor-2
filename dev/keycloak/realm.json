@@ -1,0 +1,25 @@
+{
+  "realm": "tutor-copilot",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "clients": [
+    {
+      "clientId": "tutor-copilot",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": ["http://127.0.0.1:8000/auth/callback"],
+      "webOrigins": ["http://127.0.0.1:8000"],
+      "attributes": {"pkce.code.challenge.method": "S256"}
+    }
+  ],
+  "users": [
+    {"id": "10000000-0000-4000-8000-000000000001", "username": "tutor-one", "firstName": "Synthetic", "lastName": "One", "email": "tutor-one@example.invalid", "emailVerified": true, "enabled": true, "requiredActions": []},
+    {"id": "10000000-0000-4000-8000-000000000002", "username": "tutor-two", "firstName": "Synthetic", "lastName": "Two", "email": "tutor-two@example.invalid", "emailVerified": true, "enabled": true, "requiredActions": []},
+    {"id": "10000000-0000-4000-8000-000000000003", "username": "uninvited", "firstName": "Synthetic", "lastName": "Uninvited", "email": "uninvited@example.invalid", "emailVerified": true, "enabled": true, "requiredActions": []}
+  ]
+}

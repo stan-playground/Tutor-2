@@ -12,7 +12,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 from tutor_copilot.db import create_engine
 from tutor_copilot.settings import Settings
 
-SCHEMA_REVISION = "0001"
+SCHEMA_REVISION = "0003"
 
 
 @dataclass

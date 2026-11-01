@@ -13,13 +13,22 @@ setup:
 up:
     docker compose --env-file /dev/null -f compose.yaml up -d --wait
 
+# Prepare disposable synthetic identities and start the loopback OIDC provider.
+auth-up:
+    python3 dev/keycloak/prepare.py
+    docker compose --env-file /dev/null -f compose.yaml up -d --wait keycloak
+
 # Stop services and retain the PostgreSQL volume.
 down:
-    docker compose --env-file /dev/null -f compose.yaml down
+    docker compose --env-file /dev/null -f compose.yaml --profile auth down
 
 # Apply migrations to the fixed local development database.
 migrate:
     uv run --locked alembic upgrade head
+
+# Remove expired raw bodies/sessions and learners inactive for 12 calendar months.
+cleanup:
+    uv run --locked tutor-cleanup
 
 web:
     uv run --locked tutor-web

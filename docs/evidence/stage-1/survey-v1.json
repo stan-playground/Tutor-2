@@ -1,0 +1,78 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [
+    {
+      "code": "SurveyIncomplete",
+      "location": ".highgrade/project/survey.json",
+      "message": "See separate decisions, source freshness and review record.",
+      "status": "unknown"
+    }
+  ],
+  "limitations": [
+    "Recorded statements are data, not proof of semantic correctness, user acceptance or permission. No project commands are executed."
+  ],
+  "measurements": [
+    {
+      "adaptation_ready": false,
+      "blockers": [],
+      "changed_sources": [
+        ".gitignore",
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "Product Decisions.md",
+        "README.md"
+      ],
+      "completion_ready": false,
+      "historically_completed": true,
+      "other_dependencies": [],
+      "permission": "not_assessed",
+      "plan_ready": false,
+      "review_go": true,
+      "review_record_current": true,
+      "semantic_correctness": "not_certified",
+      "snapshot_current": false,
+      "structure": "valid",
+      "system_actions": [
+        "plan",
+        "adaptation",
+        "completion"
+      ],
+      "unknown_sources": [],
+      "user_acceptance": "not_recorded_by_this_tool"
+    },
+    {
+      "survey_sha256": "1c6a5127c7940f16c3020381a670f2efe8bdb96c59bb2ffa72e355bb77bf5ece"
+    }
+  ],
+  "operation": "survey-check",
+  "result": {
+    "adaptation_ready": false,
+    "blockers": [],
+    "changed_sources": [
+      ".gitignore",
+      ".highgrade/project/INSTRUCTIONS.md",
+      ".highgrade/project/documents.json",
+      "Product Decisions.md",
+      "README.md"
+    ],
+    "completion_ready": false,
+    "historically_completed": true,
+    "other_dependencies": [],
+    "permission": "not_assessed",
+    "plan_ready": false,
+    "review_go": true,
+    "review_record_current": true,
+    "semantic_correctness": "not_certified",
+    "snapshot_current": false,
+    "structure": "valid",
+    "survey_sha256": "1c6a5127c7940f16c3020381a670f2efe8bdb96c59bb2ffa72e355bb77bf5ece",
+    "system_actions": [
+      "plan",
+      "adaptation",
+      "completion"
+    ],
+    "unknown_sources": [],
+    "user_acceptance": "not_recorded_by_this_tool"
+  },
+  "status": "unknown"
+}

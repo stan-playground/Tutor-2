@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_real_oidc_two_invited_tutors_and_uninvited_identity ___________
+tests/integration/test_auth.py:78: in test_real_oidc_two_invited_tutors_and_uninvited_identity
+    assert complete_keycloak_login(first, "tutor-one")[0] == 303
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/integration/test_auth.py:67: in complete_keycloak_login
+    assert browser_result.status_code == 302, category
+E   AssertionError: Cookie not found
+E   assert 400 == 302
+E    +  where 400 = <Response [400 Bad Request]>.status_code
+=========================== short test summary info ============================
+FAILED tests/integration/test_auth.py::test_real_oidc_two_invited_tutors_and_uninvited_identity
+1 failed in 1.08s

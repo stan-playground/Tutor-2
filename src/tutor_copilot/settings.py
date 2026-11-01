@@ -17,5 +17,9 @@ class Settings:
         return f"postgresql+psycopg://tutor_dev@127.0.0.1:55432/{self.database_name}"
 
     @property
+    def runtime_database_url(self) -> str:
+        return f"postgresql+psycopg://tutor_app@127.0.0.1:55432/{self.database_name}"
+
+    @property
     def redis_url(self) -> str:
         return "redis://127.0.0.1:56379/0"

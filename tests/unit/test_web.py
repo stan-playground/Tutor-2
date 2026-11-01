@@ -29,6 +29,7 @@ def test_live_and_error_logs_exclude_private_payloads(capsys) -> None:
         live = client.get("/health/live")
         assert live.status_code == 200
         assert live.json() == {"status": "alive"}
+        assert live.headers["Cache-Control"] == "no-store"
         failed = client.post(
             "/test-error/PRIVATE_PATH?text=PRIVATE_QUERY",
             headers={"X-Correlation-ID": "PRIVATE_HEADER"},
@@ -36,6 +37,7 @@ def test_live_and_error_logs_exclude_private_payloads(capsys) -> None:
         )
         assert failed.status_code == 500
         assert failed.json() == {"status": "error"}
+        assert failed.headers["Cache-Control"] == "no-store"
         assert UUID(failed.headers["X-Correlation-ID"])
         assert live.headers["X-Correlation-ID"] != failed.headers["X-Correlation-ID"]
     logging.getLogger("sqlalchemy.engine").error("PRIVATE_LIBRARY_EXCEPTION")

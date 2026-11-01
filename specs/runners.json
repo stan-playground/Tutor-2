@@ -1,1 +1,17 @@
-{}
+{
+  "pytest": {
+    "program": "uv",
+    "args": [
+      "--cache-dir",
+      ".uv-cache",
+      "run",
+      "--locked",
+      "pytest",
+      "{file}::{selector}",
+      "--junitxml={report}"
+    ],
+    "cwd": ".",
+    "format": "junit",
+    "timeout_seconds": 60
+  }
+}
