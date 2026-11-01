@@ -1,378 +1,368 @@
 # Product Decisions
 
-Tutor Copilot · Extracted and reviewed on 28 October 2026
+Tutor Copilot · Source extraction: 28 October 2026 · Product priorities updated: 1 November 2026
+
+## Highest-priority product decisions
+
+The product owner confirmed the following principles on 1 November 2026. They take precedence over conflicting historical source descriptions below. They describe the intended product; they do not claim that it is implemented.
+
+1. **Support three main preparation jobs:** lesson planning, including the first lesson; homework preparation; and urgent replanning for a deadline or external event.
+2. **Track performance at the subskill level.** Record accuracy, whether the learner uses the subskill when needed, and whether they correctly avoid using it when it is inappropriate. Non-use counts as evidence only when the task creates a meaningful choice; silence or an unrelated task does not establish mastery. See PD-08.
+3. **Use both lesson and homework evidence to change priorities.** Combine recent observations with saved subskill performance and trends. Make missing or conflicting evidence visible rather than inventing it. See PD-09.
+4. **Keep the learner information needed for personalized preparation.** The system holds the initial language assessment obtained before the first lesson, student preferences, and saved subskill performance and trends. Keep assessment results, preferences and later observations distinguishable. See PD-06 and PD-07.
+5. **Retrieve from several asset types in the vector database:** homework exercises, speaking exercises, explanations and lesson transcripts. Explanations and exercises may need adaptation. Student transcripts remain subject to the access and privacy boundary in PD-28; indexing them does not turn them into shared teaching material. See PD-33.
+6. **Adapt exercises to the student's preferred domain.** For example, adapt a suitable activity to the student's professional field or interests while preserving the target subskill and learning mechanism. Adapt explanations when needed for the same teaching context. See PD-13 and PD-14.
+7. **Validate material for safety, age suitability and teaching quality.** Check the selected or adapted material and constructed plan for safety, age appropriateness, level and objective fit, pedagogical correctness, factual support and tutor constraints before approval. The adult-pilot blocking and warning policy is defined in PD-17.
+8. **Give the tutor final approval or disapproval of individual parts of lesson and homework plans.** The tutor can accept or reject a section, exercise or explanation and request changes to rejected parts. A ready plan contains only tutor-approved parts; automatic checks do not replace that decision. See PD-04 and PD-18.
+9. **Use golden datasets for every part of the pipeline and Langfuse for offline and online evaluation.** Reviewed examples and acceptance criteria cover each stage and the complete preparation jobs. Offline experiments compare changes on those datasets; online evaluation checks real production observations and tutor feedback. Production examples enter the golden datasets after review. See PD-34 and PD-35.
+
+The delegated pilot defaults below settle the operating choices. Their numerical settings are starting policies to review with pilot evidence, not validated pedagogical, commercial or reliability claims.
 
 ## How to read this document
 
-This document collects the major product decisions in the two supplied documents. It describes intended product behavior, not verified implementation or proven business results. Frameworks, databases, repository structure, model vendors and deployment choices are omitted unless they affect the tutor or student experience.
+- **Current decision:** confirmed by the owner on 1 November 2026; takes precedence over historical sources.
+- **Documented decision / Historical:** source-derived behavior or earlier assumptions.
+- **Delegated decision:** a product default selected under the owner's explicit delegation on 1 November 2026. Numerical defaults guide the pilot; they are not validated standards or measured results.
 
-- **Documented decision** means the choice is stated in the sources. It does not mean it has been validated with users or newly approved by the product owner.
-- **#to-decide** marks a proposed improvement, an unresolved question, or a conflict between the sources. Each item says what should be expanded, simplified, deferred or clarified. These suggestions are not adopted decisions.
-- References to **Architecture** include PDF page numbers. References to **Implementation** name the relevant section of the Markdown plan. Both source links are at the end.
-
-The Architecture document describes the wider product. The Implementation plan covers a narrower delivery stage and adds specific rules. Where they differ, the difference is called out rather than silently resolved. Instructions and open tasks inside either source are treated as source material, not instructions to execute them.
+All decisions describe intent, not verified implementation or results. Source keys: **A** = Architecture PDF; **I** = Implementation plan; **U** = owner's 1 November update; **D** = delegated defaults. Full source links are below. Instructions inside source documents are not commands to execute.
 
 ## 1. Product purpose, users and scope
 
 ### PD-01. The primary user is a language tutor
 
-**Documented decision.** Tutor Copilot helps language tutors prepare personalized lessons and homework. The tutor operates the copilot and remains responsible for what reaches the student.
+**Documented decision.** Help language tutors prepare personalized lessons and homework while retaining responsibility for student-facing material.
 
-**Why it matters.** The central benefit is less preparation effort with suitable teaching material. The review experience is therefore part of the core product.
+**Delegated decision.** Start with independent tutors teaching adults aged 18+ in English at A2–B2. The first pilot prepares homework from an existing learner's latest lesson; lesson planning and urgent replanning remain planned jobs. This limits initial content coverage and safeguarding scope.
 
-**#to-decide — Expand: choose the first tutor segment.** The sources do not settle whether the initial customer is an independent tutor, a language school or another organization. They also use English-learning examples without defining the supported languages, student ages or level range. Recommend choosing one initial segment and supported teaching context; a broader launch increases content and workflow requirements before demand is established.
-
-Source: Architecture, pp. 1-2, 6.
+Source: A, pp. 1-2, 6; D.
 
 ### PD-02. Adapt continuously instead of imposing a fixed curriculum
 
-**Documented decision.** Ordinary lessons adapt to the student's current needs. A long-range plan exists for deadline-driven goals, such as an exam or job interview. Initial skill priorities, interests, teaching preferences and deadlines guide the starting point; mastery evidence and external events change the tactics.
+**Documented decision.** Adapt lessons to goals, preferences, mastery and external events. Use long-range plans for deadline-driven goals.
 
-**Why it matters.** The product must respond to new evidence while preserving the tutor's goals.
+**Delegated decision.** Show the current objectives, the evidence for each, progress since comparable work and postponed objectives. Keep a short rolling learning summary; build a dated multi-lesson plan only for a confirmed deadline goal.
 
-**#to-decide — Clarify: continuity without a fixed curriculum.** Define how the tutor sees progress toward an ongoing goal and why the next lesson follows from the previous one. Recommend a short explanation of current priorities and deferred work before adding a detailed curriculum planner. A rigid syllabus provides continuity but reduces flexibility; completely independent lesson choices risk drift.
-
-Source: Architecture, pp. 1-2.
+Source: A, pp. 1-2; D.
 
 ### PD-03. Support three main preparation jobs
 
-**Documented decision.** The core jobs are:
+**Documented decision.** Prepare lessons, generate homework from learner and lesson history, and replan for urgent events. Duration is requested by the tutor; 60-minute lessons and 35-minute homework are examples. Choose the first release under PD-37.
 
-1. Prepare a lesson, including a first lesson with little or no history.
-2. Generate homework from the latest lesson, learner information and homework history.
-3. Replan when an external event changes priorities.
-
-The worked examples use 60-minute lessons and 35-minute homework. These are examples; the requested duration is an input.
-
-**Why it matters.** These are three preparation situations, not three separate products. The first-release choice is addressed in PD-37.
-
-Source: Architecture, pp. 1-5; Implementation, “Tool contracts” and “RunContext.”
+Source: A, pp. 1-5; I, “Tool contracts” and “RunContext.”
 
 ### PD-04. The copilot prepares; the tutor decides
 
-**Documented decision.** The tutor is the final decision-maker on material that reaches the student or affects progression. The copilot proposes a draft rather than replacing the tutor's professional judgment. The earlier claim that an LLM should judge plan feedback better than a human was explicitly removed.
+**Current decision.** The copilot proposes; the tutor owns teaching and progression decisions and approves or rejects individual plan parts (PD-18). The earlier proposal for LLM-owned plan judgment was removed.
 
-**Why it matters.** Approval is an essential product action. Low effort review should come from good drafts and clear explanations.
-
-Source: Architecture, pp. 1, 6; Implementation, “HITL: interrupts, resume and regeneration.”
+Source: A, pp. 1, 6; I, “HITL: interrupts, resume and regeneration”; U.
 
 ### PD-05. Routine preparation should require few interactions
 
-**Documented decision.** A normal request produces a draft for review. It becomes a planning dialogue when clarification could materially change the result. Tutor input should use the lightest suitable interaction: approve or reject, choose among valid alternatives, make an edit, or enter free text.
+**Documented decision.** Produce a draft with minimal interaction. Ask questions only when answers affect it; support approval, rejection, alternatives, edits and free text.
 
-**#to-decide — Clarify: routine review versus escalation.** Every output requires tutor review, while the Architecture target is fewer than 10% of runs escalating to the tutor. Define escalation as additional clarification or exceptional review effort, separate from normal approval, and measure both. Otherwise the target conflicts with the intended workflow and hides tutor effort.
+**Delegated decision.** Count an escalation once when a request needs a blocking question or exceptional correction beyond routine review; divide by all started requests. Ordinary part approval is excluded. Track question rounds and tutor effort separately so a low escalation rate cannot hide burdensome review.
 
-Source: Architecture, pp. 4, 6, 18, 32; Implementation, “HITL.”
+Source: A, pp. 4, 6, 18, 32; I, “HITL.”; D.
 
 ## 2. Learner information and teaching decisions
 
 ### PD-06. Keep supplied profile information distinct from observed performance
 
-**Documented decision.** Planning uses the student's profile, goals, preferences, recent lesson evidence and homework history. The supplied profile remains distinct from measured learner status, and both inform objective selection and composition. Without an explicit lesson selection, the latest lesson is used where applicable.
+**Current decision.** Store the pre-lesson assessment, preferences, subskill performance and trends as distinct information. Plan using goals, lesson evidence and homework; use the latest lesson unless another is selected.
 
-**Why it matters.** An estimated level or a stated preference should not silently become a measured fact.
+**Delegated decision.** Require a dated tutor assessment summary or assessment upload, its source/uncertainty, goals, preferred domains and an adult confirmation; collect no birth date. If no formal assessment exists, record the tutor's provisional estimate. Accept lesson notes instead of transcripts, label their source and retain corrections in history; do not administer a placement test in the pilot.
 
-**#to-decide — Expand: define the minimum useful input.** Specify what the tutor must supply, what can be omitted, how existing lesson and homework records enter the product, and how the tutor corrects extracted information. Recommend supporting a concise tutor summary for a pilot rather than requiring transcripts in every case. Summaries are easier to provide; transcripts offer richer evidence but add collection and review work. The sources do not define the full intake experience.
-
-Source: Architecture, pp. 2, 6, 10; Implementation, “Tool contracts,” “State and run context” and “Additional acceptance rules.”
+Source: A, pp. 2, 6, 10; I, “Tool contracts,” “State and run context” and “Additional acceptance rules”; U; D.
 
 ### PD-07. A first lesson should diagnose rather than pretend to know the learner
 
-**Documented decision.** With no lesson history, the copilot uses the supplied profile and estimated level, adds a baseline diagnostic objective, and builds diagnostic checkpoints into the lesson. It does not invent previous observations or homework results.
+**Current decision.** Start from the initial assessment and preferences; diagnose uncertain subskills without inventing lesson or homework history.
 
-**#to-decide — Expand: distinguish missing evidence from a new student.** A returning student can have a missing transcript, incomplete homework or stale records. Define how those cases affect confidence and planning. Recommend showing which evidence is available and allowing the tutor to confirm assumptions; a single “history available” choice is too coarse to explain these differences.
+**Historical:** The first-lesson example used an estimated level. Neither version establishes a validated placement test.
 
-Source: Architecture, pp. 4, 6; Implementation, “Signals” and scenario C1.
+**Delegated decision.** Distinguish new learners, returning learners with usable evidence and returning learners needing a recheck. Evidence older than 90 days is historical and triggers targeted checks of important uncertain skills. Missing history stays missing; a provisional tutor assessment can support a diagnostic draft, without establishing mastery.
+
+Source: A, pp. 4, 6; I, “Signals” and scenario C1; U; D.
 
 ### PD-08. Track performance at the subskill level
 
-**Documented decision.** Mastery is represented by correct uses divided by opportunities, plus an improving, stable or regressing trend. An opportunity is a moment that requires the relevant linguistic distinction, not simply a completed exercise. The Architecture also describes recognition, controlled production, free production and automaticity as possible mastery stages.
+**Current decision.** Track accuracy, appropriate use, correct avoidance and an improving/stable/regressing trend per subskill. Non-use needs a meaningful linguistic choice; unrelated silence proves nothing.
 
-**Why it matters.** “Knows present perfect” is less useful than evidence about the exact distinction the learner can or cannot make.
+**Historical:** Correct uses/opportunities was the ratio; recognition → controlled production → free production → automaticity described stages.
 
-**#to-decide — Clarify: what qualifies as mastery evidence.** Define how opportunities are counted, which observations are comparable, and how confidence and recency affect interpretation. A ratio from a controlled drill should not automatically establish fluent spontaneous use. Recommend starting with counts, dated evidence and a clearly qualified trend. Keep the four mastery stages descriptive until their relationship to observations is defined; they add pedagogical detail but also annotation work.
+**Delegated decision.** For each subskill, accuracy = correct target uses / attempted target uses; needed use = correct uses where required / required-use opportunities; avoidance = appropriate non-use / opportunities where it would be inappropriate. Correct means linguistically and contextually appropriate. Show counts, source, date and task type; zero denominators mean unknown. Count only clear task/tutor observations, not inferred silence; valid optional alternatives are not missed required-use opportunities. Keep recognition, drills and spontaneous production separate; uncertain extracted observations await tutor confirmation. The four mastery stages remain descriptive.
 
-Source: Architecture, p. 2; Implementation, “Tool contracts” and “Signals.”
+Source: A, p. 2; I, “Tool contracts” and “Signals”; U; D.
 
 ### PD-09. Use lesson and homework evidence to change priorities
 
-**Documented decision.** Recent regression raises the relevant objective's priority. Sustained mastery reduces repeated drills and moves that skill toward maintenance. Improvement, low homework completion and repeated errors are also meaningful signals. The Implementation defaults to the last four homework records for homework analysis.
+**Current decision.** Combine lesson and homework evidence with saved performance and trends. Raise possible regressions for review, suggest maintenance for tutor-confirmed skills, consider repeated errors, and expose missing or conflicting evidence.
 
-The Implementation proposes these initial rules:
+**Historical defaults, superseded by the review rules below:**
 
-| Signal | Initial rule in the source | Intended response |
+| Signal | Initial rule | Response |
 | --- | --- | --- |
-| Regression | Lesson accuracy at least 0.15 below the long-term ratio with at least five opportunities, or homework accuracy falling three times in succession | Raise priority, target the exact confusion, notify the tutor |
-| Mastery | Ratio at least 0.85 across at least three homeworks | Move toward maintenance and avoid repeat drills |
-| Improvement | Improving trend across at least three points | Positive notification |
-| Low homework volume | Completion below 0.5 | Notify the tutor |
+| Regression | Lesson ratio drops ≥0.15 against long-term ratio with ≥5 opportunities, or homework accuracy falls three times consecutively | Prioritize exact confusion; alert |
+| Mastery | Ratio ≥0.85 across ≥3 homeworks | Maintenance; avoid repeat drills |
+| Improvement | Improving across ≥3 points | Positive alert |
+| Low completion | Completion <0.5 | Alert |
 
-**#to-decide — Reconsider: provisional rules versus pedagogical judgments.** These values are explicitly initial settings, not validated educational standards. Recommend checking them with tutors before making them strong recommendations. Low completion should prompt a workload or circumstances question rather than imply low ability. Restrict mastery claims to the evidence actually observed.
+**Delegated decision.** Use up to the latest four lessons and four homework submissions within 90 days; separate completion from attempted-answer performance. Compare the same subskill, evidence type and task demands. Each rate needs three comparable observations with at least five relevant opportunities each for a trend: first-to-last change ≥0.15 is improving, ≤−0.15 regressing, otherwise stable; conflicting measures are mixed. Smaller samples remain insufficient. A single 0.15 drop is a possible-regression alert, not proof. Ratios ≥0.85 across three comparable observations suggest maintenance only when applicable use/avoidance measures support it and the tutor confirms. Low completion prompts a workload check, not an ability downgrade.
 
-Source: Architecture, pp. 2, 5; Implementation, “Signals, routing policy and stop conditions.”
+Source: A, pp. 2, 5; I, “Signals, routing policy and stop conditions”; U (lesson/homework clarification); D.
 
 ### PD-10. Explain why objectives were selected
 
-**Documented decision.** Objectives identify the skill or confusion, priority, reason, intended share of the output and an action such as promotion, maintenance, postponement or recheck. The tutor sees why each objective won. Required skills and tutor-specified shares must be respected; cumulative shares cannot exceed the whole allocation.
+**Documented decision.** Show each objective's skill/confusion, priority, reason, share and action: promote, retain, postpone, maintain or recheck. Respect required skills and tutor allocations; shares cannot exceed 100%.
 
-**#to-decide — Clarify: what a share means and how conflicts are resolved.** Specify whether shares allocate minutes, activity count or another measure, and which priorities are mandatory. The sources do not fully define how tutor preferences, measured weaknesses, learner goals and deadlines compete. Recommend using time where practical and asking only when a conflict changes the lesson materially. Include the trade-off in the explanation rather than exposing a complex weighting system.
+**Delegated decision.** Shares allocate total planned minutes, including instructions, checks and transitions; show percentages and minutes summing to the requested total. Apply safety/validity gates and explicit tutor requirements first, then confirmed urgent goals, corroborated weaknesses, longer-term goals and maintenance. Domain preferences shape material. Explain each objective with one evidence-linked reason; ask which constraint to relax if the requirements cannot fit.
 
-Source: Architecture, pp. 2, 5; Implementation, “Tool contracts,” review payload and “Additional acceptance rules.”
+Source: A, pp. 2, 5; I, “Tool contracts,” review payload and “Additional acceptance rules.”; D.
 
 ### PD-11. Urgent goals cause a temporary priority shift
 
-**Documented decision.** An upcoming interview or similar event can promote relevant speaking and preparation objectives and postpone lower-priority work. Missing essential event details trigger clarification. The Implementation initially treats deadlines within 14 days as urgent. Normal priorities are recomputed after the event, and the plan records a post-event action.
+**Documented decision.** Temporarily promote event-related objectives and postpone others; clarify missing event details. The initial urgency window is 14 days. Record a post-event action and recompute normal priorities afterward.
 
-**#to-decide — Expand: define how the temporary change ends.** Specify who confirms the event happened, how postponement or cancellation is handled, and when deferred learning returns. Recommend returning to ordinary priorities on the next preparation request after tutor confirmation. Automatic reminders or background replanning add a separate experience that is not defined in the sources. Also confirm whether a single 14-day window makes sense across different event types.
+**Delegated decision.** Use the tutor-confirmed event, date and goal; flag dates within 14 days as urgent, with tutor override outside that window. Keep postponed objectives. Cancellation restores ordinary priorities; a changed date updates the temporary plan. At the next request after the event, ask for an outcome/update and recompute priorities without assuming success. No background replanning or reminders in the pilot.
 
-Source: Architecture, pp. 2, 5-6; Implementation, “Signals” and scenario C4.
+Source: A, pp. 2, 5-6; I, “Signals” and scenario C4; D.
 
 ## 3. Teaching material and output quality
 
 ### PD-12. Produce a usable, timed teaching artifact
 
-**Documented decision.** The output is a lesson plan or homework organized into sections, with exercises, skill targets and durations that fit the requested total. Homework can combine targeted practice, speaking, diagnostic rechecks and maintenance. It should avoid near-duplicate exercises while retaining relevance; lesson sections prioritize the best-fitting activity.
+**Documented decision.** Produce sections with exercises, skill targets and durations fitting the requested total. Homework can mix targeted practice, speaking, rechecks and maintenance; avoid near-duplicates while retaining relevance. Lesson sections prioritize the best-fitting activity.
 
-**#to-decide — Expand: define the actual deliverable.** The sources do not fully specify teacher notes, student instructions, answer keys, editable formatting, export or the handoff to the student. Recommend defining the smallest artifact a pilot tutor can use in their existing workflow. Copyable text is inexpensive to deliver; a richer editor or integrations may save more effort but need evidence of demand. Clarify how lesson time and homework completion time are estimated, and how much timing variation is acceptable.
+**Delegated decision.** Deliver copyable student homework plus a separate tutor key with answers, alternatives and short teaching notes; speaking tasks use assessment criteria. Provide student-ready copy only after approval; tutors share it themselves, without a delivery integration. Planned section minutes must sum exactly to the requested duration, including instructions and checks. Actual learner completion time remains an estimate.
 
-Source: Architecture, pp. 3-5, 17; Implementation, “Tool contracts” and validation rules.
+Source: A, pp. 3-5, 17; I, “Tool contracts” and validation rules; D.
 
 ### PD-13. Match the actual learning problem, not just a topic label
 
-**Documented decision.** Material selection considers the exact confusion, learner level and context. An exercise about a broad grammar topic is insufficient if it does not test the intended distinction. Pedagogical requirements are preserved when search is broadened; contextual requirements are normally more flexible. Speaking practice is selected alongside other exercises.
+**Documented decision.** Match the exact confusion and level; preserve pedagogical requirements when broadening context.
 
-**#to-decide — Clarify: which requirements may be relaxed.** Let the tutor identify a context or exercise feature that is essential for a particular request. Workplace context may be optional for grammar practice but essential for an imminent interview. The Architecture also mentions level matching within one step; confirm when that is an acceptable teaching choice rather than an automatic allowance.
+**Current decision.** Select/adapt exercises and explanations to domain preferences without changing the learning objective.
 
-Source: Architecture, pp. 4-5, 8, 15; Implementation, “Routing.”
+**Delegated decision.** Context defaults to preferred; tutors may mark it required. Adapt suitable material or disclose neutral context when a preferred domain is unavailable. Never silently relax required context or the learning objective. Remove automatic ±1-level substitution: neighboring-level material requires checked adaptation to the learner's actual task demands and visible tutor review; otherwise leave a gap.
+
+Source: A, pp. 4-5, 8, 15; I, “Routing”; U; D.
 
 ### PD-14. Reuse suitable exercises and adapt their context when necessary
 
-**Documented decision.** When an exercise fits the skill and level but has the wrong context, the copilot may adapt its wrapper while preserving the learning mechanism. Adapted material retains a reference to its source.
+**Current decision.** Adapt exercises and explanations to preferred domains while preserving the target subskill, level, learning mechanism and source reference.
 
-**Why it matters.** Adaptation makes an existing exercise bank useful for more learner goals without treating invented material as retrieved content.
+**Delegated decision.** The pilot adapts reviewed exercises/explanations, not unrelated original exercises. Recheck instructions, level, expected answers, acceptable alternatives, ambiguity, factual claims and safety after adaptation. Closed-answer items need an independent solution check against the key; open tasks need clear criteria. Show provenance and require tutor approval; source fidelity or model agreement alone cannot establish correctness.
 
-**#to-decide — Resolve: when adaptation is ready for tutor use.** The Architecture calls for independent solution and ambiguity checks, while the Implementation defers them. Recommend either deferring adaptation in the first release or clearly labeling adapted content and requiring explicit tutor checking until those checks exist. Automatic checks improve coverage but add cost and still need validation. Agreement with the source alone does not establish that the exercise or answer key is correct.
-
-Source: Architecture, pp. 4, 17-18; Implementation, “Tool contracts” and “Later steps: RAG.”
+Source: A, pp. 4, 17-18; I, “Tool contracts” and “Later steps: RAG”; U; D.
 
 ### PD-15. Broaden or ask when suitable material is missing
 
-**Documented decision.** When material is insufficient, the copilot can broaden the search, adapt an exercise or ask the tutor which trade-off to make. It should not continue indefinitely. If the gap remains after clarification, the affected section is marked unfilled with a reason.
+**Documented decision.** When material is insufficient, broaden, adapt or ask the tutor, with bounded retries. Mark remaining gaps unfilled and explain why. PD-17 governs completing or approving gaps.
 
-**Why it matters.** A visible gap is useful only if the tutor understands what remains unfinished. The completion and approval policy is addressed in PD-17.
-
-Source: Architecture, pp. 3-4, 17; Implementation, “Routing,” “Stop conditions and caps” and “Tool contracts.”
+Source: A, pp. 3-4, 17; I, “Routing,” “Stop conditions and caps” and “Tool contracts.”
 
 ### PD-16. Never present unsupported learner facts or nonexistent exercise references as valid
 
-**Documented decision.** Referenced exercises must come from the material available to the run, including adaptations with provenance. Factual claims about the learner must be supported by learner evidence. If no exercise fits, the copilot should leave a visible gap instead of inventing a reference or learner fact.
+**Documented decision.** Reference only available exercises, including adaptations with provenance. Support learner claims with evidence. Leave visible gaps instead of inventing exercises, references or learner facts.
 
-**Why it matters.** A confident explanation based on nonexistent evidence undermines the tutor's decisions and trust.
+Source: A, pp. 9-10, 12, 17; I, “Tool contracts” and “Additional acceptance rules.”
 
-Source: Architecture, pp. 9-10, 12, 17; Implementation, “Tool contracts” and “Additional acceptance rules.”
+### PD-17. Validate safety, suitability and constraints before approval
 
-### PD-17. Distinguish blocking defects from warnings
+**Current decision.** Before approval, show checks for safety, age, level/objective fit, pedagogy, factual support and tutor constraints for material, parts and the plan.
 
-**Documented decision.** Approval requires passing reference integrity and hard tutor constraints, including duration, pinned exercises, removals and required allocations. Editing and rejection remain possible when those checks fail. A low score for factual support, initially below approximately 0.8, warns the tutor; the Implementation makes this advisory rather than an approval blocker. Factual checks apply to learner claims and exercise descriptions, not choices such as how many minutes to spend on an objective.
+**Historical:** Integrity, duration, pins/removals and required allocations block approval on failure; edit/reject remain available. Factual-support scores below ~0.8 warn; planning choices are excluded from factual checks.
 
-**#to-decide — Resolve: the approval policy for warnings and incomplete output.** The Architecture emphasizes escalation of unsupported output; the Implementation permits approval with advisory warnings. Neither gives a complete policy for approving an unfilled plan. Recommend defining three visible outcomes: ready for approval, requires an explicit tutor acknowledgment, and requires correction before approval. Unknown references should block approval. For a gap, decide whether the tutor supplies material, accepts a reduced plan or saves a draft. Specify whether unresolved factual warnings can count as a finished teaching artifact and what the tutor must confirm.
+**Delegated decision.** Require tutor confirmation of adulthood; missing age confirmation blocks real-learner preparation. Use neutral everyday/workplace topics and respect exclusions. Block explicit sexual content, graphic violence, hate/discrimination, harmful instructions, unnecessary personal disclosures, unknown references, incorrect/ambiguous keys, unsupported learner claims and unmet hard requirements. Suspected critical flags pause approval until verified or corrected; confirmed failures cannot be waived. Explain noncritical difficulty/preference trade-offs for acknowledgment. A low model score alone is advisory. Fill gaps with checked tutor material, explicitly revised scope/duration, or an incomplete draft; never silently approve them.
 
-Source: Architecture, pp. 7, 17-18; Implementation, “validate_output,” “Stop conditions and caps” and “Additional acceptance rules.”
+Source: A, pp. 7, 17-18; I, “validate_output,” “Stop conditions and caps” and “Additional acceptance rules”; U; D.
 
 ## 4. Tutor review, clarification and revision
 
 ### PD-18. Show the tutor the draft and the reasons for it
 
-**Documented decision.** Review includes the draft, selected objectives and rationale, quality warnings, unfilled sections, relevant learner alerts and any valid alternatives. The tutor can approve, choose an alternative, request an edit or reject with a reason.
+**Current decision.** Tutors approve/reject sections, exercises and explanations or request changes. Only approved retained parts form a ready plan.
 
-**Why it matters.** The tutor needs enough evidence to make a decision without reconstructing the preparation process. Warnings need to explain the issue and its consequence, not just display a confidence score.
+**Documented detail.** Show objectives/reasons, actionable warnings, gaps, learner alerts and alternatives. Whole-draft rejection, editing and choosing a variant remain available.
 
-Source: Architecture, p. 6; Implementation, “Interrupt payloads” and “Review outcomes.”
+Source: A, p. 6; I, “Interrupt payloads” and “Review outcomes”; U.
 
 ### PD-19. Ask a question only when the answer changes the plan
 
-**Documented decision.** Clarification is warranted by a significant conflict in evidence or goals, missing essential event details, an ambiguous material trade-off, or unsuccessful material search. Answers can use suggested options or free text. The Implementation gives a two-CEFR-step evidence disagreement as an initial trigger.
+**Documented decision.** Clarify evidence/goal conflicts, missing event details or material trade-offs using options or free text. **Historical I rules:** ≥2 CEFR steps of disagreement, forced clarification after two retrieval retries and a two-round cap; the delegated rule below replaces forced questions.
 
-**#to-decide — Reconsider: forced questions when the tutor has no useful information.** The Implementation forces clarification after two unsuccessful retrieval retries and caps clarifications at two per run. Recommend asking when the tutor can resolve an ambiguity; otherwise show the content gap and a useful next action. A limit protects attention, but should not force a meaningless question or conceal an essential unanswered one.
+**Delegated decision.** Bundle only questions the tutor can answer that would materially change the result. Allow two clarification rounds; after that, save an incomplete draft with the missing inputs. Failed search without a meaningful tutor choice produces a visible content gap rather than a forced question. Never guess essential facts to satisfy the interaction limit.
 
-Source: Architecture, pp. 4, 6; Implementation, “Signals,” “Routing” and “Stop conditions and caps.”
+Source: A, pp. 4, 6; I, “Signals,” “Routing” and “Stop conditions and caps.”; D.
 
 ### PD-20. Offer alternatives when several teaching directions are valid
 
-**Documented decision.** The tutor may choose among multiple valid drafts when the planner identifies genuinely different directions. Alternatives are not mandatory for every request. Each retained alternative has its own validation result, and choosing it keeps that result with the chosen output.
+**Documented decision.** Offer alternatives only for genuinely different valid teaching directions. Validate each separately and retain the chosen alternative's report.
 
-**Why it matters.** Alternatives give the tutor control over a meaningful teaching trade-off. The documented conditional use avoids requiring several drafts for every routine request.
-
-Source: Architecture, p. 6; Implementation, “Review outcomes” and “Additional acceptance rules.”
+Source: A, p. 6; I, “Review outcomes” and “Additional acceptance rules.”
 
 ### PD-21. Tutor edits become requirements for the next draft
 
-**Documented decision.** Supported edits include keeping or removing an exercise, changing a skill share, changing the total duration and adding free-text instructions. Requirements survive later revisions. The latest structured instruction for the same item takes precedence, earlier drafts and edits remain in history, and invalid cumulative shares are refused rather than silently ignored.
+**Documented decision.** Support pin/remove, share/duration changes and free-text instructions. Requirements persist within the request; latest structured changes win. Preserve draft/edit history and refuse invalid shares.
 
-**#to-decide — Expand: define how a tutor withdraws an instruction.** “Latest change wins” covers replacing a value, but not all undo or free-text conflicts. Recommend letting the tutor inspect and remove active requirements before regenerating. Decide when an instruction applies only to this preparation request and when, if ever, it becomes a persistent preference. The sources only establish persistence within the current request.
+**Delegated decision.** Show active requirements and let tutors undo or remove them. The latest structured value wins; unresolved structured/free-text conflicts require one explicit tutor choice. Plan edits apply only to that request. Lasting preferences change only through explicit profile editing, never through automatic inference from a revision.
 
-Source: Implementation, “Edit → full regeneration” and “Additional acceptance rules.”
+Source: I, “Edit → full regeneration” and “Additional acceptance rules.”; D.
 
 ### PD-22. Substantive edits regenerate and recheck the whole output
 
-**Documented decision.** A meaningful tutor edit creates a new version, recomputes the plan from objective selection onward, and repeats validation. The learner evidence stays fixed during that revision. Selective regeneration was explicitly dropped.
+**Documented decision.** Substantive edits create a new version, recompute from objective selection onward and revalidate using unchanged learner evidence. Selective regeneration was dropped.
 
-**Why it matters.** Changing an objective or duration can affect the rest of the plan. The tutor should approve the resulting version as a whole.
+**Current boundary.** Changed parts need renewed tutor review; individual-part approval does not select selective regeneration.
 
-**#to-decide — Clarify: small corrections versus substantive edits.** Full regeneration can change material the tutor already liked. Recommend defining whether wording and formatting corrections can be saved directly while changes to goals, activities or timing regenerate the draft. Also specify when changed learner evidence requires a fresh preparation request. More selective regeneration could preserve work but adds complexity; the sources have already rejected it for now.
+**Delegated decision.** Full regeneration remains the default for substantive edits. Keep an earlier approval only if the part and its relevant objective, timing and constraints are unchanged; otherwise clear it for review. A tutor may correct typos/layout directly, with validation and renewed approval of the edited part. New learner evidence starts a new preparation request; selective regeneration is outside the pilot.
 
-Source: Architecture, pp. 1, 7; Implementation, “Concept” and “Edit → full regeneration.”
+Source: A, pp. 1, 7; I, “Concept” and “Edit → full regeneration”; U; D.
 
 ### PD-23. A tutor can leave and return to a pending decision
 
-**Documented decision.** A paused clarification or review survives a service restart and can resume hours or days later with its draft and answers intact. A response to an outdated question or draft must not act on the current one, and repeated clicks must not apply the same decision twice.
+**Documented decision.** Preserve paused drafts and answers across restarts and hours/days of waiting. Reject stale decisions and prevent duplicate effects.
 
-**#to-decide — Clarify: expiration and revision limits.** The Implementation expires a pending decision after seven days and allows at most five tutor revisions per run, after which a new run is required. Recommend validating these limits with the preparation workflow and specifying what the tutor can still read or reuse after expiration. Fixed limits bound effort and cost, but restarting should not mean re-entering the whole brief.
+**Delegated decision.** Adopt seven-day pause expiry and at most five substantive revisions per request. Expired/exhausted requests become read-only, with history available under PD-28 retention. Offer a new request prefilled with the brief and visible active requirements, using current learner evidence and no carried-over approvals. This bounds costs without making tutors re-enter their work.
 
-Source: Architecture, pp. 19-20; Implementation, “Time limits and failure handling,” “HITL” and “Stop conditions and caps.”
+Source: A, pp. 19-20; I, “Time limits and failure handling,” “HITL” and “Stop conditions and caps.”; D.
 
 ### PD-24. Notifications inform; questions block preparation
 
-**Documented decision.** Regression, low homework completion, notable improvement and repeated weak material search can notify the tutor without stopping the request. Clarification requires an answer. Repeating or revising the same request should not create duplicate notifications.
+**Documented decision.** Notify about regression, low completion, improvement and repeated weak search without blocking; clarification blocks. Deduplicate notices across retries/revisions. Include alerts at review; I records them but defers delivery. External notifications are not established launch scope.
 
-**Delivery scope.** Relevant alerts are included in the review payload. The Implementation records alerts for later delivery but defers the delivery mechanism. External notifications are therefore not an established initial feature; the pilot boundary is addressed in PD-37.
-
-Source: Architecture, pp. 4, 6; Implementation, graph notes, “alert_tutor” and “Later steps.”
+Source: A, pp. 4, 6; I, graph notes, “alert_tutor” and “Later steps.”
 
 ### PD-25. Consequential judgments remain with the tutor
 
-**Documented decision.** The Architecture identifies level promotion, grading, placement, exam readiness, suspected academic-integrity issues and the amount of feedback given to a student as situations requiring tutor judgment. For example, a tutor may address three of fifteen detected errors to avoid overloading the student.
+**Documented decision.** Tutors own promotion, grading, placement, readiness, integrity concerns and how much feedback students receive.
 
-**Scope.** These are examples of where tutor judgment matters. The Implementation does not define complete assessment, feedback-selection or academic-integrity features. In particular, a sudden change in homework quality is described as a concern, not evidence of a reliable cheating-detection capability.
+**Scope:** These are judgment boundaries, not complete assessment/feedback features. Changed homework quality alone does not establish reliable cheating detection.
 
-Source: Architecture, p. 6; Implementation, “Scope and assumptions” and “Later steps.”
+Source: A, p. 6; I, “Scope and assumptions” and “Later steps.”
 
 ## 5. Waiting, failures, access and privacy
 
 ### PD-26. Preparation may take time, and the tutor should see progress
 
-**Documented decision.** The Architecture treats preparation as an asynchronous task rather than a rapid chat reply. Its targets are a first progress update within three seconds, typical completion around 20-40 seconds, and 95% of runs completing in roughly 60-90 seconds. These are targets, not measured performance. The Implementation defers live progress events.
+**Documented targets:** Preparation is asynchronous: first progress within three seconds, typical completion 20–40 seconds, p95 about 60–90 seconds. These are not measurements; I defers live progress events.
 
-**#to-decide — Resolve: the initial waiting experience.** Recommend at least a visible working state, a clear indication when tutor input is needed, and a recoverable result when the tutor returns. Rich progress streaming can wait if a simpler status experience is sufficient. Specify whether the timing target includes clarification, revision and the tutor's own review time.
+**Delegated decision.** Show working, needs-input, ready-for-review and final/error states; let tutors leave and return to the saved result. Simple status refresh is enough for the pilot; token streaming is excluded. Measure the existing latency targets per active generation segment, excluding human waiting; report total elapsed time, revisions and failures separately.
 
-Source: Architecture, p. 31; Implementation, “Run API” and “Later steps.”
+Source: A, p. 31; I, “Run API” and “Later steps.”; D.
 
 ### PD-27. Failed preparation must be visible and recoverable
 
-**Documented decision.** The Implementation bounds active preparation to five minutes per uninterrupted segment. A failed request records its error and preserves its saved state, but the current plan requires the tutor to start a new run. Recovery of work interrupted while actively generating and retrying failed runs are deferred. Recovery of an already paused tutor decision is supported.
+**Documented decision.** I allows five active minutes per segment. Failure records error/state but requires a new run; failed-run retries and mid-generation recovery are deferred. Paused decisions survive (PD-23).
 
-**#to-decide — Improve: define a retry experience that preserves the brief.** Recommend allowing the tutor to restart with the same inputs and clearly stating whether earlier requirements are carried over. Full continuation from the precise failure point can remain deferred; a usable restart is still a product requirement. Decide whether failed attempts or retries count toward any future usage allowance.
+**Delegated decision.** A manual retry starts a new request with the saved brief and active requirements, reloads current evidence, and revalidates without retaining approvals. Show the failure and any incomplete work. Keep the five-minute active-segment limit; mid-generation continuation is excluded. Failures and retries create no pilot charge and do not consume completed-preparation allowance.
 
-Source: Implementation, “Time limits and failure handling,” “Persistence, Redis and the run API” and “Later steps.”
+Source: I, “Time limits and failure handling,” “Persistence, Redis and the run API” and “Later steps.”; D.
 
 ### PD-28. Student information needs an explicit privacy and access boundary
 
-**Documented decision.** Lesson transcripts may identify students. Components handling them need suitable data-processing terms or self-hosting options. Personal information should be kept out of exercise-search queries and their logs. The intended external tool access is restricted to authorized tutors.
+**Documented decision.** Protect identifiable transcripts through suitable processor terms or self-hosting. Exclude personal data from exercise queries/logs; restrict external tool access to authorized tutors.
 
-**#to-decide — Expand: define the minimum policy before real student use.** Decide who can view each student's records, what lesson recording or upload permission is required, how long transcripts and drafts are kept, how deletion works, and whether real cases may be reused for quality review. Age-specific requirements depend on the chosen student segment. Authentication is deferred in the Implementation, so an authorized internal experiment and a tutor-facing pilot need distinct release criteria. These are unresolved product requirements; the documents do not establish compliance.
+**Delegated decision.** Require authenticated tutor access, isolation by tutor/student, informed adult opt-in and tutor upload permission before learner-data use; no built-in recording. Collect aliases, adult confirmation and necessary learning evidence, not birth dates/contact details or unrelated sensitive data. Named processors must meet contracted purpose, retention and no-training terms before use. Raw uploads/transcripts and their embeddings expire after 30 days; structured records/plans after 12 months of inactivity. After source expiry, show it unavailable rather than reconstructing quotes. Deletion removes access immediately, active/derived records within seven days and backups within 30. Routine logs contain metadata only; Langfuse stores scores and minimum redacted excerpts only for permitted evaluation; excerpts expire after 30 days, and learner-linked records follow the same deletion rules. Only the owning tutor sees student records; exceptional support access needs that tutor's recorded authorization and a reason. Tutors can delete learners at any time; verified learner requests are handled through the tutor or support. Production-case reuse needs separate permission and reviewed anonymization; wholly synthetic golden cases need tutor review. These are product policies, not verified compliance.
 
-Source: Architecture, pp. 14, 19, 23, 26; Implementation, “Later steps: Run API extras.”
+Source: A, pp. 14, 19, 23, 26; I, “Later steps: Run API extras.”; D.
 
 ### PD-29. External assistant access is optional
 
-**Documented decision.** A private MCP connection could let authorized tutors access the copilot from their own Claude or ChatGPT client. The Architecture says this is justified only if access from multiple clients is a product requirement; internal APIs are otherwise sufficient. The Implementation defers this surface.
+**Documented decision.** Private MCP access from tutors' Claude/ChatGPT clients is conditional on a multi-client requirement; otherwise internal APIs suffice. I defers it.
 
-**#to-decide — Defer unless validated: external-client access.** Recommend choosing one primary tutor interface first. External-client access can fit tutors' existing habits, but it adds access, support and data-sharing questions. The mention of calendar and email context is not a commitment to build integrations or send messages.
+**Delegated decision.** Use one authenticated tutor interface with copyable outputs. MCP access and calendar/email integrations are outside the pilot; revisit only after pilot feedback establishes a concrete multi-client need. No sending or sharing happens automatically.
 
-Source: Architecture, p. 19; Implementation, “Later steps: Data and surfaces.”
+Source: A, p. 19; I, “Later steps: Data and surfaces.”; D.
 
 ### PD-30. During-lesson tutoring is not an established core job
 
-**Documented status.** The Architecture leaves an error → hint → retry → explanation dialogue as an open item. It is not among the three established preparation jobs, and the Implementation does not plan it.
+**Historical idea.** A live error → hint → retry → explanation dialogue was proposed outside the three preparation jobs; the pilot decision below excludes it.
 
-**#to-decide — Defer: treat live teaching assistance as a separate scope decision.** Recommend keeping it outside the initial release unless pilot evidence changes the priority. Live interaction has different timing, student-facing behavior and teaching responsibilities from preparation.
+**Delegated decision.** Exclude live student tutoring and hint/retry dialogues from the pilot. Keep preparation and tutor review as the product scope; a later live-teaching request needs its own interaction and evaluation design.
 
-Source: Architecture, p. 33; Implementation, “Scope and assumptions.”
+Source: A, p. 33; I, “Scope and assumptions.”; D.
 
 ## 6. Business success, quality and release scope
 
 ### PD-31. Judge product success by useful tutor outcomes
 
-**Documented decision.** Product measures include preparation time, acceptance without substantive edits, manual edit volume, time until a lesson is ready, second-lesson conversion, retention and tutor capacity. Retention and revenue are downstream business signals, not measures of exercise-search quality.
+**Documented decision.** Measure preparation time, acceptance without substantive edits, edit volume, time-to-ready, second-lesson conversion, retention and tutor capacity. Revenue/retention are downstream outcomes, not retrieval metrics.
 
-**#to-decide — Focus: choose a primary pilot success measure.** Recommend measuring total tutor time from request to usable material, including clarification and review, alongside whether the tutor actually uses the output. Acceptance alone can reward superficial approval, while fast generation can hide extensive editing. Define the baseline workflow and clarify whose second lesson and retention are being counted. Student learning benefit also needs evidence before it becomes a marketing claim.
+**Delegated decision.** Primary outcome: reduction in tutor-reported active minutes per homework task, including setup, clarification, revisions, retries and manual fallback. Compare each tutor's pilot median with three comparable manual tasks; report medians and tutor/task counts. Track confirmed student assignment within seven days / all eligible started requests, including failures/abandonment; unknown use is not success. Initial goals after at least five tutors × five requests: ≥25% lower median effort and ≥80% confirmed assignment. These are pilot management targets, not benchmarks. Tutor retention and student conversion are separate later outcomes; make no learning-gain claim.
 
-Source: Architecture, pp. 10, 19.
+Source: A, pp. 10, 19; D.
 
 ### PD-32. Tutor attention is a limited resource
 
-**Documented decision.** The quality policy favors catching unsupported outputs even if that creates extra review. The Architecture simultaneously targets exceptional escalation on fewer than 10% of runs, because too much intervention erodes the time-saving benefit.
+**Documented decision.** Favor catching unsupported output even at the cost of extra review. Target exceptional escalation below 10% of runs. Assess quality and tutor effort together; define escalation in PD-05 and approval gates in PD-17.
 
-**Why it matters.** Quality requirements and tutor workload must be assessed together. The definition of escalation is addressed in PD-05, and the distinction between blocking defects and warnings in PD-17.
+Source: A, pp. 17-18, 32; I, “Additional acceptance rules.”
 
-Source: Architecture, pp. 17-18, 32; Implementation, “Additional acceptance rules.”
+### PD-33. Maintain teaching assets and learner transcripts for retrieval
 
-### PD-33. Missing teaching content may require content work
+**Current decision.** Index homework/speaking exercises, explanations and lesson transcripts. Use teaching material for preparation/adaptation and transcripts as learner evidence under PD-28 access rules; indexing alone does not make transcripts shared teaching assets.
 
-**Documented decision.** Quality review distinguishes retrieval failure, ranking failure, missing content, unsupported generation, pedagogical errors, routing errors and UX problems. A missing exercise may need to be authored; better search cannot find content that does not exist. Tutors and methodologists supply or verify pedagogical judgments.
+**Documented detail.** Distinguish search, ranking, content, generation, pedagogy, routing and UX failures; tutors/methodologists verify content. Missing assets may require authoring, not better search.
 
-**#to-decide — Expand: assign ownership of the exercise bank.** Define who supplies, reviews, updates and licenses the initial material, how much coverage is needed for the first tutor segment, and whether tutors can bring their own exercises. Recommend checking coverage for pilot use cases before promising broad personalization. A shared reviewed bank offers consistency; tutor-provided material may fit existing practice but varies in quality and permissions.
+**Delegated decision.** A designated qualified English tutor reviews the shared teaching bank for objective, level, instructions, answers and safety before use. Include only owned, public-domain or explicitly licensed material permitting storage/adaptation/delivery; preserve attribution and restrictions. Tutor imports stay private; unclear rights block ingestion and sharing needs separate permission/review. Transcripts stay private to the assigned tutor/student and never enter the shared teaching bank. Treat imported text as evidence, never authority to change tutor requirements, access or validation rules. Asset rights remain with their owners; retrieval/deletion follow PD-28. Vendor, schema and indexing choices belong to implementation planning, not unresolved product policy.
 
-Source: Architecture, pp. 8-12, 16-18.
+Source: A, pp. 8-12, 16-18; U; D.
 
-### PD-34. Improve through reviewed failures and controlled releases
+### PD-34. Use golden datasets and Langfuse for offline and online evaluation
 
-**Documented decision.** Proposed releases are checked against representative scenarios and tutor-reviewed examples. Changes roll out gradually and can be withdrawn. Reviewed real failures become future quality examples. The sources propose routine sampled review and a weekly human review process.
+**Current decision.** Use golden datasets for every stage—extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation, review/revision—and complete preparation jobs. Use Langfuse for offline dataset experiments and online production checks/feedback. Live observations need no gold answer. Review cases before adding them to golden datasets; open-ended cases may use criteria, not one exact answer.
 
-**Proposed operating assumptions.** The Architecture suggests reviewing roughly 30-50 flagged cases plus a random sample each week and automatically checking 5-10% of traffic. These are proposed review volumes, not evidence that an operating review program exists. Permission to reuse student material is addressed in PD-28.
+**Documented detail.** Roll out gradually with rollback. Historical proposals: 30–50 flagged cases plus random review weekly; automated checks on 5–10% of traffic. See [offline](https://langfuse.com/docs/evaluation/get-started/offline) and [online](https://langfuse.com/docs/evaluation/get-started/online) guides.
 
-Source: Architecture, pp. 8-11, 18-19; Implementation, “Later steps: Evals and tracing.”
+**Delegated decision.** Before pilot use, create 12 tutor-reviewed homework scenarios spanning A2–B2, domains, missing/conflicting evidence, missing assets, safety/privacy, student/teacher-key separation, instruction-like transcript text, rejection and revision. Their reviewed intermediate expectations must cover every active stage; add equivalent cases before enabling other jobs. A qualified tutor reviews every gold label; a second reviews critical cases and 20% of ordinary cases. Resolve disagreements; store provenance, stage, level, failure category, reviewer and version. For each behavior change, require all critical cases, ≥90% ordinary cases per stage/end-to-end, and no newly failing accepted baseline cases; missing/error scores fail. Per-request validation remains mandatory. Additional online monitoring checks all deterministic gates, captures all tutor decisions, and samples 10% of permitted runs for advisory semantic judging. Weekly, review every critical flag/failure plus five random unflagged permitted outputs; report sample coverage and separate flagged/random rates. Compare judges with at least 20 human-labeled pass/fail outputs, inspect both error directions, and use fresh held-out examples after tuning. Small samples provide an initial check, not reliability assurance.
+
+Source: A, pp. 8-11, 18-19; I, “Later steps: Evals and tracing”; U; D.
 
 ### PD-35. Numerical quality goals are provisional, and technical scores do not prove teaching value
 
-**Documented decision.** The Architecture proposes release targets for supported factual claims, correct exercise references, task success and useful material selection. It explicitly labels its numbers as targets, estimates or illustrative results and says suggested case-study narratives must be replaced by real evidence. A high score for factual support does not establish pedagogical correctness.
+**Documented decision.** Quality targets and case-study results are provisional. Factual support, reference integrity, task success and material fit do not prove teaching quality.
 
-**Why it matters.** The product can have correct references and still produce an unsuitable lesson. Tutor judgment and actual use remain necessary.
+**Delegated decision.** Use pass/fail reasons for target subskill, level, clear instructions, linguistic/pedagogical correctness, answers or assessment criteria, workload, tutor constraints/preferences and supported learner claims. Safety/privacy/age are hard gates. Correct or remove failed parts before approval; never average away a serious defect. Report first-draft usability as drafts needing no substantive change / all returned drafts; target/task/answer/workload changes are substantive, typos/layout are not. Human approval and technical scores do not prove learning benefit.
 
-**#to-decide — Clarify: the smallest credible product quality bar.** Recommend agreeing on a short tutor rubric: correct learning target, appropriate difficulty, usable instructions, correct answers, feasible timing and no unsupported learner facts. Use technical metrics to diagnose failures, and avoid presenting the document's hypothetical improvements or targets as measured achievements.
-
-Source: Architecture, pp. 1, 8, 17-18, 27, 30-33; Implementation, “Scope and assumptions” and “Later steps.”
+Source: A, pp. 1, 8, 17-18, 27, 30-33; I, “Scope and assumptions” and “Later steps.”; D.
 
 ### PD-36. Model cost is an operating assumption, not a pricing decision
 
-**Documented assumptions from the Architecture, not current verified prices:**
+**Historical estimates, not current prices:**
 
-| Item | Source estimate |
+| Item | Estimate |
 | --- | --- |
-| Typical lesson-plan or homework run | $0.10-$0.20 |
-| Run with retries or tutor dialogue | Up to approximately $0.40 |
-| Active tutor volume | Approximately 100-200 runs per month |
-| Model cost per active tutor | Approximately $10-$40 per month |
+| Typical run | $0.10–$0.20 |
+| With retries/dialogue | Up to ~$0.40 |
+| Active tutor volume | 100–200 runs/month |
+| Model cost per tutor | $10–$40/month |
 
-These figures do not establish the total cost of serving a tutor, a selling price, a margin or willingness to pay. The sources do not settle whether a regenerated draft consumes another billable allowance.
+These exclude a complete serving-cost, price or margin calculation.
 
-**#to-decide — Expand: define the business model after measuring usage.** Decide who pays, the charging unit, and how revisions and failures are treated. A subscription makes tutor spending predictable; per-use pricing follows consumption but can discourage experimentation and necessary revision. Recommend measuring actual total usage and support/content costs before choosing limits or making margin claims.
+**Delegated decision.** Run an invitation-only free pilot with 20 completed preparations per tutor and no automatic paid conversion or overage. A completed preparation is an approved plan; failed runs and within-request revisions do not consume allowance. The tutor is the future payer; a monthly subscription is the chosen commercial model, without per-revision fees. Actual pricing and paid billing are outside this pilot and require a separate commercial launch based on measured costs and willingness to pay.
 
-Source: Architecture, pp. 30-33; Implementation, “Time limits and failure handling” and “Later steps.”
+Source: A, pp. 30-33; I, “Time limits and failure handling” and “Later steps.”; D.
 
 ### PD-37. A working implementation stage is not yet a complete tutor pilot
 
-**Documented decision.** The Implementation's first two stages establish a runnable project and the planning/review flow. Real retrieval, ingestion of lesson and homework evidence, learner-progress updates, authentication, notification delivery and several recovery features are deferred. Its core scenarios use prepared learner information and simulated model/material responses.
+**Historical scope.** I plans a runnable repository and review flow with simulated data/models/material. Real retrieval, evidence ingestion, mastery updates, authentication, alert delivery and some recovery remain deferred. No implementation is established here; current product choices remain agreed despite historical deferral.
 
-**#to-decide — Simplify and complete: define the first real-user release.** Recommend validating one complete preparation-and-review journey before adding the others. Homework may be relatively bounded when lesson evidence exists; lesson planning may be the better start if homework records are scarce. Choose using pilot tutors' actual work. Then define the necessary inputs, reviewed material, usable output, review flow, access, data handling and way to report failures. Some integrations can remain manual, but the tutor must be able to finish the job. Passing the implementation stages alone does not establish product readiness.
+**Delegated decision.** Pilot the complete homework journey: initial assessment/profile → tutor lesson notes or authorized transcript → draft and separate answer guide → validation → per-part tutor review/revision → manual student handoff. Require authentication, reviewed material, privacy controls, failure recovery and stage/end-to-end evaluation before real use. Start with five invited tutors; add lesson planning including first lessons next, then urgent replanning, only after equivalent checks. No application or integration is implemented by this document.
 
-Source: Implementation, “Scope and assumptions,” “Step 2,” “Testing” and “Later steps.”
+Source: I, “Scope and assumptions,” “Step 2,” “Testing” and “Later steps.”; D.
 
-## Recommended order for unresolved decisions
+## Pilot review and deferred scope
 
-This is a proposed discussion order, not an implementation plan or a change to the documented decisions.
+Review these defaults after the first cohort of at least five tutors with five requests each, or sooner after a critical failure. Check saved tutor effort, actual use, repeated content gaps and reviewer disagreement before expanding scope. A critical safety, access or approval defect stops the affected feature until corrected.
 
-1. **Choose the initial tutor segment and preparation job** (PD-01, PD-03). This determines which content and workflow are necessary.
-2. **Define minimum input and the usable output** (PD-06, PD-07, PD-12). This makes a complete pilot possible without unnecessary integrations.
-3. **Set the policy for incomplete drafts, warnings and adapted exercises** (PD-14 through PD-17). This establishes what approval means.
-4. **Agree on learner evidence and priority rules** (PD-08 through PD-11). This makes personalization understandable and open to tutor correction.
-5. **Define review effort, revisions and recovery** (PD-05, PD-18 through PD-24, PD-26 through PD-27). This determines whether the product saves preparation time.
-6. **Set content ownership, access and data handling before using real student records** (PD-28, PD-33).
-7. **Choose pilot success criteria, measure costs, then decide pricing and expansion** (PD-29 through PD-32, PD-34 through PD-37).
+The pilot is free homework preparation for adult A2–B2 English learners. Lesson planning and urgent replanning follow after equivalent checks. Live tutoring, MCP/calendar/email integrations, unrelated original exercise generation and paid billing are excluded. Technology selection and implementation remain separate work, not open product questions in this document.
 
 ## Sources
 
-- [Architecture: Tutor Copilot — Merged Architecture Doc, 14 October 2026, 33 pages](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Merged Architecture Doc.pdf>).
-- [Implementation: Tutor Copilot — Implementation Plan Repo + LangGraph HITL, dated 17 October and revised 18 October 2026](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Implementation Plan Repo + LangGraph HITL.md>). References use the supplied file's section headings, including its additional acceptance rules.
+- **U:** Owner's 1 November 2026 priority update and confirmation to use both lesson and homework evidence.
+- **D:** Defaults chosen under the owner's explicit instruction to resolve the open decisions. They supersede conflicting historical assumptions. Unrelated original-generation proposals remain outside the pilot.
+- **A:** [Tutor Copilot — Merged Architecture Doc, 14 October 2026, 33 pages](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Merged Architecture Doc.pdf>).
+- **I:** [Tutor Copilot — Implementation Plan Repo + LangGraph HITL, dated 17 October, revised 18 October 2026](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Implementation Plan Repo + LangGraph HITL.md>).
 
-Only these two supplied documents are used as evidence for the product decisions above. No repository implementation, market claim, provider price or reported project outcome was independently verified for this extraction.
+The [Langfuse guides](https://langfuse.com/docs/evaluation/get-started/offline) support the evaluation mechanisms; [EDPB guidance](https://www.edpb.europa.eu/sme/learn-the-basics/data-protection-basics_en) informs data minimization and retention principles. Specific pilot thresholds and retention periods are chosen policies, not prescribed standards. This document establishes no application implementation, current provider prices, compliance certification or measured outcomes.
