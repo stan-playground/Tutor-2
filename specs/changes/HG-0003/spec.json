@@ -2,9 +2,9 @@
   "id": "HG-0003",
   "title": "Authenticated learner intake and subskill evidence",
   "tags": [],
-  "goal": "Keep authorized learner information and trustworthy subskill evidence for homework preparation.",
+  "goal": "Keep authorized learner information, trustworthy recent performance and cumulative learning history for preparation.",
   "rationale": "Separate assessment, preferences and observations so preparation does not invent learner facts.",
-  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Adult A2–B2 English pilot. Sources: Product Decisions PD-06–09/28; Architecture sections 6–7/9. Detailed schemas and calculation cases will be refined before implementation.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Adult A2–B2 English pilot. Sources: Product Decisions PD-06–09/28; Architecture sections 6–7/9. Detailed schemas and calculation cases will be refined before implementation. PD-39/40 add separately dated/source-qualified activity facts and derived cumulative context; recent metric rules and privacy remain unchanged.",
   "questions": [],
   "depends_on": [],
   "related_to": [],
@@ -14,7 +14,7 @@
       "requirement": {
         "id": "HG-0003-R1",
         "title": "Authenticated learner intake and subskill evidence",
-        "statement": "Store learner assessment, preferences and dated lesson/homework observations under tutor ownership. Keep accuracy, required use and appropriate avoidance distinct, retain provenance/uncertainty, and derive qualified trends without inventing missing evidence.",
+        "statement": "Store learner assessment, preferences and dated lesson/homework observations under tutor ownership. Keep accuracy, required use and appropriate avoidance distinct, retain provenance/uncertainty, and derive qualified trends without inventing missing evidence. Store assignment, actual encounter, attempt and checked outcome as distinct dated/source-qualified facts with confirmation and task/assistance context, not a mandatory progression. Planned content remains in drafts; generation/approval/copying/feedback creates no activity evidence. Derive cumulative context across retained months separately from recent PD-08/09 rates; correct/deduplicate facts, freeze references when used and preserve unknown/unavailable-source qualifications.",
         "scenarios": [
           {
             "id": "HG-0003-S1",
@@ -36,6 +36,27 @@
             "when": "Performance is summarized for preparation.",
             "then": "Unknown values stay unknown and uncertain extraction is not treated as confirmed performance.",
             "verification": "Future performance-summary cases with zero and unconfirmed observations."
+          },
+          {
+            "id": "HG-0003-S4",
+            "given": "Confirmed relevant activity facts are older than 90 days and some raw sources have expired under policy.",
+            "when": "Preparation context and recent performance views are loaded.",
+            "then": "Retained structured history can inform a qualified revisit with dates/references and unavailable-source markers; old facts do not enter recent denominators or establish forgetting/mastery, and no expired quotation is reconstructed.",
+            "verification": "Future persisted selection/controlled-clock cases comparing recent eligible IDs/counts with cumulative context and expiry behavior."
+          },
+          {
+            "id": "HG-0003-S5",
+            "given": "A draft is approved/copied, one activity is tutor-confirmed assigned, and another reading/listening encounter is confirmed without an answer attempt.",
+            "when": "The tutor supplies evidence through intake and preparation is summarized.",
+            "then": "Draft/copying creates no assignment/exposure; assignment alone proves no encounter. Preserve the independently confirmed encounter without inventing an attempt, opportunity count or mastery. Missing dates/amounts and unconfirmed reports stay qualified.",
+            "verification": "Future intake/review/export row comparisons with synthetic planned, assigned-only and encounter-only records; inspect dates, confirmation and unknown rates."
+          },
+          {
+            "id": "HG-0003-S6",
+            "given": "The same learner response/activity is imported twice and one source-qualified fact is corrected.",
+            "when": "The tutor confirms the correction and a new request loads history.",
+            "then": "Link/supersede and deduplicate the facts/observations rather than increasing exposure or performance counts twice; existing frozen requests retain their selected revisions.",
+            "verification": "Future real intake/persistence/snapshot correction and duplicate-import checks."
           }
         ]
       }
@@ -50,6 +71,11 @@
     {
       "id": "HG-0003-T2",
       "description": "Expose separate subskill measures and qualified trends for preparation.",
+      "done": false
+    },
+    {
+      "id": "HG-0003-T3",
+      "description": "Persist independent activity facts and derive/freeze qualified cumulative context without altering recent metric selection or creating evidence from artifacts.",
       "done": false
     }
   ],

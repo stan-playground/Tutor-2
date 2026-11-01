@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Keep learner data private and remove every retained copy according to policy.",
   "rationale": "Graph checkpoints and telemetry must not escape the same access/deletion boundary as source data.",
-  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-28; Architecture section 9. Applies to sources, derived records, embeddings, graph history, backups and permitted evaluation excerpts. Provider setup remains implementation work. Covers feedback artifacts, private tutor notes, transcript references and evaluation/checkpoint copies as well as homework.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-28; Architecture section 9. Applies to sources, derived records, embeddings, graph history, backups and permitted evaluation excerpts. Provider setup remains implementation work. Covers feedback artifacts, private tutor notes, transcript references and evaluation/checkpoint copies as well as homework. Cumulative activity facts, derived history views and their checkpoint/evaluation references inherit the same policy; no indefinite history retention is added.",
   "questions": [],
   "depends_on": [],
   "related_to": [],
@@ -14,13 +14,13 @@
       "requirement": {
         "id": "HG-0007-R1",
         "title": "Learner-data retention, deletion and safe observability",
-        "statement": "Require learner-data permission, minimize collection and use metadata-only routine logs. Expire raw sources/embeddings after 30 days and structured records/plans after 12 months of inactivity. Deletion blocks access immediately, removes active/derived copies within seven days and backups within 30, including learner-linked checkpoints/evaluations; late workers must not recreate deleted data.",
+        "statement": "Require learner-data permission, minimize collection and use metadata-only routine logs. Expire raw sources/embeddings after 30 days and structured records/plans, including activity facts and cumulative views, after 12 months of inactivity. Deletion blocks access immediately, removes active/derived copies within seven days and backups within 30, including learner-linked checkpoints/evaluations; late workers must not recreate deleted data.",
         "scenarios": [
           {
             "id": "HG-0007-S1",
-            "given": "A raw source has expired but a permitted derived learning observation remains.",
+            "given": "A raw source has expired but a permitted derived performance observation or nonverbatim learning-activity fact remains.",
             "when": "The tutor reads its provenance.",
-            "then": "The source is shown unavailable rather than reconstructed; retained observations remain distinguishable from raw quotations.",
+            "then": "The source is shown unavailable rather than reconstructed; retained observations remain distinguishable from raw quotations. Cumulative views retain only permitted derived facts and unavailable-source markers; elapsed time does not authorize reconstruction or indefinite retention.",
             "verification": "Future controlled-clock source-expiry and provenance observation."
           },
           {

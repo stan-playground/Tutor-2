@@ -15,6 +15,8 @@ The product owner confirmed the following principles on 1 November 2026. They ta
 7. **Validate material for safety, age suitability and teaching quality.** Check the selected or adapted material and constructed plan for safety, age appropriateness, level and objective fit, pedagogical correctness, factual support and tutor constraints before approval. The adult-pilot blocking and warning policy is defined in PD-17.
 8. **Give the tutor final approval or disapproval of individual parts of plans and feedback.** The tutor can accept or reject a section, exercise, explanation or feedback section and request changes. A ready artifact contains only tutor-approved parts; automatic checks do not replace that decision. See PD-04, PD-18 and PD-38.
 9. **Use golden datasets for every part of the pipeline and Langfuse for offline and online evaluation.** Reviewed examples and acceptance criteria cover each stage and the complete preparation jobs. Offline experiments compare changes on those datasets; online evaluation checks real production observations and tutor feedback. Production examples enter the golden datasets after review. See PD-34 and PD-35.
+10. **Use cumulative learning history alongside recent performance.** Keep source-qualified exposure, practice and later checks; select both what is important now and what is worth revisiting on each tutor request. Older history does not enter recent rate/trend denominators or establish forgetting/mastery. See PD-39.
+11. **Choose teaching for needs beyond visible errors.** Support accessible reading/listening input, vocabulary exposure, fluency, discourse models, communication strategies and meaningful tasks/projects using reviewed material and suitable outcome criteria. A current goal can justify teaching without an invented weakness. See PD-40.
 
 The delegated pilot defaults below settle the operating choices. Their numerical settings are starting policies to review with pilot evidence, not validated pedagogical, commercial or reliability claims.
 
@@ -40,7 +42,7 @@ Source: A, pp. 1-2, 6; D.
 
 **Documented decision.** Adapt lessons to goals, preferences, mastery and external events. Use long-range plans for deadline-driven goals.
 
-**Delegated decision.** Show the current objectives, the evidence for each, progress since comparable work and postponed objectives. Keep a short rolling learning summary; build a dated multi-lesson plan only for a confirmed deadline goal.
+**Delegated decision, extended by the current history decision.** Show current objectives, their goal/evidence-linked reasons, progress since comparable work and postponed objectives. Keep the rolling summary as a view of saved records, alongside cumulative history under PD-39. Reconsider important-now and worth-revisiting needs on each tutor request; a dated multi-lesson plan remains specific to a confirmed deadline goal. This does not impose a fixed curriculum or add background scheduling.
 
 Source: A, pp. 1-2; D.
 
@@ -70,7 +72,7 @@ Source: A, pp. 4, 6, 18, 32; I, “HITL.”; D.
 
 ### PD-06. Keep supplied profile information distinct from observed performance
 
-**Current decision.** Store the pre-lesson assessment, preferences, subskill performance and trends as distinct information. Plan using goals, lesson evidence and homework; use the latest lesson unless another is selected.
+**Current decision.** Store the pre-lesson assessment, preferences, subskill performance/trends and cumulative learning history as distinct information. Plan using goals, lesson evidence, homework and qualified prior exposure/practice/checks under PD-39; use the latest lesson unless another is selected.
 
 **Delegated decision.** Require a dated tutor assessment summary or assessment upload, its source/uncertainty, goals, preferred domains and an adult confirmation; collect no birth date. If no formal assessment exists, record the tutor's provisional estimate. Accept lesson notes instead of transcripts, label their source and retain corrections in history; do not administer a placement test in the pilot.
 
@@ -82,7 +84,7 @@ Source: A, pp. 2, 6, 10; I, “Tool contracts,” “State and run context” an
 
 **Historical:** The first-lesson example used an estimated level. Neither version establishes a validated placement test.
 
-**Delegated decision.** Distinguish new learners, returning learners with usable evidence and returning learners needing a recheck. Evidence older than 90 days is historical and triggers targeted checks of important uncertain skills. Missing history stays missing; a provisional tutor assessment can support a diagnostic draft, without establishing mastery.
+**Delegated decision.** Distinguish new learners, returning learners with usable evidence and returning learners needing a recheck. Evidence older than 90 days is historical for recent performance calculations; qualified cumulative facts can still inform support or worthwhile rechecks. Check important uncertain prerequisites when the result would change preparation; prior exposure alone proves no readiness, and a recheck is not compulsory before every goal-led activity. Missing history stays missing; a provisional tutor assessment can support a diagnostic draft, without establishing mastery.
 
 Source: A, pp. 4, 6; I, “Signals” and scenario C1; U; D.
 
@@ -111,13 +113,15 @@ Source: A, p. 2; I, “Tool contracts” and “Signals”; U; D.
 
 **Delegated decision.** Use up to the latest four lessons and four homework submissions within 90 days; separate completion from attempted-answer performance. Compare the same subskill, evidence type and task demands. Each rate needs three comparable observations with at least five relevant opportunities each for a trend: first-to-last change ≥0.15 is improving, ≤−0.15 regressing, otherwise stable; conflicting measures are mixed. Smaller samples remain insufficient. A single 0.15 drop is a possible-regression alert, not proof. Ratios ≥0.85 across three comparable observations suggest maintenance only when applicable use/avoidance measures support it and the tutor confirms. Low completion prompts a workload check, not an ability downgrade.
 
+**Current history boundary.** The window above governs recent comparable measures, not all preparation context. PD-39 adds cumulative source-qualified history across retained months. It may justify a revisit or transfer check without adding old counts to these denominators, asserting forgetting from elapsed time or promoting mastery from exposure.
+
 Source: A, pp. 2, 5; I, “Signals, routing policy and stop conditions”; U (lesson/homework clarification); D.
 
 ### PD-10. Explain why objectives were selected
 
-**Documented decision.** Show each objective's skill/confusion, priority, reason, share and action: promote, retain, postpone, maintain or recheck. Respect required skills and tutor allocations; shares cannot exceed 100%.
+**Documented decision, extended by PD-39/40.** Show each objective's teaching purpose/target outcome, applicable skill/confusion, priority, reason, share and action: promote, retain, postpone, maintain or recheck. A confusion is required when addressing one, not for every goal-led objective. Respect required skills and tutor allocations; shares cannot exceed 100%.
 
-**Delegated decision.** Shares allocate total planned minutes, including instructions, checks and transitions; show percentages and minutes summing to the requested total. Apply safety/validity gates and explicit tutor requirements first, then confirmed urgent goals, corroborated weaknesses, longer-term goals and maintenance. Domain preferences shape material. Explain each objective with one evidence-linked reason; ask which constraint to relax if the requirements cannot fit.
+**Delegated decision, extended by PD-39/40.** Shares allocate total planned minutes, including instructions, checks and transitions; show percentages and minutes summing to the requested total. Apply safety/validity gates, explicit tutor requirements and confirmed urgent goals first; then balance current goal-building needs, corroborated difficulties and qualified review needs. Neither review nor error correction has a fixed quota. Domain preferences shape material. Explain each objective with one goal/evidence/history-linked reason and mark whether it addresses important-now, worth-revisiting or both; ask which constraint to relax if requirements cannot fit.
 
 Source: A, pp. 2, 5; I, “Tool contracts,” review payload and “Additional acceptance rules.”; D.
 
@@ -133,7 +137,7 @@ Source: A, pp. 2, 5-6; I, “Signals” and scenario C4; D.
 
 ### PD-12. Produce a usable, timed teaching artifact
 
-**Documented decision.** Produce sections with exercises, skill targets and durations fitting the requested total. Homework can mix targeted practice, speaking, rechecks and maintenance; avoid near-duplicates while retaining relevance. Lesson sections prioritize the best-fitting activity.
+**Documented decision, extended by PD-40.** Produce sections with activities, target outcomes and durations fitting the requested total. Homework can mix targeted practice, accessible input, vocabulary exposure, fluency, discourse/strategy work, meaningful tasks, rechecks and maintenance as needed; no mix is compulsory. Avoid purposeless near-duplicates while retaining deliberate review. Lesson sections prioritize the best-fitting activity.
 
 **Delegated decision.** Deliver copyable student homework plus a separate tutor key with answers, alternatives and short teaching notes; speaking tasks use assessment criteria. Provide student-ready copy only after approval; tutors share it themselves, without a delivery integration. Planned section minutes must sum exactly to the requested duration, including instructions and checks. Actual learner completion time remains an estimate.
 
@@ -143,19 +147,19 @@ Source: A, pp. 3-5, 17; I, “Tool contracts” and validation rules; D.
 
 **Documented decision.** Match the exact confusion and level; preserve pedagogical requirements when broadening context.
 
-**Current decision.** Select/adapt exercises and explanations to domain preferences without changing the learning objective.
+**Current decision.** Select/adapt material to the teaching purpose, target outcome, actual task demands and domain preferences without changing the learning objective. Match the exact confusion when remediation is intended; a supported goal under PD-40 does not require an invented error.
 
 **Delegated decision.** Context defaults to preferred; tutors may mark it required. Adapt suitable material or disclose neutral context when a preferred domain is unavailable. Never silently relax required context or the learning objective. Remove automatic ±1-level substitution: neighboring-level material requires checked adaptation to the learner's actual task demands and visible tutor review; otherwise leave a gap.
 
-**Search boundary.** The system derives a material search from the selected learning objective: exact confusion, level, task demands and domain constraints. The tutor need not write a search query. Similarity helps find candidates; it does not choose learning priorities or establish teaching suitability. Learner evidence informs the objective without being copied into a shared teaching-bank search.
+**Search boundary.** The system derives a material search from the selected teaching route/purpose, target capability or subskill, any applicable exact confusion, level, task demands, modality and domain constraints. The tutor need not write a search query. Similarity helps find candidates; it does not choose learning priorities or establish teaching suitability. Learner evidence/history informs the objective without being copied into a shared teaching-bank search.
 
 Source: A, pp. 4-5, 8, 15; I, “Routing”; U; D.
 
 ### PD-14. Reuse suitable exercises and adapt their context when necessary
 
-**Current decision.** Adapt exercises and explanations to preferred domains while preserving the target subskill, level, learning mechanism and source reference.
+**Current decision.** Adapt reviewed activities and explanations to preferred domains while preserving the teaching purpose, target outcome, applicable subskill, level, learning mechanism and source reference. PD-40 extends eligible material types; it does not authorize unrelated original authoring.
 
-**Delegated decision.** The pilot adapts reviewed exercises/explanations, not unrelated original exercises. Recheck instructions, level, expected answers, acceptable alternatives, ambiguity, factual claims and safety after adaptation. Closed-answer items need an independent solution check against the key; open tasks need clear criteria. Show provenance and require tutor approval; source fidelity or model agreement alone cannot establish correctness.
+**Delegated decision.** The pilot adapts reviewed material, not unrelated original exercises or project briefs. Recheck instructions, accessibility, level, expected answers or task criteria, acceptable alternatives, ambiguity, factual claims and safety after adaptation. Closed-answer items need an independent solution check against the key; open tasks need clear criteria. Listening material/criteria must match an available permitted recording version. Show provenance and require tutor approval; source fidelity or model agreement alone cannot establish correctness.
 
 Source: A, pp. 4, 17-18; I, “Tool contracts” and “Later steps: RAG”; U; D.
 
@@ -269,6 +273,8 @@ Source: I, “Time limits and failure handling,” “Persistence, Redis and the
 
 **Delegated decision.** Require authenticated tutor access, isolation by tutor/student, informed adult opt-in and tutor upload permission before learner-data use; no built-in recording. Collect aliases, adult confirmation and necessary learning evidence, not birth dates/contact details or unrelated sensitive data. Named processors must meet contracted purpose, retention and no-training terms before use. Raw uploads/transcripts and their embeddings expire after 30 days; structured records/plans after 12 months of inactivity. After source expiry, show it unavailable rather than reconstructing quotes. Deletion removes access immediately, active/derived records within seven days and backups within 30. Routine logs contain metadata only; Langfuse stores scores and minimum redacted excerpts only for permitted evaluation; excerpts expire after 30 days, and learner-linked records follow the same deletion rules. Only the owning tutor sees student records; exceptional support access needs that tutor's recorded authorization and a reason. Tutors can delete learners at any time; verified learner requests are handled through the tutor or support. Production-case reuse needs separate permission and reviewed anonymization; wholly synthetic golden cases need tutor review. These are product policies, not verified compliance.
 
+**Current history boundary.** Cumulative activity facts and derived summaries are necessary structured learner records under the same policy, without retained verbatim source passages. Cumulative does not mean indefinite retention or permission to import a ten-year private learner archive. Source expiry leaves unavailable-source markers; deletion covers history and every derived view.
+
 Source: A, pp. 14, 19, 23, 26; I, “Later steps: Run API extras.”; D.
 
 ### PD-29. External assistant access is optional
@@ -305,7 +311,7 @@ Source: A, pp. 17-18, 32; I, “Additional acceptance rules.”
 
 ### PD-33. Maintain teaching assets and learner transcripts for retrieval
 
-**Current decision.** Index homework/speaking exercises, explanations and lesson transcripts. Use teaching material for preparation/adaptation and transcripts as learner evidence under PD-28 access rules; indexing alone does not make transcripts shared teaching assets.
+**Current decision.** Index homework/speaking exercises, explanations and lesson transcripts. Extend reviewed teaching material to accessible reading/listening sources, vocabulary/fluency activities, discourse models, communication-strategy activities and task/project frameworks under PD-40. Use teaching material for preparation/adaptation and transcripts as learner evidence under PD-28 access rules; indexing alone does not make transcripts shared teaching assets. Listening uses available permitted material references, not a new learner-recording or automated audio-assessment pipeline.
 
 **Documented detail.** Distinguish search, ranking, content, generation, pedagogy, routing and UX failures; tutors/methodologists verify content. Missing assets may require authoring, not better search.
 
@@ -323,13 +329,15 @@ Source: A, pp. 8-12, 16-18; U; D.
 
 **Current feedback extension.** Add reviewed transcript-to-feedback cases before enabling feedback, including its evidence selection, trend interpretation, composition, validation and tutor review. Report release gates separately per job and applicable stage; homework success cannot hide feedback failures. Exercise retrieval/adaptation and closed-answer solving are not mandatory feedback stages.
 
+**Current history/route extension.** Keep the twelve homework base families and eight feedback families; add mandatory variants and isolated cases for old history versus recent denominators, planned/assigned versus actual encounters/attempts/checks, corrections, uncertain prerequisites and every enabled PD-40 route. Include unavailable listening material and unsupported outcome claims. Count all declared required variants in their applicable stage/job denominators; base-family counts alone do not establish coverage. These remain planned cases, not learning-gain evidence.
+
 Source: A, pp. 8-11, 18-19; I, “Later steps: Evals and tracing”; U; D.
 
 ### PD-35. Numerical quality goals are provisional, and technical scores do not prove teaching value
 
 **Documented decision.** Quality targets and case-study results are provisional. Factual support, reference integrity, task success and material fit do not prove teaching quality.
 
-**Delegated decision.** Use pass/fail reasons for target subskill, level, clear instructions, linguistic/pedagogical correctness, answers or assessment criteria, workload, tutor constraints/preferences and supported learner claims. Safety/privacy/age are hard gates. Correct or remove failed parts before approval; never average away a serious defect. Report first-draft usability as drafts needing no substantive change / all returned drafts; target/task/answer/workload changes are substantive, typos/layout are not. Human approval and technical scores do not prove learning benefit.
+**Delegated decision.** Use pass/fail reasons for teaching purpose/target outcome, applicable subskill, level/accessibility, clear instructions, linguistic/pedagogical correctness, route-specific answers or assessment criteria, workload, tutor constraints/preferences and supported learner claims. Exposure alone is not performance; drill accuracy alone does not establish fluency or project success. Safety/privacy/age are hard gates. Correct or remove failed parts before approval; never average away a serious defect. Report first-draft usability as drafts needing no substantive change / all returned drafts; target/task/answer/workload changes are substantive, typos/layout are not. Human approval and technical scores do not prove learning benefit.
 
 Source: A, pp. 1, 8, 17-18, 27, 30-33; I, “Scope and assumptions” and “Later steps.”; D.
 
@@ -368,7 +376,27 @@ Source: I, “Scope and assumptions,” “Step 2,” “Testing” and “Later
 
 **Review boundary.** The tutor controls which feedback sections reach the student, with validation and exact-version approval before manual copying. Feedback approval does not confirm extracted observations, change performance counts/trends, promote mastery or alter profile preferences. Evidence confirmation/correction remains a separate action; new evidence requires a new request, while wording revisions use the frozen evidence. Do not create exercises, impose homework timing rules, send feedback automatically or require a preceding homework request. Missing or expired transcript content is reported unavailable rather than reconstructed from the summary.
 
+**Current history context.** Freeze relevant PD-39 history references when used to describe continuity or suggest revisiting. Keep them distinct from PD-08/09 comparisons; feedback generation/review/export cannot create assignment, encounter, attempt or checked-outcome facts. A suggested next step remains a suggestion.
+
 Source: U (post-lesson feedback, transcript, saved learning curve/state and subskill-use metrics); D (bounded output/review defaults consistent with PD-04/08/09/22/25/28).
+
+### PD-39. Keep cumulative learning history and select review on tutor requests
+
+**Current decision.** Preparation uses retained, source-qualified history of prior learning purposes, material/task versions, contexts, exposure, practice and later checks, alongside current goals and recent measures. Keep assignment, actual encounter, attempt and checked outcome as separately dated facts with source and confirmation status; they are not a compulsory progression. Unknown dates/amounts stay unknown. Reading/listening can be encountered without an answer attempt. Drafts/approval/copying prove no assignment or exposure; tutors supply or confirm actual-use evidence through intake. Correct/supersede facts without duplicate counting; missing history stays unknown.
+
+On each tutor request, consider both **important now** (current goals, requirements and supported needs) and **worth revisiting** (relevant prior work, elapsed time, uncertainty and opportunities for delayed recall or transfer). Explain selections with goal/history references; use no universal revisit interval or fixed allocation. Older facts may inform this choice without entering recent rate/trend denominators. Time alone proves no forgetting, exposure proves no mastery, and an uncertain prerequisite calls for proportionate support or a useful recheck. A summary is a derived view, not independent model memory.
+
+History follows PD-28 retention/deletion and frozen-request rules; it adds no background scheduling, reminders, fixed curriculum or student tracking integration.
+
+Source: U (cumulative exposure, prior learning, prerequisites, transfer and important-now/worth-revisiting selection); existing PD-06–10/22/28 safeguards.
+
+### PD-40. Choose teaching beyond visible errors
+
+**Current decision.** A supported goal or needed learning opportunity can justify accessible reading/listening input, vocabulary exposure, fluency practice, discourse models, communication strategies or a meaningful task/project without a conspicuous recent error. Select a purpose, target outcome, appropriate demands/support and route-specific criteria; attach subskills or exact confusions where relevant rather than inventing a deficit. Do not require every route in every preparation.
+
+Use reviewed, permissioned material or checked adaptation of a reviewed activity/task framework under PD-14/33. Listening requires an available permitted recording and reviewer-checked answers/criteria tied to its version; a transcript or assignment does not establish listening performance. Exposure and task completion alone prove no mastery. Fluency, discourse, strategy and project work need suitable task criteria, not drill accuracy as their sole outcome. Missing suitable material remains an explicit gap. Original authoring, live student tutoring and automated pronunciation/listening assessment remain outside the pilot.
+
+Source: U (non-error teaching needs, accessible input, fluency and communication); existing PD-13–17/25/28/30/33/35 safeguards.
 
 ## Pilot review and deferred scope
 
@@ -378,7 +406,7 @@ The first pilot is free homework preparation for adult A2–B2 English learners.
 
 ## Sources
 
-- **U:** Owner's 1 November 2026 priority updates, confirmation to use both lesson and homework evidence, and addition of post-lesson feedback after homework and before lesson planning.
+- **U:** Owner's 1 November 2026 priority updates, confirmation to use both lesson and homework evidence, addition of post-lesson feedback after homework and before lesson planning, and adoption of cumulative learning history/on-request review and teaching routes beyond visible errors.
 - **D:** Defaults chosen under the owner's explicit instruction to resolve the open decisions. They supersede conflicting historical assumptions. Unrelated original-generation proposals remain outside the pilot.
 - **A:** [Tutor Copilot — Merged Architecture Doc, 14 October 2026, 33 pages](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Merged Architecture Doc.pdf>).
 - **I:** [Tutor Copilot — Implementation Plan Repo + LangGraph HITL, dated 17 October, revised 18 October 2026](</Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Implementation Plan Repo + LangGraph HITL.md>).

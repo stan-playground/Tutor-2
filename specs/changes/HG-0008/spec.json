@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Evaluate every active stage and release a bounded, measurable homework pilot.",
   "rationale": "A working graph or valid reference does not prove suitable teaching or saved tutor effort.",
-  "scope": "Specification only; no approved gold labels or app behavior claimed. PD-28/31/34–38 and Architecture section 10. Concrete datasets in specs/datasets.md cover homework and the next feedback job separately. Five-tutor free homework cohort and its allowance remain unchanged. Other teaching jobs and feedback commercial/rollout terms are not implicitly activated.",
+  "scope": "Specification only; no approved gold labels or app behavior claimed. PD-28/31/34–38 and Architecture section 10. Concrete datasets in specs/datasets.md cover homework and the next feedback job separately. Five-tutor free homework cohort and its allowance remain unchanged. Other teaching jobs and feedback commercial/rollout terms are not implicitly activated. PD-39/40 require extra history and non-error-route variants/isolated cases before enabling those behaviors; base-family counts are not the full item denominators.",
   "questions": [],
   "depends_on": [
     {
@@ -90,7 +90,7 @@
       "requirement": {
         "id": "HG-0008-R3",
         "title": "Twelve homework families and explicit stage coverage",
-        "statement": "Before pilot use, author the twelve synthetic adult A2–B2 homework families HW-01–HW-12 in datasets.md: practice/maintenance, domain adaptation/required use, correct avoidance/open tasks, missing/stale evidence, conflicting evidence/clarification cap, asset gap, safety/adult eligibility, access/privacy, key correctness/separation, instruction-like transcript, rejection/stale revision and duration edit/duplicate finalize. Include four families per level, six ordinary and six critical base families plus explicitly required variants. Review intermediate expectations for extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation and review/revision, and complete-job outcomes. Each active stage needs ordinary-success and relevant critical-failure coverage; add isolated fixtures rather than pretending every family visits every stage. Numeric fixtures cover PD-08/09 boundaries, windows, corrections and mixed measures. Other preparation jobs need equivalent coverage before enabling. Before feedback activation, add FB-01–FB-08 plus required variants and isolated cases per datasets.md; cover source context, extraction, comparison, composition, validation and review/E2E without imposing exercise-only stages. Existing homework coverage remains unchanged.",
+        "statement": "Before pilot use, author the twelve synthetic adult A2–B2 homework families HW-01–HW-12 in datasets.md: practice/maintenance, domain adaptation/required use, correct avoidance/open tasks, missing/stale evidence, conflicting evidence/clarification cap, asset gap, safety/adult eligibility, access/privacy, key correctness/separation, instruction-like transcript, rejection/stale revision and duration edit/duplicate finalize. Include four families per level, six ordinary and six critical base families plus explicitly required variants. Review intermediate expectations for extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation and review/revision, and complete-job outcomes. Each active stage needs ordinary-success and relevant critical-failure coverage; add isolated fixtures rather than pretending every family visits every stage. Numeric fixtures cover PD-08/09 boundaries, windows, corrections and mixed measures. Other preparation jobs need equivalent coverage before enabling. Before feedback activation, add FB-01–FB-08 plus required variants and isolated cases per datasets.md; cover source context, extraction, comparison, composition, validation and review/E2E without imposing exercise-only stages. Preserve existing homework base-case coverage. Extend required variants/isolated cases per datasets.md for independently confirmed activity facts, history outside recent windows, corrections/expiry, important-now/revisit balance and prerequisite uncertainty; separately cover every enabled PD-40 route and recording-specific failures. Keep the twelve base families, but count every declared applicable variant/item in release denominators. Exposure alone establishes no performance or mastery; preparation/review/feedback cannot create activity facts.",
         "scenarios": [
           {
             "id": "HG-0008-S7",
@@ -112,6 +112,20 @@
             "when": "Extraction/analysis stage cases run with their appropriate fixed inputs.",
             "then": "Counts/rates are 0.75/0.50/0.75 in the arithmetic case; the other labels follow PD-08/09 without inferred silence, invented observations, duplicate counts or unsupported maintenance.",
             "verification": "Future reviewed response-level extraction fixtures and separate exact arithmetic/window fixtures; compare each expected count, eligibility and state."
+          },
+          {
+            "id": "HG-0008-S20",
+            "given": "Synthetic history includes old confirmed work, assignment-only and encounter-only facts, duplicate/corrected sources, expired raw references and uncertain prerequisites.",
+            "when": "Required history source/analysis and complete-job variants run.",
+            "then": "Labels distinguish facts, unchanged recent rate windows/counts, qualified current/revisit decisions, support/recheck choices and unavailable-source markers. No elapsed-time forgetting, exposure mastery or artifact-caused evidence write passes.",
+            "verification": "Future reviewed history variants and real selection/intake/persistence checks with declared stage/E2E membership."
+          },
+          {
+            "id": "HG-0008-S21",
+            "given": "No recent error is present, and declared variants cover reading, listening, vocabulary exposure, fluency, discourse, strategies and task/project goals.",
+            "when": "Coverage and route-specific retrieval/composition/validation cases run.",
+            "then": "Require separately executable reviewed variants for each enabled route, suitable demands/support and outcome criteria. Known unavailable recording or recording/key mismatch is a critical blocking variant; exact-confusion and drill-accuracy criteria are not imposed on all routes. Include every required applicable item in the gate denominator.",
+            "verification": "Future explicit manifest/coverage and reviewed route experiments, with recording defects and missing-route/item rejection cases."
           }
         ]
       }
@@ -220,7 +234,7 @@
   "tasks": [
     {
       "id": "HG-0008-T1",
-      "description": "Author the twelve homework families, required variants and isolated stage fixtures using the typed item contract; obtain recorded tutor reviews and approved gold revisions.",
+      "description": "Author the twelve homework families, required variants and isolated stage fixtures using the typed item contract; obtain recorded tutor reviews and approved gold revisions. Include mandatory cumulative-history and all enabled non-error-route variants/isolated cases, with actual item/stage denominators.",
       "done": false
     },
     {

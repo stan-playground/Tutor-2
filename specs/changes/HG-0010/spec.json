@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Generate tutor-reviewed post-lesson feedback grounded in the selected transcript and saved learner evidence/state.",
   "rationale": "Feedback follows homework before lesson planning; explaining the learning curve must not generate fresh performance evidence.",
-  "scope": "Initial unimplemented application draft. Adult A2–B2 English; PD-38/04/08/09/22/25/28/34 and Architecture feedback route. No prior homework request, exercise list, key or plan duration required. Feedback activation/use measurement is separate from the homework cohort/allowance.",
+  "scope": "Initial unimplemented application draft. Adult A2–B2 English; PD-38/04/08/09/22/25/28/34 and Architecture feedback route. No prior homework request, exercise list, key or plan duration required. Feedback activation/use measurement is separate from the homework cohort/allowance. PD-39 history is frozen context only; it neither widens recent metrics nor permits feedback-caused activity writes.",
   "questions": [],
   "depends_on": [
     {
@@ -36,7 +36,7 @@
       "requirement": {
         "id": "HG-0010-R1",
         "title": "Grounded post-lesson feedback with exact tutor approval",
-        "statement": "On tutor-selected job_kind=post_lesson_feedback, authorize and freeze the selected current transcript plus assessment/preferences and saved confirmed observations/state. Load known sources/history directly by authorized references and PD-08/09 selection rules; cover the selected transcript, using source-linked segments when needed. Semantic top matches cannot replace lesson coverage or choose trend denominators. Source loading and metric calculation require no embedding call. Compute PD-08/09 accuracy, required use, avoidance and comparable trends; preserve unknown/mixed/insufficient status. Draft source-linked strengths, difficulties, supported progress and next-step suggestions as student sections, with private tutor evidence notes. Validate support, linguistic/pedagogical correctness, suitability and note separation; require exact-version approval of every retained student section before manual copying. Generated findings/approval/export never confirm observations or write counts, mastery, trends or preferences. New evidence starts a new request; wording revisions retain the snapshot. Reuse durable review/failure/privacy rules with job-specific validation, no homework timing/assets requirement or auto-send. Enable feedback only after its independently reviewed applicable-stage and complete-job evaluation gates pass.",
+        "statement": "On tutor-selected job_kind=post_lesson_feedback, authorize and freeze the selected current transcript plus assessment/preferences, confirmed observations/state and relevant source-qualified activity-history revisions. Load known sources/history directly by authorized references and PD-08/09 selection rules; cover the selected transcript, using source-linked segments when needed. Semantic top matches cannot replace lesson coverage or choose trend denominators. Source loading and metric calculation require no embedding call. Compute PD-08/09 accuracy, required use, avoidance and comparable trends; preserve unknown/mixed/insufficient status. Draft source-linked strengths, difficulties, supported progress and next-step suggestions as student sections, with private tutor evidence notes. Validate support, linguistic/pedagogical correctness, suitability and note separation; require exact-version approval of every retained student section before manual copying. Generated findings/approval/export never confirm observations or write activity facts, counts, mastery, trends or preferences. New evidence starts a new request; wording revisions retain the snapshot. Reuse durable review/failure/privacy rules with job-specific validation, no homework timing/assets requirement or auto-send. Enable feedback only after its independently reviewed applicable-stage and complete-job evaluation gates pass.",
         "scenarios": [
           {
             "id": "HG-0010-S1",
@@ -86,6 +86,13 @@
             "when": "Feedback activation is evaluated.",
             "then": "Keep feedback disabled; apply HG-0008 gates to feedback separately. Exercise-only stages are not required. Report feedback use separately and do not silently consume homework allowance or count feedback as homework assignment.",
             "verification": "Future fixed per-job manifests/gate decisions and usage-accounting observations."
+          },
+          {
+            "id": "HG-0010-S8",
+            "given": "Relevant retained encounters/checks predate the recent window and current transcript/history revisions are frozen.",
+            "when": "Feedback describes continuity or suggests worthwhile review, then is approved/revised/copied.",
+            "then": "Keep cumulative context separate from recent comparisons; infer neither forgetting nor progress from exposure/time. Retain source qualifications and unchanged recent denominators. Activity facts and performance rows stay unchanged; new supplied history requires a new request, and missing current transcript still stops feedback.",
+            "verification": "Future reviewed history-context cases and before/after activity/performance row comparisons across feedback review/export/replay."
           }
         ]
       }

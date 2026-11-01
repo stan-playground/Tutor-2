@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Find eligible teaching material for the actual learning problem.",
   "rationale": "Topic similarity alone does not establish teaching suitability or permission to reuse content.",
-  "scope": "Initial unimplemented draft. Reviewed homework/speaking exercises and explanations. Application-owned search construction from selected objectives, controlled embedding text, separate authorization/eligibility filters and explicit candidate/gap/failure outcomes. Direct private evidence loading and metrics stay separate. Sources: PD-13/15/16/28/33 and Architecture section 6. LLM query rewriting, autonomous search loops and ranking/index tuning are deferred.",
+  "scope": "Initial unimplemented draft. Reviewed homework/speaking activities, explanations, reading/listening input, vocabulary/fluency/discourse/strategy activities and task/project frameworks under PD-40. Application-owned search construction from selected objectives, controlled embedding text, separate authorization/eligibility filters and explicit candidate/gap/failure outcomes. Direct private evidence loading and metrics stay separate. Sources: PD-13/15/16/28/33 and Architecture section 6. LLM query rewriting, autonomous search loops and ranking/index tuning are deferred.",
   "questions": [],
   "depends_on": [
     {
@@ -19,7 +19,7 @@
       "requirement": {
         "id": "HG-0004-R1",
         "title": "Reviewed teaching assets and authorized retrieval",
-        "statement": "Retrieve permissioned, reviewed material by target subskill/confusion, level and task needs, with source/version references. Apply access and license restrictions before ranking; never turn private transcripts into shared teaching assets or invent missing exercise references. The application constructs a controlled teaching-search description and separate filters from a selected structured objective, calls the embedding model and executes the authorized database search. Initial search construction uses no chat-model rewriting or autonomous search loop; model suggestions cannot supply authorization or relax hard constraints. Learner-record loading and metric calculation are separate operations.",
+        "statement": "Retrieve permissioned, reviewed material by selected teaching purpose/outcome, applicable skills/optional exact confusion, modality, accessibility/support and task demands, with source/version references. Apply access and license restrictions before ranking; never turn private transcripts into shared teaching assets or invent missing exercise references. The application constructs a controlled teaching-search description and separate filters from a selected structured objective, calls the embedding model and executes the authorized database search. Initial search construction uses no chat-model rewriting or autonomous search loop; model suggestions cannot supply authorization or relax hard constraints. Learner-record loading and metric calculation are separate operations. Remediation needs its actual confusion; a goal-led route needs no invented error. Listening requires available permitted recording/version references and reviewer-checked matching answers/criteria; a transcript alone is insufficient. All routes preserve reviewed-source/adaptation limits.",
         "scenarios": [
           {
             "id": "HG-0004-S1",
@@ -48,6 +48,20 @@
             "when": "The worker handles the retrieval outcome.",
             "then": "Report a preparation failure rather than an empty-bank/content-gap result; no invented vector, candidate reference or ready material is produced.",
             "verification": "Future injected provider/database failures contrasted with a successful search returning no eligible candidates."
+          },
+          {
+            "id": "HG-0004-S5",
+            "given": "A supported reading/listening, vocabulary, fluency, discourse, strategy or task/project goal has eligible reviewed material but no recent error.",
+            "when": "The application constructs and executes the selected route search.",
+            "then": "Preserve purpose/outcome, relevant skills, modality/demands/support/criteria and hard filters without fabricating a confusion. Return suitable reviewed input/activity/framework versions; domain-only or inaccessible matches are unsuitable.",
+            "verification": "Future controlled search/provider/database cases for each enabled route, including no-confusion objectives and wrong-purpose distractors."
+          },
+          {
+            "id": "HG-0004-S6",
+            "given": "A listening candidate is known unavailable/unpermitted or its reviewed key/criteria do not match the recording version.",
+            "when": "The material is checked for selection/adaptation.",
+            "then": "Do not retain it as suitable listening material; use checked eligible material or disclose a gap. Neither a text transcript nor an assignment establishes listening performance. Transient provider/database failures remain failures under S4.",
+            "verification": "Future recording-reference eligibility, version/key-correspondence and explicit gap cases distinct from provider failures."
           }
         ]
       }
@@ -56,7 +70,7 @@
   "tasks": [
     {
       "id": "HG-0004-T1",
-      "description": "Store reviewed asset versions and their ownership/license metadata.",
+      "description": "Store reviewed input/activity/framework versions, accessibility/support, recording-specific criteria and ownership/license metadata.",
       "done": false
     },
     {

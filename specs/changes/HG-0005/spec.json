@@ -4,7 +4,7 @@
   "tags": [],
   "goal": "Compose a usable homework draft from learner evidence and reviewed material.",
   "rationale": "Generation should serve the teaching need while preserving objective, provenance and correctness.",
-  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Homework only. Sources: PD-09/10/12–17/35/37; Architecture sections 2/7. Lesson planning, urgent replanning and unrelated original exercise authoring are excluded.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Homework only. Sources: PD-09/10/12–17/35/37; Architecture sections 2/7. Lesson planning, urgent replanning and unrelated original exercise authoring are excluded. PD-39/40 extend on-request current/revisit selection and non-error teaching routes; no background scheduling, student app or automated audio assessment.",
   "questions": [],
   "depends_on": [
     {
@@ -23,7 +23,7 @@
       "requirement": {
         "id": "HG-0005-R1",
         "title": "Evidence-grounded homework generation and validation",
-        "statement": "Use both lesson and homework evidence to select explained objectives, then reuse/adapt reviewed assets and compose timed homework. Adapt preferred domains without silently relaxing hard requirements. Keep student content separate from the tutor guide and block safety, validity or unsupported-fact failures.",
+        "statement": "Use both available recent lesson/homework evidence streams, current goals and qualified cumulative context to select explained important-now/worth-revisiting objectives, then reuse/adapt reviewed assets and compose timed homework. Adapt preferred domains without silently relaxing hard requirements. Keep student content separate from the tutor guide and block safety, validity or unsupported-fact failures. Permit accessible input, vocabulary exposure, fluency, discourse models, strategies and meaningful tasks/projects from reviewed assets/frameworks without inventing deficits. Each route needs purpose/outcome, appropriate demands/support and suitable criteria; exposure or drill accuracy cannot prove unrelated outcomes. Preserve frozen recent/history references, independent fact intake and no fixed current/review quota.",
         "scenarios": [
           {
             "id": "HG-0005-S1",
@@ -45,6 +45,27 @@
             "when": "Preparation reaches the content gap.",
             "then": "It exposes the gap or a useful tutor choice instead of inventing an exercise/reference or silently changing the objective.",
             "verification": "Future no-material preparation case."
+          },
+          {
+            "id": "HG-0005-S4",
+            "given": "A tutor supplies a supported non-error learning goal, suitable reviewed material/framework and a duration.",
+            "when": "Homework is prepared for each enabled PD-40 route.",
+            "then": "Produce purposeful input/practice/task sections with accessibility/support and route-specific criteria, timings, provenance and tutor review; invent no weakness or original unrelated task. Missing eligible recording/material/criteria remains a gap.",
+            "verification": "Future reviewed route-level and complete-job cases for reading, listening, vocabulary, fluency, discourse, strategies and project/task adaptation."
+          },
+          {
+            "id": "HG-0005-S5",
+            "given": "A current goal is important and older confirmed work may be worth revisiting; readiness for a task prerequisite is uncertain.",
+            "when": "Objective selection balances the requested duration and constraints.",
+            "then": "Explain important-now/revisit choices using frozen goal/evidence/history references with no fixed quota. Use support, a lighter checked task or a useful recheck for uncertainty; time alone proves no forgetting, exposure no mastery and older history changes no recent denominator.",
+            "verification": "Future fixed-history objective/priority cases with old encounters, assignment-only records, uncertain prerequisites and unchanged arithmetic."
+          },
+          {
+            "id": "HG-0005-S6",
+            "given": "A draft is generated, revised, approved or copied against frozen activity/history evidence.",
+            "when": "The preparation/review path persists its result.",
+            "then": "Only request/draft/decision records change; assignment, encounters, attempts and checked outcomes require separate supplied/confirmed intake. New history evidence requires a new request.",
+            "verification": "Future before/after activity/observation row comparisons and frozen-snapshot revision checks."
           }
         ]
       }

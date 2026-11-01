@@ -1,0 +1,44 @@
+{
+  "check_type": "Final documentation and metadata verification",
+  "captured_at": "2026-11-01T18:24:28.536Z",
+  "checks": [
+    {
+      "name": "spec-validate-final",
+      "chunk_id": "308f42",
+      "wall_time_seconds": 0.000018166,
+      "exit_code": 0,
+      "original_token_count": 268,
+      "output": "{\n  \"ambiguous_result_keys\": [],\n  \"findings\": [],\n  \"limitations\": [\n    \"Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage.\"\n  ],\n  \"measurements\": [\n    {\n      \"validated_changes\": [\n        \"HG-0001\",\n        \"HG-0002\",\n        \"HG-0003\",\n        \"HG-0004\",\n        \"HG-0005\",\n        \"HG-0006\",\n        \"HG-0007\",\n        \"HG-0008\",\n        \"HG-0009\",\n        \"HG-0010\",\n        \"HG-0011\"\n      ]\n    },\n    {\n      \"schema_version\": 3,\n      \"store_sha256\": \"9bfb5b1bc32051d1952e756d6c98268b4f73717aace78e5857ae963873ed1c36\"\n    }\n  ],\n  \"operation\": \"spec-validate\",\n  \"result\": {\n    \"schema_version\": 3,\n    \"store_sha256\": \"9bfb5b1bc32051d1952e756d6c98268b4f73717aace78e5857ae963873ed1c36\",\n    \"validated_changes\": [\n      \"HG-0001\",\n      \"HG-0002\",\n      \"HG-0003\",\n      \"HG-0004\",\n      \"HG-0005\",\n      \"HG-0006\",\n      \"HG-0007\",\n      \"HG-0008\",\n      \"HG-0009\",\n      \"HG-0010\",\n      \"HG-0011\"\n    ]\n  },\n  \"status\": \"passed\"\n}\n"
+    },
+    {
+      "name": "diff-final",
+      "chunk_id": "93069a",
+      "wall_time_seconds": 0.000041375,
+      "exit_code": 0,
+      "original_token_count": 349,
+      "output": " M Architecture.md\n M \"Implementation Plan.md\"\n M \"Product Decisions.md\"\n M README.md\n M \"Repository Structure.md\"\n M specs/README.md\n M specs/catalog.json\n M specs/changes/HG-0003/spec.json\n M specs/changes/HG-0004/spec.json\n M specs/changes/HG-0005/spec.json\n M specs/changes/HG-0006/spec.json\n M specs/changes/HG-0007/spec.json\n M specs/changes/HG-0008/spec.json\n M specs/changes/HG-0010/spec.json\n M specs/datasets.md\n M specs/requirements/HG-0001-R1.json\n?? specs/changes/HG-0011/\n Architecture.md                    | 83 +++++++++++++++++++++++---------------\n Implementation Plan.md             | 20 +++++----\n Product Decisions.md               | 54 +++++++++++++++++++------\n README.md                          |  2 +\n Repository Structure.md            | 20 +++++----\n specs/README.md                    |  2 +\n specs/catalog.json                 |  2 +-\n specs/changes/HG-0003/spec.json    | 32 +++++++++++++--\n specs/changes/HG-0004/spec.json    | 20 +++++++--\n specs/changes/HG-0005/spec.json    | 25 +++++++++++-\n specs/changes/HG-0006/spec.json    | 11 ++++-\n specs/changes/HG-0007/spec.json    |  8 ++--\n specs/changes/HG-0008/spec.json    | 20 +++++++--\n specs/changes/HG-0010/spec.json    | 11 ++++-\n specs/datasets.md                  | 52 ++++++++++++++++--------\n specs/requirements/HG-0001-R1.json | 30 +++++++++++++-\n 16 files changed, 295 insertions(+), 97 deletions(-)\n"
+    },
+    {
+      "name": "snapshot-and-new-reports-final",
+      "chunk_id": "865e5a",
+      "wall_time_seconds": 0.000007041,
+      "exit_code": 0,
+      "original_token_count": 65,
+      "output": "{\n  \"reviewed_input_files_unchanged\": 14,\n  \"task_json_files_parsed\": 7,\n  \"new_report_whitespace_errors\": [],\n  \"documentation_change_integrated\": true,\n  \"documentation_tasks_done\": 3,\n  \"result_handoff\": \"pending human decision; no acceptance inferred\"\n}\n"
+    }
+  ],
+  "readiness_source": "integration-v1.json",
+  "readiness": {
+    "id": "HG-0011",
+    "blockers": [],
+    "change_sha256": "5bf056170fea16e99149a2b24648ed18116ff17b8fc704e5545876e72ce97aee",
+    "contract_sha256": "8ff26b30e825413172efcb32391561e22278a5763c00495a720eb890f730572c",
+    "human": "pending",
+    "inputs_sha256": "08612eed3ee710b0a19385203d56753aae6f7e3cc27a88e7cd95f65c5b869067",
+    "technical": "ready",
+    "verified_revision": null,
+    "review": "go"
+  },
+  "final_readiness_observation": "The subsequent spec-check --root . --id HG-0011 --brief true returned passed, technical ready, review go, no blockers, human pending, with the same change/input fingerprints. No application readiness or acceptance is claimed.",
+  "limits": "Reviewed design/draft inputs remain byte-identical to document-checks-v2.json. Final metadata writes affect the documentation change/current requirement only. Existing budget and historical setup-survey unknowns remain in checks-v1.json."
+}

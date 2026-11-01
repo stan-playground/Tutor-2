@@ -1,0 +1,58 @@
+{
+  "command": [
+    "/Users/HUAWEI/.highgrade/global/releases/v0-4-1/highgrade",
+    "spec-integrate",
+    "--root",
+    ".",
+    "--id",
+    "HG-0011",
+    "--expected",
+    "5d9fef788067af84bc70101d1b23ee06c078eda386c6e3bf7fd524e9319de70b",
+    "--brief",
+    "true"
+  ],
+  "exit_code": 0,
+  "report": {
+    "ambiguous_result_keys": [],
+    "findings": [],
+    "limitations": [
+      "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+    ],
+    "measurements": [
+      {
+        "schema_version": 3,
+        "store_sha256": "029b672cb60417da60f83a63144fec12d4ba9006decaba9267fbdc1d08d4cdf6"
+      },
+      {
+        "brief": {
+          "id": "HG-0011",
+          "blockers": [],
+          "change_sha256": "5bf056170fea16e99149a2b24648ed18116ff17b8fc704e5545876e72ce97aee",
+          "contract_sha256": "8ff26b30e825413172efcb32391561e22278a5763c00495a720eb890f730572c",
+          "human": "pending",
+          "inputs_sha256": "08612eed3ee710b0a19385203d56753aae6f7e3cc27a88e7cd95f65c5b869067",
+          "technical": "ready",
+          "verified_revision": null,
+          "review": "go"
+        }
+      }
+    ],
+    "operation": "spec-integrate",
+    "result": {
+      "brief": {
+        "id": "HG-0011",
+        "blockers": [],
+        "change_sha256": "5bf056170fea16e99149a2b24648ed18116ff17b8fc704e5545876e72ce97aee",
+        "contract_sha256": "8ff26b30e825413172efcb32391561e22278a5763c00495a720eb890f730572c",
+        "human": "pending",
+        "inputs_sha256": "08612eed3ee710b0a19385203d56753aae6f7e3cc27a88e7cd95f65c5b869067",
+        "technical": "ready",
+        "verified_revision": null,
+        "review": "go"
+      },
+      "schema_version": 3,
+      "store_sha256": "029b672cb60417da60f83a63144fec12d4ba9006decaba9267fbdc1d08d4cdf6"
+    },
+    "status": "passed"
+  }
+}

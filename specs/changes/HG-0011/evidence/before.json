@@ -1,0 +1,23 @@
+{
+  "check_type": "Initial normative-text observation",
+  "baseline_git_revision": "5c6df6ffaa54aacb7ba4df3e1b137d40bbd77cf2",
+  "requested_change": "Adopt cumulative exposure/review context and teaching needs beyond visible errors in the major design files and supporting specs.",
+  "initial_observation": "PD-09 limits current comparable performance to recent four-per-stream/90-day windows; no cumulative activity-fact contract exists. Architecture routes emphasize recheck, inaccurate/missed/overused forms, maintenance and domain fallback. Existing safeguards and four-job order are retained.",
+  "files": {
+    "Product Decisions.md": "841b580a37c4c79fa87610a99ee26823e2f6391493e1ac7f69bc63a4aaab240c",
+    "Architecture.md": "def960762308c98fe843b6ea1821ef75ff60021736ec09fc18c781bb0eb5bf88",
+    "Implementation Plan.md": "1829d5fb00b4f6d17f76a3b15ae8cebad77ff605e687c481ceb261ac2802ba9f",
+    "Repository Structure.md": "4e67f390cd24096a4f6a572072a4f12bbf375ff977777733d27f62e51b7db656",
+    "README.md": "1fd2429aababe9085baf448d4df22d02369427ba5a4d2d384656f3dfa04abf4e",
+    "specs/README.md": "2cf786c4037ef3d977e438d1e97fc68a5d98051ef9c941af97bebf835bde7981",
+    "specs/datasets.md": "42909969ebb779a30e07d9399eae5901eb921bb03279a0f00872d0f59bf56130",
+    "specs/changes/HG-0003/spec.json": "38c1ec87d27d15d02ef56d0c09ee3405649a581a9832fb039b745135ab577253",
+    "specs/changes/HG-0004/spec.json": "aa793a173054273b886659472232c56f2adb3ab7f71a96a0d3c6ffcaa8f76709",
+    "specs/changes/HG-0005/spec.json": "ef62454a480dc7785565570820fb0d3e5fe0bb2f638619c58b6211c3fe472228",
+    "specs/changes/HG-0006/spec.json": "e20a662b23ed5451f8748afb11c9df56d287fd4b59974e62a80cf94fdebb918d",
+    "specs/changes/HG-0007/spec.json": "e56c7b48cc8a864c1cb0a8e414365a3afb00250ccb68b0227a961f244d83e0f4",
+    "specs/changes/HG-0008/spec.json": "d2872fe74c3beff4d0de54d21babafb56994be7ef6e19e07e793b21fba8fc75e",
+    "specs/changes/HG-0010/spec.json": "db777e2f4dc726b89bbd110c082eb43b63f8672f69e72eae1b6311c72c72e4d7"
+  },
+  "limits": "Documentation-only baseline, not a failing application test. No learner data or external services inspected."
+}

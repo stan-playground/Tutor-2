@@ -1,0 +1,239 @@
+{
+  "id": "HG-0011",
+  "title": "Add cumulative learning history and teaching routes beyond visible errors",
+  "tags": [],
+  "goal": "Adopt cumulative learning context and teaching routes beyond visible errors consistently in the four major design documents and supporting application drafts.",
+  "rationale": "Recent performance summaries alone omit prior exposure and review needs; error-led routes alone omit constructive input, fluency and communication needs.",
+  "scope": "Documentation/specification update authorized by the owner on 1 November 2026. Product Decisions.md, Architecture.md, Implementation Plan.md, Repository Structure.md, relevant draft application specifications and datasets.md only, plus necessary navigation/evidence. No application implementation, live learner-data use, dataset upload, pilot activation, commit or publication. Preserve existing recent metric formulas/windows, source boundaries and deferred features.",
+  "questions": [],
+  "depends_on": [],
+  "related_to": [
+    {
+      "id": "HG-0003",
+      "reason": "Refine unimplemented evidence/history intake."
+    },
+    {
+      "id": "HG-0004",
+      "reason": "Refine reviewed material and non-error objective retrieval."
+    },
+    {
+      "id": "HG-0005",
+      "reason": "Refine on-request objectives and broader teaching routes."
+    },
+    {
+      "id": "HG-0006",
+      "reason": "Preserve review/export separation from learning-history intake."
+    },
+    {
+      "id": "HG-0007",
+      "reason": "Apply the existing data lifecycle to cumulative structured history."
+    },
+    {
+      "id": "HG-0008",
+      "reason": "Extend required history/route evaluation coverage."
+    },
+    {
+      "id": "HG-0010",
+      "reason": "Freeze qualified history context without feedback evidence writes."
+    }
+  ],
+  "operations": [
+    {
+      "action": "modify",
+      "requirement": {
+        "id": "HG-0001-R1",
+        "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+        "statement": "Product Decisions.md must present the current owner-confirmed priorities and delegated defaults, retain PD-01–PD-38 and add PD-39/40 for cumulative learning history and teaching beyond visible errors. Preserve historical provenance, distinguish defaults from validated results and preserve unrelated decisions. Architecture.md, Implementation Plan.md, Repository Structure.md and affected unimplemented application drafts/dataset contracts must reflect those decisions consistently. Product Decisions.md owns product descriptions; this contract governs documentation, not application implementation.",
+        "scenarios": [
+          {
+            "id": "HG-0001-S1",
+            "given": "The prior product document describes three preparation jobs; the owner now adds post-lesson feedback after homework and before lesson planning.",
+            "when": "The reader opens the revised product document.",
+            "then": "Before the detailed decisions the reader finds four major jobs in delivery order: homework, post-lesson feedback, lesson planning and urgent replanning, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+            "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+          },
+          {
+            "id": "HG-0001-S2",
+            "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+            "when": "The current principles and corresponding detailed entries are reconciled.",
+            "then": "Affected entries distinguish owner-confirmed decisions, explicitly delegated defaults and historical sources; all prior 37 IDs and unrelated decisions remain, with PD-38 added. Online production observations do not require gold answers. There are no implementation, measured-benefit or compliance-certification claims. Questions authorized for resolution become concrete decisions rather than remaining proposals.",
+            "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+          },
+          {
+            "id": "HG-0002-S1",
+            "given": "The owner explicitly delegates common-sense resolution of the 28 marked product questions in the current concise document.",
+            "when": "The assistant resolves those questions in Product Decisions.md.",
+            "then": "Each formerly marked entry has a concrete delegated decision covering its original question: pilot segment and scope, learner evidence and priorities, material/output suitability, review/revision/recovery, data access and retention, evaluation/KPIs, content ownership, interface scope and pilot charging. The document contains no unresolved #to-decide markers. Explicit pilot exclusions and numerical starting policies are labeled as decisions, not claimed evidence or application implementation.",
+            "verification": "Compare the exact pre-edit document and final document by ID; independent reviewers verify every prior marked topic has a concrete resolution, current priorities are preserved and numeric/data policies are honestly qualified."
+          },
+          {
+            "id": "HG-0009-S1",
+            "given": "The owner requests feedback from the selected transcript, saved learning curve/state and subskill-use metrics.",
+            "when": "The product priorities and detailed scope are updated.",
+            "then": "PD-38 and the opening describe transcript-grounded feedback as the second delivery priority; accuracy/required-use/avoidance remain distinct. Tutor-reviewed feedback cannot confirm observations or change metrics, requires no prior homework request and preserves missing/conflicting evidence and privacy limits. Existing homework cohort metrics/allowance remain homework-specific.",
+            "verification": "Executor and independent reviewers compare the exact document diff with the owner messages and PD-08/09/22/25/28; this proves normative content only."
+          },
+          {
+            "id": "HG-0011-S1",
+            "given": "The owner requests cumulative exposure, prior practice, prerequisites and later checks alongside recent performance.",
+            "when": "The revised product and architecture explain preparation context.",
+            "then": "They distinguish source-qualified cumulative learning history from the unchanged recent PD-08/09 rate/trend window. Important-now and worth-revisiting choices are recomputed on tutor requests, with reasons and unknowns. Older history cannot enter recent denominators by summary, elapsed time proves no forgetting, exposure proves no mastery, and prerequisite uncertainty prompts proportionate support/recheck rather than an invented prerequisite model.",
+            "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+          },
+          {
+            "id": "HG-0011-S2",
+            "given": "Drafts, assignment reports, confirmed input encounters, attempts and checked outcomes provide different evidence.",
+            "when": "The documents define history intake, derived views, frozen requests, feedback and retention.",
+            "then": "Planned content remains in drafts; assignment, actual encounter, attempts and checks are separately dated/source-qualified facts rather than a compulsory progression. Approval/copying/feedback cannot create those facts. Corrections and duplicate sources do not double-count; cumulative views are derived, frozen when used, and follow existing privacy/retention/deletion without reconstructing expired raw sources.",
+            "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+          },
+          {
+            "id": "HG-0011-S3",
+            "given": "A learner has a supported current goal but no conspicuous recent error.",
+            "when": "The product, objective/search contracts and evaluation cases select suitable teaching.",
+            "then": "Explicit accessible reading/listening input, vocabulary exposure, fluency, discourse-model, communication-strategy and meaningful project/task routes are available without fabricated weaknesses or compulsory exact-confusion fields. Each has a purpose, appropriate demands/support and route-specific criteria. Use reviewed permissioned assets or checked adaptation, including available recording-specific material/criteria for listening, with honest gaps and no unrelated original authoring or automatic ability claims.",
+            "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+          },
+          {
+            "id": "HG-0011-S4",
+            "given": "The two product decisions affect learner evidence, retrieval, generation, feedback and evaluation.",
+            "when": "The four major design files, related application drafts and dataset guide are reconciled.",
+            "then": "The same history/route meaning appears in product rules, data ownership, graph inputs, typed contracts, implementation stages and required synthetic cases. Preserve homework→feedback→lesson→urgent delivery order, recent metric rules, tutor approval, frozen-request semantics and existing privacy/pilot limits. No application execution, learning gain, new student app, automated audio assessment, background scheduling or implementation completion is claimed.",
+            "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0011-T1",
+      "description": "Record cumulative history and non-error teaching choices in PD-39/40 and reconcile affected existing product decisions.",
+      "done": true
+    },
+    {
+      "id": "HG-0011-T2",
+      "description": "Carry history facts, derived selection and route-specific material/criteria through architecture, repository responsibilities and unimplemented application drafts.",
+      "done": true
+    },
+    {
+      "id": "HG-0011-T3",
+      "description": "Align delivery stages and required synthetic cases; verify preserved scope and cross-document meaning with current structural checks and independent semantic review.",
+      "done": true
+    }
+  ],
+  "checks": [],
+  "attention": {
+    "requests": [
+      {
+        "id": "HG-0011-result-2026-11-01-v1",
+        "at": 1793557401,
+        "change_sha256": "5bf056170fea16e99149a2b24648ed18116ff17b8fc704e5545876e72ce97aee",
+        "content_sha256": "5d1ce35f12a4050f3325d1c49558bcd17043b3de238e33ffcd55395f665e4a88",
+        "inputs_sha256": "08612eed3ee710b0a19385203d56753aae6f7e3cc27a88e7cd95f65c5b869067",
+        "kind": "result",
+        "reason": "Documentation is technically ready with two independent semantic GO reviews; application drafts remain unimplemented. Budget and historical setup-survey unknowns are reported in the original evidence. Human acceptance, commit and activation remain separate.",
+        "response": null
+      }
+    ],
+    "snapshots": {
+      "5d1ce35f12a4050f3325d1c49558bcd17043b3de238e33ffcd55395f665e4a88": {
+        "title": "Add cumulative learning history and teaching routes beyond visible errors",
+        "goal": "Adopt cumulative learning context and teaching routes beyond visible errors consistently in the four major design documents and supporting application drafts.",
+        "rationale": "Recent performance summaries alone omit prior exposure and review needs; error-led routes alone omit constructive input, fluency and communication needs.",
+        "scope": "Documentation/specification update authorized by the owner on 1 November 2026. Product Decisions.md, Architecture.md, Implementation Plan.md, Repository Structure.md, relevant draft application specifications and datasets.md only, plus necessary navigation/evidence. No application implementation, live learner-data use, dataset upload, pilot activation, commit or publication. Preserve existing recent metric formulas/windows, source boundaries and deferred features.",
+        "depends_on": [],
+        "operations": [
+          {
+            "action": "modify",
+            "requirement": {
+              "id": "HG-0001-R1",
+              "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+              "statement": "Product Decisions.md must present the current owner-confirmed priorities and delegated defaults, retain PD-01–PD-38 and add PD-39/40 for cumulative learning history and teaching beyond visible errors. Preserve historical provenance, distinguish defaults from validated results and preserve unrelated decisions. Architecture.md, Implementation Plan.md, Repository Structure.md and affected unimplemented application drafts/dataset contracts must reflect those decisions consistently. Product Decisions.md owns product descriptions; this contract governs documentation, not application implementation.",
+              "scenarios": [
+                {
+                  "id": "HG-0001-S1",
+                  "given": "The prior product document describes three preparation jobs; the owner now adds post-lesson feedback after homework and before lesson planning.",
+                  "when": "The reader opens the revised product document.",
+                  "then": "Before the detailed decisions the reader finds four major jobs in delivery order: homework, post-lesson feedback, lesson planning and urgent replanning, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                  "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+                },
+                {
+                  "id": "HG-0001-S2",
+                  "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                  "when": "The current principles and corresponding detailed entries are reconciled.",
+                  "then": "Affected entries distinguish owner-confirmed decisions, explicitly delegated defaults and historical sources; all prior 37 IDs and unrelated decisions remain, with PD-38 added. Online production observations do not require gold answers. There are no implementation, measured-benefit or compliance-certification claims. Questions authorized for resolution become concrete decisions rather than remaining proposals.",
+                  "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+                },
+                {
+                  "id": "HG-0002-S1",
+                  "given": "The owner explicitly delegates common-sense resolution of the 28 marked product questions in the current concise document.",
+                  "when": "The assistant resolves those questions in Product Decisions.md.",
+                  "then": "Each formerly marked entry has a concrete delegated decision covering its original question: pilot segment and scope, learner evidence and priorities, material/output suitability, review/revision/recovery, data access and retention, evaluation/KPIs, content ownership, interface scope and pilot charging. The document contains no unresolved #to-decide markers. Explicit pilot exclusions and numerical starting policies are labeled as decisions, not claimed evidence or application implementation.",
+                  "verification": "Compare the exact pre-edit document and final document by ID; independent reviewers verify every prior marked topic has a concrete resolution, current priorities are preserved and numeric/data policies are honestly qualified."
+                },
+                {
+                  "id": "HG-0009-S1",
+                  "given": "The owner requests feedback from the selected transcript, saved learning curve/state and subskill-use metrics.",
+                  "when": "The product priorities and detailed scope are updated.",
+                  "then": "PD-38 and the opening describe transcript-grounded feedback as the second delivery priority; accuracy/required-use/avoidance remain distinct. Tutor-reviewed feedback cannot confirm observations or change metrics, requires no prior homework request and preserves missing/conflicting evidence and privacy limits. Existing homework cohort metrics/allowance remain homework-specific.",
+                  "verification": "Executor and independent reviewers compare the exact document diff with the owner messages and PD-08/09/22/25/28; this proves normative content only."
+                },
+                {
+                  "id": "HG-0011-S1",
+                  "given": "The owner requests cumulative exposure, prior practice, prerequisites and later checks alongside recent performance.",
+                  "when": "The revised product and architecture explain preparation context.",
+                  "then": "They distinguish source-qualified cumulative learning history from the unchanged recent PD-08/09 rate/trend window. Important-now and worth-revisiting choices are recomputed on tutor requests, with reasons and unknowns. Older history cannot enter recent denominators by summary, elapsed time proves no forgetting, exposure proves no mastery, and prerequisite uncertainty prompts proportionate support/recheck rather than an invented prerequisite model.",
+                  "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+                },
+                {
+                  "id": "HG-0011-S2",
+                  "given": "Drafts, assignment reports, confirmed input encounters, attempts and checked outcomes provide different evidence.",
+                  "when": "The documents define history intake, derived views, frozen requests, feedback and retention.",
+                  "then": "Planned content remains in drafts; assignment, actual encounter, attempts and checks are separately dated/source-qualified facts rather than a compulsory progression. Approval/copying/feedback cannot create those facts. Corrections and duplicate sources do not double-count; cumulative views are derived, frozen when used, and follow existing privacy/retention/deletion without reconstructing expired raw sources.",
+                  "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+                },
+                {
+                  "id": "HG-0011-S3",
+                  "given": "A learner has a supported current goal but no conspicuous recent error.",
+                  "when": "The product, objective/search contracts and evaluation cases select suitable teaching.",
+                  "then": "Explicit accessible reading/listening input, vocabulary exposure, fluency, discourse-model, communication-strategy and meaningful project/task routes are available without fabricated weaknesses or compulsory exact-confusion fields. Each has a purpose, appropriate demands/support and route-specific criteria. Use reviewed permissioned assets or checked adaptation, including available recording-specific material/criteria for listening, with honest gaps and no unrelated original authoring or automatic ability claims.",
+                  "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+                },
+                {
+                  "id": "HG-0011-S4",
+                  "given": "The two product decisions affect learner evidence, retrieval, generation, feedback and evaluation.",
+                  "when": "The four major design files, related application drafts and dataset guide are reconciled.",
+                  "then": "The same history/route meaning appears in product rules, data ownership, graph inputs, typed contracts, implementation stages and required synthetic cases. Preserve homework→feedback→lesson→urgent delivery order, recent metric rules, tutor approval, frozen-request semantics and existing privacy/pilot limits. No application execution, learning gain, new student app, automated audio assessment, background scheduling or implementation completion is claimed.",
+                  "verification": "Executor and independent semantic review compare the exact document/specification diff with the owner request and preserved contracts; structural/link/JSON checks support consistency only, not application behavior."
+                }
+              ]
+            }
+          }
+        ],
+        "tasks": [
+          {
+            "id": "HG-0011-T1",
+            "description": "Record cumulative history and non-error teaching choices in PD-39/40 and reconcile affected existing product decisions."
+          },
+          {
+            "id": "HG-0011-T2",
+            "description": "Carry history facts, derived selection and route-specific material/criteria through architecture, repository responsibilities and unimplemented application drafts."
+          },
+          {
+            "id": "HG-0011-T3",
+            "description": "Align delivery stages and required synthetic cases; verify preserved scope and cross-document meaning with current structural checks and independent semantic review."
+          }
+        ]
+      }
+    }
+  },
+  "imports": {},
+  "baseline": {
+    "HG-0001-R1": "7a0fdd0ae9aeda2fe3f4932fda83f034245c3f519c83fd52e96dd2cb6d1b0816"
+  },
+  "scoped_baseline": true,
+  "created_at": 1793556360,
+  "archived": true,
+  "abandoned_reason": null
+}

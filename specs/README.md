@@ -13,3 +13,5 @@ Draft specs for homework first and post-lesson feedback next, before lesson plan
 Lesson planning, urgent replanning, unrestricted original authoring, live tutoring, external delivery integrations and paid billing have no initial implementation specs here. Model/provider selection and detailed API, schema and graph contracts remain implementation preparation.
 
 These application drafts are not implemented, tested behavior or human acceptance. HG-0001/0002 are earlier documentation changes; [HG-0009](changes/HG-0009/spec.json) records the product-document feedback update. The [implementation plan](<../Implementation Plan.md>) owns delivery order and [repository plan](<../Repository Structure.md>) owns proposed modules/tools.
+
+[HG-0011](changes/HG-0011/spec.json) records the documentation change for PD-39/40: cumulative learning history/on-request review and teaching beyond visible errors. HG-0003–0008 and HG-0010 are refined in place as unimplemented drafts; history/route scenarios and the dataset contract define future checks, not passed application behavior.

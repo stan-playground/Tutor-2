@@ -1,0 +1,486 @@
+{
+  "check_type": "Document JSON/link/preservation checks",
+  "captured_at": "2026-11-01T18:18:12.236836+00:00",
+  "baseline_git_revision": "5c6df6ffaa54aacb7ba4df3e1b137d40bbd77cf2",
+  "checks": [
+    {
+      "name": "JSON specs/changes/HG-0003/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0004/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0005/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0006/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0007/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0008/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0010/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/catalog.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0011/spec.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON .highgrade/project/documents.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON .highgrade/project/survey.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0011/evidence/before.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "JSON specs/changes/HG-0011/evidence/checks-v1.json",
+      "outcome": "passed",
+      "details": "Parsed with Python json; contract structure is checked separately by spec-validate."
+    },
+    {
+      "name": "Decision IDs",
+      "outcome": "passed",
+      "details": "Retain the exact original decision order and append only PD-39/40."
+    },
+    {
+      "name": "PD-08 meaning preserved",
+      "outcome": "passed",
+      "details": "Existing subskill definitions and zero-denominator/valid-alternative safeguards are byte-identical."
+    },
+    {
+      "name": "Recent rate policy preserved",
+      "outcome": "passed",
+      "details": "The complete recent four-per-stream/90-day/rate/trend paragraph is retained verbatim."
+    },
+    {
+      "name": "Existing privacy policy preserved",
+      "outcome": "passed",
+      "details": "The original permission/retention/deletion policy is retained verbatim; new history inherits it."
+    },
+    {
+      "name": "Original provenance preserved",
+      "outcome": "passed",
+      "details": "A/I original source links are unchanged; their external contents were not read."
+    },
+    {
+      "name": "Draft scope HG-0003",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Draft scope HG-0004",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Draft scope HG-0005",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Draft scope HG-0006",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Draft scope HG-0007",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Draft scope HG-0008",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Draft scope HG-0010",
+      "outcome": "passed",
+      "details": "Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated."
+    },
+    {
+      "name": "Local document links/anchors",
+      "outcome": "passed",
+      "details": {
+        "checked": 58,
+        "errors": [],
+        "external_provenance_excluded": [
+          {
+            "from": "Product Decisions.md",
+            "target": "/Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Merged Architecture Doc.pdf",
+            "status": "unchanged historical external provenance; content not inspected"
+          },
+          {
+            "from": "Product Decisions.md",
+            "target": "/Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend/Tutor Copilot — Implementation Plan Repo + LangGraph HITL.md",
+            "status": "unchanged historical external provenance; content not inspected"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tracked change scope",
+      "outcome": "passed",
+      "details": {
+        "changed": [
+          "Architecture.md",
+          "Implementation Plan.md",
+          "Product Decisions.md",
+          "README.md",
+          "Repository Structure.md",
+          "specs/README.md",
+          "specs/catalog.json",
+          "specs/changes/HG-0003/spec.json",
+          "specs/changes/HG-0004/spec.json",
+          "specs/changes/HG-0005/spec.json",
+          "specs/changes/HG-0006/spec.json",
+          "specs/changes/HG-0007/spec.json",
+          "specs/changes/HG-0008/spec.json",
+          "specs/changes/HG-0010/spec.json",
+          "specs/datasets.md"
+        ],
+        "unexpected": []
+      }
+    }
+  ],
+  "links": [
+    {
+      "from": "Architecture.md",
+      "target": "Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Architecture.md",
+      "target": "Implementation Plan.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Architecture.md",
+      "target": "Repository Structure.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "Architecture.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/README.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/datasets.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "Repository Structure.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0003/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0007/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0004/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0005/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0006/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0006/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0006/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0007/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0008/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0008/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Implementation Plan.md",
+      "target": "specs/changes/HG-0010/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "Repository Structure.md",
+      "target": "Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Repository Structure.md",
+      "target": "Architecture.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Repository Structure.md",
+      "target": "Implementation Plan.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Repository Structure.md",
+      "target": "specs/README.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "Repository Structure.md",
+      "target": "Architecture.md#6-the-data-model-and-retrieval-boundary",
+      "outcome": "passed"
+    },
+    {
+      "from": "Repository Structure.md",
+      "target": "specs/changes/HG-0010/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "Architecture.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "Implementation Plan.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "Repository Structure.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "specs/README.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "specs/datasets.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "AGENTS.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": ".highgrade/project/INSTRUCTIONS.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": ".highgrade/project/documents.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": ".highgrade/project/survey.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "specs/catalog.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "specs/changes/HG-0009/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "specs/changes/HG-0010/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "README.md",
+      "target": "specs/changes/HG-0011/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "../Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "../Architecture.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0003/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0004/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0005/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0006/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0007/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0008/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "datasets.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0010/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0009/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "../Implementation Plan.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "../Repository Structure.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/README.md",
+      "target": "changes/HG-0011/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/datasets.md",
+      "target": "changes/HG-0008/spec.json",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/datasets.md",
+      "target": "../Product Decisions.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/datasets.md",
+      "target": "../Architecture.md",
+      "outcome": "passed"
+    },
+    {
+      "from": "specs/datasets.md",
+      "target": "changes/HG-0010/spec.json",
+      "outcome": "passed"
+    }
+  ],
+  "inputs": {
+    "Product Decisions.md": "b078fb44ae53f9887eaa4989206466de883649a516dd5239e8b88abc44714d27",
+    "Architecture.md": "dd7409f787d70b7d8b986e9bb7db669b97410490df682a265a5dcdd0f7682fcd",
+    "Implementation Plan.md": "44ab7022ba8e082b815f5eed135d4570e2c21709f6720508e9f84515908c8be6",
+    "Repository Structure.md": "4ce0351a5ab4ecb1ffce3b26b3c9202f10823527d3d2dd8ee99b495710bbbce6",
+    "README.md": "e20a2f0abb3a064164a601387752577cf3042d780608d6aab485a49acb867321",
+    "specs/README.md": "2d53f2ed832f06eef9a72b42af2600be8ff364739b586a7177352b2b1b36eb33",
+    "specs/datasets.md": "3fc77d82dd8e4daa03b58eb0104d4f872a1afd9e3f972cbdbf213ca09abf6310",
+    "specs/changes/HG-0003/spec.json": "a0d5ff768f43c153b7a0bdea1cdaa1b9aaf7d52df188db81420a17112da1aaea",
+    "specs/changes/HG-0004/spec.json": "883fa1b1c90ef369e54919cd414440fa9067d78045bc87d198339b556f56177b",
+    "specs/changes/HG-0005/spec.json": "d7013f8dbd598188d7d1d5ca455370139dba0a9724504bd834f90931d46a9805",
+    "specs/changes/HG-0006/spec.json": "db034052dbeebd066db616ff9b0e98bc5b63153a3a85412d07d06374bd64c33c",
+    "specs/changes/HG-0007/spec.json": "8e1636c2265a993234b6f3915c10912044e49e4d1c441a456e524eb90a3bb7d1",
+    "specs/changes/HG-0008/spec.json": "a524c399b5d4d200cb44c1eb153f8d2520a34a899744b403a99fe924c67c8a04",
+    "specs/changes/HG-0010/spec.json": "08f7d603831a7affa7a0c2bedd991e70151ad87ad05f997da13d3dbbbfbf6aab"
+  },
+  "limits": "Static JSON parsing, standard local Markdown links/anchors and explicit preservation checks only. No network, application tests, authored gold fixtures, listening playback, learner data or pedagogical-effectiveness verification.",
+  "command": "python3 - <<'PY'\nimport hashlib, json, re, subprocess, sys\nfrom datetime import datetime, timezone\nfrom pathlib import Path\nfrom urllib.parse import unquote\nroot=Path.cwd()\nmd=['Product Decisions.md','Architecture.md','Implementation Plan.md','Repository Structure.md','README.md','specs/README.md','specs/datasets.md']\ndrafts=[f'specs/changes/{sid}/spec.json' for sid in ['HG-0003','HG-0004','HG-0005','HG-0006','HG-0007','HG-0008','HG-0010']]\njson_paths=drafts+['specs/catalog.json','specs/changes/HG-0011/spec.json','.highgrade/project/documents.json','.highgrade/project/survey.json','specs/changes/HG-0011/evidence/before.json','specs/changes/HG-0011/evidence/checks-v1.json']\nchecks=[]\ndef check(name,ok,details):\n    checks.append({'name':name,'outcome':'passed' if ok else 'failed','details':details})\nfor f in json_paths:\n    try: json.loads(Path(f).read_text());check('JSON '+f,True,'Parsed with Python json; contract structure is checked separately by spec-validate.')\n    except Exception as e: check('JSON '+f,False,str(e))\nold=subprocess.check_output(['git','show','HEAD:Product Decisions.md'],text=True)\nnew=Path(md[0]).read_text()\nids=lambda s:re.findall(r'^### (PD-\\d+)\\.',s,re.M)\ncheck('Decision IDs',ids(new)==ids(old)+['PD-39','PD-40'],'Retain the exact original decision order and append only PD-39/40.')\nsection=lambda s,a,b:s.split('### '+a+'.',1)[1].split('### '+b+'.',1)[0]\ncheck('PD-08 meaning preserved',section(old,'PD-08','PD-09')==section(new,'PD-08','PD-09'),'Existing subskill definitions and zero-denominator/valid-alternative safeguards are byte-identical.')\nrate=next(l for l in old.splitlines() if l.startswith('**Delegated decision.** Use up to the latest four'))\ncheck('Recent rate policy preserved',rate in new,'The complete recent four-per-stream/90-day/rate/trend paragraph is retained verbatim.')\nprivacy=next(l for l in old.splitlines() if l.startswith('**Delegated decision.** Require authenticated tutor access'))\ncheck('Existing privacy policy preserved',privacy in new,'The original permission/retention/deletion policy is retained verbatim; new history inherits it.')\norigins=lambda s:re.findall(r'^- \\*\\*[AI]:.*$',s,re.M)\ncheck('Original provenance preserved',origins(old)==origins(new),'A/I original source links are unchanged; their external contents were not read.')\nfor f in drafts:\n    a=json.loads(subprocess.check_output(['git','show','HEAD:'+f],text=True));b=json.loads(Path(f).read_text())\n    old_s={s['id'] for o in a['operations'] for s in o['requirement']['scenarios']}\n    new_s={s['id'] for o in b['operations'] for s in o['requirement']['scenarios']}\n    check('Draft scope '+b['id'],not b['archived'] and not any(t['done'] for t in b['tasks']) and old_s<=new_s and b['created_at']==a['created_at'],'Existing scenario IDs/creation identity retained; application tasks remain unimplemented and unintegrated.')\nlinks=[];external=[];errors=[]\ndef anchors(text):\n    out=set();counts={}\n    for line in text.splitlines():\n        m=re.match(r'^#{1,6}\\s+(.+?)\\s*#*$',line)\n        if not m:continue\n        base=re.sub(r'[^\\w\\s-]','',m.group(1).lower()).strip().replace(' ','-')\n        n=counts.get(base,0);counts[base]=n+1;out.add(base+(('-'+str(n)) if n else ''))\n    return out\nfor f in md:\n    text=Path(f).read_text()\n    for m in re.finditer(r'\\[[^\\]\\n]*\\]\\((?:<([^>\\n]+)>|([^\\)\\n]+))\\)',text):\n        target=m.group(1) or m.group(2)\n        if re.match(r'^(https?://|mailto:)',target):continue\n        path,sep,anchor=target.partition('#')\n        p=(Path(f).parent/unquote(path)).resolve() if path else Path(f).resolve()\n        if not p.is_relative_to(root):external.append({'from':f,'target':target,'status':'unchanged historical external provenance; content not inspected'});continue\n        err=None\n        if not p.exists():err='missing target'\n        elif sep and p.suffix=='.md' and unquote(anchor) not in anchors(p.read_text()):err='missing standard heading anchor'\n        item={'from':f,'target':target,'outcome':'failed' if err else 'passed'}\n        if err:item['reason']=err;errors.append(item)\n        links.append(item)\ncheck('Local document links/anchors',not errors,{'checked':len(links),'errors':errors,'external_provenance_excluded':external})\nallowed=set(md+drafts+['specs/catalog.json'])\nchanged=subprocess.check_output(['git','diff','--name-only'],text=True).splitlines()\ncheck('Tracked change scope',set(changed)<=allowed,{'changed':changed,'unexpected':sorted(set(changed)-allowed)})\nreport={'check_type':'Document JSON/link/preservation checks','captured_at':datetime.now(timezone.utc).isoformat(),'baseline_git_revision':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'checks':checks,'links':links,'inputs':{f:hashlib.sha256(Path(f).read_bytes()).hexdigest() for f in md+drafts},'limits':'Static JSON parsing, standard local Markdown links/anchors and explicit preservation checks only. No network, application tests, authored gold fixtures, listening playback, learner data or pedagogical-effectiveness verification.'}\nprint(json.dumps(report,ensure_ascii=False,indent=2))\nsys.exit(any(c['outcome']=='failed' for c in checks))\nPY"
+}

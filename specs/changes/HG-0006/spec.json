@@ -19,7 +19,7 @@
       "requirement": {
         "id": "HG-0006-R1",
         "title": "Durable preparation, tutor review and approved export",
-        "statement": "Use a small LangGraph for preparation and durable clarification/review pauses. Persist exact draft/part decisions in PostgreSQL, reject stale/duplicate effects and require valid tutor-approved retained parts for student export. Part approval alone calls no model; substantive edits regenerate and revalidate. Failed active generation requires a manual new request. Reuse these boundaries for post-lesson feedback with job-specific validation and student fields, without a homework-duration/exercise requirement; feedback approval never confirms performance observations.",
+        "statement": "Use a small LangGraph for preparation and durable clarification/review pauses. Persist exact draft/part decisions in PostgreSQL, reject stale/duplicate effects and require valid tutor-approved retained parts for student export. Part approval alone calls no model; substantive edits regenerate and revalidate. Failed active generation requires a manual new request. Reuse these boundaries for post-lesson feedback with job-specific validation and student fields, without a homework-duration/exercise requirement; feedback approval never confirms performance observations. Across both jobs, review/approval/copying records no assignment, actual encounter, attempt or checked outcome; separate evidence intake owns those facts and revisions keep frozen history references.",
         "scenarios": [
           {
             "id": "HG-0006-S1",
@@ -53,8 +53,15 @@
             "id": "HG-0006-S5",
             "given": "A validated feedback draft has no homework duration or exercises and contains private tutor notes.",
             "when": "The tutor approves its exact sections and requests student copy.",
-            "then": "The shared review path accepts the feedback schema, exports only valid approved student fields, excludes private notes and leaves performance evidence and homework allowance unchanged.",
+            "then": "The shared review path accepts the feedback schema, exports only valid approved student fields, excludes private notes and leaves activity-history/performance evidence and homework allowance unchanged.",
             "verification": "Future job-typed review/export integration with synthetic canaries, row comparisons and separate accounting."
+          },
+          {
+            "id": "HG-0006-S6",
+            "given": "An approved homework artifact is copied without a separate assignment or actual-use report.",
+            "when": "Review/export and duplicate finalization run.",
+            "then": "No assignment, encounter, attempt or checked-outcome fact is created; later tutor intake can record independently supported facts. Frozen request history is not silently refreshed.",
+            "verification": "Future actual review/export/intake persistence comparisons across duplicate actions."
           }
         ]
       }

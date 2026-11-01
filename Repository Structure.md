@@ -4,6 +4,8 @@ Plan only · 1 November 2026
 
 Use one Python package for the web application and LangGraph worker. Finish homework first, then post-lesson feedback, then lesson planning and urgent replanning. Homework and feedback share learner evidence, subskill calculations, persistence and exact tutor approval; they do not need separate agent frameworks or services.
 
+PD-39/40 extend those responsibilities with source-qualified cumulative activity facts and teaching routes beyond visible errors. Add them to the existing modules as working slices, without a scheduler, separate memory store, student app or automatic audio-assessment package.
+
 [Product Decisions](<Product Decisions.md>) owns scope, [Architecture](Architecture.md) owns system design, [Implementation Plan](<Implementation Plan.md>) owns delivery order, and the [native specifications](specs/README.md) own requirements. This document proposes file ownership and developer commands. It creates no application, configuration, runnable recipe or tested dependency set.
 
 ## 1. Grow a small package
@@ -33,13 +35,13 @@ Legend2/
 │   ├── settings.py                   # validated process configuration
 │   ├── db.py                         # engines/pools and transaction setup
 │   ├── models.py                     # application relational metadata
-│   ├── schemas.py                    # typed request, model and artifact boundaries
-│   ├── evidence.py                   # intake, confirmation, corrections, snapshots
+│   ├── schemas.py                    # typed history facts, purpose/routes and artifacts
+│   ├── evidence.py                   # intake, activity facts, cumulative views, snapshots
 │   ├── metrics.py                    # deterministic rates and qualified trends
 │   ├── retrieval.py                  # authorized material search and cache bypass
-│   ├── homework.py                   # objectives, adaptation and homework composition
+│   ├── homework.py                   # current/revisit purposes, routes and composition
 │   ├── feedback.py                   # post-lesson feedback composition; add second
-│   ├── validation.py                 # artifact checks and independent solution checks
+│   ├── validation.py                 # route/source criteria and applicable solution checks
 │   ├── review.py                     # exact decisions, revisions and approved output
 │   ├── graph.py                      # explicit job routes, durable waits and revisions
 │   └── templates/                    # server-rendered tutor interface
@@ -60,15 +62,19 @@ The `src/` layout separates installed application imports from repository toolin
 
 `web.py` authenticates the tutor, resolves learner ownership and saves the selected job. `worker.py` loads that request and invokes `graph.py`. The graph uses shared evidence/metric functions, dispatches to `homework.py` or `feedback.py`, validates the resulting artifact and pauses for tutor decisions through `review.py`.
 
-`evidence.py` loads known transcript versions and confirmed observations directly; `metrics.py` calculates the selected evidence's rates/trends without vector search. `homework.py` selects objectives; `retrieval.py` builds controlled material-search descriptions/filters from them, calls the embedding model and searches the authorized teaching bank. The chat model may inform an objective but does not execute SQL or direct a search loop. Keep these operations in the existing modules; the full contract and alternatives belong to [Architecture section 6](Architecture.md#6-the-data-model-and-retrieval-boundary).
+`evidence.py` owns tutor intake/confirmation of independent assignment, encounter, attempt and checked-outcome facts, linked to sources/observations with corrections and deduplication. Drafts/approval/copying are not actual-use evidence. It loads recent observations and retained relevant activity facts directly, derives separate qualified cumulative context and freezes selected revisions. `metrics.py` keeps PD-08/09's recent selection/count/rate/trend meaning; a cumulative view never widens its denominators or becomes editable model memory.
 
-Homework uses reviewed assets/explanations to compose practice. [HG-0010 feedback](specs/changes/HG-0010/spec.json) uses the selected authorized current transcript and frozen saved learner state to explain performance and the qualified learning curve. Its job is `post_lesson_feedback`; notes/history do not replace a missing/expired current transcript. Generated comments and feedback approval cannot confirm observations or update counts, trends or preferences. Student sections need exact tutor approval and manual handoff; private tutor notes stay separate. No prior homework request, exercise, duration, automatic grading or delivery is required.
+`homework.py` selects explained important-now/worth-revisiting purposes and PD-40 routes from goals/recent evidence/history, with no compulsory split or invented error. `schemas.py` permits purpose/outcome, route, demands/support, criteria, modality, relevant skills and optional confusion; remediation still needs its actual confusion. `retrieval.py` constructs controlled descriptions/filters and searches authorized reviewed input/activity/task-framework versions. The chat model informs teaching choices without SQL/search authority. `validation.py` checks accessibility, recording/criteria correspondence and route-specific outcomes; independent solving applies to closed answers. These are existing-module responsibilities, not a module/class per route. See [Architecture section 6](Architecture.md#6-the-data-model-and-retrieval-boundary).
+
+Homework uses reviewed input, activities, explanations and task frameworks to compose useful sections. Listening references available permitted recordings with matching reviewed criteria; this is no learner-recording/audio-scoring pipeline. [HG-0010 feedback](specs/changes/HG-0010/spec.json) uses the selected authorized current transcript and frozen recent/cumulative references for supported findings, recent comparisons and qualified continuity context. Notes/history cannot replace a missing/expired current transcript. Generation/review/export cannot create activity facts, confirm observations or update counts/trends/preferences. Tutor actual-use intake stays separate. Approved student sections remain manually handed off; private notes stay separate. No prior homework, exercise, duration, automatic grading or delivery is required.
 
 Keep job-specific output schemas and rubrics explicit inside the shared modules. Reuse the actual evidence, ownership and approval operations, rather than forcing feedback into an exercise/key schema. One graph may select different composition/validation branches; no separate supervisor or second persistence framework is needed. Graph checkpoints hold execution references; relational records remain authoritative for evidence, decisions and approved artifacts.
 
 Add feedback fixtures and stage/end-to-end evaluation membership separately. Homework's twelve golden families do not establish feedback quality. Defer feedback activation until its own reviewed coverage and the common safety/privacy/review boundaries pass.
 
-Pools, provider clients and the compiled graph live for each process; transactions and loaded request context live for an invocation. Use bounded async I/O for independent external waits, keep dependent stages sequential and never share a database session across concurrent tasks. Threads are only for a necessary blocking parser; processes need measured CPU work.
+Place required cumulative-history and every enabled non-error-route variant/isolated case in the existing `evaluation/homework/` area; feedback includes cumulative-context/no-history-write cases in its own area. Preserve twelve homework base families while counting all required applicable items in gate denominators. These remain planned fixtures until authored and reviewed.
+
+Pools, provider clients and the compiled graph live for each process; transactions and loaded recent/cumulative context live for an invocation. Persisted activity facts survive requests under the existing retention policy, and requests reference frozen revisions; there is no long-lived per-learner model session. Use bounded async I/O for independent external waits, keep dependent stages sequential and never share a database session across tasks. Threads are only for a necessary blocking parser; processes need measured CPU work.
 
 ## 3. Recommended tools
 
