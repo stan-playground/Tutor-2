@@ -1,0 +1,11 @@
+docker compose --env-file /dev/null -f compose.yaml down
+ Container legend2-redis-1 Stopping 
+ Container legend2-postgres-1 Stopping 
+ Container legend2-postgres-1 Stopped 
+ Container legend2-postgres-1 Removing 
+ Container legend2-redis-1 Stopped 
+ Container legend2-redis-1 Removing 
+ Container legend2-redis-1 Removed 
+ Container legend2-postgres-1 Removed 
+ Network legend2_default Removing 
+ Network legend2_default Removed 

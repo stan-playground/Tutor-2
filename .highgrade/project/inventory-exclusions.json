@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {"path": ".venv", "reason": "Generated installed environment; dependency versions and hashes are owned by uv.lock."},
+    {"path": ".uv-cache", "reason": "Downloaded package/build cache; inspect declared dependencies and executed installed APIs instead."},
+    {"path": ".pytest_cache", "reason": "Generated pytest execution cache; source tests and original reports remain in scope."},
+    {"path": ".ruff_cache", "reason": "Generated lint cache; Ruff configuration and actual check reports remain in scope."},
+    {"path": ".mypy_cache", "reason": "Generated type-check cache; typed source, configuration and actual reports remain in scope."}
+  ]
+}

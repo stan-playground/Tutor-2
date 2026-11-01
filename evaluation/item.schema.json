@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tutor-copilot:evaluation-item:1",
+  "title": "Tutor Copilot initial evaluation item, version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["input", "expectedOutput", "metadata"],
+  "properties": {
+    "input": {
+      "type": "object",
+      "required": ["fixture_time", "task_request", "fixture_state", "sources"],
+      "properties": {
+        "fixture_time": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "task_request": {"type": "object", "minProperties": 1},
+        "fixture_state": {"type": "object", "minProperties": 1},
+        "sources": {"type": "array", "minItems": 1, "items": {"type": "object", "minProperties": 1}}
+      }
+    },
+    "expectedOutput": {"type": "object", "minProperties": 1},
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id", "family_id", "revision", "job", "stage", "level", "domain",
+        "teaching_route", "priority_category", "severity", "failure_categories",
+        "provenance", "review", "schema_version", "rubric_version", "split"
+      ],
+      "properties": {
+        "case_id": {"type": "string", "minLength": 1},
+        "family_id": {"type": "string", "minLength": 1},
+        "variant_id": {"type": "string", "minLength": 1},
+        "revision": {"type": "integer", "minimum": 1},
+        "job": {"enum": ["homework", "post_lesson_feedback"]},
+        "stage": {"enum": ["source_context", "extraction", "subskill_analysis", "retrieval", "adaptation", "composition", "validation", "review_revision", "end_to_end"]},
+        "level": {"enum": ["A2", "B1", "B2"]},
+        "domain": {"type": "string", "minLength": 1},
+        "teaching_route": {"type": ["string", "null"]},
+        "priority_category": {"type": ["string", "null"]},
+        "severity": {"enum": ["critical", "ordinary"]},
+        "failure_categories": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "provenance": {
+          "type": "object",
+          "required": ["source_type", "source_version", "attribution", "rights"],
+          "properties": {
+            "source_type": {"const": "wholly_synthetic"},
+            "source_version": {"type": "string", "minLength": 1},
+            "attribution": {"type": "string", "minLength": 1},
+            "rights": {
+              "type": "object",
+              "required": ["storage", "adaptation", "delivery"],
+              "properties": {
+                "storage": {"const": true},
+                "adaptation": {"const": true},
+                "delivery": {"const": true}
+              }
+            }
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": ["state", "reviewed", "assignments", "decisions"],
+          "properties": {
+            "state": {"enum": ["draft", "in_review", "approved", "retired"]},
+            "reviewed": {"type": "boolean"},
+            "assignments": {
+              "type": "object",
+              "required": ["primary", "second"],
+              "properties": {
+                "primary": {"type": ["string", "null"]},
+                "second": {"type": ["string", "null"]}
+              }
+            },
+            "decisions": {"type": "array", "items": {"type": "object", "minProperties": 1}}
+          }
+        },
+        "schema_version": {"const": "1"},
+        "rubric_version": {"type": "string", "minLength": 1},
+        "split": {"enum": ["development", "holdout"]}
+      }
+    }
+  }
+}

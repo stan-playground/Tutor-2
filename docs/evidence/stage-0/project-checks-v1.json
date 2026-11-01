@@ -1,0 +1,97 @@
+{
+  "time_utc": "2026-11-01T19:29:20.129014+00:00",
+  "checks": [
+    {
+      "check": "doctor",
+      "exit_code": 0,
+      "status": "passed",
+      "findings": []
+    },
+    {
+      "check": "inspect",
+      "exit_code": 2,
+      "status": "unknown",
+      "findings": [
+        {
+          "code": "BudgetNotAgreed",
+          "location": "README.md",
+          "message": "\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0435 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d.",
+          "status": "unknown"
+        },
+        {
+          "code": "BudgetNotAgreed",
+          "location": "AGENTS.md",
+          "message": "\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0435 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "migrations",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".pytest_cache",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".uv-cache",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".ruff_cache",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "tests",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".mypy_cache",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "evaluation",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "src",
+          "message": "\u041e\u0431\u043b\u0430\u0441\u0442\u044c \u043d\u0435 \u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d\u0430 \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0443 \u0434\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0430\u0446\u0438\u0438.",
+          "status": "unknown"
+        },
+        {
+          "code": "BudgetNotAgreed",
+          "location": "context-route",
+          "message": "\u0411\u044e\u0434\u0436\u0435\u0442 \u043d\u0435 \u0441\u043e\u0433\u043b\u0430\u0441\u043e\u0432\u0430\u043d.",
+          "status": "unknown"
+        }
+      ]
+    },
+    {
+      "check": "survey",
+      "exit_code": 2,
+      "status": "unknown",
+      "findings": [
+        {
+          "code": "SurveyIncomplete",
+          "location": ".highgrade/project/survey.json",
+          "message": "See separate decisions, source freshness and review record.",
+          "status": "unknown"
+        }
+      ]
+    }
+  ]
+}

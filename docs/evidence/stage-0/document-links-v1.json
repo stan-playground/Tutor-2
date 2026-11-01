@@ -1,0 +1,149 @@
+{
+  "links": [
+    {
+      "source": "README.md",
+      "target": "Product Decisions.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/stage-0.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "Product Decisions.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "Architecture.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "Implementation Plan.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "Repository Structure.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "evaluation/README.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "specs/README.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "specs/datasets.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": ".highgrade/project/INSTRUCTIONS.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": ".highgrade/project/documents.json",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": ".highgrade/project/survey.json",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "specs/catalog.json",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "specs/changes/HG-0009/spec.json",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "specs/changes/HG-0010/spec.json",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "specs/changes/HG-0011/spec.json",
+      "exists": true
+    },
+    {
+      "source": "docs/stage-0.md",
+      "target": "../Implementation Plan.md",
+      "exists": true
+    },
+    {
+      "source": "evaluation/README.md",
+      "target": "../specs/datasets.md",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "survey.json",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../README.md",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../AGENTS.md",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../Product Decisions.md",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "documents.json",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../docs/stage-0.md",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../specs/changes/HG-0001/spec.json",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../specs/changes/HG-0002/spec.json",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../Architecture.md",
+      "exists": true
+    },
+    {
+      "source": ".highgrade/project/INSTRUCTIONS.md",
+      "target": "../../README.md",
+      "exists": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "time_utc": "2026-11-01T19:33:43.044934+00:00",
+  "commands": [
+    "tutor-web",
+    "tutor-worker"
+  ],
+  "result": "passed",
+  "request_correlation_id": "6c345726-254c-410a-94df-298c35825c39",
+  "web_exit_code": -15,
+  "worker_exit_code": 0,
+  "resource_cleanup_observed": true,
+  "private_query_excluded": true,
+  "original_reports": [
+    "web-process-v3.txt",
+    "worker-process-v3.txt"
+  ],
+  "prior_sentinel_checks": "process-v2.json additionally exercised header/body/path sentinels; final unit suite exercises exception/header/body/path/query/library sentinels."
+}

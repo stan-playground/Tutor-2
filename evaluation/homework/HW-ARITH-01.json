@@ -1,0 +1,88 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {"operation": "calculate_confirmed_rates", "learner_ref": "synthetic-learner-hw-1@1"},
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-1@1",
+      "learner_ref": "synthetic-learner-hw-1@1",
+      "owner_ref": "synthetic-tutor-1@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {"revision": 1, "level": "B1", "status": "provisional", "recorded_at": "2026-10-30T09:00:00Z"},
+      "goals": ["Choose an appropriate past form in a project update."],
+      "activity_fact_revisions": [],
+      "observations": [
+        {
+          "id": "synthetic-observation-hw-1",
+          "revision": 1,
+          "source_ref": "synthetic-checked-response-hw-1@1",
+          "observed_at": "2026-10-31T09:00:00Z",
+          "confirmed_at": "2026-10-31T09:15:00Z",
+          "confirmed_by": "synthetic-tutor-1@1",
+          "task_type": "controlled_written_practice",
+          "assistance": "none",
+          "confirmed": true,
+          "attempted_accuracy": {"correct": 6, "opportunities": 8},
+          "required_use": {"correct": 5, "opportunities": 10},
+          "appropriate_avoidance": {"correct": 3, "opportunities": 4}
+        }
+      ]
+    },
+    "sources": [
+      {
+        "ref": "synthetic-checked-response-hw-1@1",
+        "kind": "confirmed_structured_observation",
+        "revision": 1,
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "note": "Authored confirmed counts for an isolated arithmetic boundary; no response-extraction accuracy is asserted."
+      }
+    ]
+  },
+  "expectedOutput": {
+    "rates": {
+      "attempted_accuracy": {"correct": 6, "opportunities": 8, "rate": 0.75},
+      "required_use": {"correct": 5, "opportunities": 10, "rate": 0.5},
+      "appropriate_avoidance": {"correct": 3, "opportunities": 4, "rate": 0.75}
+    },
+    "selected_observation_refs": ["synthetic-observation-hw-1@1"],
+    "selected_history_refs": [],
+    "required_qualifications": ["One observation does not establish a trend or maintenance."],
+    "prohibited_claims": ["mastery", "forgetting", "confirmed trend"],
+    "prohibited_writes": ["activity facts", "performance observations", "preferences"],
+    "terminal_state": "analysis_only",
+    "reached_stages": ["subskill_analysis"],
+    "unreached_stage_reasons": {
+      "extraction": "Input counts are already tutor-confirmed; extraction is a separate boundary.",
+      "retrieval": "This isolated arithmetic item does not select teaching material.",
+      "adaptation": "No teaching material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This item covers only confirmed-rate arithmetic."
+    }
+  },
+  "metadata": {
+    "case_id": "HW-ARITH-01",
+    "family_id": "HW-ARITH",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": ["mixed_measures", "unsupported_trend"],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-ARITH-01@1",
+      "attribution": "Authored for this repository; no external teaching material or real learner content.",
+      "rights": {"storage": true, "adaptation": true, "delivery": true}
+    },
+    "review": {"state": "draft", "reviewed": false, "assignments": {"primary": "1", "second": "2"}, "decisions": []},
+    "schema_version": "1",
+    "rubric_version": "draft-arithmetic-1",
+    "split": "development"
+  }
+}

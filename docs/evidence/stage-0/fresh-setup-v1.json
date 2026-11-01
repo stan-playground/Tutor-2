@@ -1,0 +1,30 @@
+{
+  "time_utc": "2026-11-01T19:31:59.360723+00:00",
+  "environment": "new temporary virtual environment; removed after checks",
+  "commands": [
+    {
+      "command": [
+        "uv",
+        "sync",
+        "--locked",
+        "--offline"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/var/folders/xf/3xhl_qq52t586dzkmy3c94000000gn/T/tc-stage0-669w3xfz/venv/bin/python",
+        "-c",
+        "import tutor_copilot.web, tutor_copilot.worker; print(\"fresh installed imports passed\")"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/var/folders/xf/3xhl_qq52t586dzkmy3c94000000gn/T/tc-stage0-669w3xfz/venv/bin/tutor-worker",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

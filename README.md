@@ -1,15 +1,17 @@
-# Tutor Copilot — product preparation
+# Tutor Copilot
 
 This repository prepares a tutor-facing assistant, with delivery priority homework → post-lesson feedback → lesson planning → urgent replanning. [Product Decisions.md](<Product Decisions.md>) owns product scope and distinguishes owner-confirmed priorities, delegated defaults, historical decisions and estimates. These describe intent, not implementation or measured results.
 
 ## Current structure
 
-There is no application implementation, dependency manifest, test suite, formatter, linter or CI configuration in this checkout. Architecture.md records the selected design proposal; dependency compatibility and the deployment environment remain unverified. Do not infer implementation from design choices or historical source references.
+Stage 0 implements a local synthetic development foundation: an installed Python package, FastAPI health endpoints, a separate worker startup shell, PostgreSQL/pgvector migrations, disposable Redis, safe console observations and real checks. [Stage 0](docs/stage-0.md) records scope and evidence. Learner intake, authentication, generation, queue processing and graph execution remain future work. Architecture.md records the broader design; production deployment and provider integrations remain unverified.
 
 - [Product Decisions.md](<Product Decisions.md>): product priorities, delegated pilot defaults and deferred scope; preserve their provenance and evidence limits.
 - [Architecture.md](Architecture.md): proposed framework, storage, human-review and caching choices with trade-offs.
 - [Implementation Plan.md](<Implementation Plan.md>): high-level delivery order, dependencies and completion barriers.
-- [Repository Structure.md](<Repository Structure.md>): planned package layout, Justfile and basic developer tools; no scaffold exists yet.
+- [Repository Structure.md](<Repository Structure.md>): target package responsibilities and developer tools; add modules only with their first working operation.
+- `src/tutor_copilot/`, `migrations/`, `tests/`: implemented local startup, migration and verification boundaries.
+- [evaluation/README.md](evaluation/README.md): two draft synthetic fixtures and reviewer assignments; no approved gold or model-quality result.
 - [Initial specifications](specs/README.md): draft homework-pilot contracts, including the [dataset specification](specs/datasets.md).
 - [AGENTS.md](AGENTS.md): engineering rules, task routing and authority.
 - [HighGrade project instruction](.highgrade/project/INSTRUCTIONS.md): local adaptation and delivery boundaries.
@@ -23,7 +25,37 @@ This README owns purpose/navigation, current structure and reproducible commands
 
 ## Local commands
 
-Run from the repository root. Git, Python 3 and a working global HighGrade installation are required for these checks. They do not require Node, Cargo, OpenSpec, an application server or an external service.
+Run from the repository root. Application development requires Python 3.12, uv, Just and Docker Compose with a running Docker engine. The locked dependencies and service image digests define the tested set. Initial setup downloads public packages/images; runtime uses loopback ports 8000, 55432 and 56379. Services use local trust access and synthetic data only. No credentials or `.env` loading are configured.
+
+```bash
+just                 # List recipes; starts nothing.
+just setup           # uv sync --locked; does not install Git hooks.
+just up              # Start PostgreSQL and Redis, waiting for health checks.
+just migrate         # Migrate the fixed local development database.
+just check           # Ruff formatting/lint, strict mypy, deterministic unit checks.
+just integration     # Actual API/PostgreSQL/Redis/worker checks; no paid providers.
+```
+
+Start the two roles in separate terminals:
+
+```bash
+just web
+just worker
+```
+
+Both stop with Ctrl+C. The worker checks startup dependencies and waits for shutdown; it does not yet process preparation jobs. For a startup check that exits, and HTTP checks while the web role runs:
+
+```bash
+UV_CACHE_DIR=.uv-cache uv run --locked tutor-worker --check
+curl -i http://127.0.0.1:8000/health/live
+curl -i http://127.0.0.1:8000/health/ready
+```
+
+The live endpoint returns `{"status":"alive"}`. Readiness returns HTTP 200 with `ready` when PostgreSQL, migration `0001`, pgvector and Redis are available. Redis failure yields HTTP 200 `degraded`; database/schema failure yields HTTP 503 `unavailable`. Each HTTP request has a fresh `X-Correlation-ID` matching its console observation. Logs contain only fixed metadata fields, never paths, query strings, headers, bodies or exception text. No Langfuse exporter/model client is installed yet.
+
+Integration tests create random `tc_test_<uuid>` databases and temporary Redis keys and remove them afterward. They never downgrade the application database or flush Redis. Services must be running; unavailable services fail the checks. If a test process is forcibly killed, its temporary database may need operator cleanup. `just down` stops services and retains the PostgreSQL volume. Redis has no persistence and its contents are disposable. `just format` deliberately formats Python files. The optional `.pre-commit-config.yaml` invokes the same locked Ruff tools; hooks are not installed automatically. Evaluation recipes wait for a prepared experiment target.
+
+HighGrade checks require Git, Python 3 and the installed global HighGrade CLI. They do not require Cargo/OpenSpec or model providers.
 
 Resolve the active CLI instead of pinning a release path:
 
@@ -48,7 +80,7 @@ Read the report as well as the exit code: `1` is failed and `2` is unknown. Docu
 
 The registry checks the process documents. The product analysis remains outside that lint scope: its two original absolute provenance links are unsupported by HighGrade's link checker. The initialization survey preserves its historical hash; current task evidence records later edits. Check the exact source paths separately before using the originals, and record unavailable targets as gaps. A passing process-link check does not establish source-document accessibility or re-audit their content.
 
-`git diff --check` checks tracked changes; review new untracked files too before committing. No application run/test/lint command exists yet. Define and verify such commands with the first implementation task; do not add placeholder tests or install a framework to complete initialization.
+`git diff --check` checks tracked changes; review new untracked files too before committing. Application checks above verify the implemented stage-0 boundaries; they do not establish later product scenarios or teaching quality.
 
 To open the project UI on this Mac, run:
 

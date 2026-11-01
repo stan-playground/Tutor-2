@@ -1,0 +1,19 @@
+# Independent runtime and privacy review — stage 0
+
+Verdict: **GO** for the local synthetic stage-0 foundation. No blocking runtime, data-preservation or console-privacy finding was identified within this scope. This is neither human acceptance nor readiness for real learner data.
+
+Reviewed on 1 November 2026 against the stage-0 row in Implementation Plan.md and docs/stage-0.md, using the HighGrade independent-review method. Reviewed the complete new application package, migration, Compose configuration, pyproject/lockfile, Justfile and all tests. Confirmed every hash in inputs-v2.json still matches the current causal files; no input drift was found. The separate link-formatting change in Implementation Plan.md is outside this implementation scope and was not modified.
+
+Evidence assessed:
+
+- local-check-v2.txt: formatting, Ruff, strict mypy and nine deterministic tests passed. Independently reran `just check`: the same checks and all nine tests passed without warnings.
+- integration-v2.xml and integration-v2.txt: six tests ran, with no failures/skips. Read each test and its real boundary: per-test random PostgreSQL database creation/cleanup; migration upgrade twice, downgrade and re-upgrade; actual vector distance; HTTP readiness before/after migration; Redis set/get/TTL and disabled persistence; bounded Redis outage; worker refusal of an unmigrated database; and worker startup/SIGTERM shutdown.
+- process-v2.json and original web-process-v2.txt / worker-process-v2.txt: actual console roles ran together; HTTP readiness returned the expected migrated-service state, request IDs matched safe console observations, synthetic private canaries were excluded, and web cleanup completed before Uvicorn's signal exit. Worker returned zero after shutdown. Reviewed the original failed exit-code assumption and installed Uvicorn signal behavior preserved by the executor; the revised criterion requires actual cleanup rather than merely permitting any signal exit.
+
+The implementation keeps connections/pools per process and connection contexts per readiness invocation. Independent PostgreSQL/Redis checks use bounded async waits; dependent startup/shutdown stays sequential. Resource cleanup is protected with nested finally blocks. There is no live model, embedding or Langfuse client and no hidden provider call in routine checks.
+
+The local-only boundary is consistent: fixed loopback client URLs and published ports, explicit synthetic/trust-only documentation, fixed application database or validated random test names, and no dotenv/credential loading. Migration downgrade omits CASCADE. Test teardown drops only its generated database, and Redis tests delete only their generated key rather than flushing the cache. PostgreSQL's volume is retained by the down recipe; Redis persistence is disabled.
+
+Console logging admits only application-created metadata records through the configured handler. Uvicorn access/error payload records are suppressed, request IDs are server-generated, and the request middleware emits no path/header/body/query/exception text. The unit sentinel test exercises both a failing route and third-party log paths. This confirms the currently installed process/export boundary, not future exporters or arbitrary future instrumentation.
+
+Limits: service integration was assessed from current original reports and implementation/assertions, not independently rerun by this reviewer. The worker is a startup shell without queue/graph execution. Authentication, learner persistence, RLS, retention/deletion, provider processing and production deployment are future work. Draft fixture structural validity is not teaching correctness or qualified human review. Historical HighGrade survey freshness and unagreed document budgets remain explicitly unknown rather than passed.

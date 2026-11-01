@@ -2,3 +2,15 @@
 /.highgrade/local/
 /.highgrade/project/survey.lock
 /.highgrade/project/survey.next
+
+# Local application environments, caches and private inputs.
+/.venv/
+/.uv-cache/
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/**/__pycache__/
+/*.egg-info/
+/.env
+/.env.*
+/private-data/

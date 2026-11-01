@@ -1,0 +1,48 @@
+[project]
+name = "tutor-copilot"
+version = "0.1.0"
+description = "Tutor Copilot local foundation"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "alembic>=1.17,<2",
+    "fastapi>=0.120,<1",
+    "psycopg[binary]>=3.2,<4",
+    "redis>=7,<9",
+    "sqlalchemy[asyncio]>=2.0,<2.1",
+    "uvicorn>=0.38,<1",
+]
+
+[project.scripts]
+tutor-web = "tutor_copilot.web:main"
+tutor-worker = "tutor_copilot.worker:main"
+
+[dependency-groups]
+dev = [
+    "httpx2>=2.16,<3",
+    "jsonschema>=4.25,<5",
+    "mypy>=1.18,<2",
+    "pre-commit>=4,<5",
+    "pytest>=8,<10",
+    "rfc3339-validator>=0.1.4,<1",
+    "ruff>=0.14,<1",
+]
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "migrations"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit"]
+addopts = "-ra"

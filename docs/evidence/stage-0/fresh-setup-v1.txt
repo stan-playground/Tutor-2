@@ -1,0 +1,64 @@
+$ uv sync --locked --offline
+Using CPython 3.12.5 interpreter at: /opt/homebrew/opt/python@3.12/bin/python3.12
+Creating virtual environment at: /var/folders/xf/3xhl_qq52t586dzkmy3c94000000gn/T/tc-stage0-669w3xfz/venv
+Resolved 56 packages in 4ms
+Installed 53 packages in 113ms
+ + alembic==1.20.1
+ + annotated-doc==0.0.5
+ + annotated-types==0.8.0
+ + anyio==4.16.0
+ + attrs==26.1.0
+ + cfgv==3.5.0
+ + click==8.5.0
+ + distlib==0.4.4
+ + fastapi==0.162.0
+ + filelock==4.2.6
+ + greenlet==3.5.6
+ + h11==0.16.0
+ + httpcore2==2.16.0
+ + httpx2==2.16.0
+ + identify==2.6.20
+ + idna==3.20
+ + iniconfig==2.3.1
+ + jsonschema==4.26.0
+ + jsonschema-specifications==2025.9.1
+ + librt==0.16.0
+ + mako==1.4.3
+ + markupsafe==3.0.4
+ + mypy==1.20.2
+ + mypy-extensions==1.1.0
+ + nodeenv==1.12.0
+ + opentelemetry-api==1.45.2
+ + packaging==26.3
+ + pathspec==1.1.1
+ + platformdirs==4.14.3
+ + pluggy==1.7.0
+ + pre-commit==4.7.0
+ + psycopg==3.3.6
+ + psycopg-binary==3.3.6
+ + pydantic==2.14.2
+ + pydantic-core==2.50.2
+ + pygments==2.21.0
+ + pytest==9.2.0
+ + python-discovery==1.9.0
+ + pyyaml==6.0.3
+ + redis==8.1.0
+ + referencing==0.37.0
+ + rfc3339-validator==0.1.4
+ + rpds-py==2026.9.1
+ + ruff==0.17.3
+ + six==1.17.0
+ + sqlalchemy==2.0.55
+ + starlette==1.10.0
+ + truststore==0.10.5
+ + tutor-copilot==0.1.0 (from file:///Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2)
+ + typing-extensions==4.16.0
+ + typing-inspection==0.4.4
+ + uvicorn==0.54.0
+ + virtualenv==21.15.2
+
+$ /var/folders/xf/3xhl_qq52t586dzkmy3c94000000gn/T/tc-stage0-669w3xfz/venv/bin/python -c import tutor_copilot.web, tutor_copilot.worker; print("fresh installed imports passed")
+fresh installed imports passed
+
+$ /var/folders/xf/3xhl_qq52t586dzkmy3c94000000gn/T/tc-stage0-669w3xfz/venv/bin/tutor-worker --check
+{"stage": "worker", "outcome": "ready", "correlation_id": "179546ec-c7bb-4b57-be50-c67dadf7b6c3", "status_code": null, "duration_ms": null}

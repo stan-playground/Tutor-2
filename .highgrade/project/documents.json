@@ -6,7 +6,7 @@
       "path": "README.md",
       "roles": ["purpose-navigation", "current-architecture", "commands-procedures"],
       "loading": "entry",
-      "scope": ["specs", "docs"],
+      "scope": ["specs", "docs", "src", "migrations", "tests"],
       "budget": null
     },
     {
@@ -19,6 +19,13 @@
     }
   ],
   "additional_sources": [
+    {
+      "path": "evaluation/README.md",
+      "role": "evaluation-fixtures",
+      "active": true,
+      "loading": "task",
+      "scope": ["evaluation"]
+    },
     {
       "path": ".highgrade/project/INSTRUCTIONS.md",
       "role": "project-adaptation",

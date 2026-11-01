@@ -9,7 +9,7 @@ Connection authority: the user explicitly requested minimum integration of this 
 
 ## Owners and scope
 
-- [README](../../README.md) owns purpose, current structure, commands and evidence retention/delivery. It explicitly records the absence of application source and executable product checks.
+- [README](../../README.md) owns purpose, current structure, commands and evidence retention/delivery. It records stage 0's implemented local foundation and the unimplemented product boundaries.
 - [AGENTS](../../AGENTS.md) owns agent and engineering rules, including the user's explanation, delegation, secrets and commit-consent requirements.
 - [Product Decisions](<../../Product Decisions.md>) remains the product-analysis owner. Preserve its documented/proposed distinction and historical external source links. This initialization does not re-audit adjacent source documents or adopt unresolved choices.
 - [documents.json](documents.json) assigns process-document roles and reading scope. The product analysis is retained as a hashed survey source outside process linting because HighGrade rejects its original absolute provenance links; check those exact targets separately before source reuse. This does not certify their content or accessibility on another machine. Document and route-size budgets are unknown and remain null until explicitly agreed. Budget warnings do not authorize raising a ceiling.
@@ -21,17 +21,17 @@ The five documentation roles are combined in README and AGENTS rather than empty
 
 Use the active Delivery's task/spec/work procedures. Planner coordination for genuinely dependent stages is accepted; a separate Goal requires explicit authorization. Initialization was preparation only; later user requests define their own scope and authority.
 
-No application implementation exists. The native catalog was created through the active CLI under `specs/` for the first authorized documentation change, [HG-0001](../../specs/changes/HG-0001/spec.json). Product Decisions.md remains the product-description owner; preserve its content unless a user request authorizes an edit. Let the CLI allocate specification IDs. Do not create an init-report specification, mass-import source history, invent tags or convert proposals into accepted requirements. Rechecks update existing evidence; material contract changes use a new change.
+Stage 0's local startup/migration foundation is implemented under the owner's 1 November 2026 request; [execution record](../../docs/stage-0.md) owns its scope/evidence. The native catalog was created through the active CLI under `specs/` for the first authorized documentation change, [HG-0001](../../specs/changes/HG-0001/spec.json). Product Decisions.md remains the product-description owner; preserve its content unless a user request authorizes an edit. Let the CLI allocate specification IDs. Do not create an init-report specification, mass-import source history, invent tags or convert proposals into accepted requirements. Rechecks update existing evidence; material contract changes use a new change.
 
 The owner's delegated decisions select independent tutors, adult A2–B2 English learners and homework preparation as the first pilot; see [HG-0002](../../specs/changes/HG-0002/spec.json) and the product document. [Architecture.md](../../Architecture.md) records the current design proposal; application implementation still needs a relevant request. These decisions do not expand commit, publication, data-access or deployment authority.
 
 ## Checks, evidence and current limits
 
-Use [README commands](../../README.md#local-commands). The current environment is macOS with Python 3.12.5, Git 2.39.5 and the installed HighGrade CLI. Resolve the active release at runtime. Installation was checked; application behavior, a test runner and Windows launcher execution remain unverified.
+Use [README commands](../../README.md#local-commands). The environment is macOS with Python 3.12.5 and the installed HighGrade CLI; application dependencies are locked in uv.lock. Resolve the active HighGrade release at runtime. Stage 0 checks local startup, migrations, API and Redis boundaries. Later product behavior, live providers, production deployment and Windows execution remain unverified.
 
 Registry inspection must have no structural errors. Unagreed budgets remain explicit unknowns. Doctor's legacy Cargo/OpenSpec availability probes are not prerequisites for this documentation-only native route; do not install them or change shell settings to silence those findings. Other errors/unknowns require their actual cause and impact to be assessed.
 
-For process changes, perform the applicable local checks and independent semantic review under Work. Review the complete relevant diff, including new files, and preserve original reports when they support a result or decision. The README owns evidence location, retention and delivery. No product check runner is configured; verify a real existing check when one first becomes necessary.
+Perform applicable local checks and independent review under Work. Review the complete relevant diff, including new files, and preserve original reports when they support a result or decision. The README owns evidence location, retention and delivery. `just check` runs deterministic checks; `just integration` uses real isolated local services. Neither makes live provider calls or proves future product contracts.
 
 ## Git, delivery and authority
 

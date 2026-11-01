@@ -1,0 +1,2 @@
+{"stage": "worker", "outcome": "ready", "correlation_id": "87872ec9-af80-4002-aa38-98f98d5959b4", "status_code": null, "duration_ms": null}
+{"stage": "worker", "outcome": "stopped", "correlation_id": "87872ec9-af80-4002-aa38-98f98d5959b4", "status_code": null, "duration_ms": null}

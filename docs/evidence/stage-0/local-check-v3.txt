@@ -1,0 +1,18 @@
+uv run --locked ruff format --check src migrations tests
+13 files already formatted
+uv run --locked ruff check src migrations tests
+All checks passed!
+uv run --locked mypy
+Success: no issues found in 9 source files
+uv run --locked pytest tests/unit
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2
+configfile: pyproject.toml
+plugins: platformdirs-4.14.3, anyio-4.16.0
+collected 10 items
+
+tests/unit/test_fixtures.py .......                                      [ 70%]
+tests/unit/test_web.py ...                                               [100%]
+
+============================== 10 passed in 0.60s ==============================

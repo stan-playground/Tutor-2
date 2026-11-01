@@ -1,0 +1,84 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "select_feedback_source_context",
+      "learner_ref": "synthetic-learner-fb-1@1",
+      "selected_transcript_ref": "synthetic-transcript-fb-1@1"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-1@1",
+      "learner_ref": "synthetic-learner-fb-1@1",
+      "owner_ref": "synthetic-tutor-1@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {"revision": 1, "level": "A2", "status": "provisional", "recorded_at": "2026-10-30T09:00:00Z"},
+      "goals": ["Describe everyday activities in simple English."],
+      "recent_observations": [],
+      "activity_fact_revisions": [],
+      "prior_homework_request": null
+    },
+    "sources": [
+      {
+        "ref": "synthetic-transcript-fb-1@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "learner_ref": "synthetic-learner-fb-1@1",
+        "owner_ref": "synthetic-tutor-1@1",
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "speaker_annotations_confirmed": true,
+        "segments": [
+          {"id": "fb-segment-1", "speaker": "tutor", "text": "What do you do after work?"},
+          {"id": "fb-segment-2", "speaker": "learner", "text": "I cook dinner and I watch a film."},
+          {"id": "fb-segment-3", "speaker": "tutor", "text": "What did you do yesterday?"},
+          {"id": "fb-segment-4", "speaker": "learner", "text": "Yesterday I cook dinner. Then I watched a film."}
+        ]
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_source_refs": ["synthetic-transcript-fb-1@1"],
+    "covered_segment_refs": ["fb-segment-1", "fb-segment-2", "fb-segment-3", "fb-segment-4"],
+    "selected_observation_refs": [],
+    "selected_history_refs": [],
+    "required_qualifications": ["No confirmed performance observations or comparable history were supplied."],
+    "prohibited_claims": ["confirmed progress", "pronunciation ability", "listening ability", "product-caused improvement"],
+    "prohibited_writes": ["activity facts", "performance observations", "preferences"],
+    "provider_calls": 0,
+    "terminal_state": "source_context_only",
+    "reached_stages": ["source_context"],
+    "unreached_stage_reasons": {
+      "extraction": "This item freezes available source references; candidate findings are a separate boundary.",
+      "subskill_analysis": "No performance arithmetic or comparison is requested.",
+      "composition": "No feedback prose is requested.",
+      "validation": "No candidate feedback is supplied.",
+      "review_revision": "No feedback draft or tutor decision is supplied.",
+      "end_to_end": "This item covers source context only."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-SOURCE-01",
+    "family_id": "FB-SOURCE",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "source_context",
+    "level": "A2",
+    "domain": "everyday activities",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": ["source_coverage", "speaker_attribution", "unsupported_progress", "evidence_write"],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-SOURCE-01@1",
+      "attribution": "Transcript authored for this repository; no external teaching material or real learner content.",
+      "rights": {"storage": true, "adaptation": true, "delivery": true}
+    },
+    "review": {"state": "draft", "reviewed": false, "assignments": {"primary": "1", "second": "2"}, "decisions": []},
+    "schema_version": "1",
+    "rubric_version": "draft-source-context-1",
+    "split": "development"
+  }
+}

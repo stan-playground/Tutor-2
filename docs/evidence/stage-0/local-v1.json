@@ -1,0 +1,66 @@
+{
+  "time_utc": "2026-11-01T19:28:36.293612+00:00",
+  "base_commit": "10cf1278e7d4af90886420d17605298ba589304c",
+  "inputs_sha256": {
+    ".pre-commit-config.yaml": "d2c0b36eec4b6d1ba3708b4567636fdd89b7a0170337f05842ec76fa8a51591d",
+    "Justfile": "a133d75b886260e1d91485e0e1ab05a78cc016c876a75413003e036bb7799989",
+    "alembic.ini": "d5bc114fe68813e83b863a6f45d816a6354fbfede50fb0597cdb41dfc2dedfd0",
+    "compose.yaml": "248c02e7817b11107738597d4a8bb02280335ed26661795d5e2ffacea993f6b0",
+    "evaluation/README.md": "69e8656459dd1258d0e0d02b83974de65347dd0533b3ad5d241199b4fc35f28c",
+    "evaluation/feedback/FB-SOURCE-01.json": "68125bb7835c9dd0188526370b21d70857e6c33db4f73381eb68c2447eda7fc0",
+    "evaluation/homework/HW-ARITH-01.json": "205c49987f8b953480e1868fed0b15506d02af2f7c8b7fc7161d07387373b934",
+    "evaluation/item.schema.json": "620e366fa6446ebba4c2d9746c8b58f917bb4973cb093421e8e4c881df76ba6d",
+    "migrations/env.py": "3c6528c238a3d0c5a1d637aadebb9170245405817b78fba13b3d2b5ad5aae499",
+    "migrations/versions/0001_vector.py": "459df9630df5692abe3d67457c533c739563dca8b21adf7ce87e25e026e627e4",
+    "pyproject.toml": "70abfbf5c7190978747fa15423d8d633a851c894886d594e5963566f37ff4711",
+    "src/tutor_copilot/__init__.py": "129631449329fb487769ade66f67bf5760074da6b0a98da0f1e369fa06cb7791",
+    "src/tutor_copilot/db.py": "c284a150dff5ef9db2435938bb0b164432249c4080a3ba2fc00af20ee3030b7d",
+    "src/tutor_copilot/runtime.py": "c68fc4eeffcdc9469cc4e463d8945ea10c99818a2902c27bfe872538d8384556",
+    "src/tutor_copilot/settings.py": "4e446068d3f35f4ef49cc59194118300e3f326cf717a15a3931cd39b0e33e3fc",
+    "src/tutor_copilot/telemetry.py": "1fed5e20346ae76d9f659c8be04229456a1e04778fd43819c8fadecc150821ef",
+    "src/tutor_copilot/web.py": "c4efb5c8c3ea3bb830cc36d566dbbcc091ecf3c53958525445c53fd17fcc7cb2",
+    "src/tutor_copilot/worker.py": "359de1070e32a742dfefb45225160af9f943c7a33eac1a4cc6cb9ebd39525098",
+    "tests/integration/conftest.py": "cb4d6170eb47f9e74d0ea6128e2d812aeed985b60e23ec6fa3108f75f61c35c4",
+    "tests/integration/test_foundation.py": "1d589768d1d110debeac794939900fd396b65ad0cb6a81c2f9c9faf427901020",
+    "tests/unit/test_fixtures.py": "7f87e97736912d8abb530cd42f0abee2c2102b5f0904ff66e8176d93e5d39f1d",
+    "tests/unit/test_web.py": "fb90bc1546a21851f96834193583dc71ab592cf69ab43e49b68365071f6c7458",
+    "uv.lock": "10ff37ccc3a71d7d5f6674d99de403971f4d04a1b316a998eba2602de2542ca5"
+  },
+  "commands": [
+    {
+      "command": [
+        "just",
+        "setup"
+      ],
+      "exit_code": 0,
+      "original_report": "local-v1-0.txt"
+    },
+    {
+      "command": [
+        "just"
+      ],
+      "exit_code": 0,
+      "original_report": "local-v1-1.txt"
+    },
+    {
+      "command": [
+        "just",
+        "check"
+      ],
+      "exit_code": 0,
+      "original_report": "local-v1-2.txt"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pre-commit",
+        "validate-config",
+        ".pre-commit-config.yaml"
+      ],
+      "exit_code": 0,
+      "original_report": "local-v1-3.txt"
+    }
+  ]
+}

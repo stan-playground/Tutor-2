@@ -1,0 +1,11 @@
+Available recipes:
+    check       # Read-only checks; no service startup, migration or live provider calls.
+    default
+    down        # Stop services and retain the PostgreSQL volume.
+    format
+    integration # Real local services required; tests create and delete only random test databases/keys.
+    migrate     # Apply migrations to the fixed local development database.
+    setup       # Install the locked local environment; does not install Git hooks.
+    up          # Start loopback-only synthetic development services; ignores implicit .env files.
+    web
+    worker

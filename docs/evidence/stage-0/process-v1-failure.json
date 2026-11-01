@@ -1,0 +1,7 @@
+{
+  "check": "Actual web/worker entry points, readiness and synthetic sentinel logging",
+  "result": "failed",
+  "cause": "The harness expected both process exit codes to be zero after SIGTERM. Uvicorn 0.54.0 restores and re-raises the captured signal after graceful shutdown (installed uvicorn/server.py:332-349). The web process therefore exits by SIGTERM. The saved logs confirm readiness and sentinel exclusion, but did not yet expose web cleanup completion.",
+  "original_reports": ["web-process-v1.txt", "worker-process-v1.txt"],
+  "next": "Add a lifecycle stopped observation after resource cleanup. Recheck that shutdown completes and accept Uvicorn's documented-by-installed-code signal exit only with that observation; keep worker exit zero."
+}

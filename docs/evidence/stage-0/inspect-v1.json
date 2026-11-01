@@ -1,0 +1,348 @@
+{
+  "ambiguous_result_keys": [
+    "bytes",
+    "lines",
+    "path",
+    "role",
+    "sha256",
+    "token_estimate",
+    "token_method"
+  ],
+  "findings": [
+    {
+      "code": "BudgetNotAgreed",
+      "location": "README.md",
+      "message": "Бюджет не согласован.",
+      "status": "unknown"
+    },
+    {
+      "code": "BudgetNotAgreed",
+      "location": "AGENTS.md",
+      "message": "Бюджет не согласован.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": "migrations",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": ".pytest_cache",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": ".uv-cache",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": ".ruff_cache",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": "tests",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": ".mypy_cache",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": "evaluation",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "AreaUnclassified",
+      "location": "src",
+      "message": "Область не назначена источнику документации.",
+      "status": "unknown"
+    },
+    {
+      "code": "BudgetNotAgreed",
+      "location": "context-route",
+      "message": "Бюджет не согласован.",
+      "status": "unknown"
+    }
+  ],
+  "limitations": [
+    "Структурная проверка, не смысловой аудит. Сеть не использована. История бюджета проверяется внутри записи; изменение согласованной базы требует отдельного сравнения/решения автора.",
+    "Якоря: стандартные Markdown-заголовки, Unicode lowercase; HTML/custom anchors и отдельные диалекты могут требовать ручной проверки. --scope использует явную карту, не граф зависимостей кода."
+  ],
+  "measurements": [
+    {
+      "bytes": 9197,
+      "lines": 99,
+      "path": "README.md",
+      "role": "purpose-navigation",
+      "sha256": "a87606b2ce5f74d2da88a6396562908b6ee74f785b24aaff85e53c786110db14",
+      "token_estimate": 2298,
+      "token_method": "unicode_chars/4 heuristic; not model context size"
+    },
+    {
+      "bytes": 3156,
+      "lines": 26,
+      "path": "AGENTS.md",
+      "role": "agent-rules",
+      "sha256": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+      "token_estimate": 789,
+      "token_method": "unicode_chars/4 heuristic; not model context size"
+    },
+    {
+      "bytes": 6549,
+      "lines": 44,
+      "path": ".highgrade/project/INSTRUCTIONS.md",
+      "role": "project-adaptation",
+      "sha256": "94ca0d10f1233905971be6803e40d0b1c942f6ba4789c8ae2e4df14cc4e2c26b",
+      "token_estimate": 1637,
+      "token_method": "unicode_chars/4 heuristic; not model context size"
+    },
+    {
+      "required_links": [
+        {
+          "from": "README.md",
+          "status": "present",
+          "to": "AGENTS.md"
+        },
+        {
+          "from": "README.md",
+          "status": "present",
+          "to": "README.md"
+        },
+        {
+          "from": "README.md",
+          "status": "present",
+          "to": "AGENTS.md"
+        },
+        {
+          "from": "README.md",
+          "status": "present",
+          "to": "README.md"
+        },
+        {
+          "from": "AGENTS.md",
+          "status": "present",
+          "to": ".highgrade/project/INSTRUCTIONS.md"
+        },
+        {
+          "from": ".highgrade/project/INSTRUCTIONS.md",
+          "status": "present",
+          "to": ".highgrade/project/documents.json"
+        }
+      ]
+    },
+    {
+      "diagnostic_summary": {
+        "accepted_limitations": "consult_survey_basis_and_project_instructions; not_certified_by_inspect",
+        "errors": [],
+        "unknown": [
+          {
+            "code": "BudgetNotAgreed",
+            "location": "README.md",
+            "message": "Бюджет не согласован.",
+            "status": "unknown"
+          },
+          {
+            "code": "BudgetNotAgreed",
+            "location": "AGENTS.md",
+            "message": "Бюджет не согласован.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": "migrations",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": ".pytest_cache",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": ".uv-cache",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": ".ruff_cache",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": "tests",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": ".mypy_cache",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": "evaluation",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "AreaUnclassified",
+            "location": "src",
+            "message": "Область не назначена источнику документации.",
+            "status": "unknown"
+          },
+          {
+            "code": "BudgetNotAgreed",
+            "location": "context-route",
+            "message": "Бюджет не согласован.",
+            "status": "unknown"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "scope": "all-registered",
+      "registry": ".highgrade/project/documents.json",
+      "route": [
+        "README.md",
+        "AGENTS.md",
+        ".highgrade/project/INSTRUCTIONS.md"
+      ],
+      "route_bytes": 18902
+    }
+  ],
+  "operation": "inspect",
+  "result": {
+    "scope": "all-registered",
+    "diagnostic_summary": {
+      "accepted_limitations": "consult_survey_basis_and_project_instructions; not_certified_by_inspect",
+      "errors": [],
+      "unknown": [
+        {
+          "code": "BudgetNotAgreed",
+          "location": "README.md",
+          "message": "Бюджет не согласован.",
+          "status": "unknown"
+        },
+        {
+          "code": "BudgetNotAgreed",
+          "location": "AGENTS.md",
+          "message": "Бюджет не согласован.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "migrations",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".pytest_cache",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".uv-cache",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".ruff_cache",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "tests",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": ".mypy_cache",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "evaluation",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "AreaUnclassified",
+          "location": "src",
+          "message": "Область не назначена источнику документации.",
+          "status": "unknown"
+        },
+        {
+          "code": "BudgetNotAgreed",
+          "location": "context-route",
+          "message": "Бюджет не согласован.",
+          "status": "unknown"
+        }
+      ],
+      "warnings": []
+    },
+    "registry": ".highgrade/project/documents.json",
+    "required_links": [
+      {
+        "from": "README.md",
+        "status": "present",
+        "to": "AGENTS.md"
+      },
+      {
+        "from": "README.md",
+        "status": "present",
+        "to": "README.md"
+      },
+      {
+        "from": "README.md",
+        "status": "present",
+        "to": "AGENTS.md"
+      },
+      {
+        "from": "README.md",
+        "status": "present",
+        "to": "README.md"
+      },
+      {
+        "from": "AGENTS.md",
+        "status": "present",
+        "to": ".highgrade/project/INSTRUCTIONS.md"
+      },
+      {
+        "from": ".highgrade/project/INSTRUCTIONS.md",
+        "status": "present",
+        "to": ".highgrade/project/documents.json"
+      }
+    ],
+    "route": [
+      "README.md",
+      "AGENTS.md",
+      ".highgrade/project/INSTRUCTIONS.md"
+    ],
+    "route_bytes": 18902
+  },
+  "status": "unknown"
+}

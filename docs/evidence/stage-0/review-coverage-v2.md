@@ -1,0 +1,17 @@
+# Final stage-0 coverage review
+
+Verdict: **GO** for the final local synthetic stage-0 foundation. This delta review supersedes the snapshot assessment in [review-coverage-v1.md](review-coverage-v1.md), which remains intact as history. No blocking coverage/evidence finding. Runtime/privacy review remains separate; this is not human acceptance or commit authority.
+
+Reviewed on 1 November 2026. I read the final web lifespan and regression test, updated stage record and final original reports. I recomputed all 23 hashes in [inputs-v3.json](inputs-v3.json); every hash matches the current files. The unchanged milestone, fixture, command and scope conclusions from v1 still apply.
+
+The web `stopped` observation now follows successful exit from the resource context rather than an unconditional `finally`. Consequently an exception while the context exits cannot falsely report successful cleanup. The added test replaces that context boundary with one that raises on exit and requires only the earlier `complete` observation, with no `stopped`. It exercises the actual FastAPI lifespan and uses the real resource context inside the controlled failing wrapper. This is a meaningful regression of the claimed lifecycle observation, not a substitute for database/cache integration.
+
+I independently reran `just check` on the final files: Ruff format/lint passed, strict mypy passed for nine source files, and all ten deterministic tests passed without warnings. The executor's [local-check-v3.txt](local-check-v3.txt) agrees.
+
+I inspected [integration-v3.xml](integration-v3.xml) and [integration-v3.txt](integration-v3.txt): six real-service checks executed with zero failures, errors or skips. The final [process-v3.json](process-v3.json), [web output](web-process-v3.txt) and [worker output](worker-process-v3.txt) confirm actual console entry points, ready HTTP, matching request correlation and successful cleanup observations before the expected Uvicorn SIGTERM/worker-zero exits. The final process probe checks query exclusion; broader path/body/header/exception/library sentinel coverage is retained in the unchanged request path's v2 process exercise and current deterministic test. This scope is explicit in the report.
+
+The added [fresh-setup-v1.json](fresh-setup-v1.json) and [original output](fresh-setup-v1.txt) show creation of an empty temporary environment, successful `uv sync --locked --offline`, installed web/worker imports and the installed worker startup check against local services. The temporary environment was removed afterward. This directly strengthens the stage-0 fresh-setup evidence without changing the lockfile or claiming another clean service volume initialization. The original initial service/migration exercise and six isolated database tests retain that separate boundary.
+
+Limits remain: I independently reran deterministic checks and hash validation, and inspected original service/process/fresh-install reports rather than rerunning those exercises. Fixture labels remain draft pending actual qualified-tutor review; full learner/authentication, queue/graph, model quality, external processors, production deployment and Windows behavior are outside this completed milestone. Historical survey freshness and unagreed budgets remain explicitly unknown. The unrelated Implementation Plan.md link edit remains outside this task.
+
+Recommended next action: combine the final independent verdicts, present the scoped stage-0 result, and ask for the owner's separate commit decision.
