@@ -1,0 +1,404 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [
+    {
+      "code": "DependencyNotIntegrated",
+      "location": "/depends_on",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "DependencyNotIntegrated",
+      "location": "/depends_on",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "TasksIncomplete",
+      "location": "/tasks",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/1/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/1/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/1/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/2/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/2/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/2/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/3/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/3/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/3/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/4/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/4/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/4/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/5/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/5/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/5/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "ReviewMissingOrStale",
+      "location": "/review",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    }
+  ],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "brief": {
+        "id": "HG-0008",
+        "blockers": [
+          {
+            "id": "HG-0008-S1",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S2",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S3",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S4",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S5",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S6",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S7",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S8",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S9",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S10",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S11",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S12",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S13",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S14",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S15",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S16",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S17",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0008-S18",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "kind": "review",
+            "next": "repeat_review",
+            "reason": "missing"
+          }
+        ],
+        "change_sha256": "dc739fc1afdf9534e3aa1e12db3e730dbc19398d8f1d5c36709266ae61a3a969",
+        "contract_sha256": "02d4a60de82eaa4305d9f30146c989536b8d90f1190bc90eb99aaa82ad585580",
+        "human": "pending",
+        "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "technical": "in_progress",
+        "verified_revision": null,
+        "review": "missing"
+      }
+    },
+    {
+      "schema_version": 3,
+      "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+    }
+  ],
+  "operation": "spec-check",
+  "result": {
+    "brief": {
+      "id": "HG-0008",
+      "blockers": [
+        {
+          "id": "HG-0008-S1",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S2",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S3",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S4",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S5",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S6",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S7",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S8",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S9",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S10",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S11",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S12",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S13",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S14",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S15",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S16",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S17",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0008-S18",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "kind": "review",
+          "next": "repeat_review",
+          "reason": "missing"
+        }
+      ],
+      "change_sha256": "dc739fc1afdf9534e3aa1e12db3e730dbc19398d8f1d5c36709266ae61a3a969",
+      "contract_sha256": "02d4a60de82eaa4305d9f30146c989536b8d90f1190bc90eb99aaa82ad585580",
+      "human": "pending",
+      "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "technical": "in_progress",
+      "verified_revision": null,
+      "review": "missing"
+    },
+    "schema_version": 3,
+    "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+  },
+  "status": "failed"
+}

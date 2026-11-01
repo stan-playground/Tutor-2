@@ -1,0 +1,146 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [
+    {
+      "code": "DependencyNotIntegrated",
+      "location": "/depends_on",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "TasksIncomplete",
+      "location": "/tasks",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/3",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "ReviewMissingOrStale",
+      "location": "/review",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    }
+  ],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "brief": {
+        "id": "HG-0006",
+        "blockers": [
+          {
+            "id": "HG-0006-S1",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0006-S2",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0006-S3",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0006-S4",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "kind": "review",
+            "next": "repeat_review",
+            "reason": "missing"
+          }
+        ],
+        "change_sha256": "339c720a473e932e8646eaf96078c349685829cf1b050d74a22b2fe6cb4371fd",
+        "contract_sha256": "5ed5e019d66f0e447dcf70c5509125c3802c1051535c1edff3544f39e9d01471",
+        "human": "pending",
+        "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "technical": "in_progress",
+        "verified_revision": null,
+        "review": "missing"
+      }
+    },
+    {
+      "schema_version": 3,
+      "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+    }
+  ],
+  "operation": "spec-check",
+  "result": {
+    "brief": {
+      "id": "HG-0006",
+      "blockers": [
+        {
+          "id": "HG-0006-S1",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0006-S2",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0006-S3",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0006-S4",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "kind": "review",
+          "next": "repeat_review",
+          "reason": "missing"
+        }
+      ],
+      "change_sha256": "339c720a473e932e8646eaf96078c349685829cf1b050d74a22b2fe6cb4371fd",
+      "contract_sha256": "5ed5e019d66f0e447dcf70c5509125c3802c1051535c1edff3544f39e9d01471",
+      "human": "pending",
+      "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "technical": "in_progress",
+      "verified_revision": null,
+      "review": "missing"
+    },
+    "schema_version": 3,
+    "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+  },
+  "status": "failed"
+}

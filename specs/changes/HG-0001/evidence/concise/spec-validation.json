@@ -1,0 +1,763 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "schema_version": 3,
+      "store_sha256": "685fac7c18fa1555d0e818ba5d459c566ce680b2731dc6117c1278e3d371f5fb"
+    },
+    {
+      "change": {
+        "id": "HG-0001",
+        "title": "Prioritize the agreed product principles in Product Decisions",
+        "goal": "Make Product Decisions.md foreground the current owner-agreed product principles while retaining useful historical detail and unresolved questions.",
+        "rationale": "The owner explicitly requested a tighter prioritized product document and confirmed that both lesson and homework evidence guide priorities.",
+        "scope": "Documentation-only update to Product Decisions.md and the minimal HighGrade record required by project instructions. Product Decisions.md remains the owner of product descriptions. No application, database, evaluator, deployment, commit, push or mass migration is authorized.",
+        "questions": [],
+        "operations": [
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0001-R1",
+              "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+              "statement": "Product Decisions.md must present the owner-confirmed priority principles first and reconcile affected detailed entries without losing provenance, unrelated decisions or unresolved #to-decide questions. The detailed product meaning is owned by Product Decisions.md; this requirement governs this documentation update and does not constitute application implementation.",
+              "scenarios": [
+                {
+                  "id": "HG-0001-S1",
+                  "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                  "when": "The reader opens the revised product document.",
+                  "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                  "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+                },
+                {
+                  "id": "HG-0001-S2",
+                  "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                  "when": "The current principles and corresponding detailed entries are reconciled.",
+                  "then": "Affected entries state the updated principles and distinguish current owner decisions from historical extracts and proposals; all 37 existing decision IDs and unrelated decisions remain, with genuine unresolved details marked #to-decide. Online evaluation uses live observations without assuming gold answers for every trace. No application implementation, generation strategy adoption or measured result is claimed.",
+                  "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+                }
+              ]
+            }
+          }
+        ],
+        "tasks": [
+          {
+            "id": "HG-0001-T1",
+            "description": "Add the prioritized principles and reconcile the affected detailed product decisions while preserving provenance and unresolved choices.",
+            "done": true
+          },
+          {
+            "id": "HG-0001-T2",
+            "description": "Verify document meaning, preservation and links, run applicable project checks, and obtain independent semantic review of the final diff.",
+            "done": true
+          }
+        ],
+        "checks": [
+          {
+            "id": "HG-0001-C1",
+            "action": "Compare the final document and full diff against both scenarios; inspect all changed meanings and source/proposal labels and applicable check reports.",
+            "file": "Product Decisions.md",
+            "inputs": [
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "Product Decisions.md",
+              "README.md"
+            ],
+            "observation": "All requested principles are present first, affected details are consistent, unrelated decisions and provenance are preserved, and implementation claims are absent.",
+            "preparation": "Read the owner request and confirmed lesson/homework clarification, baseline Product Decisions.md, README and project instructions.",
+            "runner": null,
+            "scenario_ids": [
+              "HG-0001-S1",
+              "HG-0001-S2"
+            ],
+            "selector": "prioritized product principles and affected detailed entries"
+          }
+        ],
+        "attention": {
+          "requests": [
+            {
+              "id": "hg0001-product-principles-result-20261101",
+              "at": 1793496733,
+              "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+              "content_sha256": "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea",
+              "inputs_sha256": "4b4890a4b110e7e5607dda2b8f741d1450486aa8d5b3c6b5710f3328c94010c9",
+              "kind": "result",
+              "reason": "Documentation update and independent review are complete. Review the priority principles and reconciled entries in Product Decisions.md; implementation, commit and publication remain separate.",
+              "response": null
+            }
+          ],
+          "snapshots": {
+            "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea": {
+              "title": "Prioritize the agreed product principles in Product Decisions",
+              "goal": "Make Product Decisions.md foreground the current owner-agreed product principles while retaining useful historical detail and unresolved questions.",
+              "rationale": "The owner explicitly requested a tighter prioritized product document and confirmed that both lesson and homework evidence guide priorities.",
+              "scope": "Documentation-only update to Product Decisions.md and the minimal HighGrade record required by project instructions. Product Decisions.md remains the owner of product descriptions. No application, database, evaluator, deployment, commit, push or mass migration is authorized.",
+              "depends_on": [],
+              "operations": [
+                {
+                  "action": "add",
+                  "requirement": {
+                    "id": "HG-0001-R1",
+                    "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+                    "statement": "Product Decisions.md must present the owner-confirmed priority principles first and reconcile affected detailed entries without losing provenance, unrelated decisions or unresolved #to-decide questions. The detailed product meaning is owned by Product Decisions.md; this requirement governs this documentation update and does not constitute application implementation.",
+                    "scenarios": [
+                      {
+                        "id": "HG-0001-S1",
+                        "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                        "when": "The reader opens the revised product document.",
+                        "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                        "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+                      },
+                      {
+                        "id": "HG-0001-S2",
+                        "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                        "when": "The current principles and corresponding detailed entries are reconciled.",
+                        "then": "Affected entries state the updated principles and distinguish current owner decisions from historical extracts and proposals; all 37 existing decision IDs and unrelated decisions remain, with genuine unresolved details marked #to-decide. Online evaluation uses live observations without assuming gold answers for every trace. No application implementation, generation strategy adoption or measured result is claimed.",
+                        "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+                      }
+                    ]
+                  }
+                }
+              ],
+              "tasks": [
+                {
+                  "id": "HG-0001-T1",
+                  "description": "Add the prioritized principles and reconcile the affected detailed product decisions while preserving provenance and unresolved choices."
+                },
+                {
+                  "id": "HG-0001-T2",
+                  "description": "Verify document meaning, preservation and links, run applicable project checks, and obtain independent semantic review of the final diff."
+                }
+              ]
+            }
+          }
+        },
+        "imports": {},
+        "baseline": {},
+        "scoped_baseline": true,
+        "revision_tags": [],
+        "created_at": 1793496199,
+        "archived": true,
+        "abandoned_reason": null,
+        "evidence": {
+          "HG-0001-S1": {
+            "captured_at": "2026-11-01",
+            "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+            "files": {
+              ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+              ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+              "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+              "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+              "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+              "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+              "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+              "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+              "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+              "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+              "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+            },
+            "input_paths": [
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "Product Decisions.md",
+              "README.md",
+              "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+              "specs/changes/HG-0001/evidence/document-check-final.json",
+              "specs/changes/HG-0001/evidence/follow-up-checks.json",
+              "specs/changes/HG-0001/evidence/local-checks.json",
+              "specs/changes/HG-0001/evidence/semantic-review.md"
+            ],
+            "method": "manual",
+            "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+            "outcome": "passed",
+            "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+            "scenario": "HG-0001-S1",
+            "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+          },
+          "HG-0001-S2": {
+            "captured_at": "2026-11-01",
+            "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+            "files": {
+              ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+              ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+              "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+              "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+              "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+              "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+              "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+              "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+              "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+              "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+              "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+            },
+            "input_paths": [
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "Product Decisions.md",
+              "README.md",
+              "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+              "specs/changes/HG-0001/evidence/document-check-final.json",
+              "specs/changes/HG-0001/evidence/follow-up-checks.json",
+              "specs/changes/HG-0001/evidence/local-checks.json",
+              "specs/changes/HG-0001/evidence/semantic-review.md"
+            ],
+            "method": "manual",
+            "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+            "outcome": "passed",
+            "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+            "scenario": "HG-0001-S2",
+            "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+          }
+        },
+        "review": {
+          "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+          "conclusion": "GO after correction. Both documentation scenarios satisfied; local tag restriction restored and unnecessary tag removed. Original independent report: specs/changes/HG-0001/evidence/independent-review-final.md. No application behavior or human acceptance is claimed.",
+          "reviewer": "Independent agent /root/eval_wording_review",
+          "verdict": "go"
+        },
+        "acceptance": [],
+        "history": [
+          {
+            "recorded_at": 1793496510,
+            "evidence": {},
+            "review": null
+          },
+          {
+            "recorded_at": 1793496663,
+            "evidence": {
+              "HG-0001-S1": {
+                "captured_at": "2026-11-01",
+                "command": "Semantic comparison of owner request, confirmed clarification, Product Decisions.md and git diff; inspect original document-check reports.",
+                "files": {
+                  ".highgrade/project/INSTRUCTIONS.md": "0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9",
+                  ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                  "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                  "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                  "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                  "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                  "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                  "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+                },
+                "input_paths": [
+                  ".highgrade/project/INSTRUCTIONS.md",
+                  ".highgrade/project/documents.json",
+                  "AGENTS.md",
+                  "Product Decisions.md",
+                  "README.md",
+                  "specs/changes/HG-0001/evidence/document-check-final.json",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                  "specs/changes/HG-0001/evidence/local-checks.json"
+                ],
+                "method": "manual",
+                "observation": "The nine priority principles precede the details; affected decisions and provenance are reconciled; all IDs and 24 unrelated entries are preserved. Manual content review only; no application execution. See semantic-review.md and its original reports for coverage and limits.",
+                "outcome": "passed",
+                "report": "specs/changes/HG-0001/evidence/semantic-review.md",
+                "scenario": "HG-0001-S1",
+                "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+              },
+              "HG-0001-S2": {
+                "captured_at": "2026-11-01",
+                "command": "Semantic comparison of owner request, confirmed clarification, Product Decisions.md and git diff; inspect original document-check reports.",
+                "files": {
+                  ".highgrade/project/INSTRUCTIONS.md": "0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9",
+                  ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                  "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                  "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                  "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                  "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                  "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                  "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+                },
+                "input_paths": [
+                  ".highgrade/project/INSTRUCTIONS.md",
+                  ".highgrade/project/documents.json",
+                  "AGENTS.md",
+                  "Product Decisions.md",
+                  "README.md",
+                  "specs/changes/HG-0001/evidence/document-check-final.json",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                  "specs/changes/HG-0001/evidence/local-checks.json"
+                ],
+                "method": "manual",
+                "observation": "The nine priority principles precede the details; affected decisions and provenance are reconciled; all IDs and 24 unrelated entries are preserved. Manual content review only; no application execution. See semantic-review.md and its original reports for coverage and limits.",
+                "outcome": "passed",
+                "report": "specs/changes/HG-0001/evidence/semantic-review.md",
+                "scenario": "HG-0001-S2",
+                "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+              }
+            },
+            "review": null
+          },
+          {
+            "recorded_at": 1793496718,
+            "evidence": {
+              "HG-0001-S1": {
+                "captured_at": "2026-11-01",
+                "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+                "files": {
+                  ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+                  ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                  "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                  "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                  "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                  "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+                  "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                  "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                  "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+                  "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+                },
+                "input_paths": [
+                  ".highgrade/project/INSTRUCTIONS.md",
+                  ".highgrade/project/documents.json",
+                  "AGENTS.md",
+                  "Product Decisions.md",
+                  "README.md",
+                  "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+                  "specs/changes/HG-0001/evidence/document-check-final.json",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                  "specs/changes/HG-0001/evidence/local-checks.json",
+                  "specs/changes/HG-0001/evidence/semantic-review.md"
+                ],
+                "method": "manual",
+                "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+                "outcome": "passed",
+                "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+                "scenario": "HG-0001-S1",
+                "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+              },
+              "HG-0001-S2": {
+                "captured_at": "2026-11-01",
+                "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+                "files": {
+                  ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+                  ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                  "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                  "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                  "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                  "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+                  "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                  "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                  "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+                  "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+                },
+                "input_paths": [
+                  ".highgrade/project/INSTRUCTIONS.md",
+                  ".highgrade/project/documents.json",
+                  "AGENTS.md",
+                  "Product Decisions.md",
+                  "README.md",
+                  "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+                  "specs/changes/HG-0001/evidence/document-check-final.json",
+                  "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                  "specs/changes/HG-0001/evidence/local-checks.json",
+                  "specs/changes/HG-0001/evidence/semantic-review.md"
+                ],
+                "method": "manual",
+                "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+                "outcome": "passed",
+                "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+                "scenario": "HG-0001-S2",
+                "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+              }
+            },
+            "review": null
+          }
+        ]
+      },
+      "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+      "inputs_sha256": "a10c94af7b23dffd50cd8389d3f453ed198e7c761ece23a5ac481bfa51012ec2",
+      "links": {
+        "depends_on": [],
+        "related_to": [],
+        "same_requirements": []
+      }
+    }
+  ],
+  "operation": "spec-validate",
+  "result": {
+    "change": {
+      "id": "HG-0001",
+      "title": "Prioritize the agreed product principles in Product Decisions",
+      "goal": "Make Product Decisions.md foreground the current owner-agreed product principles while retaining useful historical detail and unresolved questions.",
+      "rationale": "The owner explicitly requested a tighter prioritized product document and confirmed that both lesson and homework evidence guide priorities.",
+      "scope": "Documentation-only update to Product Decisions.md and the minimal HighGrade record required by project instructions. Product Decisions.md remains the owner of product descriptions. No application, database, evaluator, deployment, commit, push or mass migration is authorized.",
+      "questions": [],
+      "operations": [
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0001-R1",
+            "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+            "statement": "Product Decisions.md must present the owner-confirmed priority principles first and reconcile affected detailed entries without losing provenance, unrelated decisions or unresolved #to-decide questions. The detailed product meaning is owned by Product Decisions.md; this requirement governs this documentation update and does not constitute application implementation.",
+            "scenarios": [
+              {
+                "id": "HG-0001-S1",
+                "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                "when": "The reader opens the revised product document.",
+                "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+              },
+              {
+                "id": "HG-0001-S2",
+                "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                "when": "The current principles and corresponding detailed entries are reconciled.",
+                "then": "Affected entries state the updated principles and distinguish current owner decisions from historical extracts and proposals; all 37 existing decision IDs and unrelated decisions remain, with genuine unresolved details marked #to-decide. Online evaluation uses live observations without assuming gold answers for every trace. No application implementation, generation strategy adoption or measured result is claimed.",
+                "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+              }
+            ]
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "id": "HG-0001-T1",
+          "description": "Add the prioritized principles and reconcile the affected detailed product decisions while preserving provenance and unresolved choices.",
+          "done": true
+        },
+        {
+          "id": "HG-0001-T2",
+          "description": "Verify document meaning, preservation and links, run applicable project checks, and obtain independent semantic review of the final diff.",
+          "done": true
+        }
+      ],
+      "checks": [
+        {
+          "id": "HG-0001-C1",
+          "action": "Compare the final document and full diff against both scenarios; inspect all changed meanings and source/proposal labels and applicable check reports.",
+          "file": "Product Decisions.md",
+          "inputs": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md"
+          ],
+          "observation": "All requested principles are present first, affected details are consistent, unrelated decisions and provenance are preserved, and implementation claims are absent.",
+          "preparation": "Read the owner request and confirmed lesson/homework clarification, baseline Product Decisions.md, README and project instructions.",
+          "runner": null,
+          "scenario_ids": [
+            "HG-0001-S1",
+            "HG-0001-S2"
+          ],
+          "selector": "prioritized product principles and affected detailed entries"
+        }
+      ],
+      "attention": {
+        "requests": [
+          {
+            "id": "hg0001-product-principles-result-20261101",
+            "at": 1793496733,
+            "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+            "content_sha256": "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea",
+            "inputs_sha256": "4b4890a4b110e7e5607dda2b8f741d1450486aa8d5b3c6b5710f3328c94010c9",
+            "kind": "result",
+            "reason": "Documentation update and independent review are complete. Review the priority principles and reconciled entries in Product Decisions.md; implementation, commit and publication remain separate.",
+            "response": null
+          }
+        ],
+        "snapshots": {
+          "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea": {
+            "title": "Prioritize the agreed product principles in Product Decisions",
+            "goal": "Make Product Decisions.md foreground the current owner-agreed product principles while retaining useful historical detail and unresolved questions.",
+            "rationale": "The owner explicitly requested a tighter prioritized product document and confirmed that both lesson and homework evidence guide priorities.",
+            "scope": "Documentation-only update to Product Decisions.md and the minimal HighGrade record required by project instructions. Product Decisions.md remains the owner of product descriptions. No application, database, evaluator, deployment, commit, push or mass migration is authorized.",
+            "depends_on": [],
+            "operations": [
+              {
+                "action": "add",
+                "requirement": {
+                  "id": "HG-0001-R1",
+                  "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+                  "statement": "Product Decisions.md must present the owner-confirmed priority principles first and reconcile affected detailed entries without losing provenance, unrelated decisions or unresolved #to-decide questions. The detailed product meaning is owned by Product Decisions.md; this requirement governs this documentation update and does not constitute application implementation.",
+                  "scenarios": [
+                    {
+                      "id": "HG-0001-S1",
+                      "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                      "when": "The reader opens the revised product document.",
+                      "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                      "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+                    },
+                    {
+                      "id": "HG-0001-S2",
+                      "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                      "when": "The current principles and corresponding detailed entries are reconciled.",
+                      "then": "Affected entries state the updated principles and distinguish current owner decisions from historical extracts and proposals; all 37 existing decision IDs and unrelated decisions remain, with genuine unresolved details marked #to-decide. Online evaluation uses live observations without assuming gold answers for every trace. No application implementation, generation strategy adoption or measured result is claimed.",
+                      "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+                    }
+                  ]
+                }
+              }
+            ],
+            "tasks": [
+              {
+                "id": "HG-0001-T1",
+                "description": "Add the prioritized principles and reconcile the affected detailed product decisions while preserving provenance and unresolved choices."
+              },
+              {
+                "id": "HG-0001-T2",
+                "description": "Verify document meaning, preservation and links, run applicable project checks, and obtain independent semantic review of the final diff."
+              }
+            ]
+          }
+        }
+      },
+      "imports": {},
+      "baseline": {},
+      "scoped_baseline": true,
+      "revision_tags": [],
+      "created_at": 1793496199,
+      "archived": true,
+      "abandoned_reason": null,
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json",
+            "specs/changes/HG-0001/evidence/semantic-review.md"
+          ],
+          "method": "manual",
+          "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01",
+          "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json",
+            "specs/changes/HG-0001/evidence/semantic-review.md"
+          ],
+          "method": "manual",
+          "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+        }
+      },
+      "review": {
+        "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+        "conclusion": "GO after correction. Both documentation scenarios satisfied; local tag restriction restored and unnecessary tag removed. Original independent report: specs/changes/HG-0001/evidence/independent-review-final.md. No application behavior or human acceptance is claimed.",
+        "reviewer": "Independent agent /root/eval_wording_review",
+        "verdict": "go"
+      },
+      "acceptance": [],
+      "history": [
+        {
+          "recorded_at": 1793496510,
+          "evidence": {},
+          "review": null
+        },
+        {
+          "recorded_at": 1793496663,
+          "evidence": {
+            "HG-0001-S1": {
+              "captured_at": "2026-11-01",
+              "command": "Semantic comparison of owner request, confirmed clarification, Product Decisions.md and git diff; inspect original document-check reports.",
+              "files": {
+                ".highgrade/project/INSTRUCTIONS.md": "0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9",
+                ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+              },
+              "input_paths": [
+                ".highgrade/project/INSTRUCTIONS.md",
+                ".highgrade/project/documents.json",
+                "AGENTS.md",
+                "Product Decisions.md",
+                "README.md",
+                "specs/changes/HG-0001/evidence/document-check-final.json",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                "specs/changes/HG-0001/evidence/local-checks.json"
+              ],
+              "method": "manual",
+              "observation": "The nine priority principles precede the details; affected decisions and provenance are reconciled; all IDs and 24 unrelated entries are preserved. Manual content review only; no application execution. See semantic-review.md and its original reports for coverage and limits.",
+              "outcome": "passed",
+              "report": "specs/changes/HG-0001/evidence/semantic-review.md",
+              "scenario": "HG-0001-S1",
+              "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+            },
+            "HG-0001-S2": {
+              "captured_at": "2026-11-01",
+              "command": "Semantic comparison of owner request, confirmed clarification, Product Decisions.md and git diff; inspect original document-check reports.",
+              "files": {
+                ".highgrade/project/INSTRUCTIONS.md": "0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9",
+                ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+              },
+              "input_paths": [
+                ".highgrade/project/INSTRUCTIONS.md",
+                ".highgrade/project/documents.json",
+                "AGENTS.md",
+                "Product Decisions.md",
+                "README.md",
+                "specs/changes/HG-0001/evidence/document-check-final.json",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                "specs/changes/HG-0001/evidence/local-checks.json"
+              ],
+              "method": "manual",
+              "observation": "The nine priority principles precede the details; affected decisions and provenance are reconciled; all IDs and 24 unrelated entries are preserved. Manual content review only; no application execution. See semantic-review.md and its original reports for coverage and limits.",
+              "outcome": "passed",
+              "report": "specs/changes/HG-0001/evidence/semantic-review.md",
+              "scenario": "HG-0001-S2",
+              "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+            }
+          },
+          "review": null
+        },
+        {
+          "recorded_at": 1793496718,
+          "evidence": {
+            "HG-0001-S1": {
+              "captured_at": "2026-11-01",
+              "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+              "files": {
+                ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+                ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+                "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+                "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+              },
+              "input_paths": [
+                ".highgrade/project/INSTRUCTIONS.md",
+                ".highgrade/project/documents.json",
+                "AGENTS.md",
+                "Product Decisions.md",
+                "README.md",
+                "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+                "specs/changes/HG-0001/evidence/document-check-final.json",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                "specs/changes/HG-0001/evidence/local-checks.json",
+                "specs/changes/HG-0001/evidence/semantic-review.md"
+              ],
+              "method": "manual",
+              "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+              "outcome": "passed",
+              "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+              "scenario": "HG-0001-S1",
+              "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+            },
+            "HG-0001-S2": {
+              "captured_at": "2026-11-01",
+              "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+              "files": {
+                ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+                ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+                "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+                "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+                "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+                "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+                "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+                "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+                "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+                "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+              },
+              "input_paths": [
+                ".highgrade/project/INSTRUCTIONS.md",
+                ".highgrade/project/documents.json",
+                "AGENTS.md",
+                "Product Decisions.md",
+                "README.md",
+                "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+                "specs/changes/HG-0001/evidence/document-check-final.json",
+                "specs/changes/HG-0001/evidence/follow-up-checks.json",
+                "specs/changes/HG-0001/evidence/local-checks.json",
+                "specs/changes/HG-0001/evidence/semantic-review.md"
+              ],
+              "method": "manual",
+              "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+              "outcome": "passed",
+              "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+              "scenario": "HG-0001-S2",
+              "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+            }
+          },
+          "review": null
+        }
+      ]
+    },
+    "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+    "inputs_sha256": "a10c94af7b23dffd50cd8389d3f453ed198e7c761ece23a5ac481bfa51012ec2",
+    "links": {
+      "depends_on": [],
+      "related_to": [],
+      "same_requirements": []
+    },
+    "schema_version": 3,
+    "store_sha256": "685fac7c18fa1555d0e818ba5d459c566ce680b2731dc6117c1278e3d371f5fb"
+  },
+  "status": "passed"
+}

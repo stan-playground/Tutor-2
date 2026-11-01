@@ -1,0 +1,75 @@
+{
+  "id": "HG-0006",
+  "title": "Durable preparation, tutor review and approved export",
+  "tags": [],
+  "goal": "Let tutors clarify, revise and approve homework across durable human pauses.",
+  "rationale": "LangGraph execution continuity must preserve exact application-owned tutor decisions.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-18–23/26/27; Architecture sections 4/7–8/12. LangGraph with PostgreSQL checkpoints; domain records own approval. Detailed graph/API contracts are deferred.",
+  "questions": [],
+  "depends_on": [
+    {
+      "id": "HG-0005",
+      "reason": "Needs generated and validated homework parts for review."
+    }
+  ],
+  "related_to": [],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0006-R1",
+        "title": "Durable preparation, tutor review and approved export",
+        "statement": "Use a small LangGraph for preparation and durable clarification/review pauses. Persist exact draft/part decisions in PostgreSQL, reject stale/duplicate effects and require valid tutor-approved retained parts for student export. Part approval alone calls no model; substantive edits regenerate and revalidate. Failed active generation requires a manual new request.",
+        "scenarios": [
+          {
+            "id": "HG-0006-S1",
+            "given": "A draft is waiting for tutor review and its pause is durably saved.",
+            "when": "The service restarts and the tutor returns.",
+            "then": "The same draft and part decisions remain available; an actionable saved response resumes the correct graph pause.",
+            "verification": "Future process-restart and persisted review/resume observation."
+          },
+          {
+            "id": "HG-0006-S2",
+            "given": "A tutor approves one part, then submits an outdated draft/pause action.",
+            "when": "The application handles those decisions.",
+            "then": "The current part approval is saved without a model call; the stale action cannot change the current plan.",
+            "verification": "Future API/database check with recorded model-call count and stale identities."
+          },
+          {
+            "id": "HG-0006-S3",
+            "given": "All retained parts are valid and approved for the exact draft.",
+            "when": "The workflow finalizes the homework.",
+            "then": "It creates the approved student copy without the tutor key; repeated finalization does not duplicate completion.",
+            "verification": "Future approved-export and duplicate-finalization boundary checks."
+          },
+          {
+            "id": "HG-0006-S4",
+            "given": "An active generation fails rather than reaching a saved human pause.",
+            "when": "The tutor chooses retry.",
+            "then": "Failure is visible; retry creates a new request with current evidence and no carried approvals, rather than silently resuming mid-generation.",
+            "verification": "Future worker-failure and manual-retry observation."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0006-T1",
+      "description": "Persist graph pauses and exact versioned tutor decisions with safe continuation.",
+      "done": false
+    },
+    {
+      "id": "HG-0006-T2",
+      "description": "Regenerate edited drafts and export only validated, approved student content.",
+      "done": false
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793527738,
+  "archived": false,
+  "abandoned_reason": null
+}

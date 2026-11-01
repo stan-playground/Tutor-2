@@ -1,0 +1,22 @@
+{
+  "scope": "Final real-document structure/preservation checks after semantic corrections; no application behavior tested.",
+  "checks": {
+    "priority_section_unchanged": true,
+    "preserved_decisions": 37,
+    "preserved_open_topics": 28,
+    "source_targets_unchanged_and_exist": true,
+    "all_PD_references_resolve": true,
+    "source_references": 37,
+    "whitespace_command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "whitespace_exit_code": 0,
+    "whitespace_output": ""
+  },
+  "lower_section_words_before": 6106,
+  "lower_section_words_after": 2947,
+  "reduction_percent": 51.7,
+  "product_sha256": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890"
+}

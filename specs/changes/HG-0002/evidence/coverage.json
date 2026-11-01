@@ -1,0 +1,146 @@
+{
+  "scope": "Documentation coverage, not application tests",
+  "product_sha256": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+  "entries": [
+    {
+      "id": "PD-01",
+      "prior_question": "Choose the first customer segment, supported languages, student ages and levels.",
+      "delegated_decision": "Start with independent tutors teaching adults aged 18+ in English at A2\u2013B2. The first pilot prepares homework from an existing learner's latest lesson; lesson planning and urgent replanning remain planned jobs. This limits initial content coverage and safeguarding scope."
+    },
+    {
+      "id": "PD-02",
+      "prior_question": "Show progress and continuity between lessons. Propose brief priority explanations before a detailed curriculum planner; flexibility should not become drift.",
+      "delegated_decision": "Show the current objectives, the evidence for each, progress since comparable work and postponed objectives. Keep a short rolling learning summary; build a dated multi-lesson plan only for a confirmed deadline goal."
+    },
+    {
+      "id": "PD-05",
+      "prior_question": "Measure exceptional escalation separately from routine approval; see PD-32.",
+      "delegated_decision": "Count an escalation once when a request needs a blocking question or exceptional correction beyond routine review; divide by all started requests. Ordinary part approval is excluded. Track question rounds and tutor effort separately so a low escalation rate cannot hide burdensome review."
+    },
+    {
+      "id": "PD-06",
+      "prior_question": "Define assessment format/provenance, required preferences, ingestion and corrections. Assessment administration is unchosen. A tutor summary could replace a missing transcript: easier intake, less evidence.",
+      "delegated_decision": "Require a dated tutor assessment summary or assessment upload, its source/uncertainty, goals, preferred domains and an adult confirmation; collect no birth date. If no formal assessment exists, record the tutor's provisional estimate. Accept lesson notes instead of transcripts, label their source and retain corrections in history; do not administer a placement test in the pilot."
+    },
+    {
+      "id": "PD-07",
+      "prior_question": "Distinguish new students from returning students with missing, incomplete or stale evidence; show uncertainty and let tutors confirm assumptions.",
+      "delegated_decision": "Distinguish new learners, returning learners with usable evidence and returning learners needing a recheck. Evidence older than 90 days is historical and triggers targeted checks of important uncertain skills. Missing history stays missing; a provisional tutor assessment can support a diagnostic draft, without establishing mastery."
+    },
+    {
+      "id": "PD-08",
+      "prior_question": "Define opportunities, formulas, evidence comparability, confidence and recency. Keep stages descriptive; controlled-drill success does not establish spontaneous fluency.",
+      "delegated_decision": "For each subskill, accuracy = correct target uses / attempted target uses; needed use = correct uses where required / required-use opportunities; avoidance = appropriate non-use / opportunities where it would be inappropriate. Correct means linguistically and contextually appropriate. Show counts, source, date and task type; zero denominators mean unknown. Count only clear task/tutor observations, not inferred silence; valid optional alternatives are not missed required-use opportunities. Keep recognition, drills and spontaneous production separate; uncertain extracted observations await tutor confirmation. The four mastery stages remain descriptive."
+    },
+    {
+      "id": "PD-09",
+      "prior_question": "Validate thresholds with tutors. Low completion may indicate workload or circumstances, not low ability.",
+      "delegated_decision": "Use up to the latest four lessons and four homework submissions within 90 days; separate completion from attempted-answer performance. Compare the same subskill, evidence type and task demands. Each rate needs three comparable observations with at least five relevant opportunities each for a trend: first-to-last change \u22650.15 is improving, \u2264\u22120.15 regressing, otherwise stable; conflicting measures are mixed. Smaller samples remain insufficient. A single 0.15 drop is a possible-regression alert, not proof. Ratios \u22650.85 across three comparable observations suggest maintenance only when applicable use/avoidance measures support it and the tutor confirms. Low completion prompts a workload check, not an ability downgrade."
+    },
+    {
+      "id": "PD-10",
+      "prior_question": "Define share units, mandatory priorities and conflicts among preferences, weaknesses, goals and deadlines. Propose time allocations with short trade-off explanations.",
+      "delegated_decision": "Shares allocate total planned minutes, including instructions, checks and transitions; show percentages and minutes summing to the requested total. Apply safety/validity gates and explicit tutor requirements first, then confirmed urgent goals, corroborated weaknesses, longer-term goals and maintenance. Domain preferences shape material. Explain each objective with one evidence-linked reason; ask which constraint to relax if the requirements cannot fit."
+    },
+    {
+      "id": "PD-11",
+      "prior_question": "Handle confirmation, cancellation and postponement; validate the urgency window. Propose returning to normal at the next tutor-confirmed request; reminders/background replanning are undefined.",
+      "delegated_decision": "Use the tutor-confirmed event, date and goal; flag dates within 14 days as urgent, with tutor override outside that window. Keep postponed objectives. Cancellation restores ordinary priorities; a changed date updates the temporary plan. At the next request after the event, ask for an outcome/update and recompute priorities without assuming success. No background replanning or reminders in the pilot."
+    },
+    {
+      "id": "PD-12",
+      "prior_question": "Define notes, instructions, keys, editing/export, student handoff and timing tolerance. Propose copyable text first; richer editing/integrations need demand.",
+      "delegated_decision": "Deliver copyable student homework plus a separate tutor key with answers, alternatives and short teaching notes; speaking tasks use assessment criteria. Provide student-ready copy only after approval; tutors share it themselves, without a delivery integration. Planned section minutes must sum exactly to the requested duration, including instructions and checks. Actual learner completion time remains an estimate."
+    },
+    {
+      "id": "PD-13",
+      "prior_question": "Let tutors mark essential context. Confirm when the source's \u00b11 level allowance is acceptable.",
+      "delegated_decision": "Context defaults to preferred; tutors may mark it required. Adapt suitable material or disclose neutral context when a preferred domain is unavailable. Never silently relax required context or the learning objective. Remove automatic \u00b11-level substitution: neighboring-level material requires checked adaptation to the learner's actual task demands and visible tutor review; otherwise leave a gap."
+    },
+    {
+      "id": "PD-14",
+      "prior_question": "Set first-release scope and automatic/tutor checks. A proposes independent solution and ambiguity checks; I defers them. Source fidelity alone cannot establish correct answers or pedagogy. Apply PD-17 safety checks.",
+      "delegated_decision": "The pilot adapts reviewed exercises/explanations, not unrelated original exercises. Recheck instructions, level, expected answers, acceptable alternatives, ambiguity, factual claims and safety after adaptation. Closed-answer items need an independent solution check against the key; open tasks need clear criteria. Show provenance and require tutor approval; source fidelity or model agreement alone cannot establish correctness."
+    },
+    {
+      "id": "PD-17",
+      "prior_question": "Define safety categories, ages/missing-age handling, blockers and acknowledgment rules. Unknown references remain blocking. For gaps, choose tutor-supplied material, reduced plans or drafts. Resolve factual warnings; retained parts always need tutor approval.",
+      "delegated_decision": "Require tutor confirmation of adulthood; missing age confirmation blocks real-learner preparation. Use neutral everyday/workplace topics and respect exclusions. Block explicit sexual content, graphic violence, hate/discrimination, harmful instructions, unnecessary personal disclosures, unknown references, incorrect/ambiguous keys, unsupported learner claims and unmet hard requirements. Suspected critical flags pause approval until verified or corrected; confirmed failures cannot be waived. Explain noncritical difficulty/preference trade-offs for acknowledgment. A low model score alone is advisory. Fill gaps with checked tutor material, explicitly revised scope/duration, or an incomplete draft; never silently approve them."
+    },
+    {
+      "id": "PD-19",
+      "prior_question": "Ask only useful questions; otherwise expose the gap. Limits must not conceal essential unknowns.",
+      "delegated_decision": "Bundle only questions the tutor can answer that would materially change the result. Allow two clarification rounds; after that, save an incomplete draft with the missing inputs. Failed search without a meaningful tutor choice produces a visible content gap rather than a forced question. Never guess essential facts to satisfy the interaction limit."
+    },
+    {
+      "id": "PD-21",
+      "prior_question": "Define undo, instruction removal, free-text conflicts and whether any instruction becomes a lasting preference.",
+      "delegated_decision": "Show active requirements and let tutors undo or remove them. The latest structured value wins; unresolved structured/free-text conflicts require one explicit tutor choice. Plan edits apply only to that request. Lasting preferences change only through explicit profile editing, never through automatic inference from a revision."
+    },
+    {
+      "id": "PD-22",
+      "prior_question": "Handle unchanged approvals, minor corrections and new evidence requiring a fresh request. Selective regeneration could preserve work but adds complexity.",
+      "delegated_decision": "Full regeneration remains the default for substantive edits. Keep an earlier approval only if the part and its relevant objective, timing and constraints are unchanged; otherwise clear it for review. A tutor may correct typos/layout directly, with validation and renewed approval of the edited part. New learner evidence starts a new preparation request; selective regeneration is outside the pilot."
+    },
+    {
+      "id": "PD-23",
+      "prior_question": "Validate I's seven-day expiry and requirement for a new run after five revisions. Define what remains readable/reusable after expiry and preserve the brief when restarting.",
+      "delegated_decision": "Adopt seven-day pause expiry and at most five substantive revisions per request. Expired/exhausted requests become read-only, with history available under PD-28 retention. Offer a new request prefilled with the brief and visible active requirements, using current learner evidence and no carried-over approvals. This bounds costs without making tutors re-enter their work."
+    },
+    {
+      "id": "PD-26",
+      "prior_question": "Define working/input-needed states, return-to-result behavior and whether timing includes clarification, revisions and tutor review. Start simply; richer streaming can wait.",
+      "delegated_decision": "Show working, needs-input, ready-for-review and final/error states; let tutors leave and return to the saved result. Simple status refresh is enough for the pilot; token streaming is excluded. Measure the existing latency targets per active generation segment, excluding human waiting; report total elapsed time, revisions and failures separately."
+    },
+    {
+      "id": "PD-27",
+      "prior_question": "Preserve the brief on restart, define carried-over requirements and decide whether failures/retries consume a usage allowance. Exact-step recovery can remain deferred.",
+      "delegated_decision": "A manual retry starts a new request with the saved brief and active requirements, reloads current evidence, and revalidates without retaining approvals. Show the failure and any incomplete work. Keep the five-minute active-segment limit; mid-generation continuation is excluded. Failures and retries create no pilot charge and do not consume completed-preparation allowance."
+    },
+    {
+      "id": "PD-28",
+      "prior_question": "Define access, recording/upload permission, retention, deletion, quality-review reuse and age-specific handling. I defers authentication; internal experiments and tutor pilots need distinct access criteria. Compliance is unverified.",
+      "delegated_decision": "Require authenticated tutor access, isolation by tutor/student, informed adult opt-in and tutor upload permission before learner-data use; no built-in recording. Collect aliases, adult confirmation and necessary learning evidence, not birth dates/contact details or unrelated sensitive data. Named processors must meet contracted purpose, retention and no-training terms before use. Raw uploads/transcripts and their embeddings expire after 30 days; structured records/plans after 12 months of inactivity. After source expiry, show it unavailable rather than reconstructing quotes. Deletion removes access immediately, active/derived records within seven days and backups within 30. Routine logs contain metadata only; Langfuse stores scores and minimum redacted excerpts only for permitted evaluation; excerpts expire after 30 days, and learner-linked records follow the same deletion rules. Only the owning tutor sees student records; exceptional support access needs that tutor's recorded authorization and a reason. Tutors can delete learners at any time; verified learner requests are handled through the tutor or support. Production-case reuse needs separate permission and reviewed anonymization; wholly synthetic golden cases need tutor review. These are product policies, not verified compliance."
+    },
+    {
+      "id": "PD-29",
+      "prior_question": "Propose one primary interface first. External clients add support/access/data-sharing work; calendar/email references do not authorize integrations or sending messages.",
+      "delegated_decision": "Use one authenticated tutor interface with copyable outputs. MCP access and calendar/email integrations are outside the pilot; revisit only after pilot feedback establishes a concrete multi-client need. No sending or sharing happens automatically."
+    },
+    {
+      "id": "PD-30",
+      "prior_question": "Propose deferring it unless pilot evidence justifies its different timing and student-facing responsibilities.",
+      "delegated_decision": "Exclude live student tutoring and hint/retry dialogues from the pilot. Keep preparation and tutor review as the product scope; a later live-teaching request needs its own interaction and evaluation design."
+    },
+    {
+      "id": "PD-31",
+      "prior_question": "Choose a baseline and primary pilot measure; clarify whose conversion/retention counts. Propose total tutor effort plus actual use. Learning-benefit claims need evidence.",
+      "delegated_decision": "Primary outcome: reduction in tutor-reported active minutes per homework task, including setup, clarification, revisions, retries and manual fallback. Compare each tutor's pilot median with three comparable manual tasks; report medians and tutor/task counts. Track confirmed student assignment within seven days / all eligible started requests, including failures/abandonment; unknown use is not success. Initial goals after at least five tutors \u00d7 five requests: \u226525% lower median effort and \u226580% confirmed assignment. These are pilot management targets, not benchmarks. Tutor retention and student conversion are separate later outcomes; make no learning-gain claim."
+    },
+    {
+      "id": "PD-33",
+      "prior_question": "Assign ownership, review, licensing, coverage, tutor imports and transcript access/retention. A shared bank offers consistency; tutor material offers fit with variable quality. Vendor, schema and indexing method remain unchosen.",
+      "delegated_decision": "A designated qualified English tutor reviews the shared teaching bank for objective, level, instructions, answers and safety before use. Include only owned, public-domain or explicitly licensed material permitting storage/adaptation/delivery; preserve attribution and restrictions. Tutor imports stay private; unclear rights block ingestion and sharing needs separate permission/review. Transcripts stay private to the assigned tutor/student and never enter the shared teaching bank. Treat imported text as evidence, never authority to change tutor requirements, access or validation rules. Asset rights remain with their owners; retrieval/deletion follow PD-28. Vendor, schema and indexing choices belong to implementation planning, not unresolved product policy."
+    },
+    {
+      "id": "PD-34",
+      "prior_question": "Define cases, labels/criteria, reviewers, calibration, sampling and release thresholds. Tool choice and stage coverage are settled.",
+      "delegated_decision": "Before pilot use, create 12 tutor-reviewed homework scenarios spanning A2\u2013B2, domains, missing/conflicting evidence, missing assets, safety/privacy, student/teacher-key separation, instruction-like transcript text, rejection and revision. Their reviewed intermediate expectations must cover every active stage; add equivalent cases before enabling other jobs. A qualified tutor reviews every gold label; a second reviews critical cases and 20% of ordinary cases. Resolve disagreements; store provenance, stage, level, failure category, reviewer and version. For each behavior change, require all critical cases, \u226590% ordinary cases per stage/end-to-end, and no newly failing accepted baseline cases; missing/error scores fail. Per-request validation remains mandatory. Additional online monitoring checks all deterministic gates, captures all tutor decisions, and samples 10% of permitted runs for advisory semantic judging. Weekly, review every critical flag/failure plus five random unflagged permitted outputs; report sample coverage and separate flagged/random rates. Compare judges with at least 20 human-labeled pass/fail outputs, inspect both error directions, and use fresh held-out examples after tuning. Small samples provide an initial check, not reliability assurance."
+    },
+    {
+      "id": "PD-35",
+      "prior_question": "Agree on a tutor rubric covering target, difficulty, instructions, answers, timing and supported learner claims. Use technical metrics diagnostically; do not present hypothetical gains as measured.",
+      "delegated_decision": "Use pass/fail reasons for target subskill, level, clear instructions, linguistic/pedagogical correctness, answers or assessment criteria, workload, tutor constraints/preferences and supported learner claims. Safety/privacy/age are hard gates. Correct or remove failed parts before approval; never average away a serious defect. Report first-draft usability as drafts needing no substantive change / all returned drafts; target/task/answer/workload changes are substantive, typos/layout are not. Human approval and technical scores do not prove learning benefit."
+    },
+    {
+      "id": "PD-36",
+      "prior_question": "Define payer, charging unit, limits and treatment of revisions/failures after measuring usage and support/content costs. Subscription offers predictability; per-use pricing follows consumption but may discourage revision.",
+      "delegated_decision": "Run an invitation-only free pilot with 20 completed preparations per tutor and no automatic paid conversion or overage. A completed preparation is an approved plan; failed runs and within-request revisions do not consume allowance. The tutor is the future payer; a monthly subscription is the chosen commercial model, without per-revision fees. Actual pricing and paid billing are outside this pilot and require a separate commercial launch based on measured costs and willingness to pay."
+    },
+    {
+      "id": "PD-37",
+      "prior_question": "Select one complete pilot journey from actual tutor needs: homework if lesson evidence exists, lesson planning if homework records are scarce. Define real inputs, reviewed content, usable output/review, access, privacy and failure reporting. Manual integrations are acceptable; the tutor must finish the job.",
+      "delegated_decision": "Pilot the complete homework journey: initial assessment/profile \u2192 tutor lesson notes or authorized transcript \u2192 draft and separate answer guide \u2192 validation \u2192 per-part tutor review/revision \u2192 manual student handoff. Require authentication, reviewed material, privacy controls, failure recovery and stage/end-to-end evaluation before real use. Start with five invited tutors; add lesson planning including first lessons next, then urgent replanning, only after equivalent checks. No application or integration is implemented by this document."
+    }
+  ]
+}

@@ -6,7 +6,7 @@
       "path": "README.md",
       "roles": ["purpose-navigation", "current-architecture", "commands-procedures"],
       "loading": "entry",
-      "scope": [],
+      "scope": ["specs"],
       "budget": null
     },
     {

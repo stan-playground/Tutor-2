@@ -1,0 +1,147 @@
+{
+  "id": "HG-0001",
+  "title": "Prioritize the agreed product principles in Product Decisions",
+  "tags": [],
+  "goal": "Make Product Decisions.md foreground the current owner-agreed product principles while retaining useful historical detail and unresolved questions.",
+  "rationale": "The owner explicitly requested a tighter prioritized product document and confirmed that both lesson and homework evidence guide priorities.",
+  "scope": "Documentation-only update to Product Decisions.md and the minimal HighGrade record required by project instructions. Product Decisions.md remains the owner of product descriptions. No application, database, evaluator, deployment, commit, push or mass migration is authorized.",
+  "questions": [],
+  "depends_on": [],
+  "related_to": [],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0001-R1",
+        "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+        "statement": "Product Decisions.md must present the owner-confirmed priority principles first and reconcile affected detailed entries without losing provenance, unrelated decisions or unresolved #to-decide questions. The detailed product meaning is owned by Product Decisions.md; this requirement governs this documentation update and does not constitute application implementation.",
+        "scenarios": [
+          {
+            "id": "HG-0001-S1",
+            "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+            "when": "The reader opens the revised product document.",
+            "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+            "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+          },
+          {
+            "id": "HG-0001-S2",
+            "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+            "when": "The current principles and corresponding detailed entries are reconciled.",
+            "then": "Affected entries state the updated principles and distinguish current owner decisions from historical extracts and proposals; all 37 existing decision IDs and unrelated decisions remain, with genuine unresolved details marked #to-decide. Online evaluation uses live observations without assuming gold answers for every trace. No application implementation, generation strategy adoption or measured result is claimed.",
+            "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0001-T1",
+      "description": "Add the prioritized principles and reconcile the affected detailed product decisions while preserving provenance and unresolved choices.",
+      "done": true
+    },
+    {
+      "id": "HG-0001-T2",
+      "description": "Verify document meaning, preservation and links, run applicable project checks, and obtain independent semantic review of the final diff.",
+      "done": true
+    }
+  ],
+  "checks": [
+    {
+      "id": "HG-0001-C1",
+      "action": "Compare the final document and full diff against both scenarios; inspect all changed meanings and source/proposal labels and applicable check reports.",
+      "file": "Product Decisions.md",
+      "inputs": [
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "Product Decisions.md",
+        "README.md"
+      ],
+      "observation": "All requested principles are present first, affected details are consistent, unrelated decisions and provenance are preserved, and implementation claims are absent.",
+      "preparation": "Read the owner request and confirmed lesson/homework clarification, baseline Product Decisions.md, README and project instructions.",
+      "runner": null,
+      "scenario_ids": [
+        "HG-0001-S1",
+        "HG-0001-S2"
+      ],
+      "selector": "prioritized product principles and affected detailed entries"
+    }
+  ],
+  "attention": {
+    "requests": [
+      {
+        "id": "hg0001-product-principles-result-20261101",
+        "at": 1793496733,
+        "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+        "content_sha256": "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea",
+        "inputs_sha256": "4b4890a4b110e7e5607dda2b8f741d1450486aa8d5b3c6b5710f3328c94010c9",
+        "kind": "result",
+        "reason": "Documentation update and independent review are complete. Review the priority principles and reconciled entries in Product Decisions.md; implementation, commit and publication remain separate.",
+        "response": null
+      },
+      {
+        "id": "hg0001-concise-product-decisions-20261101",
+        "at": 1793497204,
+        "change_sha256": "5bbee652b57d4c342e9e14fdaf54e91a37b9acc32d26a1256c28c1969ca48b6c",
+        "content_sha256": "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea",
+        "inputs_sha256": "4b6eb9723d03ffaace89d67ad39355eba75bc72f27610c673b442891fc51e7ae",
+        "kind": "result",
+        "reason": "Lower product document condensed by 51.7% with unchanged priorities and preserved decisions/open questions. Independent semantic review GO. Review the concise document; commit remains separate.",
+        "response": null
+      }
+    ],
+    "snapshots": {
+      "b9819169027b385d784938941bdb0d7c264cc56479b220026b83ac88f80d82ea": {
+        "title": "Prioritize the agreed product principles in Product Decisions",
+        "goal": "Make Product Decisions.md foreground the current owner-agreed product principles while retaining useful historical detail and unresolved questions.",
+        "rationale": "The owner explicitly requested a tighter prioritized product document and confirmed that both lesson and homework evidence guide priorities.",
+        "scope": "Documentation-only update to Product Decisions.md and the minimal HighGrade record required by project instructions. Product Decisions.md remains the owner of product descriptions. No application, database, evaluator, deployment, commit, push or mass migration is authorized.",
+        "depends_on": [],
+        "operations": [
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0001-R1",
+              "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+              "statement": "Product Decisions.md must present the owner-confirmed priority principles first and reconcile affected detailed entries without losing provenance, unrelated decisions or unresolved #to-decide questions. The detailed product meaning is owned by Product Decisions.md; this requirement governs this documentation update and does not constitute application implementation.",
+              "scenarios": [
+                {
+                  "id": "HG-0001-S1",
+                  "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                  "when": "The reader opens the revised product document.",
+                  "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                  "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+                },
+                {
+                  "id": "HG-0001-S2",
+                  "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                  "when": "The current principles and corresponding detailed entries are reconciled.",
+                  "then": "Affected entries state the updated principles and distinguish current owner decisions from historical extracts and proposals; all 37 existing decision IDs and unrelated decisions remain, with genuine unresolved details marked #to-decide. Online evaluation uses live observations without assuming gold answers for every trace. No application implementation, generation strategy adoption or measured result is claimed.",
+                  "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+                }
+              ]
+            }
+          }
+        ],
+        "tasks": [
+          {
+            "id": "HG-0001-T1",
+            "description": "Add the prioritized principles and reconcile the affected detailed product decisions while preserving provenance and unresolved choices."
+          },
+          {
+            "id": "HG-0001-T2",
+            "description": "Verify document meaning, preservation and links, run applicable project checks, and obtain independent semantic review of the final diff."
+          }
+        ]
+      }
+    }
+  },
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "revision_tags": [],
+  "created_at": 1793496199,
+  "archived": true,
+  "abandoned_reason": null
+}

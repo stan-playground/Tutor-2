@@ -1,0 +1,156 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [
+    {
+      "code": "DeliveryInputChangedOrMissing",
+      "location": ".highgrade/project/INSTRUCTIONS.md",
+      "message": "Файл отсутствует, недоступен либо отличается от обязательного доказательства.",
+      "status": "failed"
+    },
+    {
+      "code": "DeliveryNotSelected",
+      "location": ".highgrade/project/INSTRUCTIONS.md",
+      "message": "index_differs",
+      "status": "unknown"
+    },
+    {
+      "code": "DeliveryInputChangedOrMissing",
+      "location": "README.md",
+      "message": "Файл отсутствует, недоступен либо отличается от обязательного доказательства.",
+      "status": "failed"
+    },
+    {
+      "code": "DeliveryNotSelected",
+      "location": "README.md",
+      "message": "index_differs",
+      "status": "unknown"
+    }
+  ],
+  "limitations": [
+    "Проверены локальные файлы и выбранный состав; внешняя доступность, срок хранения, отправка и приёмка не подтверждаются. Bundle — JSON-массив относительных путей, не загрузка. Все закреплённые входы проверяются консервативно; воспроизводимость не угадывается. Байты blob в Git index должны совпасть с закреплёнными хешами; фильтры не запускаются. Различие нормализации остаётся явным index_differs."
+  ],
+  "measurements": [
+    {
+      "id": "HG-0002",
+      "action": "spec-delivery",
+      "composition": "git_index",
+      "delivery_ready": false,
+      "files": [
+        {
+          "composition": "index_differs",
+          "current": false,
+          "path": ".highgrade/project/INSTRUCTIONS.md"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": ".highgrade/project/documents.json"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "AGENTS.md"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "Product Decisions.md"
+        },
+        {
+          "composition": "index_differs",
+          "current": false,
+          "path": "README.md"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "specs/changes/HG-0002/evidence/before.md"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "specs/changes/HG-0002/evidence/checks.json"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "specs/changes/HG-0002/evidence/coverage.json"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "specs/changes/HG-0002/evidence/executor-review.md"
+        },
+        {
+          "composition": "selected",
+          "current": true,
+          "path": "specs/changes/HG-0002/evidence/spec-validation.json"
+        }
+      ],
+      "human_acceptance": "unchanged",
+      "technical_readiness": "use_spec_check"
+    }
+  ],
+  "operation": "doctor",
+  "result": {
+    "id": "HG-0002",
+    "action": "spec-delivery",
+    "composition": "git_index",
+    "delivery_ready": false,
+    "files": [
+      {
+        "composition": "index_differs",
+        "current": false,
+        "path": ".highgrade/project/INSTRUCTIONS.md"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": ".highgrade/project/documents.json"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "AGENTS.md"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "Product Decisions.md"
+      },
+      {
+        "composition": "index_differs",
+        "current": false,
+        "path": "README.md"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "specs/changes/HG-0002/evidence/before.md"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "specs/changes/HG-0002/evidence/checks.json"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "specs/changes/HG-0002/evidence/coverage.json"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "specs/changes/HG-0002/evidence/executor-review.md"
+      },
+      {
+        "composition": "selected",
+        "current": true,
+        "path": "specs/changes/HG-0002/evidence/spec-validation.json"
+      }
+    ],
+    "human_acceptance": "unchanged",
+    "technical_readiness": "use_spec_check"
+  },
+  "status": "failed"
+}

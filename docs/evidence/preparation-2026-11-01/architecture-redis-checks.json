@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-01",
+  "artifact_sha256": "ca54755bb6367f8132d222a9351b4d69dc6f83161e161e8c5e9220367c215e80",
+  "before_sha256": "10f1d80a6e3a95d8a9653c90ab18d1ac1a209fec5a7a8ca29f1026ed7be453dd",
+  "product_sha256": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+  "scope": "Architecture.md only: Redis exact generic-query embedding cache, no implementation or spec changes.",
+  "checks": {
+    "git diff --check": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "sh -n HighGrade UI.sh": {
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "semantic_observations": [
+    "Generic vocabulary eligibility checked before hashing; no learner/freeform/private inputs.",
+    "Single initial cache: query vectors; current authorized retrieval and domain approval remain in PostgreSQL.",
+    "Expiry and model/config versioning, bounded memory, fallback and privacy tests defined as future behavior.",
+    "Teaching routes unchanged; local links exist, paired fences and authored whitespace valid; existing JSON parses."
+  ],
+  "limits": "No Redis/client/model/runtime/cache tests executed. Cache usefulness and TTL are design choices, not measured outcomes."
+}

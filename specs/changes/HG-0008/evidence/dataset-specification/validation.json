@@ -1,0 +1,545 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "schema_version": 3,
+      "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+    },
+    {
+      "change": {
+        "id": "HG-0008",
+        "title": "Evaluation gates and invitation-only homework pilot",
+        "goal": "Evaluate every active stage and release a bounded, measurable homework pilot.",
+        "rationale": "A working graph or valid reference does not prove suitable teaching or saved tutor effort.",
+        "scope": "Specification only; no application implementation, approved gold labels or acceptance claimed. Sources: PD-28/31/34–37; Architecture section 10. Concrete homework dataset construction, review and release contracts are detailed in specs/datasets.md. Five invited tutors, adult A2–B2 English homework and free allowance remain unchanged; other jobs and detailed pilot instrumentation are outside this refinement.",
+        "questions": [],
+        "depends_on": [
+          {
+            "id": "HG-0006",
+            "reason": "Needs the complete durable preparation/review/export journey."
+          },
+          {
+            "id": "HG-0007",
+            "reason": "Real-data pilot and evaluation require the data-lifecycle boundary."
+          }
+        ],
+        "operations": [
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0008-R1",
+              "title": "Evaluation gates and invitation-only homework pilot",
+              "statement": "Use reviewed golden cases for every active stage and the whole homework job, with Langfuse offline experiments and permitted online evaluation. Keep mandatory draft validation separate from sampled monitoring. Before real use, require access/privacy/review/recovery checks. Track tutor effort and actual assignment; the free pilot allows 20 approved preparations per tutor with no automatic charging.",
+              "scenarios": [
+                {
+                  "id": "HG-0008-S1",
+                  "given": "A behavior change fails a critical golden case or lacks a required score.",
+                  "when": "The release gate evaluates it.",
+                  "then": "The change cannot pass through an average score or omitted failure.",
+                  "verification": "Future dataset experiment and release-gate observation; thresholds remain those in PD-34."
+                },
+                {
+                  "id": "HG-0008-S2",
+                  "given": "A request is outside the additional semantic-monitoring sample.",
+                  "when": "Its draft is prepared.",
+                  "then": "Mandatory validation still runs; sampling does not weaken readiness checks.",
+                  "verification": "Future validation/monitoring coverage check."
+                },
+                {
+                  "id": "HG-0008-S3",
+                  "given": "A pilot request fails, is revised or is finalized repeatedly.",
+                  "when": "Usage and pilot outcomes are recorded.",
+                  "then": "Failures/revisions do not consume completed-preparation allowance and one approved preparation is counted once, without charging; outcome denominators do not hide failed/abandoned eligible requests.",
+                  "verification": "Future allowance/idempotency and pilot-metric cases."
+                }
+              ]
+            }
+          },
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0008-R2",
+              "title": "Typed, reproducible evaluation items with withheld labels",
+              "statement": "Use tutor-copilot/homework-gold for complete-job and isolated stage items, and tutor-copilot/judge-calibration for human-labeled candidate outputs. Enforce the input/expectedOutput/metadata contract and stage vocabulary in datasets.md. Pin synthetic identities, clock, evidence, asset revisions and scripted tutor actions where relevant; resolve fixtures without production data. Keep gold labels/reviewer reasons out of task inputs, proposed keys out of independent-solver inputs and human verdicts out of judge inputs. Open tasks use required criteria and accepted alternatives rather than exact reference prose.",
+              "scenarios": [
+                {
+                  "id": "HG-0008-S4",
+                  "given": "An item lacks its stage, expected criteria or a referenced asset revision, or duplicates an existing item ID/revision.",
+                  "when": "The evaluation suite is prepared.",
+                  "then": "Reject the item/suite before a provider call; report the exact invalid field or unresolved reference.",
+                  "verification": "Future schema/fixture-loader cases with actual provider-call observation; compare malformed and complete items."
+                },
+                {
+                  "id": "HG-0008-S5",
+                  "given": "A closed-answer adaptation has a proposed key and reviewed gold; a calibration item has a human verdict and reason.",
+                  "when": "The task, independent solver and semantic judge are invoked.",
+                  "then": "Provider payloads contain only their permitted context: no task gold, no solver proposed key and no judge human verdict/reason.",
+                  "verification": "Future captured synthetic provider payloads at each real call boundary, including nested metadata."
+                },
+                {
+                  "id": "HG-0008-S6",
+                  "given": "Two differently worded open responses satisfy the same reviewed criteria, and another contains a seeded teaching defect.",
+                  "when": "The rubric evaluates all three.",
+                  "then": "Both valid alternatives pass; the defect fails its applicable criterion with a reason.",
+                  "verification": "Future fixed rubric run plus tutor comparison on the three reviewed outputs; no exact prose equality."
+                }
+              ]
+            }
+          },
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0008-R3",
+              "title": "Twelve homework families and explicit stage coverage",
+              "statement": "Before pilot use, author the twelve synthetic adult A2–B2 homework families HW-01–HW-12 in datasets.md: practice/maintenance, domain adaptation/required use, correct avoidance/open tasks, missing/stale evidence, conflicting evidence/clarification cap, asset gap, safety/adult eligibility, access/privacy, key correctness/separation, instruction-like transcript, rejection/stale revision and duration edit/duplicate finalize. Include four families per level, six ordinary and six critical base families plus explicitly required variants. Review intermediate expectations for extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation and review/revision, and complete-job outcomes. Each active stage needs ordinary-success and relevant critical-failure coverage; add isolated fixtures rather than pretending every family visits every stage. Numeric fixtures cover PD-08/09 boundaries, windows, corrections and mixed measures. Other preparation jobs need equivalent coverage before enabling.",
+              "scenarios": [
+                {
+                  "id": "HG-0008-S7",
+                  "given": "HW-05 lacks essential duration after two scripted clarification answers; the manifest declares this expected stop.",
+                  "when": "Its complete-job case runs.",
+                  "then": "The case may pass only for the correct incomplete outcome, with no invented duration/artifact. Unreached stages are reasoned not-applicable and contribute no passing stage score; independent fixtures still cover those stages.",
+                  "verification": "Future scripted complete-job run and stage-membership report using the frozen manifest."
+                },
+                {
+                  "id": "HG-0008-S8",
+                  "given": "A manifest contains all twelve family names but lacks a required wrong-key variant or has no ordinary adaptation case.",
+                  "when": "Coverage is checked before the experiment.",
+                  "then": "The suite is incomplete and cannot pass by counting family names, a safe base variant or zero stage items.",
+                  "verification": "Future manifest-coverage rejection cases using the exact twelve-family/variant/stage matrix."
+                },
+                {
+                  "id": "HG-0008-S9",
+                  "given": "Confirmed counts are 6/8 accuracy, 5/10 needed use and 3/4 avoidance; separate fixtures exercise zero denominators, trend sample minima, exact ±0.15, 0.85 maintenance, 90-day/latest-four windows and corrections.",
+                  "when": "Extraction/analysis stage cases run with their appropriate fixed inputs.",
+                  "then": "Counts/rates are 0.75/0.50/0.75 in the arithmetic case; the other labels follow PD-08/09 without inferred silence, invented observations, duplicate counts or unsupported maintenance.",
+                  "verification": "Future reviewed response-level extraction fixtures and separate exact arithmetic/window fixtures; compare each expected count, eligibility and state."
+                }
+              ]
+            }
+          },
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0008-R4",
+              "title": "Reviewed gold admission, provenance and privacy",
+              "statement": "Only approved item revisions enter a release suite. A qualified English tutor reviews every label; a second qualified reviewer reviews all critical items and at least ceil(20% of ordinary items) per frozen suite. Resolve disagreements before approval and record source/rights, reviewer qualification/identity, revision, decision, date and rationale. Draft/in_review/approved/retired are project metadata; model labels and family approval do not automatically approve stage items or variants. Initial learner fixtures are wholly synthetic; teaching material must permit storage/adaptation/delivery. Production-derived cases require separate reuse permission and reviewed anonymization under PD-28. Enforce expiry/deletion across historical versions, exports and trace links; retire affected manifests. If the deployment cannot enforce required removal, do not admit production-derived cases. Dataset freezing or archiving cannot override privacy.",
+              "scenarios": [
+                {
+                  "id": "HG-0008-S10",
+                  "given": "A suite has seven ordinary and two critical items; one critical item has an unresolved reviewer disagreement.",
+                  "when": "Gold admission is attempted.",
+                  "then": "Every item needs first review, both critical items need second review and at least two ordinary items need second review; the disputed revision is excluded and a manifest requiring it cannot run as a complete approved suite.",
+                  "verification": "Future admission checks with fixed reviewer records and counts; inspect eligible IDs and unresolved decisions."
+                },
+                {
+                  "id": "HG-0008-S11",
+                  "given": "A production trace has processing permission but no separate evaluation-reuse permission, or contains merely pseudonymized private text.",
+                  "when": "It is proposed as a shared golden item.",
+                  "then": "Reject admission; a model score, tutor approval of homework or an alias does not supply reuse permission/anonymization.",
+                  "verification": "Future import/admission observation on synthetic permission/anonymization fixtures; no real learner data required."
+                },
+                {
+                  "id": "HG-0008-S12",
+                  "given": "An admitted production-derived item becomes subject to PD-28 deletion while an older manifest and dataset versions reference it.",
+                  "when": "Deletion/expiry is processed.",
+                  "then": "Block further access immediately where required, remove affected active/derived copies within seven days and backups within 30 under PD-28, apply the 30-day excerpt/source limit, and retire replay manifests. Archiving alone is insufficient; no late export/replay recreates deleted content.",
+                  "verification": "Future deletion integration with synthetic canaries across the chosen Langfuse deployment, local exports and replay paths; ordinary JSON/text review cannot prove erasure."
+                }
+              ]
+            }
+          },
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0008-R5",
+              "title": "Frozen release manifest and case-level gates",
+              "statement": "Freeze required item IDs/revisions/content hashes, dataset timestamp, stage membership/severity/stops, source corpus/fixtures/clock, schema/rubric/evaluator definitions and hashes, application/configuration/prompt/model/embedding versions and accepted-baseline per-case verdicts before running. Pin schemas separately because Langfuse item timestamps do not version schemas. A case passes only if every required assertion/criterion passes. Require all critical items/variants, at least ceil(90% × N) ordinary passes separately per stage and end-to-end, no newly failing accepted passing baseline case, and every required score present/valid. Zero coverage is a gap; missing/error cannot use the ordinary-failure allowance. Only reviewed expected stops are not-applicable. Record absent first baseline explicitly; never auto-promote the candidate or silently change labels/retire cases to erase regressions.",
+              "scenarios": [
+                {
+                  "id": "HG-0008-S13",
+                  "given": "Six ordinary complete-job base cases are required and five pass; all critical cases pass.",
+                  "when": "The release gate runs.",
+                  "then": "Fail the ordinary complete-job gate because five of six is 83.3%; stage averages cannot compensate.",
+                  "verification": "Future deterministic gate case asserting denominator six and required pass count six."
+                },
+                {
+                  "id": "HG-0008-S14",
+                  "given": "Ten ordinary cases are required: nine pass and one genuinely fails a semantic criterion; an alternate run has a missing/error required score instead.",
+                  "when": "Each release report is produced.",
+                  "then": "The first can meet 90% only if baseline/critical/coverage gates also permit it; the missing/error run fails as incomplete even though nine cases passed. Both reports retain all ten required IDs.",
+                  "verification": "Future gate cases inspecting case verdicts, missing/error records, denominator and final decision."
+                },
+                {
+                  "id": "HG-0008-S15",
+                  "given": "An accepted passing baseline case now fails, or dataset latest/schema/rubric differs from the frozen manifest.",
+                  "when": "The candidate experiment/release is evaluated.",
+                  "then": "A baseline regression blocks release despite higher aggregate scores; a mismatched manifest cannot produce a valid comparison. Label or case-retirement changes require recorded review and visible comparison.",
+                  "verification": "Future baseline-regression and manifest-drift cases; inspect pinned input/evaluator hashes and per-case comparison."
+                }
+              ]
+            }
+          },
+          {
+            "action": "add",
+            "requirement": {
+              "id": "HG-0008-R6",
+              "title": "Human judge calibration and permitted online evaluation",
+              "statement": "Before relying on a semantic judge, prepare at least 20 distinct human-labeled candidate outputs overall, with criterion-level labels/reasons and both human pass/fail examples per evaluated criterion. Count unique outputs separately from multiple labels. Apply gold review/provenance rules, hide human verdicts from the judge and keep related family/variant outputs in one development or held-out partition. Report split/criterion/severity counts, false acceptance, false rejection, agreement and invalid/missing verdicts; inspect both error directions. After tuning on holdout content, obtain fresh human-labeled holdout outputs. Do not invent a universal reliability threshold from twenty examples. Judges remain advisory and cannot waive hard gates. Online evaluation records every deterministic gate and tutor decision, additionally samples 10% of permitted runs, and reports eligible/sampled/completed/missing counts. Weekly review every critical flag/failure plus five random permitted unflagged outputs, or all available with an explicit shortfall. Automatic live-to-gold promotion is prohibited.",
+              "scenarios": [
+                {
+                  "id": "HG-0008-S16",
+                  "given": "There are twenty criterion labels from ten distinct outputs, or one evaluated criterion has no human-failing examples.",
+                  "when": "Calibration coverage is checked.",
+                  "then": "The initial calibration requirement is unmet; repeated labels do not become distinct outputs and absent error-direction coverage is visible.",
+                  "verification": "Future calibration-manifest check of unique-output IDs, criterion labels and both classes."
+                },
+                {
+                  "id": "HG-0008-S17",
+                  "given": "Related family variants straddle development and holdout, or a judge was tuned using the reported holdout examples.",
+                  "when": "A calibration report is prepared.",
+                  "then": "Reject the claimed independent split/result; regroup related outputs and obtain fresh human-labeled holdout data after tuning. Report false accepts/rejects and invalid/missing verdicts separately.",
+                  "verification": "Future split-lineage audit and fixed human/judge verdict comparison; inspect counts plus examples in both error directions."
+                },
+                {
+                  "id": "HG-0008-S18",
+                  "given": "Only three permitted unflagged online outputs exist this week, alongside two critical flags and a missing semantic result.",
+                  "when": "Weekly monitoring is reported.",
+                  "then": "Review both critical flags and all three available random candidates, state the shortfall of two, retain the missing result in coverage, and keep flagged/random rates separate. No output becomes gold without permission and full review.",
+                  "verification": "Future fixed monitoring-cohort observation of selection, coverage counts, review records and admission behavior."
+                }
+              ]
+            }
+          }
+        ],
+        "tasks": [
+          {
+            "id": "HG-0008-T1",
+            "description": "Author the twelve homework families, required variants and isolated stage fixtures using the typed item contract; obtain recorded tutor reviews and approved gold revisions.",
+            "done": false
+          },
+          {
+            "id": "HG-0008-T2",
+            "description": "Record pilot effort, assignment and once-only free-allowance accounting.",
+            "done": false
+          },
+          {
+            "id": "HG-0008-T3",
+            "description": "Freeze versioned manifests and implement per-stage/end-to-end coverage, missing-score, critical and accepted-baseline release gates.",
+            "done": false
+          },
+          {
+            "id": "HG-0008-T4",
+            "description": "Prepare at least twenty distinct human-labeled judge outputs, partition related cases, and report calibration errors and fresh holdout results.",
+            "done": false
+          },
+          {
+            "id": "HG-0008-T5",
+            "description": "Verify dataset admission/deletion and permitted online sampling/review without weakening mandatory validation or promoting live outputs automatically.",
+            "done": false
+          }
+        ],
+        "imports": {},
+        "baseline": {},
+        "scoped_baseline": true,
+        "created_at": 1793527738,
+        "archived": false,
+        "abandoned_reason": null,
+        "evidence": {},
+        "review": null,
+        "acceptance": []
+      },
+      "change_sha256": "dc739fc1afdf9534e3aa1e12db3e730dbc19398d8f1d5c36709266ae61a3a969",
+      "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "links": {
+        "depends_on": [
+          {
+            "id": "HG-0006",
+            "title": "Durable preparation, tutor review and approved export",
+            "integrated": false,
+            "reason": "Needs the complete durable preparation/review/export journey."
+          },
+          {
+            "id": "HG-0007",
+            "title": "Learner-data retention, deletion and safe observability",
+            "integrated": false,
+            "reason": "Real-data pilot and evaluation require the data-lifecycle boundary."
+          }
+        ],
+        "related_to": [],
+        "same_requirements": []
+      }
+    }
+  ],
+  "operation": "spec-validate",
+  "result": {
+    "change": {
+      "id": "HG-0008",
+      "title": "Evaluation gates and invitation-only homework pilot",
+      "goal": "Evaluate every active stage and release a bounded, measurable homework pilot.",
+      "rationale": "A working graph or valid reference does not prove suitable teaching or saved tutor effort.",
+      "scope": "Specification only; no application implementation, approved gold labels or acceptance claimed. Sources: PD-28/31/34–37; Architecture section 10. Concrete homework dataset construction, review and release contracts are detailed in specs/datasets.md. Five invited tutors, adult A2–B2 English homework and free allowance remain unchanged; other jobs and detailed pilot instrumentation are outside this refinement.",
+      "questions": [],
+      "depends_on": [
+        {
+          "id": "HG-0006",
+          "reason": "Needs the complete durable preparation/review/export journey."
+        },
+        {
+          "id": "HG-0007",
+          "reason": "Real-data pilot and evaluation require the data-lifecycle boundary."
+        }
+      ],
+      "operations": [
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0008-R1",
+            "title": "Evaluation gates and invitation-only homework pilot",
+            "statement": "Use reviewed golden cases for every active stage and the whole homework job, with Langfuse offline experiments and permitted online evaluation. Keep mandatory draft validation separate from sampled monitoring. Before real use, require access/privacy/review/recovery checks. Track tutor effort and actual assignment; the free pilot allows 20 approved preparations per tutor with no automatic charging.",
+            "scenarios": [
+              {
+                "id": "HG-0008-S1",
+                "given": "A behavior change fails a critical golden case or lacks a required score.",
+                "when": "The release gate evaluates it.",
+                "then": "The change cannot pass through an average score or omitted failure.",
+                "verification": "Future dataset experiment and release-gate observation; thresholds remain those in PD-34."
+              },
+              {
+                "id": "HG-0008-S2",
+                "given": "A request is outside the additional semantic-monitoring sample.",
+                "when": "Its draft is prepared.",
+                "then": "Mandatory validation still runs; sampling does not weaken readiness checks.",
+                "verification": "Future validation/monitoring coverage check."
+              },
+              {
+                "id": "HG-0008-S3",
+                "given": "A pilot request fails, is revised or is finalized repeatedly.",
+                "when": "Usage and pilot outcomes are recorded.",
+                "then": "Failures/revisions do not consume completed-preparation allowance and one approved preparation is counted once, without charging; outcome denominators do not hide failed/abandoned eligible requests.",
+                "verification": "Future allowance/idempotency and pilot-metric cases."
+              }
+            ]
+          }
+        },
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0008-R2",
+            "title": "Typed, reproducible evaluation items with withheld labels",
+            "statement": "Use tutor-copilot/homework-gold for complete-job and isolated stage items, and tutor-copilot/judge-calibration for human-labeled candidate outputs. Enforce the input/expectedOutput/metadata contract and stage vocabulary in datasets.md. Pin synthetic identities, clock, evidence, asset revisions and scripted tutor actions where relevant; resolve fixtures without production data. Keep gold labels/reviewer reasons out of task inputs, proposed keys out of independent-solver inputs and human verdicts out of judge inputs. Open tasks use required criteria and accepted alternatives rather than exact reference prose.",
+            "scenarios": [
+              {
+                "id": "HG-0008-S4",
+                "given": "An item lacks its stage, expected criteria or a referenced asset revision, or duplicates an existing item ID/revision.",
+                "when": "The evaluation suite is prepared.",
+                "then": "Reject the item/suite before a provider call; report the exact invalid field or unresolved reference.",
+                "verification": "Future schema/fixture-loader cases with actual provider-call observation; compare malformed and complete items."
+              },
+              {
+                "id": "HG-0008-S5",
+                "given": "A closed-answer adaptation has a proposed key and reviewed gold; a calibration item has a human verdict and reason.",
+                "when": "The task, independent solver and semantic judge are invoked.",
+                "then": "Provider payloads contain only their permitted context: no task gold, no solver proposed key and no judge human verdict/reason.",
+                "verification": "Future captured synthetic provider payloads at each real call boundary, including nested metadata."
+              },
+              {
+                "id": "HG-0008-S6",
+                "given": "Two differently worded open responses satisfy the same reviewed criteria, and another contains a seeded teaching defect.",
+                "when": "The rubric evaluates all three.",
+                "then": "Both valid alternatives pass; the defect fails its applicable criterion with a reason.",
+                "verification": "Future fixed rubric run plus tutor comparison on the three reviewed outputs; no exact prose equality."
+              }
+            ]
+          }
+        },
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0008-R3",
+            "title": "Twelve homework families and explicit stage coverage",
+            "statement": "Before pilot use, author the twelve synthetic adult A2–B2 homework families HW-01–HW-12 in datasets.md: practice/maintenance, domain adaptation/required use, correct avoidance/open tasks, missing/stale evidence, conflicting evidence/clarification cap, asset gap, safety/adult eligibility, access/privacy, key correctness/separation, instruction-like transcript, rejection/stale revision and duration edit/duplicate finalize. Include four families per level, six ordinary and six critical base families plus explicitly required variants. Review intermediate expectations for extraction, subskill analysis/prioritization, retrieval, adaptation, composition, validation and review/revision, and complete-job outcomes. Each active stage needs ordinary-success and relevant critical-failure coverage; add isolated fixtures rather than pretending every family visits every stage. Numeric fixtures cover PD-08/09 boundaries, windows, corrections and mixed measures. Other preparation jobs need equivalent coverage before enabling.",
+            "scenarios": [
+              {
+                "id": "HG-0008-S7",
+                "given": "HW-05 lacks essential duration after two scripted clarification answers; the manifest declares this expected stop.",
+                "when": "Its complete-job case runs.",
+                "then": "The case may pass only for the correct incomplete outcome, with no invented duration/artifact. Unreached stages are reasoned not-applicable and contribute no passing stage score; independent fixtures still cover those stages.",
+                "verification": "Future scripted complete-job run and stage-membership report using the frozen manifest."
+              },
+              {
+                "id": "HG-0008-S8",
+                "given": "A manifest contains all twelve family names but lacks a required wrong-key variant or has no ordinary adaptation case.",
+                "when": "Coverage is checked before the experiment.",
+                "then": "The suite is incomplete and cannot pass by counting family names, a safe base variant or zero stage items.",
+                "verification": "Future manifest-coverage rejection cases using the exact twelve-family/variant/stage matrix."
+              },
+              {
+                "id": "HG-0008-S9",
+                "given": "Confirmed counts are 6/8 accuracy, 5/10 needed use and 3/4 avoidance; separate fixtures exercise zero denominators, trend sample minima, exact ±0.15, 0.85 maintenance, 90-day/latest-four windows and corrections.",
+                "when": "Extraction/analysis stage cases run with their appropriate fixed inputs.",
+                "then": "Counts/rates are 0.75/0.50/0.75 in the arithmetic case; the other labels follow PD-08/09 without inferred silence, invented observations, duplicate counts or unsupported maintenance.",
+                "verification": "Future reviewed response-level extraction fixtures and separate exact arithmetic/window fixtures; compare each expected count, eligibility and state."
+              }
+            ]
+          }
+        },
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0008-R4",
+            "title": "Reviewed gold admission, provenance and privacy",
+            "statement": "Only approved item revisions enter a release suite. A qualified English tutor reviews every label; a second qualified reviewer reviews all critical items and at least ceil(20% of ordinary items) per frozen suite. Resolve disagreements before approval and record source/rights, reviewer qualification/identity, revision, decision, date and rationale. Draft/in_review/approved/retired are project metadata; model labels and family approval do not automatically approve stage items or variants. Initial learner fixtures are wholly synthetic; teaching material must permit storage/adaptation/delivery. Production-derived cases require separate reuse permission and reviewed anonymization under PD-28. Enforce expiry/deletion across historical versions, exports and trace links; retire affected manifests. If the deployment cannot enforce required removal, do not admit production-derived cases. Dataset freezing or archiving cannot override privacy.",
+            "scenarios": [
+              {
+                "id": "HG-0008-S10",
+                "given": "A suite has seven ordinary and two critical items; one critical item has an unresolved reviewer disagreement.",
+                "when": "Gold admission is attempted.",
+                "then": "Every item needs first review, both critical items need second review and at least two ordinary items need second review; the disputed revision is excluded and a manifest requiring it cannot run as a complete approved suite.",
+                "verification": "Future admission checks with fixed reviewer records and counts; inspect eligible IDs and unresolved decisions."
+              },
+              {
+                "id": "HG-0008-S11",
+                "given": "A production trace has processing permission but no separate evaluation-reuse permission, or contains merely pseudonymized private text.",
+                "when": "It is proposed as a shared golden item.",
+                "then": "Reject admission; a model score, tutor approval of homework or an alias does not supply reuse permission/anonymization.",
+                "verification": "Future import/admission observation on synthetic permission/anonymization fixtures; no real learner data required."
+              },
+              {
+                "id": "HG-0008-S12",
+                "given": "An admitted production-derived item becomes subject to PD-28 deletion while an older manifest and dataset versions reference it.",
+                "when": "Deletion/expiry is processed.",
+                "then": "Block further access immediately where required, remove affected active/derived copies within seven days and backups within 30 under PD-28, apply the 30-day excerpt/source limit, and retire replay manifests. Archiving alone is insufficient; no late export/replay recreates deleted content.",
+                "verification": "Future deletion integration with synthetic canaries across the chosen Langfuse deployment, local exports and replay paths; ordinary JSON/text review cannot prove erasure."
+              }
+            ]
+          }
+        },
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0008-R5",
+            "title": "Frozen release manifest and case-level gates",
+            "statement": "Freeze required item IDs/revisions/content hashes, dataset timestamp, stage membership/severity/stops, source corpus/fixtures/clock, schema/rubric/evaluator definitions and hashes, application/configuration/prompt/model/embedding versions and accepted-baseline per-case verdicts before running. Pin schemas separately because Langfuse item timestamps do not version schemas. A case passes only if every required assertion/criterion passes. Require all critical items/variants, at least ceil(90% × N) ordinary passes separately per stage and end-to-end, no newly failing accepted passing baseline case, and every required score present/valid. Zero coverage is a gap; missing/error cannot use the ordinary-failure allowance. Only reviewed expected stops are not-applicable. Record absent first baseline explicitly; never auto-promote the candidate or silently change labels/retire cases to erase regressions.",
+            "scenarios": [
+              {
+                "id": "HG-0008-S13",
+                "given": "Six ordinary complete-job base cases are required and five pass; all critical cases pass.",
+                "when": "The release gate runs.",
+                "then": "Fail the ordinary complete-job gate because five of six is 83.3%; stage averages cannot compensate.",
+                "verification": "Future deterministic gate case asserting denominator six and required pass count six."
+              },
+              {
+                "id": "HG-0008-S14",
+                "given": "Ten ordinary cases are required: nine pass and one genuinely fails a semantic criterion; an alternate run has a missing/error required score instead.",
+                "when": "Each release report is produced.",
+                "then": "The first can meet 90% only if baseline/critical/coverage gates also permit it; the missing/error run fails as incomplete even though nine cases passed. Both reports retain all ten required IDs.",
+                "verification": "Future gate cases inspecting case verdicts, missing/error records, denominator and final decision."
+              },
+              {
+                "id": "HG-0008-S15",
+                "given": "An accepted passing baseline case now fails, or dataset latest/schema/rubric differs from the frozen manifest.",
+                "when": "The candidate experiment/release is evaluated.",
+                "then": "A baseline regression blocks release despite higher aggregate scores; a mismatched manifest cannot produce a valid comparison. Label or case-retirement changes require recorded review and visible comparison.",
+                "verification": "Future baseline-regression and manifest-drift cases; inspect pinned input/evaluator hashes and per-case comparison."
+              }
+            ]
+          }
+        },
+        {
+          "action": "add",
+          "requirement": {
+            "id": "HG-0008-R6",
+            "title": "Human judge calibration and permitted online evaluation",
+            "statement": "Before relying on a semantic judge, prepare at least 20 distinct human-labeled candidate outputs overall, with criterion-level labels/reasons and both human pass/fail examples per evaluated criterion. Count unique outputs separately from multiple labels. Apply gold review/provenance rules, hide human verdicts from the judge and keep related family/variant outputs in one development or held-out partition. Report split/criterion/severity counts, false acceptance, false rejection, agreement and invalid/missing verdicts; inspect both error directions. After tuning on holdout content, obtain fresh human-labeled holdout outputs. Do not invent a universal reliability threshold from twenty examples. Judges remain advisory and cannot waive hard gates. Online evaluation records every deterministic gate and tutor decision, additionally samples 10% of permitted runs, and reports eligible/sampled/completed/missing counts. Weekly review every critical flag/failure plus five random permitted unflagged outputs, or all available with an explicit shortfall. Automatic live-to-gold promotion is prohibited.",
+            "scenarios": [
+              {
+                "id": "HG-0008-S16",
+                "given": "There are twenty criterion labels from ten distinct outputs, or one evaluated criterion has no human-failing examples.",
+                "when": "Calibration coverage is checked.",
+                "then": "The initial calibration requirement is unmet; repeated labels do not become distinct outputs and absent error-direction coverage is visible.",
+                "verification": "Future calibration-manifest check of unique-output IDs, criterion labels and both classes."
+              },
+              {
+                "id": "HG-0008-S17",
+                "given": "Related family variants straddle development and holdout, or a judge was tuned using the reported holdout examples.",
+                "when": "A calibration report is prepared.",
+                "then": "Reject the claimed independent split/result; regroup related outputs and obtain fresh human-labeled holdout data after tuning. Report false accepts/rejects and invalid/missing verdicts separately.",
+                "verification": "Future split-lineage audit and fixed human/judge verdict comparison; inspect counts plus examples in both error directions."
+              },
+              {
+                "id": "HG-0008-S18",
+                "given": "Only three permitted unflagged online outputs exist this week, alongside two critical flags and a missing semantic result.",
+                "when": "Weekly monitoring is reported.",
+                "then": "Review both critical flags and all three available random candidates, state the shortfall of two, retain the missing result in coverage, and keep flagged/random rates separate. No output becomes gold without permission and full review.",
+                "verification": "Future fixed monitoring-cohort observation of selection, coverage counts, review records and admission behavior."
+              }
+            ]
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "id": "HG-0008-T1",
+          "description": "Author the twelve homework families, required variants and isolated stage fixtures using the typed item contract; obtain recorded tutor reviews and approved gold revisions.",
+          "done": false
+        },
+        {
+          "id": "HG-0008-T2",
+          "description": "Record pilot effort, assignment and once-only free-allowance accounting.",
+          "done": false
+        },
+        {
+          "id": "HG-0008-T3",
+          "description": "Freeze versioned manifests and implement per-stage/end-to-end coverage, missing-score, critical and accepted-baseline release gates.",
+          "done": false
+        },
+        {
+          "id": "HG-0008-T4",
+          "description": "Prepare at least twenty distinct human-labeled judge outputs, partition related cases, and report calibration errors and fresh holdout results.",
+          "done": false
+        },
+        {
+          "id": "HG-0008-T5",
+          "description": "Verify dataset admission/deletion and permitted online sampling/review without weakening mandatory validation or promoting live outputs automatically.",
+          "done": false
+        }
+      ],
+      "imports": {},
+      "baseline": {},
+      "scoped_baseline": true,
+      "created_at": 1793527738,
+      "archived": false,
+      "abandoned_reason": null,
+      "evidence": {},
+      "review": null,
+      "acceptance": []
+    },
+    "change_sha256": "dc739fc1afdf9534e3aa1e12db3e730dbc19398d8f1d5c36709266ae61a3a969",
+    "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "links": {
+      "depends_on": [
+        {
+          "id": "HG-0006",
+          "title": "Durable preparation, tutor review and approved export",
+          "integrated": false,
+          "reason": "Needs the complete durable preparation/review/export journey."
+        },
+        {
+          "id": "HG-0007",
+          "title": "Learner-data retention, deletion and safe observability",
+          "integrated": false,
+          "reason": "Real-data pilot and evaluation require the data-lifecycle boundary."
+        }
+      ],
+      "related_to": [],
+      "same_requirements": []
+    },
+    "schema_version": 3,
+    "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+  },
+  "status": "passed"
+}

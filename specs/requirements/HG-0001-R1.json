@@ -1,0 +1,28 @@
+{
+  "id": "HG-0001-R1",
+  "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+  "statement": "Product Decisions.md must present the current owner-confirmed priorities and explicitly delegated product defaults, retain all 37 decision IDs and historical provenance, distinguish defaults from validated results, and preserve unresolved questions only where the owner has not authorized their resolution. The document owns product descriptions; this contract governs documentation, not application implementation.",
+  "scenarios": [
+    {
+      "id": "HG-0001-S1",
+      "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+      "when": "The reader opens the revised product document.",
+      "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+      "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+    },
+    {
+      "id": "HG-0001-S2",
+      "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+      "when": "The current principles and corresponding detailed entries are reconciled.",
+      "then": "Affected entries distinguish owner-confirmed decisions, explicitly delegated defaults and historical sources; all 37 IDs and unrelated decisions remain. Online production observations do not require gold answers. There are no implementation, measured-benefit or compliance-certification claims. Questions authorized for resolution become concrete decisions rather than remaining proposals.",
+      "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+    },
+    {
+      "id": "HG-0002-S1",
+      "given": "The owner explicitly delegates common-sense resolution of the 28 marked product questions in the current concise document.",
+      "when": "The assistant resolves those questions in Product Decisions.md.",
+      "then": "Each formerly marked entry has a concrete delegated decision covering its original question: pilot segment and scope, learner evidence and priorities, material/output suitability, review/revision/recovery, data access and retention, evaluation/KPIs, content ownership, interface scope and pilot charging. The document contains no unresolved #to-decide markers. Explicit pilot exclusions and numerical starting policies are labeled as decisions, not claimed evidence or application implementation.",
+      "verification": "Compare the exact pre-edit document and final document by ID; independent reviewers verify every prior marked topic has a concrete resolution, current priorities are preserved and numeric/data policies are honestly qualified."
+    }
+  ]
+}

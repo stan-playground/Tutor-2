@@ -1,0 +1,219 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "schema_version": 3,
+      "store_sha256": "8ba6306c9410ac9d7f3d43fa88a09ef771fecaad4c67680df0970e738f8996d8"
+    },
+    {
+      "change": {
+        "id": "HG-0002",
+        "title": "Resolve delegated product decisions with explicit pilot defaults",
+        "goal": "Resolve all 28 delegated product questions as concise, explicit pilot decisions in the existing product document.",
+        "rationale": "The owner requested that the assistant make common-sense decisions rather than leave hashtag-marked questions open.",
+        "scope": "Product decision documentation and minimal required native workflow records/navigation only. No application implementation, live student data, evaluator setup, charging, commit, push or deployment. Preserve previous uncommitted work and historical evidence.",
+        "questions": [],
+        "operations": [
+          {
+            "action": "modify",
+            "requirement": {
+              "id": "HG-0001-R1",
+              "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+              "statement": "Product Decisions.md must present the current owner-confirmed priorities and explicitly delegated product defaults, retain all 37 decision IDs and historical provenance, distinguish defaults from validated results, and preserve unresolved questions only where the owner has not authorized their resolution. The document owns product descriptions; this contract governs documentation, not application implementation.",
+              "scenarios": [
+                {
+                  "id": "HG-0001-S1",
+                  "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                  "when": "The reader opens the revised product document.",
+                  "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                  "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+                },
+                {
+                  "id": "HG-0001-S2",
+                  "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                  "when": "The current principles and corresponding detailed entries are reconciled.",
+                  "then": "Affected entries distinguish owner-confirmed decisions, explicitly delegated defaults and historical sources; all 37 IDs and unrelated decisions remain. Online production observations do not require gold answers. There are no implementation, measured-benefit or compliance-certification claims. Questions authorized for resolution become concrete decisions rather than remaining proposals.",
+                  "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+                },
+                {
+                  "id": "HG-0002-S1",
+                  "given": "The owner explicitly delegates common-sense resolution of the 28 marked product questions in the current concise document.",
+                  "when": "The assistant resolves those questions in Product Decisions.md.",
+                  "then": "Each formerly marked entry has a concrete delegated decision covering its original question: pilot segment and scope, learner evidence and priorities, material/output suitability, review/revision/recovery, data access and retention, evaluation/KPIs, content ownership, interface scope and pilot charging. The document contains no unresolved #to-decide markers. Explicit pilot exclusions and numerical starting policies are labeled as decisions, not claimed evidence or application implementation.",
+                  "verification": "Compare the exact pre-edit document and final document by ID; independent reviewers verify every prior marked topic has a concrete resolution, current priorities are preserved and numeric/data policies are honestly qualified."
+                }
+              ]
+            }
+          }
+        ],
+        "tasks": [
+          {
+            "id": "HG-0002-T1",
+            "description": "Choose and document explicit defaults for every previously marked topic; reconcile related statements and distinguish delegated authority from historical sources.",
+            "done": true
+          },
+          {
+            "id": "HG-0002-T2",
+            "description": "Check topic coverage, numerical and policy consistency, provenance and document structure; obtain independent specialist reviews of the completed document.",
+            "done": false
+          }
+        ],
+        "checks": [
+          {
+            "id": "HG-0002-C1",
+            "action": "Compare every former open topic and the priorities with the final document; review concrete policies, limits, scope and source distinctions.",
+            "file": "Product Decisions.md",
+            "inputs": [
+              ".highgrade/project/INSTRUCTIONS.md",
+              ".highgrade/project/documents.json",
+              "AGENTS.md",
+              "Product Decisions.md",
+              "README.md"
+            ],
+            "observation": "Every original open topic has a decision; priorities and IDs remain; no unapproved implementation or false validation claims appear.",
+            "preparation": "Read the owner delegation and exact pre-edit document, current instructions, reviewed recommendations and original reports.",
+            "runner": null,
+            "scenario_ids": [
+              "HG-0001-S1",
+              "HG-0001-S2",
+              "HG-0002-S1"
+            ],
+            "selector": "current priorities and all 28 delegated resolutions"
+          }
+        ],
+        "imports": {},
+        "baseline": {
+          "HG-0001-R1": "46a4b4301f8f3d457402377f0e5f753325aeff3e77a0f17a00856534044ac5bc"
+        },
+        "scoped_baseline": true,
+        "created_at": 1793497582,
+        "archived": false,
+        "abandoned_reason": null,
+        "evidence": {},
+        "review": null,
+        "acceptance": []
+      },
+      "change_sha256": "30027808b9240c0ed0c3fe9cef6d543e9206c394305174e2202d97bd0751fc8c",
+      "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "links": {
+        "depends_on": [],
+        "related_to": [],
+        "same_requirements": [
+          {
+            "id": "HG-0001",
+            "title": "Prioritize the agreed product principles in Product Decisions"
+          }
+        ]
+      }
+    }
+  ],
+  "operation": "spec-validate",
+  "result": {
+    "change": {
+      "id": "HG-0002",
+      "title": "Resolve delegated product decisions with explicit pilot defaults",
+      "goal": "Resolve all 28 delegated product questions as concise, explicit pilot decisions in the existing product document.",
+      "rationale": "The owner requested that the assistant make common-sense decisions rather than leave hashtag-marked questions open.",
+      "scope": "Product decision documentation and minimal required native workflow records/navigation only. No application implementation, live student data, evaluator setup, charging, commit, push or deployment. Preserve previous uncommitted work and historical evidence.",
+      "questions": [],
+      "operations": [
+        {
+          "action": "modify",
+          "requirement": {
+            "id": "HG-0001-R1",
+            "title": "Keep the product decision document aligned with the owner-confirmed priority principles",
+            "statement": "Product Decisions.md must present the current owner-confirmed priorities and explicitly delegated product defaults, retain all 37 decision IDs and historical provenance, distinguish defaults from validated results, and preserve unresolved questions only where the owner has not authorized their resolution. The document owns product descriptions; this contract governs documentation, not application implementation.",
+            "scenarios": [
+              {
+                "id": "HG-0001-S1",
+                "given": "The product document contains source-derived decisions but no prioritized statement of the owner decisions confirmed on 1 November 2026.",
+                "when": "The reader opens the revised product document.",
+                "then": "Before the detailed decisions the reader finds the three preparation jobs, subskill accuracy and appropriate use/non-use, BOTH lesson and homework evidence, stored initial assessment/preferences/subskills/trends, vector assets (homework exercises, speaking exercises, explanations, transcripts), domain adaptation, safety and age suitability, tutor approval/disapproval of individual parts, and golden datasets for every pipeline part with Langfuse offline and online evaluation.",
+                "verification": "Executor and independent reviewer read the opening against the user request and its confirmed lesson/homework clarification; review records coverage and limits."
+              },
+              {
+                "id": "HG-0001-S2",
+                "given": "Existing numbered decisions include assumptions about estimated first-lesson level, mastery ratios, whole-plan approval, exercise-bank scope and deferred evaluation.",
+                "when": "The current principles and corresponding detailed entries are reconciled.",
+                "then": "Affected entries distinguish owner-confirmed decisions, explicitly delegated defaults and historical sources; all 37 IDs and unrelated decisions remain. Online production observations do not require gold answers. There are no implementation, measured-benefit or compliance-certification claims. Questions authorized for resolution become concrete decisions rather than remaining proposals.",
+                "verification": "Semantic review of the complete diff, preserved-ID and link checks, and comparison with the baseline document."
+              },
+              {
+                "id": "HG-0002-S1",
+                "given": "The owner explicitly delegates common-sense resolution of the 28 marked product questions in the current concise document.",
+                "when": "The assistant resolves those questions in Product Decisions.md.",
+                "then": "Each formerly marked entry has a concrete delegated decision covering its original question: pilot segment and scope, learner evidence and priorities, material/output suitability, review/revision/recovery, data access and retention, evaluation/KPIs, content ownership, interface scope and pilot charging. The document contains no unresolved #to-decide markers. Explicit pilot exclusions and numerical starting policies are labeled as decisions, not claimed evidence or application implementation.",
+                "verification": "Compare the exact pre-edit document and final document by ID; independent reviewers verify every prior marked topic has a concrete resolution, current priorities are preserved and numeric/data policies are honestly qualified."
+              }
+            ]
+          }
+        }
+      ],
+      "tasks": [
+        {
+          "id": "HG-0002-T1",
+          "description": "Choose and document explicit defaults for every previously marked topic; reconcile related statements and distinguish delegated authority from historical sources.",
+          "done": true
+        },
+        {
+          "id": "HG-0002-T2",
+          "description": "Check topic coverage, numerical and policy consistency, provenance and document structure; obtain independent specialist reviews of the completed document.",
+          "done": false
+        }
+      ],
+      "checks": [
+        {
+          "id": "HG-0002-C1",
+          "action": "Compare every former open topic and the priorities with the final document; review concrete policies, limits, scope and source distinctions.",
+          "file": "Product Decisions.md",
+          "inputs": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md"
+          ],
+          "observation": "Every original open topic has a decision; priorities and IDs remain; no unapproved implementation or false validation claims appear.",
+          "preparation": "Read the owner delegation and exact pre-edit document, current instructions, reviewed recommendations and original reports.",
+          "runner": null,
+          "scenario_ids": [
+            "HG-0001-S1",
+            "HG-0001-S2",
+            "HG-0002-S1"
+          ],
+          "selector": "current priorities and all 28 delegated resolutions"
+        }
+      ],
+      "imports": {},
+      "baseline": {
+        "HG-0001-R1": "46a4b4301f8f3d457402377f0e5f753325aeff3e77a0f17a00856534044ac5bc"
+      },
+      "scoped_baseline": true,
+      "created_at": 1793497582,
+      "archived": false,
+      "abandoned_reason": null,
+      "evidence": {},
+      "review": null,
+      "acceptance": []
+    },
+    "change_sha256": "30027808b9240c0ed0c3fe9cef6d543e9206c394305174e2202d97bd0751fc8c",
+    "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "links": {
+      "depends_on": [],
+      "related_to": [],
+      "same_requirements": [
+        {
+          "id": "HG-0001",
+          "title": "Prioritize the agreed product principles in Product Decisions"
+        }
+      ]
+    },
+    "schema_version": 3,
+    "store_sha256": "8ba6306c9410ac9d7f3d43fa88a09ef771fecaad4c67680df0970e738f8996d8"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,122 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [
+    {
+      "code": "TasksIncomplete",
+      "location": "/tasks",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/0",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/1",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "EvidenceMissingOrStale",
+      "location": "/operations/0/requirement/scenarios/2",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    },
+    {
+      "code": "ReviewMissingOrStale",
+      "location": "/review",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    }
+  ],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "brief": {
+        "id": "HG-0007",
+        "blockers": [
+          {
+            "id": "HG-0007-S1",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0007-S2",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "id": "HG-0007-S3",
+            "kind": "evidence",
+            "next": "record_evidence",
+            "reason": "missing_evidence"
+          },
+          {
+            "kind": "review",
+            "next": "repeat_review",
+            "reason": "missing"
+          }
+        ],
+        "change_sha256": "a94994be6dbcde165aa2c71363b106c9f9a4f871499a55edb43c2d1b20bd6a98",
+        "contract_sha256": "95b43ec3fc3a9062c5a019b89d246bac7096b94c29ce3f843e4b4e384fa7e262",
+        "human": "pending",
+        "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+        "technical": "in_progress",
+        "verified_revision": null,
+        "review": "missing"
+      }
+    },
+    {
+      "schema_version": 3,
+      "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+    }
+  ],
+  "operation": "spec-check",
+  "result": {
+    "brief": {
+      "id": "HG-0007",
+      "blockers": [
+        {
+          "id": "HG-0007-S1",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0007-S2",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "id": "HG-0007-S3",
+          "kind": "evidence",
+          "next": "record_evidence",
+          "reason": "missing_evidence"
+        },
+        {
+          "kind": "review",
+          "next": "repeat_review",
+          "reason": "missing"
+        }
+      ],
+      "change_sha256": "a94994be6dbcde165aa2c71363b106c9f9a4f871499a55edb43c2d1b20bd6a98",
+      "contract_sha256": "95b43ec3fc3a9062c5a019b89d246bac7096b94c29ce3f843e4b4e384fa7e262",
+      "human": "pending",
+      "inputs_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "technical": "in_progress",
+      "verified_revision": null,
+      "review": "missing"
+    },
+    "schema_version": 3,
+    "store_sha256": "ffc8ed93979b8e7a48ad0597403cf8cbb183fa83f00a2d0414ae9a8b0ddea7ff"
+  },
+  "status": "failed"
+}

@@ -1,0 +1,223 @@
+{
+  "acceptance": [],
+  "evidence": {
+    "HG-0001-S1": {
+      "captured_at": "2026-11-01",
+      "command": "Compare the owner delegation and exact pre-edit document with all 28 delegated decisions; inspect coverage, document/JSON/link checks and policy consistency.",
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "6fddb464131c65613142640175cd9a1a10395e6ccef1c2898e38fec70a501f57",
+        ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+        "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+        "Product Decisions.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "README.md": "da12eb009991340e9b8e6e2288cec1dbbcf51ae394ecd3eef765a1a524aaa85e",
+        "specs/changes/HG-0002/evidence/before.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+        "specs/changes/HG-0002/evidence/checks.json": "023e9c6062188006f35473acc18b8705f680943ff6b01bf0435116703d0114d9",
+        "specs/changes/HG-0002/evidence/coverage.json": "a213e61b25427d2b5c94821be27e92105605a54f865a678904e30bd2624826c7",
+        "specs/changes/HG-0002/evidence/executor-review.md": "50464b5bc222dc06069610e0c58c587938cf9457a0e2f568a5408b1f17671658",
+        "specs/changes/HG-0002/evidence/spec-validation.json": "193fc7e22dfaf6a4ffd6383730e9f82b847407016a6eaeddcee9688424fba5a8"
+      },
+      "input_paths": [
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "Product Decisions.md",
+        "README.md",
+        "specs/changes/HG-0002/evidence/before.md",
+        "specs/changes/HG-0002/evidence/checks.json",
+        "specs/changes/HG-0002/evidence/coverage.json",
+        "specs/changes/HG-0002/evidence/spec-validation.json"
+      ],
+      "method": "manual",
+      "observation": "Nine priority principles and all 37 IDs retained; all 28 marked topics have concrete D-labeled pilot decisions; no unresolved markers, implementation or validation claims. Numerical targets and exclusions are explicit policies. Documentation review only; see original report for limits.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0002/evidence/executor-review.md",
+      "scenario": "HG-0001-S1",
+      "scenario_sha256": "a3cb805a99c2f732c7c4d01f093ba6ec20b00f0c72c58817feef9c609675d979"
+    },
+    "HG-0001-S2": {
+      "captured_at": "2026-11-01",
+      "command": "Compare the owner delegation and exact pre-edit document with all 28 delegated decisions; inspect coverage, document/JSON/link checks and policy consistency.",
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "6fddb464131c65613142640175cd9a1a10395e6ccef1c2898e38fec70a501f57",
+        ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+        "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+        "Product Decisions.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "README.md": "da12eb009991340e9b8e6e2288cec1dbbcf51ae394ecd3eef765a1a524aaa85e",
+        "specs/changes/HG-0002/evidence/before.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+        "specs/changes/HG-0002/evidence/checks.json": "023e9c6062188006f35473acc18b8705f680943ff6b01bf0435116703d0114d9",
+        "specs/changes/HG-0002/evidence/coverage.json": "a213e61b25427d2b5c94821be27e92105605a54f865a678904e30bd2624826c7",
+        "specs/changes/HG-0002/evidence/executor-review.md": "50464b5bc222dc06069610e0c58c587938cf9457a0e2f568a5408b1f17671658",
+        "specs/changes/HG-0002/evidence/spec-validation.json": "193fc7e22dfaf6a4ffd6383730e9f82b847407016a6eaeddcee9688424fba5a8"
+      },
+      "input_paths": [
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "Product Decisions.md",
+        "README.md",
+        "specs/changes/HG-0002/evidence/before.md",
+        "specs/changes/HG-0002/evidence/checks.json",
+        "specs/changes/HG-0002/evidence/coverage.json",
+        "specs/changes/HG-0002/evidence/spec-validation.json"
+      ],
+      "method": "manual",
+      "observation": "Nine priority principles and all 37 IDs retained; all 28 marked topics have concrete D-labeled pilot decisions; no unresolved markers, implementation or validation claims. Numerical targets and exclusions are explicit policies. Documentation review only; see original report for limits.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0002/evidence/executor-review.md",
+      "scenario": "HG-0001-S2",
+      "scenario_sha256": "b43d1ca1ca0a4c3d1f321cb4316ec1c4d8f2f74754b874283f8033b3bd9d8709"
+    },
+    "HG-0002-S1": {
+      "captured_at": "2026-11-01",
+      "command": "Compare the owner delegation and exact pre-edit document with all 28 delegated decisions; inspect coverage, document/JSON/link checks and policy consistency.",
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "6fddb464131c65613142640175cd9a1a10395e6ccef1c2898e38fec70a501f57",
+        ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+        "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+        "Product Decisions.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+        "README.md": "da12eb009991340e9b8e6e2288cec1dbbcf51ae394ecd3eef765a1a524aaa85e",
+        "specs/changes/HG-0002/evidence/before.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+        "specs/changes/HG-0002/evidence/checks.json": "023e9c6062188006f35473acc18b8705f680943ff6b01bf0435116703d0114d9",
+        "specs/changes/HG-0002/evidence/coverage.json": "a213e61b25427d2b5c94821be27e92105605a54f865a678904e30bd2624826c7",
+        "specs/changes/HG-0002/evidence/executor-review.md": "50464b5bc222dc06069610e0c58c587938cf9457a0e2f568a5408b1f17671658",
+        "specs/changes/HG-0002/evidence/spec-validation.json": "193fc7e22dfaf6a4ffd6383730e9f82b847407016a6eaeddcee9688424fba5a8"
+      },
+      "input_paths": [
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "Product Decisions.md",
+        "README.md",
+        "specs/changes/HG-0002/evidence/before.md",
+        "specs/changes/HG-0002/evidence/checks.json",
+        "specs/changes/HG-0002/evidence/coverage.json",
+        "specs/changes/HG-0002/evidence/spec-validation.json"
+      ],
+      "method": "manual",
+      "observation": "Nine priority principles and all 37 IDs retained; all 28 marked topics have concrete D-labeled pilot decisions; no unresolved markers, implementation or validation claims. Numerical targets and exclusions are explicit policies. Documentation review only; see original report for limits.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0002/evidence/executor-review.md",
+      "scenario": "HG-0002-S1",
+      "scenario_sha256": "9b6779dfc3416277ade712040bcaf9549875cb6075f65d0ff571fbd94b41e70d"
+    }
+  },
+  "history": [
+    {
+      "evidence": {},
+      "recorded_at": 1793498178,
+      "review": null
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Compare the owner delegation and exact pre-edit document with all 28 delegated decisions; inspect coverage, document/JSON/link checks and policy consistency.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "6fddb464131c65613142640175cd9a1a10395e6ccef1c2898e38fec70a501f57",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "README.md": "da12eb009991340e9b8e6e2288cec1dbbcf51ae394ecd3eef765a1a524aaa85e",
+            "specs/changes/HG-0002/evidence/before.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+            "specs/changes/HG-0002/evidence/checks.json": "023e9c6062188006f35473acc18b8705f680943ff6b01bf0435116703d0114d9",
+            "specs/changes/HG-0002/evidence/coverage.json": "a213e61b25427d2b5c94821be27e92105605a54f865a678904e30bd2624826c7",
+            "specs/changes/HG-0002/evidence/executor-review.md": "50464b5bc222dc06069610e0c58c587938cf9457a0e2f568a5408b1f17671658",
+            "specs/changes/HG-0002/evidence/spec-validation.json": "193fc7e22dfaf6a4ffd6383730e9f82b847407016a6eaeddcee9688424fba5a8"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0002/evidence/before.md",
+            "specs/changes/HG-0002/evidence/checks.json",
+            "specs/changes/HG-0002/evidence/coverage.json",
+            "specs/changes/HG-0002/evidence/spec-validation.json"
+          ],
+          "method": "manual",
+          "observation": "Nine priority principles and all 37 IDs retained; all 28 marked topics have concrete D-labeled pilot decisions; no unresolved markers, implementation or validation claims. Numerical targets and exclusions are explicit policies. Documentation review only; see original report for limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0002/evidence/executor-review.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "a3cb805a99c2f732c7c4d01f093ba6ec20b00f0c72c58817feef9c609675d979"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01",
+          "command": "Compare the owner delegation and exact pre-edit document with all 28 delegated decisions; inspect coverage, document/JSON/link checks and policy consistency.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "6fddb464131c65613142640175cd9a1a10395e6ccef1c2898e38fec70a501f57",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "README.md": "da12eb009991340e9b8e6e2288cec1dbbcf51ae394ecd3eef765a1a524aaa85e",
+            "specs/changes/HG-0002/evidence/before.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+            "specs/changes/HG-0002/evidence/checks.json": "023e9c6062188006f35473acc18b8705f680943ff6b01bf0435116703d0114d9",
+            "specs/changes/HG-0002/evidence/coverage.json": "a213e61b25427d2b5c94821be27e92105605a54f865a678904e30bd2624826c7",
+            "specs/changes/HG-0002/evidence/executor-review.md": "50464b5bc222dc06069610e0c58c587938cf9457a0e2f568a5408b1f17671658",
+            "specs/changes/HG-0002/evidence/spec-validation.json": "193fc7e22dfaf6a4ffd6383730e9f82b847407016a6eaeddcee9688424fba5a8"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0002/evidence/before.md",
+            "specs/changes/HG-0002/evidence/checks.json",
+            "specs/changes/HG-0002/evidence/coverage.json",
+            "specs/changes/HG-0002/evidence/spec-validation.json"
+          ],
+          "method": "manual",
+          "observation": "Nine priority principles and all 37 IDs retained; all 28 marked topics have concrete D-labeled pilot decisions; no unresolved markers, implementation or validation claims. Numerical targets and exclusions are explicit policies. Documentation review only; see original report for limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0002/evidence/executor-review.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "b43d1ca1ca0a4c3d1f321cb4316ec1c4d8f2f74754b874283f8033b3bd9d8709"
+        },
+        "HG-0002-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Compare the owner delegation and exact pre-edit document with all 28 delegated decisions; inspect coverage, document/JSON/link checks and policy consistency.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "6fddb464131c65613142640175cd9a1a10395e6ccef1c2898e38fec70a501f57",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "dda62c0835e507fa48b59197090ae86888e48e05b11cccca2952ec18a7db9164",
+            "README.md": "da12eb009991340e9b8e6e2288cec1dbbcf51ae394ecd3eef765a1a524aaa85e",
+            "specs/changes/HG-0002/evidence/before.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+            "specs/changes/HG-0002/evidence/checks.json": "023e9c6062188006f35473acc18b8705f680943ff6b01bf0435116703d0114d9",
+            "specs/changes/HG-0002/evidence/coverage.json": "a213e61b25427d2b5c94821be27e92105605a54f865a678904e30bd2624826c7",
+            "specs/changes/HG-0002/evidence/executor-review.md": "50464b5bc222dc06069610e0c58c587938cf9457a0e2f568a5408b1f17671658",
+            "specs/changes/HG-0002/evidence/spec-validation.json": "193fc7e22dfaf6a4ffd6383730e9f82b847407016a6eaeddcee9688424fba5a8"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0002/evidence/before.md",
+            "specs/changes/HG-0002/evidence/checks.json",
+            "specs/changes/HG-0002/evidence/coverage.json",
+            "specs/changes/HG-0002/evidence/spec-validation.json"
+          ],
+          "method": "manual",
+          "observation": "Nine priority principles and all 37 IDs retained; all 28 marked topics have concrete D-labeled pilot decisions; no unresolved markers, implementation or validation claims. Numerical targets and exclusions are explicit policies. Documentation review only; see original report for limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0002/evidence/executor-review.md",
+          "scenario": "HG-0002-S1",
+          "scenario_sha256": "9b6779dfc3416277ade712040bcaf9549875cb6075f65d0ff571fbd94b41e70d"
+        }
+      },
+      "recorded_at": 1793498393,
+      "review": null
+    }
+  ],
+  "review": {
+    "change_sha256": "841879d3c7d7d3fc0a4339f92127e4532c3a5c0be9b0cc7f3bbedb7b5aebbb25",
+    "conclusion": "GO from three independent final document reviews: evidence/review-learner.md, evidence/review-safety.md, evidence/review-evaluation.md. Executor read the original reports. All 37 IDs and 28 resolved topics verified; scenario input hashes current. No blocking findings. Numeric policies remain unvalidated pilot defaults; no runtime or compliance claim. Existing budget unknowns remain.",
+    "reviewer": "learner_defaults; safety_defaults; evaluation_defaults",
+    "verdict": "go"
+  },
+  "runs": []
+}

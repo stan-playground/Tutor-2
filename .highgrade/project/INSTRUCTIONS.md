@@ -19,11 +19,11 @@ The five documentation roles are combined in README and AGENTS rather than empty
 
 ## Task and specification route
 
-Use the active Delivery's task/spec/work procedures. Planner coordination for genuinely dependent stages is accepted; a separate Goal requires explicit authorization. The user's current request is preparation only.
+Use the active Delivery's task/spec/work procedures. Planner coordination for genuinely dependent stages is accepted; a separate Goal requires explicit authorization. Initialization was preparation only; later user requests define their own scope and authority.
 
-No native specification catalog, prior local specification format or application implementation exists. Keep the existing product document unchanged. On the first authorized requirement change, create the native catalog through the active CLI under `specs/`; let the CLI allocate IDs. Do not create an init-report specification, mass-import source history, invent tags or convert proposals into accepted requirements. Rechecks update existing evidence; material contract changes use a new change.
+No application implementation exists. The native catalog was created through the active CLI under `specs/` for the first authorized documentation change, [HG-0001](../../specs/changes/HG-0001/spec.json). Product Decisions.md remains the product-description owner; preserve its content unless a user request authorizes an edit. Let the CLI allocate specification IDs. Do not create an init-report specification, mass-import source history, invent tags or convert proposals into accepted requirements. Rechecks update existing evidence; material contract changes use a new change.
 
-The next product conversation should refine the first tutor segment and preparation journey from the existing proposed discussion order. No first specification ID can be named before that request. Future product questions and unknown stack choices do not block this process connection.
+The owner's delegated decisions select independent tutors, adult A2–B2 English learners and homework preparation as the first pilot; see [HG-0002](../../specs/changes/HG-0002/spec.json) and the product document. [Architecture.md](../../Architecture.md) records the current design proposal; application implementation still needs a relevant request. These decisions do not expand commit, publication, data-access or deployment authority.
 
 ## Checks, evidence and current limits
 

@@ -1,0 +1,61 @@
+{
+  "id": "HG-0004",
+  "title": "Reviewed teaching assets and authorized retrieval",
+  "tags": [],
+  "goal": "Find eligible teaching material for the actual learning problem.",
+  "rationale": "Topic similarity alone does not establish teaching suitability or permission to reuse content.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Reviewed homework/speaking exercises and explanations; private transcripts remain learner evidence. Sources: PD-13/15/16/33; Architecture section 6. Ranking/index tuning is deferred.",
+  "questions": [],
+  "depends_on": [
+    {
+      "id": "HG-0003",
+      "reason": "Uses the authenticated tutor and learner-evidence ownership boundary."
+    }
+  ],
+  "related_to": [],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0004-R1",
+        "title": "Reviewed teaching assets and authorized retrieval",
+        "statement": "Retrieve permissioned, reviewed material by target subskill/confusion, level and task needs, with source/version references. Apply access and license restrictions before ranking; never turn private transcripts into shared teaching assets or invent missing exercise references.",
+        "scenarios": [
+          {
+            "id": "HG-0004-S1",
+            "given": "Eligible reviewed material matches the target confusion and level.",
+            "when": "The preparation workflow retrieves candidates.",
+            "then": "Candidates include suitable material and its source/version, rather than merely a preferred-topic match.",
+            "verification": "Future retrieval observation against a small reviewed fixture bank."
+          },
+          {
+            "id": "HG-0004-S2",
+            "given": "The only apparent matches are unauthorized, unreviewed or unavailable.",
+            "when": "The workflow retrieves material.",
+            "then": "Those items are not returned as eligible; the content gap remains explicit.",
+            "verification": "Future retrieval eligibility and no-match cases."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0004-T1",
+      "description": "Store reviewed asset versions and their ownership/license metadata.",
+      "done": false
+    },
+    {
+      "id": "HG-0004-T2",
+      "description": "Retrieve eligible candidates with provenance and explicit gaps.",
+      "done": false
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793527737,
+  "archived": false,
+  "abandoned_reason": null
+}

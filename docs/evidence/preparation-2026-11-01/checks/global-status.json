@@ -1,0 +1,19 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [],
+  "limitations": [],
+  "measurements": [
+    {
+      "connected": true,
+      "profile": "/Users/HUAWEI",
+      "release": "v0-4-1"
+    }
+  ],
+  "operation": "global-status",
+  "result": {
+    "connected": true,
+    "profile": "/Users/HUAWEI",
+    "release": "v0-4-1"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,63 @@
+{
+  "id": "HG-0007",
+  "title": "Learner-data retention, deletion and safe observability",
+  "tags": [],
+  "goal": "Keep learner data private and remove every retained copy according to policy.",
+  "rationale": "Graph checkpoints and telemetry must not escape the same access/deletion boundary as source data.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Sources: PD-28; Architecture section 9. Applies to sources, derived records, embeddings, graph history, backups and permitted evaluation excerpts. Provider setup remains implementation work.",
+  "questions": [],
+  "depends_on": [],
+  "related_to": [],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0007-R1",
+        "title": "Learner-data retention, deletion and safe observability",
+        "statement": "Require learner-data permission, minimize collection and use metadata-only routine logs. Expire raw sources/embeddings after 30 days and structured records/plans after 12 months of inactivity. Deletion blocks access immediately, removes active/derived copies within seven days and backups within 30, including learner-linked checkpoints/evaluations; late workers must not recreate deleted data.",
+        "scenarios": [
+          {
+            "id": "HG-0007-S1",
+            "given": "A raw source has expired but a permitted derived learning observation remains.",
+            "when": "The tutor reads its provenance.",
+            "then": "The source is shown unavailable rather than reconstructed; retained observations remain distinguishable from raw quotations.",
+            "verification": "Future controlled-clock source-expiry and provenance observation."
+          },
+          {
+            "id": "HG-0007-S2",
+            "given": "A learner is deleted while preparation or checkpoint work is in flight.",
+            "when": "Deletion and late writes are processed.",
+            "then": "Access is blocked immediately and late work cannot restore usable learner data; all relevant copies follow the deletion deadlines.",
+            "verification": "Future real database/worker race and deletion-inventory checks."
+          },
+          {
+            "id": "HG-0007-S3",
+            "given": "A model call handles learner material.",
+            "when": "Routine telemetry is exported.",
+            "then": "Raw prompts/transcripts and identifying content are excluded; permitted evaluation excerpts follow separate redaction, permission and expiry rules.",
+            "verification": "Future sentinel-data inspection at the telemetry export boundary."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0007-T1",
+      "description": "Apply permission, expiry and minimization to learner-linked stores and telemetry.",
+      "done": false
+    },
+    {
+      "id": "HG-0007-T2",
+      "description": "Delete sources, derived data and graph history while preventing late recreation.",
+      "done": false
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793527738,
+  "archived": false,
+  "abandoned_reason": null
+}

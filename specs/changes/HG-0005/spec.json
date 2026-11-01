@@ -1,0 +1,72 @@
+{
+  "id": "HG-0005",
+  "title": "Evidence-grounded homework generation and validation",
+  "tags": [],
+  "goal": "Compose a usable homework draft from learner evidence and reviewed material.",
+  "rationale": "Generation should serve the teaching need while preserving objective, provenance and correctness.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Homework only. Sources: PD-09/10/12–17/35/37; Architecture sections 2/7. Lesson planning, urgent replanning and unrelated original exercise authoring are excluded.",
+  "questions": [],
+  "depends_on": [
+    {
+      "id": "HG-0003",
+      "reason": "Needs qualified learner evidence."
+    },
+    {
+      "id": "HG-0004",
+      "reason": "Needs eligible reviewed material and provenance."
+    }
+  ],
+  "related_to": [],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0005-R1",
+        "title": "Evidence-grounded homework generation and validation",
+        "statement": "Use both lesson and homework evidence to select explained objectives, then reuse/adapt reviewed assets and compose timed homework. Adapt preferred domains without silently relaxing hard requirements. Keep student content separate from the tutor guide and block safety, validity or unsupported-fact failures.",
+        "scenarios": [
+          {
+            "id": "HG-0005-S1",
+            "given": "A tutor requests homework with learner evidence, eligible assets and a duration.",
+            "when": "The workflow prepares and validates a draft.",
+            "then": "The draft explains its objectives, fits the planned duration, preserves sources and provides separate student instructions and a tutor guide.",
+            "verification": "Future complete preparation observation with reviewed inputs and tutor rubric."
+          },
+          {
+            "id": "HG-0005-S2",
+            "given": "An adaptation has a wrong/ambiguous answer, unsupported learner claim or unmet hard requirement.",
+            "when": "Validation checks the draft.",
+            "then": "The affected material requires correction/removal and cannot become an approved ready artifact.",
+            "verification": "Future seeded-defect cases through the actual validation boundary."
+          },
+          {
+            "id": "HG-0005-S3",
+            "given": "No eligible reviewed asset can meet a required objective.",
+            "when": "Preparation reaches the content gap.",
+            "then": "It exposes the gap or a useful tutor choice instead of inventing an exercise/reference or silently changing the objective.",
+            "verification": "Future no-material preparation case."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0005-T1",
+      "description": "Produce evidence-linked objectives and source-preserving homework adaptations.",
+      "done": false
+    },
+    {
+      "id": "HG-0005-T2",
+      "description": "Compose separate student/tutor content and apply part/plan validation gates.",
+      "done": false
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793527737,
+  "archived": false,
+  "abandoned_reason": null
+}

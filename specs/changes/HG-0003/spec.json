@@ -1,0 +1,63 @@
+{
+  "id": "HG-0003",
+  "title": "Authenticated learner intake and subskill evidence",
+  "tags": [],
+  "goal": "Keep authorized learner information and trustworthy subskill evidence for homework preparation.",
+  "rationale": "Separate assessment, preferences and observations so preparation does not invent learner facts.",
+  "scope": "Initial concise draft; specification only, no implementation or acceptance claimed. Adult A2–B2 English pilot. Sources: Product Decisions PD-06–09/28; Architecture sections 6–7/9. Detailed schemas and calculation cases will be refined before implementation.",
+  "questions": [],
+  "depends_on": [],
+  "related_to": [],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0003-R1",
+        "title": "Authenticated learner intake and subskill evidence",
+        "statement": "Store learner assessment, preferences and dated lesson/homework observations under tutor ownership. Keep accuracy, required use and appropriate avoidance distinct, retain provenance/uncertainty, and derive qualified trends without inventing missing evidence.",
+        "scenarios": [
+          {
+            "id": "HG-0003-S1",
+            "given": "An authorized tutor has adult confirmation, a dated provisional assessment and lesson notes.",
+            "when": "The tutor saves learner information.",
+            "then": "Assessment, preferences and observations remain distinguishable with their sources and uncertainty; a transcript is not required.",
+            "verification": "Future intake/save/read observation using the real application and persisted records."
+          },
+          {
+            "id": "HG-0003-S2",
+            "given": "A tutor requests another tutor's learner records.",
+            "when": "The application reads or changes learner information.",
+            "then": "Access is refused without disclosing or changing those records.",
+            "verification": "Future authenticated API/database ownership check."
+          },
+          {
+            "id": "HG-0003-S3",
+            "given": "A subskill has no observed opportunities or has uncertain extracted evidence.",
+            "when": "Performance is summarized for preparation.",
+            "then": "Unknown values stay unknown and uncertain extraction is not treated as confirmed performance.",
+            "verification": "Future performance-summary cases with zero and unconfirmed observations."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0003-T1",
+      "description": "Persist tutor-owned profiles and source-qualified lesson/homework observations.",
+      "done": false
+    },
+    {
+      "id": "HG-0003-T2",
+      "description": "Expose separate subskill measures and qualified trends for preparation.",
+      "done": false
+    }
+  ],
+  "checks": [],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793527737,
+  "archived": false,
+  "abandoned_reason": null
+}

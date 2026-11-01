@@ -1,0 +1,379 @@
+{
+  "acceptance": [],
+  "evidence": {
+    "HG-0001-S1": {
+      "captured_at": "2026-11-01",
+      "command": "Compare the complete pre-edit working-tree document with the concise version; run real-document preservation/link checks and git diff --check; review semantic corrections.",
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+        ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+        "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+        "Product Decisions.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+        "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+        "specs/changes/HG-0001/evidence/concise/before.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+        "specs/changes/HG-0001/evidence/concise/checks-final.json": "8fb4823fd68e34bc354568677fd84b8bd301869050341dea5a73fca9b0bf8a40",
+        "specs/changes/HG-0001/evidence/concise/executor-review.md": "961e11027736151b55fe70917fe347ff5f496502ccf997ea1e817047431de02d",
+        "specs/changes/HG-0001/evidence/concise/spec-validation.json": "6eac16e25df08a5ce5f21456425f63d224c8cb8f60eed69ee2d23a78ab0fbf49"
+      },
+      "input_paths": [
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "Product Decisions.md",
+        "README.md",
+        "specs/changes/HG-0001/evidence/concise/before.md",
+        "specs/changes/HG-0001/evidence/concise/checks-final.json",
+        "specs/changes/HG-0001/evidence/concise/spec-validation.json"
+      ],
+      "method": "manual",
+      "observation": "Priority prefix unchanged; all 37 IDs, 28 unresolved topics, source references and material qualifications retained after meaning-preserving compression. Corrected five ambiguities identified by independent review. Text review only; no application behavior claimed.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0001/evidence/concise/executor-review.md",
+      "scenario": "HG-0001-S1",
+      "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+    },
+    "HG-0001-S2": {
+      "captured_at": "2026-11-01",
+      "command": "Compare the complete pre-edit working-tree document with the concise version; run real-document preservation/link checks and git diff --check; review semantic corrections.",
+      "files": {
+        ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+        ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+        "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+        "Product Decisions.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+        "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+        "specs/changes/HG-0001/evidence/concise/before.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+        "specs/changes/HG-0001/evidence/concise/checks-final.json": "8fb4823fd68e34bc354568677fd84b8bd301869050341dea5a73fca9b0bf8a40",
+        "specs/changes/HG-0001/evidence/concise/executor-review.md": "961e11027736151b55fe70917fe347ff5f496502ccf997ea1e817047431de02d",
+        "specs/changes/HG-0001/evidence/concise/spec-validation.json": "6eac16e25df08a5ce5f21456425f63d224c8cb8f60eed69ee2d23a78ab0fbf49"
+      },
+      "input_paths": [
+        ".highgrade/project/INSTRUCTIONS.md",
+        ".highgrade/project/documents.json",
+        "AGENTS.md",
+        "Product Decisions.md",
+        "README.md",
+        "specs/changes/HG-0001/evidence/concise/before.md",
+        "specs/changes/HG-0001/evidence/concise/checks-final.json",
+        "specs/changes/HG-0001/evidence/concise/spec-validation.json"
+      ],
+      "method": "manual",
+      "observation": "Priority prefix unchanged; all 37 IDs, 28 unresolved topics, source references and material qualifications retained after meaning-preserving compression. Corrected five ambiguities identified by independent review. Text review only; no application behavior claimed.",
+      "outcome": "passed",
+      "report": "specs/changes/HG-0001/evidence/concise/executor-review.md",
+      "scenario": "HG-0001-S2",
+      "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+    }
+  },
+  "history": [
+    {
+      "evidence": {},
+      "recorded_at": 1793496510,
+      "review": null
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Semantic comparison of owner request, confirmed clarification, Product Decisions.md and git diff; inspect original document-check reports.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json"
+          ],
+          "method": "manual",
+          "observation": "The nine priority principles precede the details; affected decisions and provenance are reconciled; all IDs and 24 unrelated entries are preserved. Manual content review only; no application execution. See semantic-review.md and its original reports for coverage and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01",
+          "command": "Semantic comparison of owner request, confirmed clarification, Product Decisions.md and git diff; inspect original document-check reports.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json"
+          ],
+          "method": "manual",
+          "observation": "The nine priority principles precede the details; affected decisions and provenance are reconciled; all IDs and 24 unrelated entries are preserved. Manual content review only; no application execution. See semantic-review.md and its original reports for coverage and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+        }
+      },
+      "recorded_at": 1793496663,
+      "review": null
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json",
+            "specs/changes/HG-0001/evidence/semantic-review.md"
+          ],
+          "method": "manual",
+          "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01",
+          "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json",
+            "specs/changes/HG-0001/evidence/semantic-review.md"
+          ],
+          "method": "manual",
+          "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+        }
+      },
+      "recorded_at": 1793496718,
+      "review": null
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json",
+            "specs/changes/HG-0001/evidence/semantic-review.md"
+          ],
+          "method": "manual",
+          "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01",
+          "command": "Reconfirm prior product semantic review and inspect corrected process checks after restoring the existing tag restriction.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json": "9006a6d3489ef32c2153ffacf5bddc0d684ed02f4a13a0e7435108a91578bf15",
+            "specs/changes/HG-0001/evidence/document-check-final.json": "1b23eafee963adc5e12e79991f13c43e4ed8eab9a2da8e83cc35d53adb239390",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json": "8d16ff46b8b7fa1568ab5e4c44d6e762b1374c78fec72bfc162a9032318ee83f",
+            "specs/changes/HG-0001/evidence/local-checks.json": "18fdab8f9b9cb513b29c90fbb41df37429a9d9905bb1779b3c88555ab7c97491",
+            "specs/changes/HG-0001/evidence/semantic-review-addendum.md": "18ef1dbb14f6182c2391fa15d484df0ca4619aae9fd413f567f52c7b1997e46c",
+            "specs/changes/HG-0001/evidence/semantic-review.md": "2cb7b24a1032f81dba5c164357dd5ac60720ae16b39827482827fb423891424d"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/corrected-process-checks.json",
+            "specs/changes/HG-0001/evidence/document-check-final.json",
+            "specs/changes/HG-0001/evidence/follow-up-checks.json",
+            "specs/changes/HG-0001/evidence/local-checks.json",
+            "specs/changes/HG-0001/evidence/semantic-review.md"
+          ],
+          "method": "manual",
+          "observation": "All nine current principles and reconciled details remain; all 37 IDs and 24 unrelated bodies are preserved. The pre-existing process restriction is restored and the unnecessary tag removed through CLI. Document review only; see linked original reports and limits.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/semantic-review-addendum.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+        }
+      },
+      "recorded_at": 1793497153,
+      "review": {
+        "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+        "conclusion": "GO after correction. Both documentation scenarios satisfied; local tag restriction restored and unnecessary tag removed. Original independent report: specs/changes/HG-0001/evidence/independent-review-final.md. No application behavior or human acceptance is claimed.",
+        "reviewer": "Independent agent /root/eval_wording_review",
+        "verdict": "go"
+      }
+    },
+    {
+      "evidence": {
+        "HG-0001-S1": {
+          "captured_at": "2026-11-01",
+          "command": "Compare the complete pre-edit working-tree document with the concise version; run real-document preservation/link checks and git diff --check; review semantic corrections.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/concise/before.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "specs/changes/HG-0001/evidence/concise/checks-final.json": "8fb4823fd68e34bc354568677fd84b8bd301869050341dea5a73fca9b0bf8a40",
+            "specs/changes/HG-0001/evidence/concise/executor-review.md": "961e11027736151b55fe70917fe347ff5f496502ccf997ea1e817047431de02d",
+            "specs/changes/HG-0001/evidence/concise/spec-validation.json": "6eac16e25df08a5ce5f21456425f63d224c8cb8f60eed69ee2d23a78ab0fbf49"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/concise/before.md",
+            "specs/changes/HG-0001/evidence/concise/checks-final.json",
+            "specs/changes/HG-0001/evidence/concise/spec-validation.json"
+          ],
+          "method": "manual",
+          "observation": "Priority prefix unchanged; all 37 IDs, 28 unresolved topics, source references and material qualifications retained after meaning-preserving compression. Corrected five ambiguities identified by independent review. Text review only; no application behavior claimed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/concise/executor-review.md",
+          "scenario": "HG-0001-S1",
+          "scenario_sha256": "690632371e56735e74525ec1bd6e4130d576763a083287f2397ca3712b0ca361"
+        },
+        "HG-0001-S2": {
+          "captured_at": "2026-11-01",
+          "command": "Compare the complete pre-edit working-tree document with the concise version; run real-document preservation/link checks and git diff --check; review semantic corrections.",
+          "files": {
+            ".highgrade/project/INSTRUCTIONS.md": "a65dd73ba31b7f9dc39df61474648b74476f795a3538c6c1cffbefe8ffa9b988",
+            ".highgrade/project/documents.json": "e7e3796546b58bb78ec2cb3c26c6cfba63b81bc99ff509510b1a5dbbbc00e818",
+            "AGENTS.md": "47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae",
+            "Product Decisions.md": "df92924f485d48059d3a4f62592ab4a250881ce712161579bc5a31609c0e1890",
+            "README.md": "001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058",
+            "specs/changes/HG-0001/evidence/concise/before.md": "5cb96d4b3094dd27385045c0ee6ea16e87133b2d942339205f418b5bd6ba935f",
+            "specs/changes/HG-0001/evidence/concise/checks-final.json": "8fb4823fd68e34bc354568677fd84b8bd301869050341dea5a73fca9b0bf8a40",
+            "specs/changes/HG-0001/evidence/concise/executor-review.md": "961e11027736151b55fe70917fe347ff5f496502ccf997ea1e817047431de02d",
+            "specs/changes/HG-0001/evidence/concise/spec-validation.json": "6eac16e25df08a5ce5f21456425f63d224c8cb8f60eed69ee2d23a78ab0fbf49"
+          },
+          "input_paths": [
+            ".highgrade/project/INSTRUCTIONS.md",
+            ".highgrade/project/documents.json",
+            "AGENTS.md",
+            "Product Decisions.md",
+            "README.md",
+            "specs/changes/HG-0001/evidence/concise/before.md",
+            "specs/changes/HG-0001/evidence/concise/checks-final.json",
+            "specs/changes/HG-0001/evidence/concise/spec-validation.json"
+          ],
+          "method": "manual",
+          "observation": "Priority prefix unchanged; all 37 IDs, 28 unresolved topics, source references and material qualifications retained after meaning-preserving compression. Corrected five ambiguities identified by independent review. Text review only; no application behavior claimed.",
+          "outcome": "passed",
+          "report": "specs/changes/HG-0001/evidence/concise/executor-review.md",
+          "scenario": "HG-0001-S2",
+          "scenario_sha256": "aaa5e3b27dafb5c7ecea63bb27a80ff8ce1d95af935df324a9d215bd026452a6"
+        }
+      },
+      "recorded_at": 1793497204,
+      "review": {
+        "change_sha256": "78e14dd738ee60a676dad867e8f9a43c0fdae90c54abfc6be77da11374540f39",
+        "conclusion": "GO after correction. Both documentation scenarios satisfied; local tag restriction restored and unnecessary tag removed. Original independent report: specs/changes/HG-0001/evidence/independent-review-final.md. No application behavior or human acceptance is claimed.",
+        "reviewer": "Independent agent /root/eval_wording_review",
+        "verdict": "go"
+      }
+    }
+  ],
+  "review": {
+    "change_sha256": "5bbee652b57d4c342e9e14fdaf54e91a37b9acc32d26a1256c28c1969ca48b6c",
+    "conclusion": "GO for meaning-preserving compression. Priority prefix unchanged; all 37 decisions, 28 open topics and material qualifications retained; lower text 6106 to 2947 words. Final report: specs/changes/HG-0001/evidence/concise/independent-review-final.md. Documentation only, not human acceptance.",
+    "reviewer": "Independent agent /root/eval_wording_review",
+    "verdict": "go"
+  },
+  "runs": []
+}

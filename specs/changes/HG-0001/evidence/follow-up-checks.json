@@ -1,0 +1,61 @@
+{
+  "reason": "Recheck after classifying the new native catalog under README in the document registry. Product text review also resolved the whole-plan versus individual-part approval phrasing.",
+  "checks": [
+    {
+      "label": "registry",
+      "command": "/Users/HUAWEI/.highgrade/global/releases/v0-4-1/highgrade inspect --root . --registry .highgrade/project/documents.json",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "cfe2d4",
+          "wall_time_seconds": 0.000007083,
+          "exit_code": 2,
+          "original_token_count": 1478,
+          "output": "{\n  \"ambiguous_result_keys\": [\n    \"bytes\",\n    \"lines\",\n    \"path\",\n    \"role\",\n    \"sha256\",\n    \"token_estimate\",\n    \"token_method\"\n  ],\n  \"findings\": [\n    {\n      \"code\": \"BudgetNotAgreed\",\n      \"location\": \"README.md\",\n      \"message\": \"Бюджет не согласован.\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"code\": \"BudgetNotAgreed\",\n      \"location\": \"AGENTS.md\",\n      \"message\": \"Бюджет не согласован.\",\n      \"status\": \"unknown\"\n    },\n    {\n      \"code\": \"BudgetNotAgreed\",\n      \"location\": \"context-route\",\n      \"message\": \"Бюджет не согласован.\",\n      \"status\": \"unknown\"\n    }\n  ],\n  \"limitations\": [\n    \"Структурная проверка, не смысловой аудит. Сеть не использована. История бюджета проверяется внутри записи; изменение согласованной базы требует отдельного сравнения/решения автора.\",\n    \"Якоря: стандартные Markdown-заголовки, Unicode lowercase; HTML/custom anchors и отдельные диалекты могут требовать ручной проверки. --scope использует явную карту, не граф зависимостей кода.\"\n  ],\n  \"measurements\": [\n    {\n      \"bytes\": 5436,\n      \"lines\": 61,\n      \"path\": \"README.md\",\n      \"role\": \"purpose-navigation\",\n      \"sha256\": \"001a59c068f8cd0c9a8ea5f64a0882225e119ef83f9b3cf14c5c6f0041bad058\",\n      \"token_estimate\": 1359,\n      \"token_method\": \"unicode_chars/4 heuristic; not model context size\"\n    },\n    {\n      \"bytes\": 3156,\n      \"lines\": 26,\n      \"path\": \"AGENTS.md\",\n      \"role\": \"agent-rules\",\n      \"sha256\": \"47958a7ec292d727ebb7cf08cd867ff620828ab161dd60af53c801951d4c22ae\",\n      \"token_estimate\": 789,\n      \"token_method\": \"unicode_chars/4 heuristic; not model context size\"\n    },\n    {\n      \"bytes\": 6087,\n      \"lines\": 44,\n      \"path\": \".highgrade/project/INSTRUCTIONS.md\",\n      \"role\": \"project-adaptation\",\n      \"sha256\": \"0eb3efc43c0caa6f9b9a959fd9777f771aa114d668d49bd4e02b45c46b8c1fb9\",\n      \"token_estimate\": 1522,\n      \"token_method\": \"unicode_chars/4 heuristic; not model context size\"\n    },\n    {\n      \"required_links\": [\n        {\n          \"from\": \"README.md\",\n          \"status\": \"present\",\n          \"to\": \"AGENTS.md\"\n        },\n        {\n          \"from\": \"README.md\",\n          \"status\": \"present\",\n          \"to\": \"README.md\"\n        },\n        {\n          \"from\": \"README.md\",\n          \"status\": \"present\",\n          \"to\": \"AGENTS.md\"\n        },\n        {\n          \"from\": \"README.md\",\n          \"status\": \"present\",\n          \"to\": \"README.md\"\n        },\n        {\n          \"from\": \"AGENTS.md\",\n          \"status\": \"present\",\n          \"to\": \".highgrade/project/INSTRUCTIONS.md\"\n        },\n        {\n          \"from\": \".highgrade/project/INSTRUCTIONS.md\",\n          \"status\": \"present\",\n          \"to\": \".highgrade/project/documents.json\"\n        }\n      ]\n    },\n    {\n      \"diagnostic_summary\": {\n        \"accepted_limitations\": \"consult_survey_basis_and_project_instructions; not_certified_by_inspect\",\n        \"errors\": [],\n        \"unknown\": [\n          {\n            \"code\": \"BudgetNotAgreed\",\n            \"location\": \"README.md\",\n            \"message\": \"Бюджет не согласован.\",\n            \"status\": \"unknown\"\n          },\n          {\n            \"code\": \"BudgetNotAgreed\",\n            \"location\": \"AGENTS.md\",\n            \"message\": \"Бюджет не согласован.\",\n            \"status\": \"unknown\"\n          },\n          {\n            \"code\": \"BudgetNotAgreed\",\n            \"location\": \"context-route\",\n            \"message\": \"Бюджет не согласован.\",\n            \"status\": \"unknown\"\n          }\n        ],\n        \"warnings\": []\n      }\n    },\n    {\n      \"scope\": \"all-registered\",\n      \"registry\": \".highgrade/project/documents.json\",\n      \"route\": [\n        \"README.md\",\n        \"AGENTS.md\",\n        \".highgrade/project/INSTRUCTIONS.md\"\n      ],\n      \"route_bytes\": 14679\n    }\n  ],\n  \"operation\": \"inspect\",\n  \"result\": {\n    \"scope\": \"all-registered\",\n    \"diagnostic_summary\": {\n      \"accepted_limitations\": \"consult_survey_basis_and_project_instructions; not_certified_by_inspect\",\n      \"errors\": [],\n      \"unknown\": [\n        {\n          \"code\": \"BudgetNotAgreed\",\n          \"location\": \"README.md\",\n          \"message\": \"Бюджет не согласован.\",\n          \"status\": \"unknown\"\n        },\n        {\n          \"code\": \"BudgetNotAgreed\",\n          \"location\": \"AGENTS.md\",\n          \"message\": \"Бюджет не согласован.\",\n          \"status\": \"unknown\"\n        },\n        {\n          \"code\": \"BudgetNotAgreed\",\n          \"location\": \"context-route\",\n          \"message\": \"Бюджет не согласован.\",\n          \"status\": \"unknown\"\n        }\n      ],\n      \"warnings\": []\n    },\n    \"registry\": \".highgrade/project/documents.json\",\n    \"required_links\": [\n      {\n        \"from\": \"README.md\",\n        \"status\": \"present\",\n        \"to\": \"AGENTS.md\"\n      },\n      {\n        \"from\": \"README.md\",\n        \"status\": \"present\",\n        \"to\": \"README.md\"\n      },\n      {\n        \"from\": \"README.md\",\n        \"status\": \"present\",\n        \"to\": \"AGENTS.md\"\n      },\n      {\n        \"from\": \"README.md\",\n        \"status\": \"present\",\n        \"to\": \"README.md\"\n      },\n      {\n        \"from\": \"AGENTS.md\",\n        \"status\": \"present\",\n        \"to\": \".highgrade/project/INSTRUCTIONS.md\"\n      },\n      {\n        \"from\": \".highgrade/project/INSTRUCTIONS.md\",\n        \"status\": \"present\",\n        \"to\": \".highgrade/project/documents.json\"\n      }\n    ],\n    \"route\": [\n      \"README.md\",\n      \"AGENTS.md\",\n      \".highgrade/project/INSTRUCTIONS.md\"\n    ],\n    \"route_bytes\": 14679\n  },\n  \"status\": \"unknown\"\n}\n"
+        }
+      }
+    },
+    {
+      "label": "survey",
+      "command": "/Users/HUAWEI/.highgrade/global/releases/v0-4-1/highgrade survey-check --root .",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "b96e6f",
+          "wall_time_seconds": 0.000010166,
+          "exit_code": 2,
+          "original_token_count": 541,
+          "output": "{\n  \"ambiguous_result_keys\": [],\n  \"findings\": [\n    {\n      \"code\": \"SurveyIncomplete\",\n      \"location\": \".highgrade/project/survey.json\",\n      \"message\": \"See separate decisions, source freshness and review record.\",\n      \"status\": \"unknown\"\n    }\n  ],\n  \"limitations\": [\n    \"Recorded statements are data, not proof of semantic correctness, user acceptance or permission. No project commands are executed.\"\n  ],\n  \"measurements\": [\n    {\n      \"adaptation_ready\": false,\n      \"blockers\": [],\n      \"changed_sources\": [\n        \".highgrade/project/INSTRUCTIONS.md\",\n        \".highgrade/project/documents.json\",\n        \"Product Decisions.md\",\n        \"README.md\"\n      ],\n      \"completion_ready\": false,\n      \"historically_completed\": true,\n      \"other_dependencies\": [],\n      \"permission\": \"not_assessed\",\n      \"plan_ready\": false,\n      \"review_go\": true,\n      \"review_record_current\": true,\n      \"semantic_correctness\": \"not_certified\",\n      \"snapshot_current\": false,\n      \"structure\": \"valid\",\n      \"system_actions\": [\n        \"plan\",\n        \"adaptation\",\n        \"completion\"\n      ],\n      \"unknown_sources\": [],\n      \"user_acceptance\": \"not_recorded_by_this_tool\"\n    },\n    {\n      \"survey_sha256\": \"1c6a5127c7940f16c3020381a670f2efe8bdb96c59bb2ffa72e355bb77bf5ece\"\n    }\n  ],\n  \"operation\": \"survey-check\",\n  \"result\": {\n    \"adaptation_ready\": false,\n    \"blockers\": [],\n    \"changed_sources\": [\n      \".highgrade/project/INSTRUCTIONS.md\",\n      \".highgrade/project/documents.json\",\n      \"Product Decisions.md\",\n      \"README.md\"\n    ],\n    \"completion_ready\": false,\n    \"historically_completed\": true,\n    \"other_dependencies\": [],\n    \"permission\": \"not_assessed\",\n    \"plan_ready\": false,\n    \"review_go\": true,\n    \"review_record_current\": true,\n    \"semantic_correctness\": \"not_certified\",\n    \"snapshot_current\": false,\n    \"structure\": \"valid\",\n    \"survey_sha256\": \"1c6a5127c7940f16c3020381a670f2efe8bdb96c59bb2ffa72e355bb77bf5ece\",\n    \"system_actions\": [\n      \"plan\",\n      \"adaptation\",\n      \"completion\"\n    ],\n    \"unknown_sources\": [],\n    \"user_acceptance\": \"not_recorded_by_this_tool\"\n  },\n  \"status\": \"unknown\"\n}\n"
+        }
+      }
+    },
+    {
+      "label": "whitespace",
+      "command": "git diff --check",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "7b9963",
+          "wall_time_seconds": 0.000007875,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      }
+    },
+    {
+      "label": "json",
+      "command": "python3 - <<'PY'\nimport json\nfrom pathlib import Path\nfiles=[Path('.highgrade/project/documents.json'),Path('.highgrade/project/survey.json'),*Path('specs').rglob('*.json')]\nfor path in files: json.loads(path.read_text())\nprint(f'Parsed {len(files)} JSON files successfully.')\nPY",
+      "result": {
+        "status": "fulfilled",
+        "value": {
+          "chunk_id": "b45511",
+          "wall_time_seconds": 0.0000145,
+          "exit_code": 0,
+          "original_token_count": 9,
+          "output": "Parsed 7 JSON files successfully.\n"
+        }
+      }
+    }
+  ]
+}
