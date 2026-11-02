@@ -1,0 +1,14 @@
+............F....                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_query_cache_validates_vectors_and_always_refreshes_eligibility ______
+tests/integration/test_retrieval.py:412: in test_query_cache_validates_vectors_and_always_refreshes_eligibility
+    assert repaired["status"] == "gap" and repaired["cache"] == "miss"
+E   AssertionError: assert ('gap' == 'gap'
+E     
+E       gap and 'error' == 'miss'
+E     
+E     - miss
+E     + error)
+=========================== short test summary info ============================
+FAILED tests/integration/test_retrieval.py::test_query_cache_validates_vectors_and_always_refreshes_eligibility
+1 failed, 16 passed in 10.60s

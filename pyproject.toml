@@ -7,6 +7,7 @@ dependencies = [
     "alembic>=1.17,<2",
     "authlib>=1.6,<2",
     "fastapi>=0.121,<1",
+    "fastembed>=0.7,<0.8",
     "httpx>=0.28,<1",
     "psycopg[binary]>=3.2,<4",
     "redis>=7,<9",
@@ -18,6 +19,8 @@ dependencies = [
 tutor-web = "tutor_copilot.web:main"
 tutor-worker = "tutor_copilot.worker:main"
 tutor-cleanup = "tutor_copilot.lifecycle:main"
+tutor-embeddings-prepare = "tutor_copilot.embeddings:prepare"
+tutor-bank-publish = "tutor_copilot.bank:main"
 
 [dependency-groups]
 dev = [

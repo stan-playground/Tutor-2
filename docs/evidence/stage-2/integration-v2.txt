@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2
+configfile: pyproject.toml
+plugins: platformdirs-4.14.3, anyio-4.16.0
+collected 45 items
+
+tests/integration/test_auth.py ....                                      [  8%]
+tests/integration/test_evidence.py .                                     [ 11%]
+tests/integration/test_foundation.py ......                              [ 24%]
+tests/integration/test_intake.py ...........                             [ 48%]
+tests/integration/test_lifecycle.py ......                               [ 62%]
+tests/integration/test_materials.py ...                                  [ 68%]
+tests/integration/test_retrieval.py ..............                       [100%]
+
+- generated xml file: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2/docs/evidence/stage-2/integration-v2.xml -
+============================= 45 passed in 23.49s ==============================

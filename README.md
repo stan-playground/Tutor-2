@@ -4,7 +4,7 @@ This repository prepares a tutor-facing assistant, with delivery priority homewo
 
 ## Current structure
 
-Stages 0–1 implement a local synthetic development foundation and tutor-owned learner evidence: FastAPI, a separate worker startup shell, PostgreSQL/pgvector, disposable Redis, local Keycloak login, learner/profile/source intake, confirmed observation/activity revisions, recent performance, frozen cumulative context and data cleanup. [Stage 0](docs/stage-0.md) and [Stage 1](docs/stage-1.md) record scope and evidence. Material retrieval, generation, queue processing and graph execution remain future work. Architecture.md records the broader design; production deployment and real-learner activation remain unverified.
+Stages 0–2 implement a local synthetic development foundation, tutor-owned learner evidence and reviewed teaching retrieval: FastAPI, a separate worker startup shell, PostgreSQL/pgvector, disposable Redis, local Keycloak login, learner/profile/source intake, confirmed observation/activity revisions, recent performance, frozen cumulative context and data cleanup. [Stage 0](docs/stage-0.md) and [Stage 1](docs/stage-1.md) record scope and evidence. [Stage 2](docs/stage-2.md) adds private reviewed material versions, operator shared-bank publication, controlled local-model/pgvector retrieval and disposable query-vector caching. Generation, queue processing and graph execution remain future work. Architecture.md records the broader design; production deployment and real-learner activation remain unverified.
 
 - [Product Decisions.md](<Product Decisions.md>): product priorities, delegated pilot defaults and deferred scope; preserve their provenance and evidence limits.
 - [Architecture.md](Architecture.md): proposed framework, storage, human-review and caching choices with trade-offs.
@@ -33,6 +33,7 @@ just                 # List recipes; starts nothing.
 just setup           # uv sync --locked; does not install Git hooks.
 just up              # Start PostgreSQL and Redis, waiting for health checks.
 just auth-up         # Prepare synthetic identities and start Keycloak; wait for readiness.
+just embeddings-prepare # Download the pinned public embedding model anonymously; no API key.
 just migrate         # Migrate the fixed local development database.
 just check           # Ruff formatting/lint, strict mypy, deterministic unit checks.
 just integration     # Actual API/PostgreSQL/Redis/worker/Keycloak checks; no paid providers.
@@ -54,7 +55,9 @@ curl -i http://127.0.0.1:8000/health/live
 curl -i http://127.0.0.1:8000/health/ready
 ```
 
-The live endpoint returns `{"status":"alive"}`. Readiness returns HTTP 200 with `ready` when PostgreSQL, migration `0003`, pgvector and Redis are available. Redis failure yields HTTP 200 `degraded`; database/schema failure yields HTTP 503 `unavailable`. Keycloak failure is reported by login as HTTP 503; startup readiness checks database/cache only. Each HTTP request has a fresh `X-Correlation-ID` matching its console observation. Logs contain only fixed metadata fields, never paths, query strings, headers, bodies or exception text. No Langfuse exporter/model client is installed yet.
+The live endpoint returns `{"status":"alive"}`. Readiness returns HTTP 200 with `ready` when PostgreSQL, migration `0004`, pgvector and Redis are available. Redis failure yields HTTP 200 `degraded`; database/schema failure yields HTTP 503 `unavailable`. Keycloak failure is reported by login as HTTP 503; startup readiness checks database/cache only. Each HTTP request has a fresh `X-Correlation-ID` matching its console observation. Logs contain only fixed metadata fields, never paths, query strings, headers, bodies or exception text. No Langfuse exporter or generation-model client is installed yet; Stage 2 uses a local embedding model.
+
+The Stage 2 bank/search surface is also JSON: `POST /teaching-assets`, `GET`/`DELETE /teaching-assets/{id}` and `POST /teaching-search`. Tutor imports stay private; `UV_CACHE_DIR=.uv-cache uv run --locked tutor-bank-publish FILE` is an explicit local operator command requiring qualified review and separate sharing permission. Prepare the pinned public model before importing reviewed available material or searching; runtime never downloads weights. [Stage 2](docs/stage-2.md) describes fields, methods, outcomes and synthetic verification.
 
 The Stage 1 surface is an authenticated JSON API; a learner-management browser form is not yet implemented. [Stage 1](docs/stage-1.md#http-operations) lists operations and revision/confirmation rules. Browser login starts at `http://127.0.0.1:8000/auth/login`; `/auth/me` returns the session's CSRF token. All writes require `X-CSRF-Token`. The app cookie uses an explicit HTTP-loopback development exception, with HttpOnly, SameSite=Lax, server sessions and CSRF; production HTTPS configuration is not implemented. Keycloak's two synthetic invited subjects are seeded by migration. Automated login tests consume generated credentials internally; public registration and an administrator are disabled. The provider container has no persistent realm volume. Keep this configuration local and synthetic.
 
@@ -85,7 +88,7 @@ Read the report as well as the exit code: `1` is failed and `2` is unknown. Docu
 
 The registry checks the process documents. The product analysis remains outside that lint scope: its two original absolute provenance links are unsupported by HighGrade's link checker. The initialization survey preserves its historical hash; current task evidence records later edits. Check the exact source paths separately before using the originals, and record unavailable targets as gaps. A passing process-link check does not establish source-document accessibility or re-audit their content.
 
-`git diff --check` checks tracked changes; review new untracked files too before committing. Application checks above verify the implemented stage-0/1 boundaries; they do not establish later product scenarios or teaching quality.
+`git diff --check` checks tracked changes; review new untracked files too before committing. Application checks above verify the implemented stage-0/1/2 boundaries; they do not establish later product scenarios or teaching quality.
 
 To open the project UI on this Mac, run:
 

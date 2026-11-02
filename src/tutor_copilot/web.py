@@ -11,6 +11,8 @@ from sqlalchemy.exc import IntegrityError
 
 from tutor_copilot.auth import install_auth
 from tutor_copilot.intake import router
+from tutor_copilot.materials import router as material_router
+from tutor_copilot.retrieval import router as retrieval_router
 from tutor_copilot.runtime import open_resources, readiness
 from tutor_copilot.settings import Settings
 from tutor_copilot.telemetry import Outcome, configure_logging, observe
@@ -30,6 +32,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.settings = settings or Settings()
     install_auth(app)
     app.include_router(router)
+    app.include_router(material_router)
+    app.include_router(retrieval_router)
 
     @app.exception_handler(RequestValidationError)
     async def invalid_input(request: Request, error: RequestValidationError) -> JSONResponse:
@@ -45,6 +49,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     ) -> Response:
         correlation_id = uuid4()
         started = time.monotonic()
+        request.state.correlation_id = correlation_id
         outcome: Outcome
         try:
             response = await call_next(request)

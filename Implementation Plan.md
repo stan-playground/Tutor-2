@@ -6,7 +6,7 @@ Deliver the complete homework journey for adult A2–B2 English learners first, 
 
 PD-39/40 extend preparation now: use qualified cumulative learning history alongside unchanged recent performance, and choose input/practice/task routes beyond visible errors. Reconsider important-now and worth-revisiting needs on tutor requests. These changes fit the stages below; no scheduler, student app, automated audio assessment or new workflow system is introduced.
 
-This is an ordinary plan prepared under a plan-only request. No application work, live-data use or pilot launch is authorized by this document. The checkout currently contains documentation and draft specifications; no application behavior is implemented or verified.
+This plan was prepared under a plan-only request and grants no execution or launch authority. Later owner requests implemented the local slices in [Stage 0](docs/stage-0.md), [Stage 1](docs/stage-1.md) and [Stage 2](docs/stage-2.md). Their records own observed behavior and limits; the remaining rows describe future work.
 
 ## Sources and scope
 

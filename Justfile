@@ -9,6 +9,10 @@ default:
 setup:
     uv sync --locked
 
+# Download pinned public embedding weights anonymously; runtime inference stays offline.
+embeddings-prepare:
+    uv run --locked tutor-embeddings-prepare
+
 # Start loopback-only synthetic development services; ignores implicit .env files.
 up:
     docker compose --env-file /dev/null -f compose.yaml up -d --wait
