@@ -247,6 +247,18 @@ def test_listening_requires_available_permitted_matching_recording(bank, databas
     assert bank.delete(f"/teaching-assets/{identity}").status_code == 200
     assert search(bank, request)["status"] == "gap"
 
+    remediation = material()
+    remediation["target"]["modality"] = "audio"
+    remediation["recording"] = {
+        "reference": "synthetic-recording:remediation",
+        "version": "audio-1",
+        "available": False,
+        "permitted": True,
+        "criteria_recording_version": "audio-1",
+    }
+    add_material(bank, remediation)
+    assert search(bank, objective(remediation["target"]))["status"] == "gap"
+
 
 def test_shared_operator_material_is_readable_but_not_writable_by_tutors(bank, database):
     private = add_material(bank)
@@ -272,11 +284,13 @@ def test_shared_operator_material_is_readable_but_not_writable_by_tutors(bank, d
                     assert await connection.scalar(text(f"SELECT count(*) FROM {table}")) == 0
             async with tenant_transaction(engine, SECOND) as connection:
                 assert await connection.scalar(text("SELECT count(*) FROM teaching_assets")) == 1
-                changed = await connection.execute(
-                    text("UPDATE teaching_assets SET reviewed_by='forged' WHERE id=:id"),
-                    {"id": UUID(shared)},
-                )
-                assert changed.rowcount == 0
+            with pytest.raises(DBAPIError) as denied:
+                async with tenant_transaction(engine, SECOND) as connection:
+                    await connection.execute(
+                        text("UPDATE teaching_assets SET reviewed_by='forged' WHERE id=:id"),
+                        {"id": UUID(shared)},
+                    )
+            assert denied.value.orig.sqlstate == "42501"
             with pytest.raises(DBAPIError) as denied:
                 async with tenant_transaction(engine, SECOND) as connection:
                     await connection.execute(

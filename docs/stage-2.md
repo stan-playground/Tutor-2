@@ -12,8 +12,9 @@ implementation, commands, verification and remaining delivery limits.
 2. Controlled search and real embeddings: application-built descriptions,
    a pinned local model, authorized exact pgvector ranking, route/kind/task/level/
    confusion/support/prerequisite/duration filters, provenance and explicit gaps.
-3. Listening and shared publication: recording-version/criteria correspondence,
-   availability/permission checks, and an operator-only shared-bank command with
+3. Audio material and shared publication: every audio modality requires a
+   recording; retrieval enforces recording-version/criteria correspondence and
+   availability/permission. An operator-only shared-bank command requires
    separate sharing permission and qualified-reviewer assertions.
 4. Disposable query-vector caching: current database authorization on every
    search, 24-hour TTL, versioned keys, corrupt-value repair and bounded Redis
@@ -21,9 +22,9 @@ implementation, commands, verification and remaining delivery limits.
 
 These blocks complete the local Stage 2 slice. HG-0004 is not formally integrated:
 its dependency HG-0003 still has the future approval/copy side of S5 to observe.
-The [current native status](evidence/stage-2/HG-0004-status-v2.json) records a
-current independent GO and only `DependencyNotIntegrated`; no Stage 2 scenario
-or check remains missing or stale.
+All current native checks pass. The [current native status](evidence/stage-2/HG-0004-status-v3.json)
+records independent review GO and only `DependencyNotIntegrated` as the formal
+delivery barrier.
 This does not claim that either complete native specification, pilot readiness,
 teaching quality or real-data activation has passed. Stage 3 still owns objective
 selection, generation, checked adaptation and persistence with a preparation.
@@ -41,15 +42,17 @@ distance ranks only eligible rows. A preferred domain can fall back visibly via
 `domain_match: false`; a required domain is never relaxed. `kinds` lets a caller
 search for explanations separately from activities, input or frameworks.
 
-Migration `0004` separates permanent material ownership from its versions. Tutors
-can create only private identities; shared publication uses the existing local
-maintenance account. RLS checks ownership for every version. The query selects
-the latest version before testing eligibility, so withdrawing review or
-availability cannot resurrect an older eligible version. Material deletion
-cascades through versions and their vectors. The separate sharing permission is
-recorded at the material ownership identity; reviewer, source and rights are
-versioned. The command does not provide a per-version sharing-authorization audit. No learner ID/source pointer is
-accepted in a material, and learner sources never enter this table automatically.
+Migration `0004` separates permanent material ownership from its versions, and
+migration `0005` makes the version rows append-only for the restricted runtime
+role. Tutors can create only private identities; shared publication uses the
+existing local maintenance account. RLS checks ownership for every version. The
+query selects the latest version before testing eligibility, so withdrawing
+review or availability cannot resurrect an older eligible version. Material
+deletion cascades through versions and their vectors. The separate sharing
+permission is recorded at the material ownership identity; reviewer, source and
+rights are versioned. The command does not provide a per-version
+sharing-authorization audit. No learner ID/source pointer is accepted in a
+material, and learner sources never enter this table automatically.
 Importers must attest that content is teaching material; this does not detect a
 deliberately mislabeled transcript or establish the truth of a rights assertion.
 
@@ -94,7 +97,7 @@ misses. Cache errors bypass Redis; they cannot turn an embedding/database error
 into a content gap. Current PostgreSQL ownership, latest versions, rights,
 review and recording correspondence are checked even on a cache hit.
 
-Listening references are reviewer assertions, not URLs fetched by the server.
+Audio recording references are reviewer assertions, not URLs fetched by the server.
 The system verifies that an available permitted reference has the same recording
 version as its reviewed criteria. It does not independently listen to media,
 verify a third party's uptime, assess learner audio or infer listening ability
@@ -123,7 +126,7 @@ and elapsed time, joined to the HTTP response's `X-Correlation-ID`.
 | Method | Purpose, inputs, output and caller | Separation, errors and lifetime |
 | --- | --- | --- |
 | `TeachingTarget.valid_route()` | Intake/search validation checks route/outcome, skill, exact remediation confusion and reading/listening modality; returns the validated target. | Shared contract for material and objective; rejects incompatible fields before I/O. Per input. |
-| `Material.complete_material()` | Import validation requires a closed-answer key and a listening recording reference; returns material. | Content relationships are checked before storage/embedding. Does not certify answer quality; per import. |
+| `Material.complete_material()` | Import validation requires a closed-answer key and a recording reference for every audio modality; returns material. | Content relationships are checked before storage/embedding. Does not certify answer quality; per import. |
 | `describe_target(target)` | Import/search supplies controlled metadata; returns the shared teaching description. | One pure format shared by passage/query construction; no reference/private fields. Per operation. |
 | `save_material(connection, tutor, data, vector, reviewer_ref, sharing_permission_ref)` | HTTP import or operator publication supplies a short transaction, identity/revision and optional vector; returns UUID/revision. | Serializes the identity with a PostgreSQL advisory lock, preserves ownership, rejects stale versions and supports replay. Database errors roll back; shared writes need separate permission/review. Transaction/data are operation-local. |
 | `import_material(data, request, tutor)` | HTTP POST validates material, embeds an eligible passage, opens the tenant transaction and calls `save_material`. | Server session owns tutor identity. Provider failures return 503 and save nothing. Request-local data, application-lifetime resources. |
@@ -158,21 +161,24 @@ just integration
 just migrate
 ```
 
-See the original [check report](evidence/stage-2/check-v2.txt),
-[integration report](evidence/stage-2/integration-v2.xml),
-[input snapshot](evidence/stage-2/input-snapshot-v2.json),
+See the current [check report](evidence/stage-2/check-v3.txt),
+[integration report](evidence/stage-2/integration-v3.xml) and
+[integration console report](evidence/stage-2/integration-v3.txt), plus the
+current [independent review](evidence/stage-2/review-repair-v1.md). The earlier
 [security review](evidence/stage-2/review-security-v1.md) and
-[coverage review](evidence/stage-2/review-coverage-v1.md). The tests use isolated
-random databases and exact temporary Redis keys; they do not delete the application
-database or flush Redis. Public weights are recoverable through the pinned setup
-command and remain ignored rather than being committed.
+[coverage review](evidence/stage-2/review-coverage-v1.md) describe the original
+slice; they are not the independent verdict for this repair. The tests use
+isolated random databases and exact temporary Redis keys; they do not delete the
+application database or flush Redis. Public weights are recoverable through the
+pinned setup command and remain ignored rather than being committed.
 
 Checks cover all six HG-0004 scenarios, every enabled non-error route, exact
-confusion/kind/task/level/domain constraints, two-tutor/shared RLS, review/rights/
-availability, listening defects, private canaries, latest-version withdrawal,
+confusion/kind/task/level/domain constraints, two-tutor/shared RLS, append-only
+version privileges, review/rights/availability, audio recording defects on
+listening and non-listening routes, private canaries, latest-version withdrawal,
 cache corruption/outage/revocation, actual provider inference and real database
-failure. The final full suite passed 71 unit and 45 integration tests, with no skips.
-Ruff formatting/lint and strict mypy passed. Current input and model-file hashes
-were compared after execution; the independent verdicts are preserved in the
-report set. Future generation, student export, teaching-quality evaluation, production
-hosting/processors and real-learner activation remain outside these observations.
+failure. The final full suite passed 72 unit and 45 integration tests, with no
+skips. Ruff formatting/lint and strict mypy passed. Current native check inputs
+were compared after execution. Future generation, student export,
+teaching-quality evaluation, production hosting/processors and real-learner
+activation remain outside these observations.

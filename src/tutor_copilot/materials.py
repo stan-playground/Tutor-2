@@ -133,8 +133,8 @@ class Material(Intake):
     def complete_material(self) -> Self:
         if self.target.response_type == "choice" and not self.answer_key:
             raise ValueError("Closed-answer material needs its matching answer key")
-        if self.target.route == "listening" and self.recording is None:
-            raise ValueError("A transcript alone is not listening material")
+        if self.target.modality == "audio" and self.recording is None:
+            raise ValueError("A transcript alone is not audio material")
         return self
 
 

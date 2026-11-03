@@ -15,7 +15,7 @@ from tutor_copilot.db import create_engine
 from tutor_copilot.embeddings import LocalEmbeddings
 from tutor_copilot.settings import Settings
 
-SCHEMA_REVISION = "0004"
+SCHEMA_REVISION = "0005"
 
 
 @dataclass

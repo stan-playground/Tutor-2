@@ -114,7 +114,7 @@ async def retrieve(resources: Resources, tutor: UUID, objective: Objective) -> d
                     AND data->'support' @> CAST(:support AS jsonb)
                     AND CAST(data->>'duration_minutes' AS integer) <= :minutes
                     AND (NOT :domain_required OR data->'target'->>'domain'=:domain)
-                    AND (:route <> 'listening' OR (
+                    AND (:modality <> 'audio' OR (
                       data->'recording'->>'available'='true'
                       AND data->'recording'->>'permitted'='true'
                       AND length(data->'recording'->>'reference') > 0

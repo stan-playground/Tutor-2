@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2
+configfile: pyproject.toml
+plugins: platformdirs-4.14.3, anyio-4.16.0
+collected 1 item
+
+tests/integration/test_materials.py .                                    [100%]
+
+- generated xml file: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2/specs/changes/HG-0004/evidence/HG-0004-C15-1793734722602512000.xml -
+============================== 1 passed in 1.29s ===============================

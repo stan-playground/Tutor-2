@@ -200,6 +200,15 @@ def test_listening_requires_audio_and_a_recording_instead_of_a_transcript() -> N
     assert material.recording.version == material.recording.criteria_recording_version
 
 
+def test_non_listening_audio_material_also_requires_a_recording() -> None:
+    audio_remediation = objective_data(modality="audio")
+    audio_remediation.pop("objective_ref")
+    audio_remediation.pop("evidence_refs")
+
+    with pytest.raises(ValidationError, match="transcript alone"):
+        Material.model_validate(material_data(target=audio_remediation))
+
+
 def test_closed_answer_material_requires_a_key_and_clear_rights() -> None:
     assert Material.model_validate(material_data()).answer_key
     with pytest.raises(ValidationError, match="answer key"):

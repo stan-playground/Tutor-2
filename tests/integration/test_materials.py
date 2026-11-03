@@ -1,11 +1,12 @@
 """Private teaching imports exercise real HTTP, ownership and PostgreSQL versions."""
 
 import asyncio
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 import pytest
 from conftest import migrate
 from sqlalchemy import text
+from sqlalchemy.exc import DBAPIError
 from test_intake import FIRST, SECOND, authenticated
 
 from tutor_copilot.bank import SharedPublication, publish
@@ -100,10 +101,21 @@ def test_private_import_versions_rights_and_ownership(bank, database):
                 assert await connection.scalar(text("SELECT count(*) FROM teaching_assets")) == 0
             async with tenant_transaction(engine, FIRST) as connection:
                 assert await connection.scalar(text("SELECT count(*) FROM teaching_assets")) == 2
+            for statement in (
+                "UPDATE teaching_assets SET reviewed_by='forged' WHERE id=:id",
+                "DELETE FROM teaching_assets WHERE id=:id",
+            ):
+                with pytest.raises(DBAPIError) as denied:
+                    async with tenant_transaction(engine, FIRST) as connection:
+                        await connection.execute(text(statement), {"id": UUID(identity)})
+                assert getattr(denied.value.orig, "sqlstate", None) == "42501"
         finally:
             await engine.dispose()
 
     asyncio.run(inspect())
+    stored = bank.get(f"/teaching-assets/{identity}")
+    assert stored.status_code == 200
+    assert stored.json()["reviewed_by"] == str(FIRST)
     assert bank.delete(f"/teaching-assets/{identity}").status_code == 200
     assert bank.get(f"/teaching-assets/{identity}").status_code == 404
 

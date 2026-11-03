@@ -23,7 +23,7 @@ def test_migration_round_trip_and_real_vector_operation(database) -> None:
     engine = create_engine(database.database_url)
     try:
         with engine.connect() as connection:
-            assert connection.scalar(text("SELECT version_num FROM alembic_version")) == "0004"
+            assert connection.scalar(text("SELECT version_num FROM alembic_version")) == "0005"
             assert connection.scalar(text("SELECT '[1,2,3]'::vector <-> '[1,2,4]'::vector")) == 1.0
         migrate(database, "base")
         with engine.connect() as connection:

@@ -1,0 +1,50 @@
+{
+  "ambiguous_result_keys": [],
+  "findings": [
+    {
+      "code": "DependencyNotIntegrated",
+      "location": "/depends_on",
+      "message": "Change is not ready for integration.",
+      "status": "failed"
+    }
+  ],
+  "limitations": [
+    "Structure, recorded observations and fingerprints do not certify semantic correctness, report authenticity, user acceptance or publication. Review declared input coverage."
+  ],
+  "measurements": [
+    {
+      "brief": {
+        "id": "HG-0004",
+        "blockers": [],
+        "change_sha256": "e6e99d19a9f076228cfc06f406518dbb5d74466fa0d2bbfe1f1251a1d8cd0494",
+        "contract_sha256": "1bce32b0dd2ceee98cee6b08663fb18cad905a56c64e6490faca058e16873fb2",
+        "human": "pending",
+        "inputs_sha256": "056a60a4b7bbd0b55774eb0d259b71a05bf8c801b131811c4ccc7fd9b53839e4",
+        "technical": "in_progress",
+        "verified_revision": null,
+        "review": "go"
+      }
+    },
+    {
+      "schema_version": 3,
+      "store_sha256": "eb1cfff18eba4ebcaf391352213a0074a8f2860f5b9f9d8792549c4516338e2d"
+    }
+  ],
+  "operation": "spec-check",
+  "result": {
+    "brief": {
+      "id": "HG-0004",
+      "blockers": [],
+      "change_sha256": "e6e99d19a9f076228cfc06f406518dbb5d74466fa0d2bbfe1f1251a1d8cd0494",
+      "contract_sha256": "1bce32b0dd2ceee98cee6b08663fb18cad905a56c64e6490faca058e16873fb2",
+      "human": "pending",
+      "inputs_sha256": "056a60a4b7bbd0b55774eb0d259b71a05bf8c801b131811c4ccc7fd9b53839e4",
+      "technical": "in_progress",
+      "verified_revision": null,
+      "review": "go"
+    },
+    "schema_version": 3,
+    "store_sha256": "eb1cfff18eba4ebcaf391352213a0074a8f2860f5b9f9d8792549c4516338e2d"
+  },
+  "status": "failed"
+}

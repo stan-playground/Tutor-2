@@ -817,6 +817,9 @@
       "selector": "test_operator_publication_keeps_separate_permission_and_review"
     }
   ],
+  "shared_inputs": [
+    "migrations/versions/0005_material_immutability.py"
+  ],
   "imports": {},
   "baseline": {},
   "scoped_baseline": true,
