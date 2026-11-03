@@ -1,6 +1,6 @@
 # Tutor Copilot — High-Level Implementation Plan
 
-Prepared with HighGrade Planner · 1 November 2026 · Revised 3 November 2026
+Prepared with HighGrade Planner · 1 November 2026 · Revised 3 November 2026; evaluation sequencing updated
 
 Deliver the complete homework journey for adult A2–B2 English learners first. Then deliver post-lesson
 feedback, before lesson planning and urgent replanning.
@@ -24,7 +24,7 @@ no scheduler, student app, automated audio assessment or new workflow system.
 - adds the **tutor interface**, a **reviewed-content stream** and the **Stage 1 repair gate**
 - decides when feedback starts and how production cases reach gold (see [Decisions](#decisions-in-this-revision))
 
-The findings behind these changes are in [Plan Review_claude.md](<Plan Review_claude.md>).
+The earlier review is in [Plan Review_claude.md](<Plan Review_claude.md>); the current evaluation sequence incorporates the later [golden dataset plan](<Golden Dataset Implementation Plan.md>).
 
 This plan grants no execution, provider-spend, account-creation or launch authority. Owner requests
 implemented the local slices in [Stage 0](docs/stage-0.md), [Stage 1](docs/stage-1.md) and
@@ -39,6 +39,7 @@ future work.
 | [Architecture](Architecture.md) | The design proposal |
 | [Native specs](specs/README.md) | Requirements. HG-0003–0008 cover the homework foundation and shared controls, HG-0009 records the product update, HG-0010 adds feedback and HG-0011 adds history and routes. |
 | [Dataset contract](specs/datasets.md) | Each job's gold cases and gates |
+| [Golden Dataset Implementation Plan](<Golden Dataset Implementation Plan.md>) | Initial case inventory, stage samples, review sequence and dependencies |
 | [Repository Structure](<Repository Structure.md>) | Planned modules, Justfile and tools |
 | The two Stage 1 fix backlogs ([1](<Plan for Fixes Stage 1.md>), [2](<Plan for Fixes Stage 1_claude.md>)) | The repairs that gate stage 3 |
 
@@ -83,13 +84,18 @@ The build path is 2R → 3a–3f → 4 → 5, then homework certification (6) an
 waits for its own stage 9. Lesson planning follows feedback.
 
 ```text
-Build:     [0 ✓][1 ✓][2 ✓] → 2R → 3a → 3b → 3d → 3e → 3f → 4 → 5 → 6 → 7 (homework pilot)
-                              └→ 3c ────────┘                  └→ 8a → 8b → 8c → 9 (feedback)
-Gold (E):  E0 now → E1 (before each 3x) → E2 (judge labels from 3f) → E4 freeze (6) → E5 pilot curation (7)
-           E0 now → E3 feedback gold (inputs now; composition labels after 3a) → 8a–8b exits → E4 freeze (9)
-Langfuse:  L0 now → L1 (3a tracing) → L2 (4 scores) → L3 (5 Cloud terms, masking, deletion) → L4 (6 online)
-Content:   C0 now → C1 (route × level × domain coverage before 3e and 7)
+Build:  0–2 local → 2R → 3a → 3b → 3d → 3e → 3f → 4 → 5 → 6 → 7
+        2R → 3c (optional evidence questions); 5 → 8a → 8b → 8c → 9
+Gold:   E0 first case/inventory → E1 homework stage labels → E4 homework (6) → E5 (7)
+        E0 feedback inputs → E3 feedback stage labels → E4 feedback (9)
+Judge:  E2 homework outputs from 3f; feedback outputs from 8b; calibrate before judge use
+Cloud:  L0 before 3a/first required experiment → L1 at 3a → L2 at 4 → L3 at 5 → L4 at 6
+Content: C0 first relevant assets/gaps → C1 for enabled routes before 3e and cohort use
 ```
+
+Synthetic authoring and early local checks can run alongside 2R. Feedback implementation starts after 5,
+not after the homework cohort. Stage 3c may answer optional evidence questions; it does not select recent
+observations or replace full selected-transcript coverage.
 
 **Exit rule for every model stage (3b, 3d–3f, 8a–8b).** The stage exits only when its boundary's
 **approved** gold items pass a recorded Langfuse experiment against the accepted baseline under the
@@ -99,29 +105,36 @@ exist; they do not build evaluation from scratch.
 
 ### Evaluation, golden data and Langfuse
 
-Each milestone starts as soon as its listed dependency exists. **Reviewer** means a qualified English tutor as
-defined in E0; second review follows the dataset contract (all critical items and `ceil(0.20 × ordinary)`).
+The [golden dataset plan](<Golden Dataset Implementation Plan.md>) describes the initial cases and the
+small-block workflow. Use three datasets: homework gold, feedback gold and judge calibration. Each job
+contains complete-job and focused samples tagged by stage, severity and stable ID. A learner situation can
+supply multiple runnable samples; report counts by job, stage and end to end. The teaching bank is the corpus
+being searched, not the golden dataset. No separate dataset per stage is needed.
 
-| Milestone | Deliverable | Depends on → unblocks |
+Begin with about 10 synthetic learner situations for each job and add isolated stage samples where needed.
+These are starting targets, not release counts. The current [dataset contract](specs/datasets.md) still
+requires all 12 homework and 8 feedback families, mandatory variants and isolated stage coverage; it also
+requires ordinary success and relevant critical cases for each active stage. Qualified English tutors
+review each expected label and reason; a second reviews every critical item and at least
+`ceil(0.20 × ordinary)` items in each frozen suite. The existing two fixtures are drafts, not approved gold.
+
+| Milestone | Small deliverable and completion | Depends on → unblocks |
 | --- | --- | --- |
-| **E0 — Harness, inventory and retrofit gold (now)** | **Contract.** Add to datasets.md/HG-0008 a planned item inventory (items × stage × severity × review passes), the reviewer-qualification definition, and the Git-canonical/Langfuse-mirror rule.<br>**Harness.** Build a local `just eval <job>` harness: item loader on the existing schema, manifest freeze (Git SHA, item revisions/hashes, evaluator versions), deterministic evaluators and the gate arithmetic.<br>**Retrofit gold** for delivered boundaries: Stage 1 confirmed-count/recent-selection numerics (datasets §3: zero denominators, 2 vs 3 observations, 4 vs 5 opportunities, ±0.15, 0.85 with/without support, the 90-day boundary, the corrected duplicate) and **Stage 2 retrieval**: suitable-candidate coverage, honest gaps, contrastive distractors, private-text canaries, embedding-outage failure. Both run locally with no LLM cost.<br>**Authoring starts** for all 12 homework and 8 feedback family *inputs* (synthetic learners, notes, transcripts, homework responses) and their extraction, source-context and analysis labels. | Item schema (exists) and Stage 1/2 code → L0, E1, 3a model comparison |
-| **L0 — Langfuse Cloud dev project (now)** | Create a **synthetic-only** Langfuse Cloud project, EU data region, holding no learner data, with full input/output capture allowed. Pin the SDK after rechecking the release and version-matched docs through Context7 (Architecture names `langfuse==5.1.0`). Sync Git `evaluation/` items into Langfuse datasets (`tutor-copilot/homework-gold`, `feedback-gold`, `judge-calibration`), recording the item-version timestamp in each manifest. Run the E0 items as the first Langfuse experiment, with deterministic scores, to prove the path before model spend. | Owner-authorized account and E0 harness → L1 |
-| **C0 — Content coverage (now)** | Build a coverage matrix for PD-40 routes × A2/B1/B2 × pilot domains, including listening recordings with version-matched criteria. Set up the rights intake and reviewer review for the shared bank (PD-33). The E0 retrieval run reports gaps. | Stage 2 bank → E1 retrieval/adaptation labels, 3e, C1 |
-| **E1 — Stage gold before each model block** | Approved labels for each homework boundary, authored before the code that answers it:<br>• extraction → 3b<br>• analysis and route selection → 3d<br>• retrieval and adaptation, with closed answers independently solved → 3e<br>• composition and validation, with seeded defects and valid alternatives → 3f<br>• review/revision scripts → 4<br>Complete-job E2E items are assembled from these stage labels. | E0 inputs; C0 content for retrieval/adaptation labels; 3a schemas for composition, validation and review labels → each stage exit |
-| **E2 — Judge calibration** | Human pass/fail labels on real candidate outputs from 3f onward: at least 20 distinct outputs per job, covering every criterion. Fix the development/holdout split by family. After tuning, a fresh holdout round. | First 3f outputs → E4 |
-| **E3 — Feedback gold** | Feedback family inputs and source/extraction/analysis labels start in E0. Composition, validation and review labels follow the `FeedbackDraft` schema drafted in 3a. Separate feedback judge labels from 8b outputs. | E0, 3a → 8a–9 exits |
-| **E4 — Freeze and certify (stage 6, then 9)** | Freeze the release manifests, run the full per-job/stage/E2E gates and report the fresh-holdout judge results. | E1–E3 → 7 and 9 |
-| **E5 — Pilot curation** | Weekly review feeds a curation queue (see [Decisions](#decisions-in-this-revision)). | 7 → later manifests |
+| **E0 — First case, inventory and local checks** | Inventory family IDs, runnable sample IDs, job, stage, severity, review and gaps against the contract. Author one synthetic case with its expected result and provenance; validate and seek qualified review. Use existing schema and a real available boundary to check it. Then expand toward the starting targets. Add Stage 1 numeric and Stage 2 retrieval checks incrementally, including the contract's boundary cases and real authorization/failure observations. Create only the local loading/results needed for real checks; add the full frozen manifest and gate arithmetic when required for experiments. `just eval <job>` is a proposed command, not an existing one. | Schema and available Stage 1/2 boundaries; no Cloud or 2R needed to draft → early E1/E3 inputs and first local checks. |
+| **C0 — First reviewed content** | Identify suitable rights-cleared material and versions for the first retrieval/adaptation cases. Track route, level, domain and recording/criteria gaps as they arise; grow coverage for enabled routes rather than blocking the first case on a full matrix. | Stage 2 bank and qualified content review → relevant E1 labels; C1 before 3e and pilot. |
+| **L0 — Synthetic Langfuse project** | When the first recorded experiment is ready, create an authorized synthetic-only EU-region project; verify the SDK and version-matched documentation through Context7. Mirror the reviewed Git items needed for the experiment and record their versions in the experiment manifest. Run an initial deterministic experiment before model spend. | Authorized account and executable E0 samples → L1/3a. Draft authoring and local checks do not wait for Cloud; 3a and the model-stage exits still do. |
+| **E1 — Homework stage gold** | Review extraction before 3b, selection before 3d, retrieval/adaptation before 3e, composition/validation before 3f and scripted review/revision before 4. Independently solve closed answers. Reuse a family across boundaries but identify each runnable input and reviewed expectation separately. | E0 inputs; reviewed content for retrieval/adaptation; 3a schemas for composition/validation/review → respective stage exits. |
+| **E2 — Judge calibration** | Start with around 10 distinct candidate outputs, then use at least **20 distinct human-labeled outputs overall** before relying on a judge. Cover both human pass/fail for every evaluated criterion and the applicable job, keep related outputs together in development or holdout, and obtain a fresh labeled holdout after tuning. Report false accepts, false rejects and missing results. Add feedback-specific grounding and attribution labels before judging feedback. | Candidate outputs from 3f for homework and 8b for feedback; tutor review → calibrated judge for the relevant criteria. If homework is calibrated before feedback outputs exist, at least 20 distinct homework outputs are needed before that judge is relied upon. Feedback later needs its own applicable criterion coverage, without an automatic extra 20-output quota. |
+| **E3 — Feedback gold** | Author synthetic source/extraction/analysis inputs alongside E0. Add composition, validation and review samples after the 3a `FeedbackDraft` schema. Keep feedback independent of homework retrieval and results. | E0 and 3a → respective 8a–8c checks. |
+| **E4 — Freeze and certify each job** | Freeze the applicable reviewed revisions and manifest; run stage and end-to-end gates and actual privacy, review, export and lifecycle checks. Report the applicable judge calibration and fresh holdout. | Homework stage 6: E1 and homework E2 plus stage 5. Feedback stage 9: E3, feedback E2 and 8a–8c. Feedback labels do not block homework certification. |
+| **E5 — Pilot curation** | Review failures and add reviewed synthetic reproductions; handle any permitted production-derived item under the separate reuse/deletion rules below. | Stage 7 → later manifests. |
 
-**Planned volume (estimate, to be replaced by the E0 inventory).**
-
-- Homework: about 29 complete-job items (12 base families + 17 required variants), each with intermediate
-  stage labels, plus about 20–25 isolated stage and numeric items.
-- Feedback: about 20 complete-job items (8 + 12 variants) plus isolated items.
-- Judge calibration: at least 20 outputs per job, plus a fresh holdout.
-
-Together these are hundreds of reviewer label decisions, which makes them the main human critical path. Hence
-the stream starts now.
+The 20-output judge target is the minimum in HG-0008, not a reliability guarantee or a fixed 10-per-job
+allocation. Expand where criterion or job coverage is missing. Related outputs sharing a family/source stay
+in one split, including across jobs. Human review and deterministic checks can evaluate early samples without
+a semantic judge; model-stage exits still require the recorded Langfuse experiment. Freeze exact case versions,
+fixture and corpus hashes, evaluator definitions, application/model versions and baseline as required by the
+dataset contract. Missing scores, critical failures and accepted-baseline regressions fail their gates.
 
 ### Build stages
 
@@ -129,7 +142,7 @@ the stream starts now.
 | --- | --- | --- | --- |
 | **0–2. Done (local, synthetic)** | Foundation, tutor-owned evidence/history and reviewed teaching retrieval. See the stage records. | HG-0003/0004/0007 portions | Recorded in [Stage 0](docs/stage-0.md), [Stage 1](docs/stage-1.md) and [Stage 2](docs/stage-2.md). HG-0003's approval/copy scenario remains future. |
 | **2R. Stage 1 repairs** | Reconcile the two fix backlogs into one route. They cover source-body preservation across metadata corrections, learner-scoped identities/references, exact source-version provenance and a versioned frozen-context contract. Implement as separately reviewed migrations. | Fix backlogs, HG-0003; now | No generated artifact or new frozen-context consumer exists before these pass with real checks and independent review. Stage 3 cannot start while any item is open. |
-| **3a. Model, graph and trace foundation** | Choose one generation-model candidate by comparing candidates on E0/E1 items. Integrate the provider and the LangGraph worker with the PostgreSQL checkpointer (initial HG-0006 persistence). Add **Langfuse tracing (L1)** with a masking function: full capture in the synthetic project only. Draft the `HomeworkDraft` and `FeedbackDraft` schemas so labels can be written. Build the **naive baseline** (one prompt with retrieved context) and record its run as the first accepted baseline. Record cost/latency per active segment (PD-26/36). | 2R, L0; HG-0005/0006 | Every model call is traced with versions, usage and latency. Masking passes synthetic canaries. Routine checks make no live calls. The baseline experiment exists in Langfuse. |
+| **3a. Model, graph and trace foundation** | Choose one generation-model candidate by comparing candidates on available reviewed E0 and early E1 items. Integrate the provider and the LangGraph worker with the PostgreSQL checkpointer (initial HG-0006 persistence). Add **Langfuse tracing (L1)** with a masking function: full capture in the synthetic project only. Draft the `HomeworkDraft` and `FeedbackDraft` schemas so labels can be written. Run the **naive baseline candidate** (one prompt with retrieved context), explicitly recording that there is no previous baseline. Adopt it as the first accepted baseline only after the applicable review and gates; never promote it automatically. Record cost/latency per active segment (PD-26/36). | 2R, L0; HG-0005/0006 | Every model call is traced with versions, usage and latency. Masking passes synthetic canaries. Routine checks make no live calls. The baseline experiment is recorded in Langfuse and accepted through the applicable gates before later stages use it. |
 | **3b. Extraction and evidence confirmation** | The model proposes candidate observations (attempted/required/inappropriate opportunities, correctness, task/assistance) and candidate encounter/attempt/check facts from tutor notes, authorized transcripts and homework responses. Each candidate carries source-span/speaker references and uncertainty. The tutor confirms, corrects or rejects each through the existing Stage 1 intake operations; only confirmed facts enter rates or history. | 3a, E1 extraction labels; new spec (shared by homework and feedback) | Unconfirmed candidates never change rates, trends or history (PD-08). Re-extraction of the same source revision creates no duplicates. Expired or unauthorized sources are not extracted. Imported instructions stay evidence text. Extraction gold passes the exit rule. |
 | **3c. Private transcript index** | Embed source-linked transcript/note segments with the **local pinned embedding model**, so no external processor is involved. Store them in a learner-scoped table under RLS, never in the shared bank or the Redis cache. Expire with the raw source after 30 days and delete with the learner. Search answers evidence questions within one owner/learner only. | 2R and the Stage 2 embedding; runs alongside 3a/3b; new spec | Foreign-learner canaries never match. Expiry and deletion remove vectors. The index cannot select recent-window observations, replace feedback transcript coverage or reach shared retrieval. |
 | **3d. Objective and route selection** | Freeze recent evidence, history and goal references. Select explained important-now/revisit purposes and PD-40 routes, with no compulsory remediation, review quota or invented error. | 3b, with 3c for optional evidence questions; HG-0005-T1 | Analysis/selection gold passes the exit rule. No history facts are created by selection. |
@@ -152,7 +165,7 @@ launch authority. Only after feedback should lesson planning be prepared, then u
 
 1. **Langfuse Cloud (owner decision).** Cloud removes the need to self-host several stateful services. In
    exchange, it becomes a named processor under PD-28.
-   - Synthetic development starts now in a project that holds no learner data (L0).
+   - Synthetic development uses a project that holds no learner data (L0), before 3a and the first required experiment.
    - Real excerpts wait for stage 5: processor terms, EU region, no-training confirmation, retention and
      canary-verified deletion.
    - If required deletion cannot be enforced, production-derived items stay out of Langfuse.
@@ -160,9 +173,9 @@ launch authority. Only after feedback should lesson planning be prepared, then u
    - 8a technically needs only Stage 1 data, 3a and 3b. 8c needs stage 4 records and stage 5's lifecycle
      (checkpoints, deletion, fencing). Starting earlier would build feedback on unfinished shared controls and
      reopen them twice.
-   - Stage 6 is dominated by reviewer labeling, freezing and holdout rounds, while engineering capacity is
-     mostly free. Waiting for stage 6 would idle that capacity and delay R2 with no quality benefit.
-   - Feedback gold (E3) is authored from E0 onward, so 8a has labels on day one.
+   - Stage 6 may involve reviewer labeling, freezing and holdout rounds. Feedback can proceed in parallel
+     once the shared controls are ready, subject to available capacity.
+   - Feedback gold (E3) starts in E0; 8a waits for its approved applicable labels, which may not yet be available.
    - Guardrail: fixes for homework gate failures in stages 6–7 take priority over feedback work, which keeps
      PD-03's homework-first priority.
 3. **Production-to-gold runs during the pilot, in two lanes (delegated decision).** Logic:
@@ -213,10 +226,10 @@ launch authority. Only after feedback should lesson planning be prepared, then u
 
 | Choice | Reason and trade-off |
 | --- | --- |
-| Complete homework before other jobs | Exposes evidence, material and approval problems early. Lesson planning and urgent replanning wait for equivalent coverage. |
+| Homework first; feedback after shared controls | Homework reaches stage 5 before feedback implementation. Feedback can proceed alongside homework certification and the pilot; later jobs need their own coverage. |
 | Gold before each model block | Labeling time comes earlier, but model, prompt and route choices rest on evidence, and stage 6 does not become a long serial surprise. |
 | Git is canonical for gold; Langfuse mirrors it | Review diffs, rights and provenance stay auditable; Langfuse supplies experiment comparison and UI. Using Langfuse as the primary store is simpler, but does not version schemas or keep review history. |
-| Naive one-prompt baseline | Cheap. Gives the first accepted baseline and shows whether the staged graph earns its complexity. |
+| Naive one-prompt baseline | Cheap first candidate for comparison after review and acceptance; shows whether the staged graph earns its complexity. |
 | Extraction proposes; the tutor confirms | Adds one model stage and its gold, but is the only plausible route to lower intake effort without unconfirmed evidence entering rates. |
 | Add feedback by reusing evidence, metrics, extraction and review | A job-specific schema/branch avoids a second agent system. Feedback needs its own claim checks and gold, and cannot turn generated text or approval into evidence. |
 | Keep recent measures and cumulative context separate | Old exposure informs review without changing rate windows or becoming a forgetting/mastery score. No memory service or scheduler. |
@@ -229,10 +242,10 @@ launch authority. Only after feedback should lesson planning be prepared, then u
 
 ## Next implementation tasks and deferred choices
 
-When implementation is requested, start **2R** together with the stream starts **E0**, **L0** (after the
-owner creates the synthetic Cloud project) and **C0**. These have no mutual dependency. Prepare the new
-specifications listed under [Sources and scope](#sources-and-scope) before their stages. Do not scaffold the
-entire backlog first.
+When implementation is requested, start **2R** and, independently, **E0**: inventory coverage and author
+one synthetic case. Begin **C0** with the first material that needs review. Prepare **L0** with authorized
+account access before 3a and the first required recorded experiment. Prepare the specifications listed under
+[Sources and scope](#sources-and-scope) before their stages; do not scaffold the entire backlog first.
 
 Choose the model provider, compatible versions, permitted execution environment and hosting/backups when their
 first integration needs them. Fetch current Context7 documentation before using new framework or library

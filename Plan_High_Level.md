@@ -185,7 +185,7 @@ Use bounded async I/O for database/provider waits and keep dependent stages sequ
 
 Do not assign dates, effort estimates or a model-quality winner without evidence. Resolve provider/processor/environment and hosting/backup choices at the relevant integration; obtain qualified material/gold reviews before claiming readiness. Feedback operating terms precede R2 activation; R3/R4 need their detailed contracts before implementation. These are remaining implementation/activation decisions, not a reopening of delegated pilot defaults.
 
-**Next project milestones:** stage 2R (Stage 1 repairs) together with E0 (eval harness, inventory and retrofit gold for Stages 1–2), L0 (synthetic Langfuse Cloud project and first experiment) and C0 (content coverage matrix). These have no mutual dependency.
+**Next project milestones:** stage 2R alongside E0 synthetic case authoring and an initial inventory; start C0 with content needed by the first cases. L0 requires an authorized account and runnable samples, and precedes 3a and its required experiment. See the updated [implementation plan](<Implementation Plan.md>) for the sequence.
 
 Before the stages that need them, prepare new specifications through `highgrade-spec` for:
 
