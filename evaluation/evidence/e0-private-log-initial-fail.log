@@ -1,0 +1,11 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_private_search_fixture_is_scoped_by_authenticated_tutor _________
+tests/integration/test_retrieval.py:188: in test_private_search_fixture_is_scoped_by_authenticated_tutor
+    assert stages.count("request") >= 8
+E   AssertionError: assert 0 >= 8
+E    +  where 0 = <built-in method count of list object at 0x10f934280>('request')
+E    +    where <built-in method count of list object at 0x10f934280> = [].count
+=========================== short test summary info ============================
+FAILED tests/integration/test_retrieval.py::test_private_search_fixture_is_scoped_by_authenticated_tutor
+1 failed in 2.62s

@@ -1,0 +1,13 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_contrast_fixture_reports_unsupported_positive_form_target ________
+tests/integration/test_retrieval.py:112: in test_contrast_fixture_reports_unsupported_positive_form_target
+    assert any(error["loc"][-1] == "outcome" for error in import_errors[identity])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/integration/test_retrieval.py:112: in <genexpr>
+    assert any(error["loc"][-1] == "outcome" for error in import_errors[identity])
+               ^^^^^^^^^^^^
+E   TypeError: string indices must be integers, not 'str'
+=========================== short test summary info ============================
+FAILED tests/integration/test_retrieval.py::test_contrast_fixture_reports_unsupported_positive_form_target
+1 failed in 1.78s

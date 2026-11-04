@@ -1,0 +1,255 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "route": "listening",
+      "outcome": "main_points",
+      "skills": [
+        "listening"
+      ],
+      "confusion": null,
+      "level": "B1",
+      "task": "input",
+      "modality": "audio",
+      "response_type": "summary",
+      "domain": "project_updates",
+      "objective_ref": "00000000-0000-4000-8000-000000000303",
+      "use_cache": false,
+      "limit": 10
+    },
+    "fixture_state": {
+      "assets": [
+        {
+          "id": "00000000-0000-4000-8000-000000000301",
+          "material": {
+            "kind": "input",
+            "target": {
+              "route": "listening",
+              "outcome": "main_points",
+              "skills": [
+                "listening"
+              ],
+              "confusion": null,
+              "level": "B1",
+              "task": "input",
+              "modality": "audio",
+              "response_type": "summary",
+              "domain": "project_updates"
+            },
+            "source_ref": "synthetic-bank:listening-unavailable",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Synthetic recording description: a colleague gives a short project update.",
+            "instructions": "Listen and summarise the main points.",
+            "answer_key": null,
+            "criteria": "Identify the main update without adding unsupported details.",
+            "reviewed": true,
+            "teaching_material_confirmed": true,
+            "recording": {
+              "reference": "synthetic-recording:listening-unavailable",
+              "version": "audio-2",
+              "available": false,
+              "permitted": true,
+              "criteria_recording_version": "audio-2"
+            }
+          }
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000302",
+          "material": {
+            "kind": "input",
+            "target": {
+              "route": "listening",
+              "outcome": "main_points",
+              "skills": [
+                "listening"
+              ],
+              "confusion": null,
+              "level": "B1",
+              "task": "input",
+              "modality": "audio",
+              "response_type": "summary",
+              "domain": "project_updates"
+            },
+            "source_ref": "synthetic-bank:listening-unavailable-alternative",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Synthetic recording description: a colleague gives a short project update.",
+            "instructions": "Listen and summarise the main points.",
+            "answer_key": null,
+            "criteria": "Identify the main update without adding unsupported details.",
+            "reviewed": true,
+            "teaching_material_confirmed": true,
+            "recording": {
+              "reference": "synthetic-recording:listening-unavailable-alternative",
+              "version": "audio-2",
+              "available": true,
+              "permitted": true,
+              "criteria_recording_version": "audio-2"
+            }
+          }
+        }
+      ],
+      "alternative_revision": {
+        "id": "00000000-0000-4000-8000-000000000302",
+        "expected_revision": 1,
+        "material": {
+          "kind": "input",
+          "target": {
+            "route": "listening",
+            "outcome": "main_points",
+            "skills": [
+              "listening"
+            ],
+            "confusion": null,
+            "level": "B1",
+            "task": "input",
+            "modality": "audio",
+            "response_type": "summary",
+            "domain": "project_updates"
+          },
+          "source_ref": "synthetic-bank:listening-unavailable-alternative",
+          "source_version": "1",
+          "rights": {
+            "basis": "owned",
+            "reference": "synthetic-test-author",
+            "attribution": "Synthetic fixture",
+            "storage": true,
+            "adaptation": true,
+            "delivery": true,
+            "restrictions": "Synthetic testing only"
+          },
+          "duration_minutes": 5,
+          "content": "Synthetic recording description: a colleague gives a short project update.",
+          "instructions": "Listen and summarise the main points.",
+          "answer_key": null,
+          "criteria": "Identify the main update without adding unsupported details.",
+          "reviewed": true,
+          "teaching_material_confirmed": true,
+          "recording": {
+            "reference": "synthetic-recording:listening-unavailable-alternative",
+            "version": "audio-2",
+            "available": false,
+            "permitted": true,
+            "criteria_recording_version": "audio-2"
+          }
+        }
+      },
+      "access": {
+        "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+        "asset_owner_id": "11111111-1111-4111-8111-111111111111",
+        "visibility": "private"
+      }
+    },
+    "sources": [
+      {
+        "ref": "synthetic-bank:listening-unavailable@1",
+        "kind": "authored_test_material",
+        "revision": 1,
+        "available": true
+      },
+      {
+        "ref": "synthetic-bank:listening-unavailable-alternative@1",
+        "kind": "authored_test_material",
+        "revision": 1,
+        "available": true
+      }
+    ]
+  },
+  "expectedOutput": {
+    "initial_search": {
+      "http_status": 200,
+      "status": "candidates",
+      "candidate_ids": [
+        "00000000-0000-4000-8000-000000000302"
+      ],
+      "excluded_ids": [
+        "00000000-0000-4000-8000-000000000301"
+      ]
+    },
+    "after_alternative_unavailable": {
+      "http_status": 200,
+      "status": "gap",
+      "candidate_ids": [],
+      "excluded_ids": [
+        "00000000-0000-4000-8000-000000000301",
+        "00000000-0000-4000-8000-000000000302"
+      ]
+    },
+    "prohibited_outcomes": [
+      "ineligible_recording_selected",
+      "content_gap_reported_as_provider_failure",
+      "inferred_listening_ability"
+    ],
+    "reached_stages": [
+      "retrieval"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "No learner source extraction is requested.",
+      "subskill_analysis": "The listening objective is supplied directly.",
+      "adaptation": "No material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This case observes retrieval only, not a complete job."
+    },
+    "terminal_state": "retrieval_only"
+  },
+  "metadata": {
+    "case_id": "HW-02.listening-unavailable",
+    "family_id": "HW-02",
+    "variant_id": "HW-02.listening-unavailable",
+    "revision": 1,
+    "job": "homework",
+    "stage": "retrieval",
+    "level": "B1",
+    "domain": "project updates",
+    "teaching_route": "listening",
+    "priority_category": null,
+    "severity": "critical",
+    "failure_categories": [
+      "unavailable_recording",
+      "ineligible_material"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-02.listening-unavailable@1",
+      "attribution": "Synthetic metadata and material descriptions authored for this repository; recording references are test identifiers, not supplied audio.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-listening-retrieval-1",
+    "split": "development"
+  }
+}

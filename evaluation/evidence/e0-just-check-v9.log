@@ -1,0 +1,28 @@
+uv run --locked ruff format --check src migrations tests
+unformatted: File would be reformatted
+   --> tests/integration/test_retrieval.py:187:42
+    |
+186 |         for record in caplog.records
+    -         if record.name == "tutor_copilot" and isinstance(getattr(record, "metadata_line", None), str)
+187 +         if record.name == "tutor_copilot"
+188 +         and isinstance(getattr(record, "metadata_line", None), str)
+189 |     ]
+    |
+
+unformatted: File would be reformatted
+   --> tests/unit/test_fixtures.py:209:12
+    |
+208 |     assert transcript["learner_ref"] == state["learner_ref"]
+    -     assert datetime.fromisoformat(permission["prior_recorded_at"]) < datetime.fromisoformat(
+    -         transcript["recorded_at"]
+    -     ) < datetime.fromisoformat(permission["recorded_at"])
+209 +     assert (
+210 +         datetime.fromisoformat(permission["prior_recorded_at"])
+211 +         < datetime.fromisoformat(transcript["recorded_at"])
+212 +         < datetime.fromisoformat(permission["recorded_at"])
+213 +     )
+214 |     assert transcript["available"] and datetime.fromisoformat(transcript["expires_at"]) > clock
+    |
+
+2 files would be reformatted, 34 files already formatted
+error: recipe `check` failed on line 48 with exit code 1

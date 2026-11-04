@@ -1,0 +1,259 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "extract_feedback_candidates",
+      "learner_ref": "synthetic-learner-fb-02@1",
+      "selected_transcript_ref": "synthetic-transcript-fb-02@1",
+      "target_subskill": "present_perfect_vs_past_simple",
+      "task_ref": "synthetic-project-update-task@1",
+      "target_form": "present_perfect"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb-02@1",
+      "learner_ref": "synthetic-learner-fb-02@1",
+      "owner_ref": "synthetic-tutor-fb-02@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {
+        "revision": 1,
+        "level": "B1",
+        "status": "provisional",
+        "recorded_at": "2026-10-30T09:00:00Z"
+      },
+      "goals": [
+        "Give clear updates about a software project."
+      ],
+      "recent_observations": [],
+      "activity_fact_revisions": [],
+      "task_context": {
+        "task_ref": "synthetic-project-update-task@1",
+        "task_type": "controlled_spoken_production",
+        "assistance": "independent",
+        "assistance_note": "The transcript records the complete exercise prompts and responses; the tutor supplied no corrections or hints between each prompt and response.",
+        "measurement_definition": "The broader subskill contrasts present perfect with past simple. In these counts, the target form is present perfect: attempted accuracy counts attempted present-perfect forms; required use counts contexts requiring it; avoidance counts contexts where it is inappropriate and past simple is appropriate."
+      }
+    },
+    "sources": [
+      {
+        "ref": "synthetic-transcript-fb-02@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "learner_ref": "synthetic-learner-fb-02@1",
+        "owner_ref": "synthetic-tutor-fb-02@1",
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "speaker_annotations_confirmed": true,
+        "segments": [
+          {
+            "id": "fb02-t1",
+            "speaker": "tutor",
+            "text": "The team began working on the release on Monday and is still working on it. Complete this update using the present perfect: We ... on the release since Monday."
+          },
+          {
+            "id": "fb02-l1",
+            "speaker": "learner",
+            "text": "We have worked on the release since Monday."
+          },
+          {
+            "id": "fb02-t2",
+            "speaker": "tutor",
+            "text": "Three checks are finished so far. Complete this update using the present perfect: We ... three checks so far."
+          },
+          {
+            "id": "fb02-l2",
+            "speaker": "learner",
+            "text": "We complete three checks so far."
+          },
+          {
+            "id": "fb02-t3",
+            "speaker": "tutor",
+            "text": "The team tested the release once at a finished time yesterday. Give an update using the past simple."
+          },
+          {
+            "id": "fb02-l3",
+            "speaker": "learner",
+            "text": "We tested the release yesterday."
+          },
+          {
+            "id": "fb02-t4",
+            "speaker": "tutor",
+            "text": "The team fixed the bug once at a finished time yesterday. Give an update about that event."
+          },
+          {
+            "id": "fb02-l4",
+            "speaker": "learner",
+            "text": "We have fixed the bug yesterday."
+          },
+          {
+            "id": "fb02-t5",
+            "speaker": "tutor",
+            "text": "Three checks are finished so far. Give an update in any suitable wording."
+          },
+          {
+            "id": "fb02-l5",
+            "speaker": "learner",
+            "text": "Three checks are complete."
+          },
+          {
+            "id": "fb02-t6",
+            "speaker": "tutor",
+            "text": "Give another project update if you have one."
+          },
+          {
+            "id": "fb02-l6",
+            "speaker": "learner",
+            "text": "Um..."
+          }
+        ]
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_source_refs": [
+      "synthetic-transcript-fb-02@1"
+    ],
+    "candidate_findings": [
+      {
+        "learner_segment_ref": "fb02-l1",
+        "prompt_segment_ref": "fb02-t1",
+        "attempted_target": true,
+        "target_appropriate": true,
+        "required_use_opportunity": true,
+        "correct_required_use": true,
+        "inappropriate_target_opportunity": false
+      },
+      {
+        "learner_segment_ref": "fb02-l2",
+        "prompt_segment_ref": "fb02-t2",
+        "attempted_target": false,
+        "required_use_opportunity": true,
+        "correct_required_use": false,
+        "inappropriate_target_opportunity": false
+      },
+      {
+        "learner_segment_ref": "fb02-l3",
+        "prompt_segment_ref": "fb02-t3",
+        "attempted_target": false,
+        "required_use_opportunity": false,
+        "inappropriate_target_opportunity": true,
+        "appropriate_non_use": true
+      },
+      {
+        "learner_segment_ref": "fb02-l4",
+        "prompt_segment_ref": "fb02-t4",
+        "attempted_target": true,
+        "target_appropriate": false,
+        "required_use_opportunity": false,
+        "inappropriate_target_opportunity": true,
+        "appropriate_non_use": false
+      }
+    ],
+    "candidate_counts": {
+      "attempted_accuracy": {
+        "correct": 1,
+        "opportunities": 2
+      },
+      "required_use": {
+        "correct": 1,
+        "opportunities": 2
+      },
+      "appropriate_avoidance": {
+        "correct": 1,
+        "opportunities": 2
+      }
+    },
+    "excluded_from_counts": [
+      {
+        "learner_segment_ref": "fb02-l5",
+        "prompt_segment_ref": "fb02-t5",
+        "reason": "A contextually valid optional paraphrase is not a missed required use; the target was not inappropriate."
+      },
+      {
+        "learner_segment_ref": "fb02-l6",
+        "prompt_segment_ref": "fb02-t6",
+        "reason": "Hesitation without a supplied linguistic context or attempted response is not a countable opportunity."
+      }
+    ],
+    "tutor_segment_refs_not_learner_attempts": [
+      "fb02-t1",
+      "fb02-t2",
+      "fb02-t3",
+      "fb02-t4",
+      "fb02-t5",
+      "fb02-t6"
+    ],
+    "selected_observation_refs": [],
+    "selected_history_refs": [],
+    "required_qualifications": [
+      "These transcript-derived findings and counts are candidates awaiting tutor confirmation, not saved confirmed performance.",
+      "One controlled exercise does not establish a trend, mastery, spontaneous ability, pronunciation or listening ability."
+    ],
+    "prohibited_claims": [
+      "confirmed progress",
+      "mastery",
+      "pronunciation ability",
+      "listening ability",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": [
+      "activity facts",
+      "performance observations",
+      "preferences"
+    ],
+    "terminal_state": "extraction_only",
+    "reached_stages": [
+      "extraction"
+    ],
+    "unreached_stage_reasons": {
+      "source_context": "The source and synthetic access state are supplied directly to this isolated extraction boundary; actual authorization and freezing are separate.",
+      "subskill_analysis": "No confirmed observation or trend calculation is requested.",
+      "composition": "No feedback prose is requested.",
+      "validation": "No feedback draft is supplied.",
+      "review_revision": "No feedback draft or tutor decision is supplied.",
+      "end_to_end": "This is an isolated extraction item, not the complete feedback job."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-02-extraction-01",
+    "family_id": "FB-02",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "extraction",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "speaker_attribution",
+      "mixed_measures",
+      "optional_alternative",
+      "unsupported_progress",
+      "evidence_write"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-02-extraction-01@1",
+      "attribution": "Transcript and task prompts authored for this repository; no external teaching material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-extraction-1",
+    "split": "development"
+  }
+}

@@ -12,7 +12,7 @@ Stages 0–2 implement a local synthetic development foundation, tutor-owned lea
 - [Repository Structure.md](<Repository Structure.md>): target package responsibilities and developer tools; add modules only with their first working operation.
 - `src/tutor_copilot/`, `migrations/`, `tests/`: implemented local startup, authentication, evidence/history, lifecycle and verification boundaries.
 - `dev/keycloak/`: non-secret synthetic realm template and disposable credential preparation; generated credentials stay ignored and are never printed by commands/tests.
-- [evaluation/README.md](evaluation/README.md): two draft synthetic fixtures and reviewer assignments; no approved gold or model-quality result.
+- [evaluation/README.md](evaluation/README.md): draft synthetic fixtures, E0 inventory and local checks; no approved gold or model-quality result.
 - [Initial specifications](specs/README.md): draft homework-pilot contracts, including the [dataset specification](specs/datasets.md).
 - [AGENTS.md](AGENTS.md): engineering rules, task routing and authority.
 - [HighGrade project instruction](.highgrade/project/INSTRUCTIONS.md): local adaptation and delivery boundaries.

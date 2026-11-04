@@ -1,0 +1,334 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "summarize_confirmed_feedback_history",
+      "learner_ref": "synthetic-learner-fb-03@1",
+      "selected_transcript_ref": "synthetic-transcript-fb-03-current@1",
+      "target_subskill": "argument_linking"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb-03@1",
+      "learner_ref": "synthetic-learner-fb-03@1",
+      "owner_ref": "synthetic-tutor-fb-03@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {
+        "revision": 1,
+        "level": "B2",
+        "status": "provisional",
+        "recorded_at": "2026-10-01T09:00:00Z"
+      },
+      "goals": [
+        "Connect reasons clearly in a discussion."
+      ],
+      "activity_fact_revisions": [],
+      "observations": [
+        {
+          "id": "synthetic-fb03-observation-1",
+          "revision": 1,
+          "source_id": "synthetic-fb03-lesson-1",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb-03@1",
+          "confirmed_at": "2026-10-10T10:00:00Z",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-controlled-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 6,
+              "opportunities": 10
+            }
+          },
+          "confirmation_basis": "Synthetic tutor-confirmed structured count recorded separately from transcript text."
+        },
+        {
+          "id": "synthetic-fb03-observation-2",
+          "revision": 1,
+          "source_id": "synthetic-fb03-lesson-2",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb-03@1",
+          "confirmed_at": "2026-10-17T10:00:00Z",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-controlled-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 7,
+              "opportunities": 10
+            }
+          },
+          "confirmation_basis": "Synthetic tutor-confirmed structured count recorded separately from transcript text."
+        },
+        {
+          "id": "synthetic-fb03-observation-3",
+          "revision": 1,
+          "source_id": "synthetic-fb03-lesson-3",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb-03@1",
+          "confirmed_at": "2026-10-24T10:00:00Z",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-controlled-task@1",
+            "assistance": "supported",
+            "accuracy": {
+              "correct": 9,
+              "opportunities": 10
+            }
+          },
+          "confirmation_basis": "Synthetic tutor-confirmed structured count recorded separately from transcript text."
+        },
+        {
+          "id": "synthetic-fb03-observation-4",
+          "revision": 2,
+          "source_id": "synthetic-fb03-lesson-4",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb-03@1",
+          "confirmed_at": "2026-10-31T10:00:00Z",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "spontaneous_discussion",
+            "task_ref": "synthetic-fb03-open-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 8,
+              "opportunities": 10
+            }
+          },
+          "confirmation_basis": "Synthetic tutor-confirmed structured count recorded separately from transcript text."
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "synthetic-fb03-lesson-1",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-10T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-fb-03@1",
+        "owner_ref": "synthetic-tutor-fb-03@1"
+      },
+      {
+        "id": "synthetic-fb03-lesson-2",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-17T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-fb-03@1",
+        "owner_ref": "synthetic-tutor-fb-03@1"
+      },
+      {
+        "id": "synthetic-fb03-lesson-3",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-24T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-fb-03@1",
+        "owner_ref": "synthetic-tutor-fb-03@1"
+      },
+      {
+        "id": "synthetic-fb03-lesson-4",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-fb-03@1",
+        "owner_ref": "synthetic-tutor-fb-03@1",
+        "transcript": {
+          "ref": "synthetic-transcript-fb-03-current@1",
+          "revision": 1,
+          "kind": "lesson_transcript",
+          "recorded_at": "2026-10-31T09:00:00Z",
+          "expires_at": "2026-11-30T09:00:00Z",
+          "available": true,
+          "learner_ref": "synthetic-learner-fb-03@1",
+          "owner_ref": "synthetic-tutor-fb-03@1",
+          "speaker_annotations_confirmed": true,
+          "segments": [
+            {
+              "id": "fb03-t1",
+              "speaker": "tutor",
+              "text": "Should our town invest more in buses? Explain your view."
+            },
+            {
+              "id": "fb03-l1",
+              "speaker": "learner",
+              "text": "I think it should, because more buses make it easier for people to reach work."
+            },
+            {
+              "id": "fb03-t2",
+              "speaker": "tutor",
+              "text": "What could be a drawback?"
+            },
+            {
+              "id": "fb03-l2",
+              "speaker": "learner",
+              "text": "However, the town would need money to run them."
+            }
+          ],
+          "coverage_note": "Short synthetic transcript supplied for source context; the separately confirmed structured count is an independent input and is not extracted from these transcript segments."
+        }
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_transcript_ref": "synthetic-transcript-fb-03-current@1",
+    "source_ids": {
+      "lesson": [
+        "synthetic-fb03-lesson-4",
+        "synthetic-fb03-lesson-3",
+        "synthetic-fb03-lesson-2",
+        "synthetic-fb03-lesson-1"
+      ],
+      "homework": []
+    },
+    "groups": [
+      {
+        "subskill": "argument_linking",
+        "evidence_type": "lesson",
+        "task": "controlled_discussion",
+        "task_ref": "synthetic-fb03-controlled-task@1",
+        "assistance": "independent",
+        "observation_refs": [
+          {
+            "id": "synthetic-fb03-observation-1",
+            "revision": 1,
+            "source_id": "synthetic-fb03-lesson-1"
+          },
+          {
+            "id": "synthetic-fb03-observation-2",
+            "revision": 1,
+            "source_id": "synthetic-fb03-lesson-2"
+          }
+        ],
+        "accuracy": {
+          "correct": 13,
+          "opportunities": 20,
+          "rate": 0.65
+        },
+        "trend": "insufficient",
+        "maintenance_candidate": false,
+        "maintenance_confirmed": false
+      },
+      {
+        "subskill": "argument_linking",
+        "evidence_type": "lesson",
+        "task": "controlled_discussion",
+        "task_ref": "synthetic-fb03-controlled-task@1",
+        "assistance": "supported",
+        "observation_refs": [
+          {
+            "id": "synthetic-fb03-observation-3",
+            "revision": 1,
+            "source_id": "synthetic-fb03-lesson-3"
+          }
+        ],
+        "accuracy": {
+          "correct": 9,
+          "opportunities": 10,
+          "rate": 0.9
+        },
+        "trend": "insufficient",
+        "maintenance_candidate": false,
+        "maintenance_confirmed": false
+      },
+      {
+        "subskill": "argument_linking",
+        "evidence_type": "lesson",
+        "task": "spontaneous_discussion",
+        "task_ref": "synthetic-fb03-open-task@1",
+        "assistance": "independent",
+        "observation_refs": [
+          {
+            "id": "synthetic-fb03-observation-4",
+            "revision": 2,
+            "source_id": "synthetic-fb03-lesson-4"
+          }
+        ],
+        "accuracy": {
+          "correct": 8,
+          "opportunities": 10,
+          "rate": 0.8
+        },
+        "trend": "insufficient",
+        "maintenance_candidate": false,
+        "maintenance_confirmed": false
+      }
+    ],
+    "selected_history_refs": [],
+    "required_qualifications": [
+      "Two independent controlled observations cannot establish a three-session trend. Supported controlled work and independent spontaneous discussion have different demands and cannot be pooled with them.",
+      "The selected transcript is the current lesson source; its excerpts do not by themselves prove or replace the separate tutor-confirmed observation counts.",
+      "No required-use or avoidance counts were supplied; those rates are unknown, not zero-percent performance."
+    ],
+    "prohibited_claims": [
+      "confirmed trend",
+      "mastery",
+      "pronunciation ability",
+      "listening ability",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": [
+      "activity facts",
+      "performance observations",
+      "preferences"
+    ],
+    "terminal_state": "analysis_only",
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "source_context": "The selected source and synthetic access state are supplied to this isolated analysis item; actual authorization and freezing are separate.",
+      "extraction": "Confirmed observation revisions are supplied; extracting candidate findings from the transcript is a separate boundary.",
+      "composition": "No feedback prose is requested.",
+      "validation": "No feedback draft is supplied.",
+      "review_revision": "No feedback draft or tutor decision is supplied.",
+      "end_to_end": "This is an isolated analysis item, not the complete feedback job."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-03.incomparable-history",
+    "family_id": "FB-03",
+    "variant_id": "FB-03.incomparable-history",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "subskill_analysis",
+    "level": "B2",
+    "domain": "community transport discussion",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "incomparable_history",
+      "mixed_assistance",
+      "unsupported_trend",
+      "evidence_write"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-03.incomparable-history@1",
+      "attribution": "Transcript and structured observations authored for this repository; no external teaching material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-comparison-1",
+    "split": "development"
+  }
+}

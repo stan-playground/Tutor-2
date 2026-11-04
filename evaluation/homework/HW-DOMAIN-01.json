@@ -1,0 +1,220 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "required_domain": {
+        "route": "remediation",
+        "outcome": "choose_meaning",
+        "skills": [
+          "tense_choice"
+        ],
+        "confusion": "present_perfect_vs_past_simple",
+        "level": "B1",
+        "task": "controlled",
+        "modality": "text",
+        "response_type": "choice",
+        "domain": "project_updates",
+        "objective_ref": "00000000-0000-4000-8000-000000000503",
+        "use_cache": false,
+        "limit": 10,
+        "domain_required": true
+      },
+      "optional_domain": {
+        "route": "remediation",
+        "outcome": "choose_meaning",
+        "skills": [
+          "tense_choice"
+        ],
+        "confusion": "present_perfect_vs_past_simple",
+        "level": "B1",
+        "task": "controlled",
+        "modality": "text",
+        "response_type": "choice",
+        "domain": "project_updates",
+        "objective_ref": "00000000-0000-4000-8000-000000000503",
+        "use_cache": false,
+        "limit": 10,
+        "domain_required": false
+      }
+    },
+    "fixture_state": {
+      "assets": [
+        {
+          "id": "00000000-0000-4000-8000-000000000501",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "choose_meaning",
+              "skills": [
+                "tense_choice"
+              ],
+              "confusion": "present_perfect_vs_past_simple",
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "general"
+            },
+            "source_ref": "synthetic-bank:domain-general-contrast",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Choose: I [visited / have visited] my aunt yesterday.",
+            "instructions": "Choose the appropriate tense for a finished past time.",
+            "answer_key": "visited",
+            "criteria": "A completed time expression requires the past simple in this sentence.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000502",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "choose_meaning",
+              "skills": [
+                "articles"
+              ],
+              "confusion": "definite_vs_indefinite_article",
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "project_updates"
+            },
+            "source_ref": "synthetic-bank:domain-project-article",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Choose: Our customer reported [a / an / the] issue. The issue was fixed.",
+            "instructions": "Choose the article introducing a singular, previously unmentioned issue.",
+            "answer_key": "an",
+            "criteria": "Use an before the vowel sound in issue when introducing one issue.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        }
+      ],
+      "access": {
+        "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+        "asset_owner_id": "11111111-1111-4111-8111-111111111111",
+        "visibility": "private"
+      },
+      "request_context": "Two independently specified retrieval requests compare the same constraints and corpus. No user choice, clarification or automatic relaxation is modeled."
+    },
+    "sources": [
+      {
+        "ref": "synthetic-bank:domain-general-contrast@1",
+        "kind": "authored_test_material",
+        "revision": 1,
+        "available": true
+      },
+      {
+        "ref": "synthetic-bank:domain-project-article@1",
+        "kind": "authored_test_material",
+        "revision": 1,
+        "available": true
+      }
+    ]
+  },
+  "expectedOutput": {
+    "required_domain": {
+      "http_status": 200,
+      "status": "gap",
+      "candidate_ids": [],
+      "excluded_ids": [
+        "00000000-0000-4000-8000-000000000501",
+        "00000000-0000-4000-8000-000000000502"
+      ],
+      "reason_required": true
+    },
+    "optional_domain": {
+      "http_status": 200,
+      "status": "candidates",
+      "candidate_ids": [
+        "00000000-0000-4000-8000-000000000501"
+      ],
+      "excluded_ids": [
+        "00000000-0000-4000-8000-000000000502"
+      ],
+      "reason_required": false
+    },
+    "prohibited_outcomes": [
+      "relaxing_the_required_request",
+      "substituting_wrong_confusion",
+      "invented_material",
+      "reporting_a_provider_failure_for_a_known_gap"
+    ],
+    "terminal_state": "retrieval_only",
+    "reached_stages": [
+      "retrieval"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "No learner source extraction is requested.",
+      "subskill_analysis": "Both objectives are supplied directly.",
+      "adaptation": "No selected material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No tutor clarification or decision is supplied.",
+      "end_to_end": "Two independent searches are observed, not a preparation job."
+    }
+  },
+  "metadata": {
+    "case_id": "HW-DOMAIN-01",
+    "family_id": "HW-DOMAIN",
+    "revision": 1,
+    "job": "homework",
+    "stage": "retrieval",
+    "level": "B1",
+    "domain": "project updates",
+    "teaching_route": "remediation",
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "required_domain_relaxation",
+      "domain_only_match",
+      "missing_neutral_fallback"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-DOMAIN-01@1",
+      "attribution": "Synthetic teaching texts authored for this repository; no real learner or external teaching content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-domain-retrieval-1",
+    "split": "development"
+  }
+}

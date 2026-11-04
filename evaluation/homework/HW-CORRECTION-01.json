@@ -1,0 +1,186 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "record_and_correct_observation",
+      "learner_ref": "synthetic-correction-learner@1"
+    },
+    "fixture_state": {
+      "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+      "learner_ref": "synthetic-correction-learner@1",
+      "owner_tutor_id": "11111111-1111-4111-8111-111111111111",
+      "learner_profile": {
+        "profile": {
+          "alias": "Synthetic correction learner",
+          "adult_confirmed": true,
+          "learner_opt_in": true,
+          "upload_permission": true,
+          "assessment": {
+            "summary": "Tutor estimate",
+            "assessed_on": "2026-10-01",
+            "source": "tutor_estimate",
+            "level": "B1",
+            "uncertainty": "provisional"
+          },
+          "goals": [
+            "Choose an appropriate past form in a project update."
+          ],
+          "preferred_domains": [
+            "Engineering"
+          ]
+        }
+      },
+      "initial_observation": {
+        "id": "00000000-0000-4000-8000-000000000201",
+        "source_id": "00000000-0000-4000-8000-000000000200",
+        "response_ref": "synthetic-correction-response-1",
+        "subskill": "past-tense",
+        "task": "controlled",
+        "task_ref": "synthetic-correction-task-1",
+        "assistance": "independent",
+        "confirmed": true,
+        "accuracy": {
+          "correct": 4,
+          "opportunities": 5
+        }
+      },
+      "duplicate_observation": {
+        "id": "00000000-0000-4000-8000-000000000202",
+        "source_id": "00000000-0000-4000-8000-000000000200",
+        "response_ref": "synthetic-correction-response-1",
+        "subskill": "past-tense",
+        "task": "controlled",
+        "task_ref": "synthetic-correction-task-1",
+        "assistance": "independent",
+        "confirmed": true,
+        "accuracy": {
+          "correct": 4,
+          "opportunities": 5
+        }
+      },
+      "corrected_observation": {
+        "id": "00000000-0000-4000-8000-000000000201",
+        "expected_revision": 1,
+        "source_id": "00000000-0000-4000-8000-000000000200",
+        "response_ref": "synthetic-correction-response-1",
+        "subskill": "past-tense",
+        "task": "controlled",
+        "task_ref": "synthetic-correction-task-1",
+        "assistance": "independent",
+        "confirmed": true,
+        "accuracy": {
+          "correct": 1,
+          "opportunities": 5
+        }
+      },
+      "confirmation_context": "The synthetic tutor confirmed the original count and later confirmed its correction. These are supplied structured records, not extracted from raw text.",
+      "confirmation_facts": [
+        {
+          "observation_id": "00000000-0000-4000-8000-000000000201",
+          "revision": 1,
+          "confirmed_by": "11111111-1111-4111-8111-111111111111",
+          "confirmed_at": "2026-10-31T09:15:00Z"
+        },
+        {
+          "observation_id": "00000000-0000-4000-8000-000000000201",
+          "revision": 2,
+          "confirmed_by": "11111111-1111-4111-8111-111111111111",
+          "confirmed_at": "2026-10-31T10:00:00Z"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "id": "00000000-0000-4000-8000-000000000200",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "qualification": "tutor_notes",
+        "raw_text": "Synthetic structured count; no real learner content."
+      }
+    ]
+  },
+  "expectedOutput": {
+    "initial_revision": 1,
+    "replay_revision": 1,
+    "duplicate_http_status": 409,
+    "corrected_revision": 2,
+    "corrected_replay_revision": 2,
+    "history_revisions": [
+      1,
+      2
+    ],
+    "current_observation_refs": [
+      {
+        "id": "00000000-0000-4000-8000-000000000201",
+        "revision": 2,
+        "source_id": "00000000-0000-4000-8000-000000000200"
+      }
+    ],
+    "accuracy": {
+      "correct": 1,
+      "opportunities": 5,
+      "rate": 0.2,
+      "trend": "insufficient"
+    },
+    "prohibited_claims": [
+      "mastery",
+      "forgetting",
+      "confirmed trend"
+    ],
+    "prohibited_writes": [
+      "duplicate performance observation"
+    ],
+    "terminal_state": "analysis_only",
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "The observation and correction are supplied as confirmed structured counts.",
+      "retrieval": "No teaching material is selected.",
+      "adaptation": "No teaching material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No homework draft or tutor decision is supplied.",
+      "end_to_end": "This is an isolated evidence correction and recent-rate check."
+    }
+  },
+  "metadata": {
+    "case_id": "HW-CORRECTION-01",
+    "family_id": "HW-CORRECTION",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "duplicate_observation",
+      "superseded_counts"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-CORRECTION-01@1",
+      "attribution": "Synthetic structured counts authored for this repository; no real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-correction-1",
+    "split": "development"
+  }
+}

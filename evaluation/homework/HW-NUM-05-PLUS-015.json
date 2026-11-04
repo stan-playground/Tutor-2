@@ -1,0 +1,201 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "summarize_recent"
+    },
+    "fixture_state": {
+      "observations": [
+        {
+          "id": "synthetic-hw-num-05-plus-015-observation-1",
+          "revision": 1,
+          "source_id": "synthetic-hw-num-05-plus-015-lesson-1",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-10-28T09:15:00Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 10,
+              "opportunities": 20
+            }
+          }
+        },
+        {
+          "id": "synthetic-hw-num-05-plus-015-observation-2",
+          "revision": 1,
+          "source_id": "synthetic-hw-num-05-plus-015-lesson-2",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-10-29T09:15:00Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 11,
+              "opportunities": 20
+            }
+          }
+        },
+        {
+          "id": "synthetic-hw-num-05-plus-015-observation-3",
+          "revision": 1,
+          "source_id": "synthetic-hw-num-05-plus-015-lesson-3",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-10-30T09:15:00Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 13,
+              "opportunities": 20
+            }
+          }
+        }
+      ],
+      "tutor_ref": "synthetic-tutor-recent-1",
+      "learner_ref": "synthetic-learner-recent-1",
+      "owner_ref": "synthetic-tutor-recent-1",
+      "adult_confirmed": true,
+      "processing_permission": true
+    },
+    "sources": [
+      {
+        "id": "synthetic-hw-num-05-plus-015-lesson-1",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-28T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      },
+      {
+        "id": "synthetic-hw-num-05-plus-015-lesson-2",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-29T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      },
+      {
+        "id": "synthetic-hw-num-05-plus-015-lesson-3",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-30T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      }
+    ]
+  },
+  "expectedOutput": {
+    "source_ids": {
+      "lesson": [
+        "synthetic-hw-num-05-plus-015-lesson-3",
+        "synthetic-hw-num-05-plus-015-lesson-2",
+        "synthetic-hw-num-05-plus-015-lesson-1"
+      ],
+      "homework": []
+    },
+    "observation_refs": [
+      {
+        "id": "synthetic-hw-num-05-plus-015-observation-1",
+        "revision": 1,
+        "source_id": "synthetic-hw-num-05-plus-015-lesson-1"
+      },
+      {
+        "id": "synthetic-hw-num-05-plus-015-observation-2",
+        "revision": 1,
+        "source_id": "synthetic-hw-num-05-plus-015-lesson-2"
+      },
+      {
+        "id": "synthetic-hw-num-05-plus-015-observation-3",
+        "revision": 1,
+        "source_id": "synthetic-hw-num-05-plus-015-lesson-3"
+      }
+    ],
+    "trend": "improving",
+    "maintenance_candidate": false,
+    "maintenance_confirmed": false,
+    "prohibited_claims": [
+      "mastery",
+      "forgetting",
+      "tutor-confirmed maintenance"
+    ],
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "Confirmed counts are supplied; response extraction is a separate boundary.",
+      "retrieval": "No teaching material is selected.",
+      "adaptation": "No teaching material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This is a deterministic recent-performance calculation, not a homework job."
+    },
+    "terminal_state": "analysis_only",
+    "measure_checks": {
+      "accuracy": {
+        "correct": 34,
+        "opportunities": 60,
+        "rate": 0.5666666666666667,
+        "unknown_observations": 0,
+        "trend": "improving",
+        "trend_source_ids": [
+          "synthetic-hw-num-05-plus-015-lesson-1",
+          "synthetic-hw-num-05-plus-015-lesson-2",
+          "synthetic-hw-num-05-plus-015-lesson-3"
+        ],
+        "possible_regression": false,
+        "maintenance_support": false
+      }
+    }
+  },
+  "metadata": {
+    "case_id": "HW-NUM-05-PLUS-015",
+    "family_id": "HW-NUMERIC",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "positive_trend_boundary"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-NUM-05-PLUS-015@1",
+      "attribution": "Authored confirmed counts for this repository; no external teaching material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-recent-performance-1",
+    "split": "development"
+  }
+}

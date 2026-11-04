@@ -1,0 +1,143 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "select_feedback_source_context",
+      "learner_ref": "synthetic-learner-fb05@1",
+      "selected_lesson_ref": "synthetic-lesson-fb05@1",
+      "selected_transcript_ref": "synthetic-transcript-fb05@1"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb05@1",
+      "learner_ref": "synthetic-learner-fb05@1",
+      "owner_ref": "synthetic-tutor-fb05@1",
+      "adult_confirmed": true,
+      "learner_opt_in": false,
+      "upload_permission": true,
+      "processing_permission": false,
+      "permission_state": {
+        "revision": 2,
+        "learner_opt_in": false,
+        "recorded_at": "2026-11-01T11:00:00Z",
+        "prior_revision": 1,
+        "prior_learner_opt_in": true,
+        "prior_recorded_at": "2026-10-30T09:00:00Z",
+        "note": "Synthetic processing permission was withdrawn after the transcript was retained."
+      },
+      "assessment": {"revision": 1, "level": "A2", "status": "provisional", "recorded_at": "2026-10-30T09:00:00Z"},
+      "goals": ["Describe everyday activities in simple English."],
+      "selected_lesson": {
+        "ref": "synthetic-lesson-fb05@1",
+        "revision": 1,
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "tutor_ref": "synthetic-tutor-fb05@1",
+        "learner_ref": "synthetic-learner-fb05@1"
+      },
+      "recent_observations": [
+        {
+          "ref": "synthetic-observation-fb05@1",
+          "revision": 1,
+          "source_ref": "synthetic-note-fb05@1",
+          "observed_at": "2026-10-31T09:00:00Z",
+          "confirmed_at": "2026-10-31T10:00:00Z",
+          "confirmed_by": "synthetic-tutor-fb05@1",
+          "confirmed": true,
+          "task_type": "controlled_written_practice",
+          "assistance": "independent",
+          "attempted_accuracy": {"correct": 2, "opportunities": 4}
+        }
+      ],
+      "activity_fact_revisions": [
+        {
+          "ref": "synthetic-activity-fb05@1",
+          "revision": 1,
+          "source_ref": "synthetic-note-fb05@1",
+          "kind": "encounter",
+          "occurred_at": "2026-10-31T09:00:00Z",
+          "confirmed_at": "2026-10-31T10:00:00Z",
+          "confirmed_by": "synthetic-tutor-fb05@1",
+          "confirmed": true
+        }
+      ],
+      "prior_homework_request": null
+    },
+    "sources": [
+      {
+        "ref": "synthetic-transcript-fb05@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "lesson_ref": "synthetic-lesson-fb05@1",
+        "learner_ref": "synthetic-learner-fb05@1",
+        "owner_ref": "synthetic-tutor-fb05@1",
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "content_access": "denied",
+        "note": "The retained synthetic transcript is otherwise available; its body is omitted from this denied-permission input."
+      },
+      {
+        "ref": "synthetic-note-fb05@1",
+        "kind": "lesson_notes",
+        "revision": 1,
+        "lesson_ref": "synthetic-lesson-fb05@1",
+        "learner_ref": "synthetic-learner-fb05@1",
+        "owner_ref": "synthetic-tutor-fb05@1",
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "content_access": "denied",
+        "note": "Only synthetic source metadata and separately confirmed structured records are supplied."
+      }
+    ]
+  },
+  "expectedOutput": {
+    "source_context_outcome": "processing_permission_denied",
+    "terminal_state": "blocked",
+    "required_action": "Report that processing is not permitted; do not start feedback generation.",
+    "requested_transcript_ref": "synthetic-transcript-fb05@1",
+    "covered_segment_refs": [],
+    "provider_calls": 0,
+    "required_qualifications": [
+      "Current learner opt-in is absent even though the selected transcript is owned and has not expired.",
+      "Earlier permission and tutor upload permission do not substitute for current learner processing permission.",
+      "This is an isolated authorization stop; no feedback job or resume boundary has been observed."
+    ],
+    "prohibited_claims": ["transcript quotations", "confirmed progress", "pronunciation ability", "listening ability", "product-caused improvement"],
+    "prohibited_writes": ["activity facts", "performance observations", "preferences"],
+    "unchanged_record_refs": ["synthetic-observation-fb05@1", "synthetic-activity-fb05@1"],
+    "prohibited_provider_inputs": ["transcript", "lesson notes", "learner evidence", "activity history"],
+    "reached_stages": ["source_context"],
+    "unreached_stage_reasons": {
+      "extraction": "Current learner opt-in does not authorize processing of the selected transcript.",
+      "subskill_analysis": "Feedback preparation stops before processing denied learner evidence.",
+      "composition": "No eligible source context is available for a feedback draft.",
+      "validation": "No feedback draft was produced.",
+      "review_revision": "No feedback draft is available for tutor review.",
+      "end_to_end": "The job is blocked by the current permission state; later stages were not reached."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-05.no-permission",
+    "family_id": "FB-05",
+    "variant_id": "FB-05.no-permission",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "source_context",
+    "level": "A2",
+    "domain": "everyday activities",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "critical",
+    "failure_categories": ["permission_denied", "unauthorized_processing", "evidence_write"],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-05.no-permission@1",
+      "attribution": "Synthetic learner, permission state and source metadata authored for this repository; no real learner content.",
+      "rights": {"storage": true, "adaptation": true, "delivery": true}
+    },
+    "review": {"state": "draft", "reviewed": false, "assignments": {"primary": null, "second": null}, "decisions": []},
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-permission-stop-1",
+    "split": "development"
+  }
+}

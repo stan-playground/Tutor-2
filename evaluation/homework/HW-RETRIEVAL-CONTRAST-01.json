@@ -1,0 +1,235 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "route": "remediation",
+      "outcome": "choose_meaning",
+      "skills": [
+        "tense_choice"
+      ],
+      "confusion": "present_perfect_vs_past_simple",
+      "level": "B1",
+      "task": "controlled",
+      "modality": "text",
+      "response_type": "choice",
+      "domain": "project_updates",
+      "objective_ref": "00000000-0000-4000-8000-000000000104",
+      "use_cache": false,
+      "limit": 10
+    },
+    "fixture_state": {
+      "assets": [
+        {
+          "id": "00000000-0000-4000-8000-000000000101",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "choose_meaning",
+              "skills": [
+                "tense_choice"
+              ],
+              "confusion": "present_perfect_vs_past_simple",
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "general"
+            },
+            "source_ref": "synthetic-bank:contrast-choice",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Yesterday we [finished / have finished] the report. We [worked / have worked] on the update since Monday, and we are still working on it.",
+            "instructions": "Choose the tense that fits each time context.",
+            "answer_key": "1 finished; 2 have worked",
+            "criteria": "Distinguish a completed past time from an activity that began in the past and continues now.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000102",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "choose_meaning",
+              "skills": [
+                "articles"
+              ],
+              "confusion": "definite_vs_indefinite_article",
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "project_updates"
+            },
+            "source_ref": "synthetic-bank:article-only",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "We deployed a patch. [A / The] patch fixed the release error.",
+            "instructions": "Choose the appropriate article.",
+            "answer_key": "The",
+            "criteria": "Select the definite article for a previously introduced patch.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000103",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "produce_affirmative_form",
+              "skills": [
+                "tense_choice"
+              ],
+              "confusion": null,
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "project_updates"
+            },
+            "source_ref": "synthetic-bank:affirmative-form-only",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Choose the auxiliary: We [has / have] finished the update.",
+            "instructions": "Choose the correct auxiliary in this affirmative present-perfect sentence.",
+            "answer_key": "have",
+            "criteria": "Use have with we in an affirmative present-perfect sentence; no tense choice is requested.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        }
+      ],
+      "access": {
+        "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+        "asset_owner_id": "11111111-1111-4111-8111-111111111111",
+        "visibility": "private"
+      },
+      "positive_form_target_limit": "The target vocabulary lacks an affirmative-form-only outcome; this faithful label is intentionally unsupported by the current import API."
+    },
+    "sources": [
+      {
+        "ref": "synthetic-bank:contrast-choice@1",
+        "kind": "authored_test_material",
+        "available": true
+      },
+      {
+        "ref": "synthetic-bank:article-only@1",
+        "kind": "authored_test_material",
+        "available": true
+      },
+      {
+        "ref": "synthetic-bank:affirmative-form-only@1",
+        "kind": "authored_test_material",
+        "available": true
+      }
+    ]
+  },
+  "expectedOutput": {
+    "status": "candidates",
+    "candidate_ids": [
+      "00000000-0000-4000-8000-000000000101"
+    ],
+    "excluded_ids": [
+      "00000000-0000-4000-8000-000000000102"
+    ],
+    "asset_import_http_status": {
+      "00000000-0000-4000-8000-000000000101": 200,
+      "00000000-0000-4000-8000-000000000102": 200,
+      "00000000-0000-4000-8000-000000000103": 422
+    },
+    "required_search_meaning": {
+      "route": "remediation",
+      "outcome": "choose_meaning",
+      "confusion": "present_perfect_vs_past_simple"
+    },
+    "execution_limit": "The positive-form-only material cannot enter the corpus under truthful metadata, so this case does not show retrieval filtering that distractor from an eligible corpus.",
+    "reached_stages": [
+      "retrieval"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "No learner source extraction is requested.",
+      "subskill_analysis": "The teaching objective is supplied directly.",
+      "adaptation": "No selected material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This is an isolated search, not a homework job."
+    },
+    "terminal_state": "retrieval_only",
+    "rejected_before_search_ids": [
+      "00000000-0000-4000-8000-000000000103"
+    ],
+    "desired_but_unobserved": "If a truthful positive-form-only target were representable and imported, retrieval should exclude it from a contrastive-choice objective."
+  },
+  "metadata": {
+    "case_id": "HW-RETRIEVAL-CONTRAST-01",
+    "family_id": "HW-RETRIEVAL-CONTRAST",
+    "revision": 1,
+    "job": "homework",
+    "stage": "retrieval",
+    "level": "B1",
+    "domain": "project updates",
+    "teaching_route": "remediation",
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "positive_form_only",
+      "domain_only_match",
+      "unsupported_target"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-RETRIEVAL-CONTRAST-01@1",
+      "attribution": "Authored test material for this repository; not tutor-reviewed teaching content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-contrast-retrieval-1",
+    "split": "development"
+  }
+}

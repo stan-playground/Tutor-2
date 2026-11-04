@@ -1,0 +1,160 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "select_feedback_source_context",
+      "learner_ref": "synthetic-learner-fb04@1",
+      "selected_lesson_ref": "synthetic-lesson-fb04@1",
+      "selected_transcript_ref": "synthetic-transcript-fb04@1"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb04@1",
+      "learner_ref": "synthetic-learner-fb04@1",
+      "owner_ref": "synthetic-tutor-fb04@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {
+        "revision": 1,
+        "level": "A2",
+        "status": "provisional",
+        "recorded_at": "2026-09-30T09:00:00Z"
+      },
+      "goals": [
+        "Describe a morning routine in simple English."
+      ],
+      "selected_lesson": {
+        "ref": "synthetic-lesson-fb04@1",
+        "revision": 1,
+        "occurred_at": "2026-10-01T09:00:00Z",
+        "owner_ref": "synthetic-tutor-fb04@1",
+        "learner_ref": "synthetic-learner-fb04@1"
+      },
+      "recent_observations": [
+        {
+          "ref": "synthetic-observation-fb04@1",
+          "revision": 1,
+          "source_ref": "synthetic-notes-fb04@1",
+          "observed_at": "2026-10-01T09:00:00Z",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb04@1",
+          "confirmed_at": "2026-10-03T10:00:00Z",
+          "confirmation_basis": "A separately tutor-confirmed structured count; it is not inferred from the note text.",
+          "subskill": "present_simple_verb_endings",
+          "task_type": "controlled_written_practice",
+          "assistance": "independent",
+          "attempted_accuracy": {
+            "correct": 2,
+            "opportunities": 4
+          }
+        }
+      ],
+      "activity_fact_revisions": [],
+      "prior_homework_request": null
+    },
+    "sources": [
+      {
+        "ref": "synthetic-notes-fb04@1",
+        "kind": "lesson_notes",
+        "revision": 1,
+        "lesson_ref": "synthetic-lesson-fb04@1",
+        "learner_ref": "synthetic-learner-fb04@1",
+        "owner_ref": "synthetic-tutor-fb04@1",
+        "available": true,
+        "recorded_at": "2026-10-03T09:00:00Z",
+        "expires_at": "2026-11-02T09:00:00Z",
+        "text": "The learner practised describing a morning routine; written verb endings were sometimes inconsistent."
+      },
+      {
+        "ref": "synthetic-transcript-fb04@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "lesson_ref": "synthetic-lesson-fb04@1",
+        "learner_ref": "synthetic-learner-fb04@1",
+        "owner_ref": "synthetic-tutor-fb04@1",
+        "available": false,
+        "recorded_at": "2026-10-01T09:00:00Z",
+        "expires_at": "2026-10-31T09:00:00Z",
+        "availability_reason": "expired",
+        "note": "Only source metadata remains; transcript segments and quotes are unavailable."
+      }
+    ]
+  },
+  "expectedOutput": {
+    "source_context_outcome": "expired_current_transcript",
+    "terminal_state": "incomplete",
+    "required_action": "Report the selected transcript unavailable and request an available authorized transcript for the selected lesson.",
+    "covered_segment_refs": [],
+    "provider_calls": 0,
+    "required_qualifications": [
+      "The selected transcript expired before the fixture time; its text and quotations cannot be reconstructed from notes or structured history.",
+      "Available tutor notes and confirmed observations cannot replace the selected lesson transcript.",
+      "The saved observation remains confirmed evidence; it is not a generated feedback finding."
+    ],
+    "prohibited_claims": [
+      "transcript quotations",
+      "confirmed progress",
+      "pronunciation ability",
+      "listening ability",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": [
+      "activity facts",
+      "performance observations",
+      "preferences"
+    ],
+    "reached_stages": [
+      "source_context"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "The selected current lesson transcript has expired and its body is unavailable.",
+      "subskill_analysis": "Feedback preparation stops at unavailable source context; saved observations cannot bypass the stop.",
+      "composition": "No eligible transcript context is available for a feedback draft.",
+      "validation": "No feedback draft was produced.",
+      "review_revision": "No feedback draft is available for tutor review.",
+      "end_to_end": "The job is incomplete because the selected transcript is unavailable; later stages were not reached."
+    },
+    "requested_transcript_ref": "synthetic-transcript-fb04@1",
+    "available_transcript_refs": []
+  },
+  "metadata": {
+    "case_id": "FB-04.expired-current-transcript",
+    "family_id": "FB-04",
+    "variant_id": "FB-04.expired-current-transcript",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "source_context",
+    "level": "A2",
+    "domain": "morning routines",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "critical",
+    "failure_categories": [
+      "expired_current_transcript",
+      "source_substitution",
+      "quote_reconstruction",
+      "evidence_write"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-04.expired-current-transcript@1",
+      "attribution": "Synthetic learner, structured evidence and note authored for this repository; no real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-expired-source-1",
+    "split": "development"
+  }
+}

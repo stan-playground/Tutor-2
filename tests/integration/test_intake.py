@@ -1,8 +1,11 @@
 """Real HTTP/PostgreSQL intake; session seeding is separate from real OIDC tests."""
 
 import asyncio
+import json
+import logging
 from contextlib import contextmanager
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 from uuid import UUID, uuid4
 
 import pytest
@@ -15,6 +18,7 @@ from test_evidence import profile
 from tutor_copilot.auth import COOKIE, ORIGIN, create_session
 from tutor_copilot.db import create_engine as async_engine
 from tutor_copilot.evidence import tenant_transaction
+from tutor_copilot.metrics import summarize_recent
 from tutor_copilot.web import create_app
 
 FIRST = UUID("11111111-1111-4111-8111-111111111111")
@@ -137,6 +141,121 @@ def test_sources_observations_replay_confirmation_and_correction(intake, databas
         admin.dispose()
 
 
+def test_correction_fixture_at_persistence_and_fixed_clock_boundaries(database):
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-CORRECTION-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    state = case_input["fixture_state"]
+    migrate(database)
+    with authenticated(database) as client:
+        assert client.get("/auth/me").json()["tutor_id"] == state["acting_tutor_id"]
+        assert state["owner_tutor_id"] == state["acting_tutor_id"]
+        created = client.post("/learners", json=state["learner_profile"])
+        assert created.status_code == 201
+        learner = created.json()["id"]
+        base = f"/learners/{learner}"
+        source = case_input["sources"][0]
+        assert (
+            client.post(
+                base + "/sources", json={k: v for k, v in source.items() if k != "revision"}
+            ).status_code
+            == 200
+        )
+        initial = state["initial_observation"]
+        created_observation = client.post(base + "/observations", json=initial)
+        replay = client.post(base + "/observations", json=initial)
+        before = client.get(base + "/evidence").json()["observations"]
+        duplicate = client.post(base + "/observations", json=state["duplicate_observation"])
+        after_duplicate = client.get(base + "/evidence").json()["observations"]
+        correction = state["corrected_observation"]
+        corrected = client.post(base + "/observations", json=correction)
+        corrected_replay = client.post(base + "/observations", json=correction)
+        current = client.get(base + "/evidence").json()["observations"]
+        history = client.get(base + "/evidence?history=true").json()["observations"]
+
+    expected = item["expectedOutput"]
+    assert created_observation.status_code == replay.status_code == 200
+    assert created_observation.json()["revision"] == expected["initial_revision"]
+    assert replay.json()["revision"] == expected["replay_revision"]
+    assert duplicate.status_code == expected["duplicate_http_status"]
+    assert after_duplicate == before
+    assert corrected.status_code == corrected_replay.status_code == 200
+    assert corrected.json()["revision"] == expected["corrected_revision"]
+    assert corrected_replay.json()["revision"] == expected["corrected_replay_revision"]
+    assert sorted(row["revision"] for row in history) == expected["history_revisions"]
+    result = summarize_recent(
+        current,
+        datetime.fromisoformat(case_input["fixture_time"]),
+        sources=[source | {"occurred_at": datetime.fromisoformat(source["occurred_at"])}],
+    )
+    assert len(result["groups"]) == 1
+    group = result["groups"][0]
+    assert group["observation_refs"] == expected["current_observation_refs"]
+    assert {key: group["measures"]["accuracy"][key] for key in expected["accuracy"]} == expected[
+        "accuracy"
+    ]
+
+
+@pytest.mark.parametrize("variant", ["assigned-only", "encounter-only"])
+def test_activity_fixture_preserves_recent_performance(database, variant):
+    path = Path(__file__).resolve().parents[2] / f"evaluation/homework/HW-01.{variant}-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    state = case_input["fixture_state"]
+    expected = item["expectedOutput"]
+    migrate(database)
+    with authenticated(database) as client:
+        assert client.get("/auth/me").json()["tutor_id"] == state["acting_tutor_id"]
+        assert state["owner_tutor_id"] == state["acting_tutor_id"]
+        created = client.post("/learners", json=state["learner_profile"])
+        assert created.status_code == 201
+        base = f"/learners/{created.json()['id']}"
+        for source in case_input["sources"]:
+            response = client.post(
+                base + "/sources", json={k: v for k, v in source.items() if k != "revision"}
+            )
+            assert response.status_code == 200 and response.json()["revision"] == source["revision"]
+        observed = client.post(base + "/observations", json=state["initial_observation"])
+        assert observed.status_code == 200 and observed.json()["revision"] == 1
+        before_context = client.get(base + "/context").json()
+        before_evidence = client.get(base + "/evidence").json()
+        assert before_evidence["activities"] == []
+        saved = client.post(base + "/activities", json=state["activity"])
+        assert (
+            saved.status_code == 200 and saved.json()["revision"] == expected["activity_revision"]
+        )
+        after_context = client.get(base + "/context").json()
+        after_evidence = client.get(base + "/evidence").json()
+
+    assert after_context["recent"]["source_ids"] == before_context["recent"]["source_ids"]
+    assert after_context["recent"]["groups"] == before_context["recent"]["groups"]
+    assert after_evidence["observations"] == before_evidence["observations"]
+    assert len(after_evidence["observations"]) == expected["observation_count"]
+    assert len(after_evidence["activities"]) == expected["history_count"]
+    assert len(after_context["history"]) == expected["history_count"]
+    activity = after_context["history"][0]
+    assert activity["id"] == expected["activity_id"]
+    assert activity["source_id"] == expected["source_id"]
+    assert activity["data"]["kind"] == expected["activity_kind"]
+    assert activity["data"]["occurred_at"] == expected["activity_occurred_at"]
+    assert activity["data"]["amount"] is None
+    sources = [
+        source | {"occurred_at": datetime.fromisoformat(source["occurred_at"])}
+        for source in case_input["sources"]
+    ]
+    fixed = summarize_recent(
+        after_evidence["observations"],
+        datetime.fromisoformat(case_input["fixture_time"]),
+        sources=sources,
+    )
+    assert len(fixed["groups"]) == 1
+    group = fixed["groups"][0]
+    assert group["observation_refs"][0]["id"] == expected["baseline_observation_id"]
+    assert {key: group["measures"]["accuracy"][key] for key in expected["baseline_accuracy"]} == (
+        expected["baseline_accuracy"]
+    )
+
+
 def test_activity_independence_frozen_revisions_and_old_history(intake):
     client, learner = intake
     base = f"/learners/{learner}"
@@ -183,6 +302,108 @@ def test_activity_independence_frozen_revisions_and_old_history(intake):
     )
     assert client.post(base + "/activities", json=checked).status_code == 200
     assert len(client.get(base + "/evidence").json()["observations"]) == 1
+
+
+def test_private_learner_fixture_denies_foreign_source_access(database, caplog, capsys):
+    caplog.set_level(logging.INFO, logger="tutor_copilot")
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-LEARNER-ACCESS-01.json"
+    item = json.loads(path.read_text())
+    tutors = item["input"]["fixture_state"]["tutors"]
+    expected = item["expectedOutput"]
+    migrate(database)
+    with authenticated(database, UUID(tutors[0]["id"])) as first:
+        with authenticated(database, UUID(tutors[1]["id"])) as second:
+            clients = [first, second]
+            bases = []
+            for client, tutor in zip(clients, tutors, strict=True):
+                assert client.get("/auth/me").json()["tutor_id"] == tutor["id"]
+                response = client.post("/learners", json=tutor["learner_profile"])
+                assert response.status_code == 201
+                base = f"/learners/{response.json()['id']}"
+                bases.append(base)
+                assert client.post(base + "/sources", json=tutor["source"]).status_code == 200
+                own = client.get(base + f"/sources/{tutor['source']['id']}")
+                assert own.status_code == expected["own_source_http_status"]
+                assert own.json()["raw_text"] == tutor["private_canary"]
+
+            before = [
+                client.get(base + "/evidence").json()
+                for client, base in zip(clients, bases, strict=True)
+            ]
+
+            def request_count():
+                return sum(
+                    json.loads(record.metadata_line)["stage"] == "request"
+                    for record in caplog.records
+                    if record.name == "tutor_copilot"
+                    and isinstance(getattr(record, "metadata_line", None), str)
+                )
+
+            requests_before_denials = request_count()
+            for index, client in enumerate(clients):
+                other = 1 - index
+                source_id = tutors[other]["source"]["id"]
+                paths = [
+                    bases[other] + f"/sources/{source_id}",
+                    bases[other] + "/evidence",
+                    bases[other] + "/context",
+                    bases[index] + f"/sources/{source_id}",
+                ]
+                responses = [client.get(path) for path in paths]
+                for kind, collection in (
+                    ("observation", "observations"),
+                    ("activity", "activities"),
+                ):
+                    assert tutors[index][f"foreign_{kind}"]["source_id"] == source_id
+                    response = client.post(
+                        bases[index] + f"/{collection}", json=tutors[index][f"foreign_{kind}"]
+                    )
+                    assert response.status_code == expected["foreign_write_http_status"]
+                    responses.append(response)
+                for response in responses:
+                    assert response.status_code == expected["foreign_access_http_status"]
+                    assert response.headers["Cache-Control"] == expected["cache_control"]
+                    assert all(tutor["private_canary"] not in response.text for tutor in tutors)
+            assert request_count() - requests_before_denials >= 12
+            after = [
+                client.get(base + "/evidence").json()
+                for client, base in zip(clients, bases, strict=True)
+            ]
+            assert after == before
+            assert all(
+                evidence["observations"] == [] and evidence["activities"] == []
+                for evidence in after
+            )
+            for index, client in enumerate(clients):
+                tutor = tutors[index]
+                for kind, collection in (
+                    ("observation", "observations"),
+                    ("activity", "activities"),
+                ):
+                    payload = tutor[f"foreign_{kind}"] | {"source_id": tutor["source"]["id"]}
+                    response = client.post(bases[index] + f"/{collection}", json=payload)
+                    assert response.status_code == expected["own_source_write_http_status"]
+            for index, client in enumerate(clients):
+                tutor = tutors[index]
+                evidence = client.get(bases[index] + "/evidence").json()
+                for kind, collection in (
+                    ("observation", "observations"),
+                    ("activity", "activities"),
+                ):
+                    rows = evidence[collection]
+                    assert len(rows) == expected["own_source_observation_and_activity_count"]
+                    assert rows[0]["id"] == tutor[f"foreign_{kind}"]["id"]
+                    assert rows[0]["source_id"] == tutor["source"]["id"]
+    lines = [
+        record.metadata_line
+        for record in caplog.records
+        if record.name == "tutor_copilot"
+        and isinstance(getattr(record, "metadata_line", None), str)
+    ]
+    assert sum(json.loads(line)["stage"] == "request" for line in lines) >= 12
+    captured = capsys.readouterr()
+    for tutor in tutors:
+        assert tutor["private_canary"] not in captured.out + captured.err + "".join(lines)
 
 
 def test_every_learner_operation_is_owned_and_csrf_protected(intake, database):

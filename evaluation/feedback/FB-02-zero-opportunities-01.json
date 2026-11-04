@@ -1,0 +1,179 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "extract_feedback_candidates",
+      "learner_ref": "synthetic-learner-fb-02-zero@1",
+      "selected_transcript_ref": "synthetic-transcript-fb-02-zero@1",
+      "target_subskill": "present_perfect_vs_past_simple",
+      "target_form": "present_perfect",
+      "task_ref": "synthetic-fb02-zero-open-update@1"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb-02-zero@1",
+      "owner_ref": "synthetic-tutor-fb-02-zero@1",
+      "learner_ref": "synthetic-learner-fb-02-zero@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {
+        "revision": 1,
+        "level": "B1",
+        "status": "provisional",
+        "recorded_at": "2026-10-30T09:00:00Z"
+      },
+      "goals": [
+        "Give clear updates about a software project."
+      ],
+      "recent_observations": [],
+      "activity_fact_revisions": [],
+      "task_context": {
+        "task_ref": "synthetic-fb02-zero-open-update@1",
+        "task_type": "open_spoken_update",
+        "assistance": "unknown",
+        "measurement_definition": "The broader subskill contrasts present perfect with past simple. Attempted accuracy counts attempted present-perfect forms; required use counts contexts requiring present perfect; avoidance counts contexts where present perfect is inappropriate and past simple is appropriate.",
+        "recording_scope": "The selected transcript covers this complete short prompt and its recorded response. Silence is recorded as an event, not an inferred reason for the learner's choice."
+      }
+    },
+    "sources": [
+      {
+        "ref": "synthetic-transcript-fb-02-zero@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "learner_ref": "synthetic-learner-fb-02-zero@1",
+        "owner_ref": "synthetic-tutor-fb-02-zero@1",
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "speaker_annotations_confirmed": true,
+        "speaker_annotations_confirmed_at": "2026-10-31T10:00:00Z",
+        "segments": [
+          {
+            "id": "fb02-zero-t1",
+            "speaker": "tutor",
+            "text": "Tell me one thing about your project in any suitable way. You may skip this question if you prefer."
+          },
+          {
+            "id": "fb02-zero-l1",
+            "speaker": "learner",
+            "event": "silence",
+            "text": ""
+          },
+          {
+            "id": "fb02-zero-t2",
+            "speaker": "tutor",
+            "text": "That is fine. As an example, I have completed two checks."
+          }
+        ]
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_source_refs": [
+      "synthetic-transcript-fb-02-zero@1"
+    ],
+    "candidate_findings": [],
+    "candidate_counts": {
+      "attempted_accuracy": {
+        "correct": 0,
+        "opportunities": 0,
+        "rate": null
+      },
+      "required_use": {
+        "correct": 0,
+        "opportunities": 0,
+        "rate": null
+      },
+      "appropriate_avoidance": {
+        "correct": 0,
+        "opportunities": 0,
+        "rate": null
+      }
+    },
+    "excluded_from_counts": [
+      {
+        "learner_segment_ref": "fb02-zero-l1",
+        "prompt_segment_ref": "fb02-zero-t1",
+        "reason": "The optional open prompt and recorded silence provide no observable attempted form or context requiring or excluding the target. Silence alone is not a grammar error."
+      }
+    ],
+    "tutor_segment_refs_not_learner_attempts": [
+      "fb02-zero-t1",
+      "fb02-zero-t2"
+    ],
+    "selected_observation_refs": [],
+    "selected_history_refs": [],
+    "required_qualifications": [
+      "Zero observed opportunities leave these rates unknown; they are not zero-percent performance or evidence of ability.",
+      "The tutor's example is not a learner response. The transcript does not establish why the learner was silent or whether the learner can produce the target form.",
+      "These are draft transcript-derived candidate counts, not saved tutor-confirmed observations."
+    ],
+    "prohibited_claims": [
+      "grammar error from silence",
+      "learner attempted or correctly used the tutor's example",
+      "zero-percent performance",
+      "mastery",
+      "pronunciation ability",
+      "listening ability",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": [
+      "confirmed performance observations",
+      "activity facts",
+      "preferences"
+    ],
+    "terminal_state": "extraction_only",
+    "reached_stages": [
+      "extraction"
+    ],
+    "unreached_stage_reasons": {
+      "source_context": "The transcript and synthetic access state are supplied to this isolated extraction item; actual authorization and freezing are separate.",
+      "subskill_analysis": "No confirmed observation or trend calculation is requested.",
+      "composition": "No feedback prose is requested.",
+      "validation": "No feedback draft is supplied.",
+      "review_revision": "No feedback draft or tutor decision is supplied.",
+      "end_to_end": "This is an isolated extraction item, not a complete feedback job."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-02.zero-opportunities",
+    "family_id": "FB-02",
+    "variant_id": "FB-02.zero-opportunities",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "extraction",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "speaker_attribution",
+      "zero_denominator",
+      "invented_opportunity",
+      "silence_as_error",
+      "evidence_write"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-02.zero-opportunities@1",
+      "attribution": "Transcript and task prompt authored for this repository; no external material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-extraction-zero-1",
+    "split": "development"
+  }
+}

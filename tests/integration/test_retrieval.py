@@ -4,10 +4,13 @@ import asyncio
 import copy
 import hashlib
 import json
+import logging
+from pathlib import Path
 from uuid import UUID, uuid4
 
 import pytest
 from conftest import migrate
+from pydantic import ValidationError
 from redis import Redis
 from redis.asyncio import Redis as AsyncRedis
 from sqlalchemy import create_engine as admin_engine
@@ -20,6 +23,7 @@ from test_materials import material
 from tutor_copilot.db import create_engine
 from tutor_copilot.embeddings import CONFIG_REVISION, DIMENSIONS, LocalEmbeddings
 from tutor_copilot.evidence import tenant_transaction
+from tutor_copilot.materials import MaterialWrite
 from tutor_copilot.retrieval import Objective, build_search
 
 
@@ -53,6 +57,265 @@ def search(client, data):
     response = client.post("/teaching-search", json=data)
     assert response.status_code == 200, response.text
     return response.json()
+
+
+def test_retrieval_fixture_against_http_boundary(bank):
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-RETRIEVAL-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    access = case_input["fixture_state"]["access"]
+    assert bank.get("/auth/me").json()["tutor_id"] == access["acting_tutor_id"]
+    assert access["asset_owner_id"] == access["acting_tutor_id"]
+    assert access["visibility"] == "private"
+    for asset in case_input["fixture_state"]["assets"]:
+        response = bank.post("/teaching-assets", json=asset)
+        assert response.status_code == 200
+        assert response.json() == {"id": asset["id"], "revision": 1}
+    result = search(bank, case_input["task_request"])
+    expected = item["expectedOutput"]
+    assert result["status"] == expected["status"]
+    candidate_ids = [row["id"] for row in result["candidates"]]
+    assert candidate_ids == expected["candidate_ids"]
+    assert set(candidate_ids).isdisjoint(expected["excluded_ids"])
+    assert all(row["reviewed_by"] == access["asset_owner_id"] for row in result["candidates"])
+
+
+@pytest.mark.parametrize(
+    ("name", "problem"),
+    [
+        ("listening-unavailable", "unavailable"),
+        ("listening-key-mismatch", "mismatch"),
+    ],
+)
+def test_listening_gap_fixture_against_http_boundary(bank, name, problem):
+    path = Path(__file__).resolve().parents[2] / f"evaluation/homework/HW-02.{name}-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    state = case_input["fixture_state"]
+    access = state["access"]
+    assert bank.get("/auth/me").json()["tutor_id"] == access["acting_tutor_id"]
+    assert access["asset_owner_id"] == access["acting_tutor_id"]
+    assert access["visibility"] == "private"
+    recording = state["assets"][0]["material"]["recording"]
+    if problem == "unavailable":
+        assert recording["available"] is False
+        assert recording["version"] == recording["criteria_recording_version"]
+    else:
+        assert recording["available"] is True
+        assert recording["version"] != recording["criteria_recording_version"]
+    for asset in state["assets"]:
+        response = bank.post("/teaching-assets", json=asset)
+        assert response.status_code == 200
+        assert response.json() == {"id": asset["id"], "revision": 1}
+
+    def check_search(expected):
+        response = bank.post("/teaching-search", json=case_input["task_request"])
+        assert response.status_code == expected["http_status"]
+        result = response.json()
+        assert result["status"] == expected["status"]
+        ids = [candidate["id"] for candidate in result["candidates"]]
+        assert ids == expected["candidate_ids"]
+        assert set(ids).isdisjoint(expected["excluded_ids"])
+        if expected["status"] == "gap":
+            assert result["reason"]
+
+    check_search(item["expectedOutput"]["initial_search"])
+    revision = state["alternative_revision"]
+    response = bank.post("/teaching-assets", json=revision)
+    assert response.status_code == 200
+    assert response.json() == {"id": revision["id"], "revision": 2}
+    check_search(item["expectedOutput"]["after_alternative_unavailable"])
+
+
+def test_domain_fixture_distinguishes_required_from_optional(bank):
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-DOMAIN-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    access = case_input["fixture_state"]["access"]
+    assert bank.get("/auth/me").json()["tutor_id"] == access["acting_tutor_id"]
+    assert access["asset_owner_id"] == access["acting_tutor_id"]
+    assert access["visibility"] == "private"
+    for asset in case_input["fixture_state"]["assets"]:
+        response = bank.post("/teaching-assets", json=asset)
+        assert response.status_code == 200
+        assert response.json() == {"id": asset["id"], "revision": 1}
+
+    requests = case_input["task_request"]
+    required, optional = requests["required_domain"], requests["optional_domain"]
+    assert required["domain_required"] is True
+    assert optional["domain_required"] is False
+    assert {k: v for k, v in required.items() if k != "domain_required"} == {
+        k: v for k, v in optional.items() if k != "domain_required"
+    }
+    for name in ("required_domain", "optional_domain"):
+        response = bank.post("/teaching-search", json=requests[name])
+        expected = item["expectedOutput"][name]
+        assert response.status_code == expected["http_status"]
+        result = response.json()
+        assert result["status"] == expected["status"]
+        ids = [candidate["id"] for candidate in result["candidates"]]
+        assert ids == expected["candidate_ids"]
+        assert set(ids).isdisjoint(expected["excluded_ids"])
+        assert bool(result["reason"]) is expected["reason_required"]
+        assert all(row["reviewed_by"] == access["asset_owner_id"] for row in result["candidates"])
+
+
+def test_outage_fixture_is_failure_not_content_gap(bank, monkeypatch, capsys):
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-RETRIEVAL-OUTAGE-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    access = case_input["fixture_state"]["access"]
+    assert bank.get("/auth/me").json()["tutor_id"] == access["acting_tutor_id"]
+    assert access["asset_owner_id"] == access["acting_tutor_id"]
+    assert access["visibility"] == "private"
+    for asset in case_input["fixture_state"]["assets"]:
+        response = bank.post("/teaching-assets", json=asset)
+        assert response.status_code == 200
+        assert response.json() == {"id": asset["id"], "revision": 1}
+
+    baseline = bank.post("/teaching-search", json=case_input["task_request"])
+    fault = case_input["fixture_state"]["fault"]
+    assert fault["component"] == "local_query_embedding"
+    assert fault["mode"] == "raise_runtime_error"
+    calls = []
+
+    async def unavailable(self, description, *, passage=False):
+        calls.append((description, passage))
+        raise RuntimeError(fault["synthetic_diagnostic_canary"])
+
+    monkeypatch.setattr(LocalEmbeddings, "embed", unavailable)
+    failed = bank.post("/teaching-search", json=case_input["task_request"])
+    expected = item["expectedOutput"]
+    assert baseline.status_code == expected["baseline"]["http_status"]
+    assert baseline.json()["status"] == expected["baseline"]["status"]
+    assert [row["id"] for row in baseline.json()["candidates"]] == expected["baseline"][
+        "candidate_ids"
+    ]
+    assert failed.status_code == expected["fault_response"]["http_status"]
+    for key in ("status", "candidates", "reason"):
+        assert failed.json()[key] == expected["fault_response"][key]
+    assert len(calls) == expected["embedding_query_calls"]
+    assert all(not passage for _, passage in calls)
+    assert fault["synthetic_diagnostic_canary"] not in failed.text
+    captured = capsys.readouterr()
+    assert fault["synthetic_diagnostic_canary"] not in captured.out + captured.err
+
+
+def test_private_search_fixture_is_scoped_by_authenticated_tutor(
+    bank, database, monkeypatch, capsys, caplog
+):
+    caplog.set_level(logging.INFO, logger="tutor_copilot")
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-ACCESS-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    state = case_input["fixture_state"]
+    first, second = state["tutors"]
+    assert state["visibility"] == "private"
+    assert bank.get("/auth/me").json()["tutor_id"] == first["id"]
+    with authenticated(database, SECOND) as other:
+        assert other.get("/auth/me").json()["tutor_id"] == second["id"]
+        for client, tutor in ((bank, first), (other, second)):
+            response = client.post("/teaching-assets", json=tutor["asset"])
+            assert response.status_code == 200
+            assert response.json() == {"id": tutor["asset"]["id"], "revision": 1}
+
+        calls = []
+        original = LocalEmbeddings.embed
+
+        async def capture(self, description, *, passage=False):
+            calls.append((description, passage))
+            return await original(self, description, passage=passage)
+
+        monkeypatch.setattr(LocalEmbeddings, "embed", capture)
+        forged = [
+            bank.post("/teaching-search", json=case_input["task_request"] | override)
+            for override in state["forged_overrides"]
+        ]
+        calls_before_valid = len(calls)
+        first_result = bank.post("/teaching-search", json=case_input["task_request"])
+        second_result = other.post("/teaching-search", json=case_input["task_request"])
+        first_foreign = bank.get(f"/teaching-assets/{second['asset']['id']}")
+        second_foreign = other.get(f"/teaching-assets/{first['asset']['id']}")
+
+    expected = item["expectedOutput"]
+    assert [response.status_code for response in forged] == expected["forged_request_statuses"]
+    assert all(
+        tutor["private_canary"] not in response.text
+        for response in forged
+        for tutor in state["tutors"]
+    )
+    assert calls_before_valid == expected["embedding_calls_before_valid_search"]
+    for response, foreign, own_tutor, foreign_tutor, check in (
+        (first_result, first_foreign, first, second, expected["searches"][0]),
+        (second_result, second_foreign, second, first, expected["searches"][1]),
+    ):
+        assert check["acting_tutor_id"] == own_tutor["id"]
+        assert response.status_code == 200 and response.json()["status"] == check["status"]
+        assert [row["id"] for row in response.json()["candidates"]] == check["candidate_ids"]
+        assert own_tutor["private_canary"] in response.text
+        assert foreign_tutor["private_canary"] not in response.text
+        assert foreign.status_code == check["foreign_asset_http_status"]
+        assert foreign_tutor["private_canary"] not in foreign.text
+    assert len(calls) == expected["valid_query_embedding_calls"]
+    assert all(not passage for _, passage in calls)
+    for description, _ in calls:
+        assert all(tutor["private_canary"] not in description for tutor in state["tutors"])
+    captured = capsys.readouterr()
+    metadata_lines = [
+        record.metadata_line
+        for record in caplog.records
+        if record.name == "tutor_copilot"
+        and isinstance(getattr(record, "metadata_line", None), str)
+    ]
+    stages = [json.loads(line)["stage"] for line in metadata_lines]
+    assert stages.count("request") >= 8
+    assert stages.count("retrieval") == 2
+    for tutor in state["tutors"]:
+        assert tutor["private_canary"] not in captured.out + captured.err + "".join(metadata_lines)
+
+
+def test_contrast_fixture_reports_unsupported_positive_form_target(bank, monkeypatch):
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-RETRIEVAL-CONTRAST-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    access = case_input["fixture_state"]["access"]
+    assert bank.get("/auth/me").json()["tutor_id"] == access["acting_tutor_id"]
+    calls = []
+    original = LocalEmbeddings.embed
+
+    async def capture(self, description, *, passage=False):
+        calls.append((description, passage))
+        return await original(self, description, passage=passage)
+
+    monkeypatch.setattr(LocalEmbeddings, "embed", capture)
+    import_status = {}
+    import_errors = {}
+    for asset in case_input["fixture_state"]["assets"]:
+        response = bank.post("/teaching-assets", json=asset)
+        import_status[asset["id"]] = response.status_code
+        if response.status_code == 422:
+            import_errors[asset["id"]] = response.json()["detail"]
+    result = search(bank, case_input["task_request"])
+    expected = item["expectedOutput"]
+    assert import_status == expected["asset_import_http_status"]
+    assert result["status"] == expected["status"]
+    candidate_ids = [row["id"] for row in result["candidates"]]
+    assert candidate_ids == expected["candidate_ids"]
+    assert set(candidate_ids).isdisjoint(expected["excluded_ids"])
+    assert all(
+        import_status[identity] == 422 for identity in expected["rejected_before_search_ids"]
+    )
+    for identity in expected["rejected_before_search_ids"]:
+        assert import_errors[identity] == "Invalid request fields"
+        asset = next(row for row in case_input["fixture_state"]["assets"] if row["id"] == identity)
+        with pytest.raises(ValidationError) as invalid:
+            MaterialWrite.model_validate(asset)
+        assert any(error["loc"][-1] == "outcome" for error in invalid.value.errors())
+    assert len([call for call in calls if call[1]]) == 2
+    queries = [description for description, passage in calls if not passage]
+    assert len(queries) == 1
+    for label in expected["required_search_meaning"].values():
+        assert label in queries[0]
 
 
 def clone_version(settings, source, data, *, owner=FIRST):

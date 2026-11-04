@@ -1,0 +1,222 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "check_private_learner_source_access",
+      "access_context": "Each synthetic authenticated tutor acts only for their own learner. Foreign source references are adversarial attempts."
+    },
+    "fixture_state": {
+      "tutors": [
+        {
+          "id": "11111111-1111-4111-8111-111111111111",
+          "learner_ref": "synthetic-privacy-learner-first@1",
+          "learner_profile": {
+            "profile": {
+              "alias": "Synthetic privacy learner FIRST",
+              "adult_confirmed": true,
+              "learner_opt_in": true,
+              "upload_permission": true,
+              "assessment": {
+                "summary": "Tutor estimate",
+                "assessed_on": "2026-10-01",
+                "source": "tutor_estimate",
+                "level": "B1",
+                "uncertainty": "provisional"
+              },
+              "goals": [
+                "Choose an appropriate past form in a project update."
+              ],
+              "preferred_domains": [
+                "Engineering"
+              ]
+            }
+          },
+          "source": {
+            "id": "00000000-0000-4000-8000-000000000601",
+            "kind": "lesson",
+            "occurred_at": "2026-10-31T09:00:00Z",
+            "qualification": "tutor_notes",
+            "raw_text": "SYNTHETIC_FIRST_LEARNER_PRIVATE_CANARY"
+          },
+          "private_canary": "SYNTHETIC_FIRST_LEARNER_PRIVATE_CANARY",
+          "foreign_observation": {
+            "id": "00000000-0000-4000-8000-000000000603",
+            "source_id": "00000000-0000-4000-8000-000000000611",
+            "response_ref": "synthetic-privacy-response-0",
+            "subskill": "past-tense",
+            "task": "controlled",
+            "task_ref": "synthetic-privacy-task@1",
+            "assistance": "independent",
+            "confirmed": true,
+            "accuracy": {
+              "correct": 1,
+              "opportunities": 2
+            }
+          },
+          "foreign_activity": {
+            "id": "00000000-0000-4000-8000-000000000604",
+            "source_id": "00000000-0000-4000-8000-000000000611",
+            "activity_ref": "synthetic-privacy-activity-0",
+            "kind": "encounter",
+            "occurred_at": null,
+            "amount": null,
+            "purpose": "Synthetic reading",
+            "task": "input",
+            "task_ref": "synthetic-reading@1",
+            "assistance": "unknown",
+            "confirmed": true
+          }
+        },
+        {
+          "id": "22222222-2222-4222-8222-222222222222",
+          "learner_ref": "synthetic-privacy-learner-second@1",
+          "learner_profile": {
+            "profile": {
+              "alias": "Synthetic privacy learner SECOND",
+              "adult_confirmed": true,
+              "learner_opt_in": true,
+              "upload_permission": true,
+              "assessment": {
+                "summary": "Tutor estimate",
+                "assessed_on": "2026-10-01",
+                "source": "tutor_estimate",
+                "level": "B1",
+                "uncertainty": "provisional"
+              },
+              "goals": [
+                "Choose an appropriate past form in a project update."
+              ],
+              "preferred_domains": [
+                "Engineering"
+              ]
+            }
+          },
+          "source": {
+            "id": "00000000-0000-4000-8000-000000000611",
+            "kind": "lesson",
+            "occurred_at": "2026-10-31T09:00:00Z",
+            "qualification": "tutor_notes",
+            "raw_text": "SYNTHETIC_SECOND_LEARNER_PRIVATE_CANARY"
+          },
+          "private_canary": "SYNTHETIC_SECOND_LEARNER_PRIVATE_CANARY",
+          "foreign_observation": {
+            "id": "00000000-0000-4000-8000-000000000613",
+            "source_id": "00000000-0000-4000-8000-000000000601",
+            "response_ref": "synthetic-privacy-response-1",
+            "subskill": "past-tense",
+            "task": "controlled",
+            "task_ref": "synthetic-privacy-task@1",
+            "assistance": "independent",
+            "confirmed": true,
+            "accuracy": {
+              "correct": 1,
+              "opportunities": 2
+            }
+          },
+          "foreign_activity": {
+            "id": "00000000-0000-4000-8000-000000000614",
+            "source_id": "00000000-0000-4000-8000-000000000601",
+            "activity_ref": "synthetic-privacy-activity-1",
+            "kind": "encounter",
+            "occurred_at": null,
+            "amount": null,
+            "purpose": "Synthetic reading",
+            "task": "input",
+            "task_ref": "synthetic-reading@1",
+            "assistance": "unknown",
+            "confirmed": true
+          }
+        }
+      ],
+      "session_note": "The harness creates synthetic sessions; the fixture contains no credentials.",
+      "positive_control": "After foreign attempts leave evidence unchanged, repeat each payload using only the acting tutor learner's own source ID."
+    },
+    "sources": [
+      {
+        "id": "00000000-0000-4000-8000-000000000601",
+        "revision": 1,
+        "owner_ref": "11111111-1111-4111-8111-111111111111",
+        "learner_ref": "synthetic-privacy-learner-first@1",
+        "kind": "tutor_notes",
+        "available": true
+      },
+      {
+        "id": "00000000-0000-4000-8000-000000000611",
+        "revision": 1,
+        "owner_ref": "22222222-2222-4222-8222-222222222222",
+        "learner_ref": "synthetic-privacy-learner-second@1",
+        "kind": "tutor_notes",
+        "available": true
+      }
+    ]
+  },
+  "expectedOutput": {
+    "own_source_http_status": 200,
+    "foreign_access_http_status": 404,
+    "foreign_write_http_status": 404,
+    "cache_control": "no-store",
+    "evidence_unchanged": true,
+    "metadata_must_exclude_canaries": true,
+    "terminal_state": "source_access_checks_only",
+    "reached_stages": [
+      "source_context"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "No learner source extraction is requested.",
+      "subskill_analysis": "No metric calculation is requested.",
+      "retrieval": "No teaching material is searched.",
+      "adaptation": "No material is adapted.",
+      "composition": "No homework draft is supplied.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No tutor decision is supplied.",
+      "end_to_end": "This is an isolated intake access check, not a preparation job."
+    },
+    "prohibited_outcomes": [
+      "foreign_source_disclosure",
+      "foreign_source_observation_write",
+      "foreign_source_activity_write",
+      "private_source_in_captured_metadata"
+    ],
+    "own_source_write_http_status": 200,
+    "own_source_observation_and_activity_count": 1
+  },
+  "metadata": {
+    "case_id": "HW-LEARNER-ACCESS-01",
+    "family_id": "HW-LEARNER-ACCESS",
+    "revision": 1,
+    "job": "homework",
+    "stage": "source_context",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "critical",
+    "failure_categories": [
+      "foreign_learner_disclosure",
+      "foreign_source_reference",
+      "private_source_logging"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-LEARNER-ACCESS-01@1",
+      "attribution": "Two synthetic tutors, learners, source canaries and adversarial requests authored for this repository.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-learner-source-access-1",
+    "split": "development"
+  }
+}

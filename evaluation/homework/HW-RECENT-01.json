@@ -1,0 +1,145 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "summarize_recent"
+    },
+    "fixture_state": {
+      "observations": [
+        {
+          "id": "synthetic-observation-recent-1",
+          "revision": 1,
+          "source_id": "synthetic-lesson-recent-1",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 6,
+              "opportunities": 8
+            },
+            "required_use": {
+              "correct": 5,
+              "opportunities": 10
+            },
+            "avoidance": {
+              "correct": 3,
+              "opportunities": 4
+            }
+          },
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-10-31T09:15:00Z"
+        }
+      ],
+      "tutor_ref": "synthetic-tutor-recent-1",
+      "learner_ref": "synthetic-learner-recent-1",
+      "owner_ref": "synthetic-tutor-recent-1",
+      "adult_confirmed": true,
+      "processing_permission": true
+    },
+    "sources": [
+      {
+        "id": "synthetic-lesson-recent-1",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      }
+    ]
+  },
+  "expectedOutput": {
+    "source_ids": {
+      "lesson": [
+        "synthetic-lesson-recent-1"
+      ],
+      "homework": []
+    },
+    "observation_refs": [
+      {
+        "id": "synthetic-observation-recent-1",
+        "revision": 1,
+        "source_id": "synthetic-lesson-recent-1"
+      }
+    ],
+    "rates": {
+      "accuracy": {
+        "correct": 6,
+        "opportunities": 8,
+        "rate": 0.75
+      },
+      "required_use": {
+        "correct": 5,
+        "opportunities": 10,
+        "rate": 0.5
+      },
+      "avoidance": {
+        "correct": 3,
+        "opportunities": 4,
+        "rate": 0.75
+      }
+    },
+    "trend": "insufficient",
+    "maintenance_candidate": false,
+    "maintenance_confirmed": false,
+    "prohibited_claims": [
+      "mastery",
+      "forgetting",
+      "confirmed trend"
+    ],
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "Confirmed counts are supplied; response extraction is a separate boundary.",
+      "retrieval": "No teaching material is selected.",
+      "adaptation": "No teaching material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This is a deterministic recent-performance calculation, not a homework job."
+    },
+    "terminal_state": "analysis_only"
+  },
+  "metadata": {
+    "case_id": "HW-RECENT-01",
+    "family_id": "HW-RECENT",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "mixed_measures",
+      "unsupported_trend"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-RECENT-01@1",
+      "attribution": "Authored confirmed counts for this repository; no external teaching material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-recent-performance-1",
+    "split": "development"
+  }
+}

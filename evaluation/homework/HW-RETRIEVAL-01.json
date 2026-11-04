@@ -1,0 +1,176 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "route": "remediation",
+      "outcome": "choose_meaning",
+      "skills": [
+        "tense_choice"
+      ],
+      "confusion": "present_perfect_vs_past_simple",
+      "level": "B1",
+      "task": "controlled",
+      "modality": "text",
+      "response_type": "choice",
+      "domain": "project_updates",
+      "objective_ref": "00000000-0000-4000-8000-000000000003",
+      "use_cache": false,
+      "limit": 10
+    },
+    "fixture_state": {
+      "assets": [
+        {
+          "id": "00000000-0000-4000-8000-000000000001",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "choose_meaning",
+              "skills": [
+                "tense_choice"
+              ],
+              "confusion": "present_perfect_vs_past_simple",
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "general"
+            },
+            "source_ref": "synthetic-bank:contrast",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Choose: We [finished / have finished] the release yesterday.",
+            "instructions": "Choose the appropriate tense for a finished past time.",
+            "answer_key": "past simple",
+            "criteria": "Meaning fits a finished past time.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000002",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "remediation",
+              "outcome": "choose_meaning",
+              "skills": [
+                "articles"
+              ],
+              "confusion": "definite_vs_indefinite_article",
+              "level": "B1",
+              "task": "controlled",
+              "modality": "text",
+              "response_type": "choice",
+              "domain": "project_updates"
+            },
+            "source_ref": "synthetic-bank:article-distractor",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 5,
+            "content": "Choose an article: a release or the release.",
+            "instructions": "Choose the appropriate article.",
+            "answer_key": "Depends on context",
+            "criteria": "Use an article suitable for the context.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        }
+      ],
+      "access": {
+        "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+        "asset_owner_id": "11111111-1111-4111-8111-111111111111",
+        "visibility": "private"
+      }
+    },
+    "sources": [
+      {
+        "ref": "synthetic-bank:contrast@1",
+        "kind": "authored_test_material",
+        "available": true
+      },
+      {
+        "ref": "synthetic-bank:article-distractor@1",
+        "kind": "authored_test_material",
+        "available": true
+      }
+    ]
+  },
+  "expectedOutput": {
+    "status": "candidates",
+    "candidate_ids": [
+      "00000000-0000-4000-8000-000000000001"
+    ],
+    "excluded_ids": [
+      "00000000-0000-4000-8000-000000000002"
+    ],
+    "reached_stages": [
+      "retrieval"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "No learner source extraction is requested.",
+      "subskill_analysis": "The teaching objective is supplied directly.",
+      "adaptation": "No selected material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This is an isolated search, not a homework job."
+    },
+    "terminal_state": "retrieval_only"
+  },
+  "metadata": {
+    "case_id": "HW-RETRIEVAL-01",
+    "family_id": "HW-RETRIEVAL",
+    "revision": 1,
+    "job": "homework",
+    "stage": "retrieval",
+    "level": "B1",
+    "domain": "project updates",
+    "teaching_route": "remediation",
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "wrong_confusion",
+      "domain_only_match"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-RETRIEVAL-01@1",
+      "attribution": "Authored test material for this repository; not tutor-reviewed teaching content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-retrieval-1",
+    "split": "development"
+  }
+}

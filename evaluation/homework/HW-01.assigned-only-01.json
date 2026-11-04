@@ -1,0 +1,171 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "record_activity_and_inspect_context",
+      "learner_ref": "synthetic-activity-learner@1"
+    },
+    "fixture_state": {
+      "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+      "learner_ref": "synthetic-activity-learner@1",
+      "owner_tutor_id": "11111111-1111-4111-8111-111111111111",
+      "learner_profile": {
+        "profile": {
+          "alias": "Synthetic activity learner",
+          "adult_confirmed": true,
+          "learner_opt_in": true,
+          "upload_permission": true,
+          "assessment": {
+            "summary": "Tutor estimate",
+            "assessed_on": "2026-10-01",
+            "source": "tutor_estimate",
+            "level": "A2",
+            "uncertainty": "provisional"
+          },
+          "goals": [
+            "Understand a short everyday reading."
+          ],
+          "preferred_domains": [
+            "Everyday activities"
+          ]
+        }
+      },
+      "initial_observation": {
+        "id": "00000000-0000-4000-8000-000000000201",
+        "source_id": "00000000-0000-4000-8000-000000000200",
+        "response_ref": "synthetic-activity-baseline-response",
+        "subskill": "past-tense",
+        "task": "controlled",
+        "task_ref": "synthetic-activity-baseline-task",
+        "assistance": "independent",
+        "confirmed": true,
+        "accuracy": {
+          "correct": 4,
+          "opportunities": 5
+        }
+      },
+      "activity": {
+        "id": "00000000-0000-4000-8000-000000000402",
+        "source_id": "00000000-0000-4000-8000-000000000200",
+        "activity_ref": "synthetic-assigned-only-activity",
+        "kind": "assignment",
+        "occurred_at": null,
+        "amount": null,
+        "purpose": "Everyday reading",
+        "subskill": "reading",
+        "material_ref": "synthetic-everyday-reading@1",
+        "task": "input",
+        "task_ref": "synthetic-everyday-reading-task@1",
+        "assistance": "unknown",
+        "confirmed": true
+      },
+      "supplied_context": {
+        "approved_and_copied_material_ref": "synthetic-everyday-reading@1",
+        "assignment_confirmation": "The tutor separately confirmed assignment; no encounter or attempt is reported.",
+        "note": "These prior approval and copy facts are authored input, not observed workflow actions.",
+        "material_approved_at": "2026-10-30T15:00:00Z",
+        "material_copied_at": "2026-10-30T15:10:00Z",
+        "assignment_confirmed_at": "2026-10-31T10:15:00Z",
+        "confirmation_timestamp_note": "Authored fact; the current activity API stores confirmation status, not its time."
+      },
+      "baseline_confirmation": {
+        "observation_id": "00000000-0000-4000-8000-000000000201",
+        "revision": 1,
+        "confirmed_at": "2026-10-31T09:15:00Z",
+        "confirmed_by": "11111111-1111-4111-8111-111111111111",
+        "note": "Authored confirmation fact; the current API does not persist this timestamp."
+      }
+    },
+    "sources": [
+      {
+        "id": "00000000-0000-4000-8000-000000000200",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "qualification": "tutor_notes",
+        "raw_text": "Synthetic tutor lesson notes: a separate structured observation was confirmed; the tutor later confirmed assignment of the reading. No actual use was reported."
+      }
+    ]
+  },
+  "expectedOutput": {
+    "activity_revision": 1,
+    "activity_id": "00000000-0000-4000-8000-000000000402",
+    "source_id": "00000000-0000-4000-8000-000000000200",
+    "activity_kind": "assignment",
+    "activity_occurred_at": null,
+    "history_count": 1,
+    "observation_count": 1,
+    "baseline_observation_id": "00000000-0000-4000-8000-000000000201",
+    "baseline_accuracy": {
+      "correct": 4,
+      "opportunities": 5,
+      "rate": 0.8,
+      "trend": "insufficient"
+    },
+    "recent_performance_unchanged": true,
+    "exposure": "unknown",
+    "prohibited_claims": [
+      "inferred_attempt",
+      "invented_opportunities",
+      "mastery",
+      "forgetting"
+    ],
+    "prohibited_writes": [
+      "new_performance_observation",
+      "attempt",
+      "checked_outcome"
+    ],
+    "terminal_state": "activity_context_only",
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "The tutor-confirmed source and activity are supplied as structured input.",
+      "retrieval": "No teaching material is searched.",
+      "adaptation": "No material is adapted.",
+      "composition": "No homework draft is generated.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No current draft or tutor review action is supplied.",
+      "end_to_end": "This case observes intake and context only, not a complete homework job."
+    }
+  },
+  "metadata": {
+    "case_id": "HW-01.assigned-only",
+    "family_id": "HW-01",
+    "variant_id": "HW-01.assigned-only",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "A2",
+    "domain": "everyday activities",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "assignment_as_exposure",
+      "invented_performance"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-01.assigned-only@1",
+      "attribution": "Synthetic learner, tutor report, structured activity and counts authored for this repository.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-activity-context-1",
+    "split": "development"
+  }
+}

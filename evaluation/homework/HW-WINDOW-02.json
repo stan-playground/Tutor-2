@@ -1,0 +1,188 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "summarize_recent"
+    },
+    "fixture_state": {
+      "observations": [
+        {
+          "id": "synthetic-hw-window-02-lesson-observation-1",
+          "revision": 1,
+          "source_id": "synthetic-hw-window-02-lesson-1",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-10-31T09:15:00Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 3,
+              "opportunities": 5
+            }
+          }
+        },
+        {
+          "id": "synthetic-hw-window-02-lesson-observation-2",
+          "revision": 1,
+          "source_id": "synthetic-hw-window-02-lesson-2",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-08-03T12:15:00Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 4,
+              "opportunities": 5
+            }
+          }
+        },
+        {
+          "id": "synthetic-hw-window-02-lesson-observation-3",
+          "revision": 1,
+          "source_id": "synthetic-hw-window-02-lesson-3",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-08-03T12:14:59Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 5,
+              "opportunities": 5
+            }
+          }
+        }
+      ],
+      "tutor_ref": "synthetic-tutor-recent-1",
+      "learner_ref": "synthetic-learner-recent-1",
+      "owner_ref": "synthetic-tutor-recent-1",
+      "adult_confirmed": true,
+      "processing_permission": true
+    },
+    "sources": [
+      {
+        "id": "synthetic-hw-window-02-lesson-1",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      },
+      {
+        "id": "synthetic-hw-window-02-lesson-2",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-08-03T12:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      },
+      {
+        "id": "synthetic-hw-window-02-lesson-3",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-08-03T11:59:59Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1"
+      }
+    ]
+  },
+  "expectedOutput": {
+    "source_ids": {
+      "lesson": [
+        "synthetic-hw-window-02-lesson-1",
+        "synthetic-hw-window-02-lesson-2"
+      ],
+      "homework": []
+    },
+    "prohibited_claims": [
+      "mastery",
+      "forgetting",
+      "product-caused improvement"
+    ],
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "Confirmed counts are supplied; response extraction is a separate boundary.",
+      "retrieval": "No teaching material is selected.",
+      "adaptation": "No teaching material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This is a deterministic recent-performance calculation, not a homework job."
+    },
+    "terminal_state": "analysis_only",
+    "group_checks": {
+      "lesson": {
+        "observation_refs": [
+          {
+            "id": "synthetic-hw-window-02-lesson-observation-1",
+            "revision": 1,
+            "source_id": "synthetic-hw-window-02-lesson-1"
+          },
+          {
+            "id": "synthetic-hw-window-02-lesson-observation-2",
+            "revision": 1,
+            "source_id": "synthetic-hw-window-02-lesson-2"
+          }
+        ],
+        "accuracy": {
+          "correct": 7,
+          "opportunities": 10,
+          "rate": 0.7,
+          "trend": "insufficient"
+        },
+        "maintenance_candidate": false,
+        "maintenance_confirmed": false
+      }
+    }
+  },
+  "metadata": {
+    "case_id": "HW-WINDOW-02",
+    "family_id": "HW-NUMERIC",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "recent_window_selection"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-WINDOW-02@1",
+      "attribution": "Authored confirmed counts for this repository; no external teaching material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-recent-performance-1",
+    "split": "development"
+  }
+}
