@@ -1,0 +1,60 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________________ test_client_ids_are_scoped_to_each_learner __________________
+
+database = Settings(database_name='tc_test_63ced61b8f924044ad38b3f109b056c2')
+
+    def test_client_ids_are_scoped_to_each_learner(database):
+        migrate(database)
+        source = source_payload()
+        observed = observation(source)
+        fact = activity(source)
+        with authenticated(database, FIRST) as first:
+            learners = [first.post("/learners", json=profile()).json()["id"] for _ in range(2)]
+            for learner in learners:
+                for path, payload in (
+                    ("sources", source),
+                    ("observations", observed),
+                    ("activities", fact),
+                ):
+                    url = f"/learners/{learner}/{path}"
+                    saved = first.post(url, json=payload)
+>                   assert saved.status_code == 200, (learner, path, saved.json())
+E                   AssertionError: ('e16c46d4-796a-4502-8694-41abb7315bfa', 'sources', {'detail': 'Source identity already used'})
+E                   assert 409 == 200
+E                    +  where 409 = <Response [409 Conflict]>.status_code
+
+tests/integration/test_stage2r_identity.py:25: AssertionError
+________ test_evidence_preserves_exact_source_version_after_correction _________
+
+database = Settings(database_name='tc_test_c9fff20a804b4b43a72f4bd4d540d228')
+
+    def test_evidence_preserves_exact_source_version_after_correction(database):
+        migrate(database)
+        source = source_payload()
+        earlier = datetime.now(UTC) - timedelta(days=30)
+        source["occurred_at"] = earlier.isoformat()
+        with authenticated(database, FIRST) as client:
+            learner = client.post("/learners", json=profile()).json()["id"]
+            base = f"/learners/{learner}"
+            assert client.post(base + "/sources", json=source).status_code == 200
+            assert client.post(base + "/observations", json=observation(source)).status_code == 200
+            assert client.post(base + "/activities", json=activity(source)).status_code == 200
+            correction = source | {
+                "expected_revision": 1,
+                "occurred_at": datetime.now(UTC).isoformat(),
+            }
+            assert client.post(base + "/sources", json=correction).status_code == 200
+            evidence = client.get(base + "/evidence?history=true").json()
+            for collection in ("observations", "activities"):
+                row = evidence[collection][0]
+>               assert datetime.fromisoformat(row["source_date"]) == earlier
+E               AssertionError: assert datetime.datetime(2026, 11, 4, 21, 5, 49, 484250, tzinfo=datetime.timezone.utc) == datetime.datetime(2026, 10, 5, 21, 5, 49, 410756, tzinfo=datetime.timezone.utc)
+E                +  where datetime.datetime(2026, 11, 4, 21, 5, 49, 484250, tzinfo=datetime.timezone.utc) = <built-in method fromisoformat of type object at 0x1082bdbc8>('2026-11-04T21:05:49.484250Z')
+E                +    where <built-in method fromisoformat of type object at 0x1082bdbc8> = datetime.fromisoformat
+
+tests/integration/test_stage2r_identity.py:55: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_stage2r_identity.py::test_client_ids_are_scoped_to_each_learner
+FAILED tests/integration/test_stage2r_identity.py::test_evidence_preserves_exact_source_version_after_correction
+2 failed in 1.31s

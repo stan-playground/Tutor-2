@@ -1,0 +1,213 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "route": "fluency",
+      "outcome": "sustained_speech",
+      "skills": [
+        "fluency"
+      ],
+      "confusion": null,
+      "level": "B2",
+      "task": "fluency",
+      "modality": "speech",
+      "response_type": "performance",
+      "domain": "travel",
+      "objective_ref": "00000000-0000-4000-8000-000000000703",
+      "required_support": [
+        "planning_time"
+      ],
+      "max_minutes": 15,
+      "domain_required": true,
+      "use_cache": false,
+      "limit": 10
+    },
+    "fixture_state": {
+      "learner_situation": {
+        "learner_ref": "synthetic-fluency-learner@1",
+        "level": "B2",
+        "goal": "Practise telling an extended travel story in conversation.",
+        "confirmed_errors": [],
+        "note": "No visible error is supplied; the learner requests constructive speaking practice.",
+        "private_note": "SYNTHETIC_FLUENCY_PRIVATE_LEARNER_NOTE"
+      },
+      "assets": [
+        {
+          "id": "00000000-0000-4000-8000-000000000701",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "fluency",
+              "outcome": "sustained_speech",
+              "skills": [
+                "fluency"
+              ],
+              "confusion": null,
+              "level": "B2",
+              "task": "fluency",
+              "modality": "speech",
+              "response_type": "performance",
+              "domain": "travel"
+            },
+            "source_ref": "synthetic-bank:travel-speaking-fluency",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 8,
+            "support": [
+              "planning_time"
+            ],
+            "content": "Describe a real or imagined journey to a listener, including what happened and why it mattered to you.",
+            "instructions": "Plan notes for two minutes, tell the story for two minutes, review your notes for one minute, retell for two minutes, then reflect for one minute. You may pause, rephrase or use your notes.",
+            "answer_key": null,
+            "criteria": "Sustain an understandable message for the activity, connect the main events, and use pauses or reformulation to continue. Accept different plausible stories; do not require a particular accent or a fixed answer.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        },
+        {
+          "id": "00000000-0000-4000-8000-000000000702",
+          "material": {
+            "kind": "activity",
+            "target": {
+              "route": "discourse",
+              "outcome": "organized_report",
+              "skills": [
+                "discourse"
+              ],
+              "confusion": null,
+              "level": "B2",
+              "task": "discourse",
+              "modality": "text",
+              "response_type": "free_response",
+              "domain": "travel"
+            },
+            "source_ref": "synthetic-bank:travel-written-report",
+            "source_version": "1",
+            "rights": {
+              "basis": "owned",
+              "reference": "synthetic-test-author",
+              "attribution": "Synthetic fixture",
+              "storage": true,
+              "adaptation": true,
+              "delivery": true,
+              "restrictions": "Synthetic testing only"
+            },
+            "duration_minutes": 8,
+            "support": [
+              "planning_time"
+            ],
+            "content": "Write a short report comparing two ways to travel to a destination.",
+            "instructions": "Plan your points and write a short report with a recommendation.",
+            "answer_key": null,
+            "criteria": "Organize the report into clear sections and support a reasonable recommendation.",
+            "reviewed": true,
+            "teaching_material_confirmed": true
+          }
+        }
+      ],
+      "access": {
+        "acting_tutor_id": "11111111-1111-4111-8111-111111111111",
+        "asset_owner_id": "11111111-1111-4111-8111-111111111111",
+        "visibility": "private"
+      }
+    },
+    "sources": [
+      {
+        "ref": "synthetic-bank:travel-speaking-fluency@1",
+        "kind": "authored_test_material",
+        "revision": 1,
+        "available": true
+      },
+      {
+        "ref": "synthetic-bank:travel-written-report@1",
+        "kind": "authored_test_material",
+        "revision": 1,
+        "available": true
+      }
+    ]
+  },
+  "expectedOutput": {
+    "status": "candidates",
+    "candidate_ids": [
+      "00000000-0000-4000-8000-000000000701"
+    ],
+    "excluded_ids": [
+      "00000000-0000-4000-8000-000000000702"
+    ],
+    "query_embedding_calls": 1,
+    "required_query_meaning": [
+      "fluency",
+      "sustained_speech",
+      "speech"
+    ],
+    "prohibited_query_content": [
+      "SYNTHETIC_FLUENCY_PRIVATE_LEARNER_NOTE"
+    ],
+    "prohibited_claims": [
+      "invented learner error",
+      "pronunciation ability",
+      "proficiency gain"
+    ],
+    "terminal_state": "retrieval_only",
+    "reached_stages": [
+      "retrieval"
+    ],
+    "unreached_stage_reasons": {
+      "source_context": "The synthetic objective and ownership are supplied, not derived from a learner record.",
+      "extraction": "No learner evidence is extracted.",
+      "subskill_analysis": "The goal-led objective is supplied directly.",
+      "adaptation": "No material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No tutor decision is supplied.",
+      "end_to_end": "This is an isolated search, not a complete homework job."
+    }
+  },
+  "metadata": {
+    "case_id": "HW-GOAL-FLUENCY-01",
+    "family_id": "HW-GOAL-FLUENCY",
+    "revision": 1,
+    "job": "homework",
+    "stage": "retrieval",
+    "level": "B2",
+    "domain": "travel",
+    "teaching_route": "fluency",
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "wrong_purpose",
+      "invented_deficit",
+      "private_query_content"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-GOAL-FLUENCY-01@1",
+      "attribution": "Synthetic learner goal and authored teaching activities; no real learner or external teaching material.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-goal-fluency-retrieval-1",
+    "split": "development"
+  }
+}

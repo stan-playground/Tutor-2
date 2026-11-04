@@ -79,6 +79,18 @@ contains the full original case text associated with the hash.
    available after solving. The canaries are synthetic markers. The feedback
    case checks shared arithmetic only, not feedback-source authorization or
    generation.
+   For the possible-regression, completion and goal-led fluency cases, use
+   `B8 solve first` and the matching `B8 exercise` tabs before opening any B8
+   case or original JSON tab. Enter decisions in `Batch 8`. The fluency private
+   note is a synthetic marker; it is not a submitted learner record. The
+   workload-check recommendation is a draft expectation, not an observed
+   calculator output.
+   For the two feedback extraction drafts, use `B9 solve first` and the
+   matching exercise tabs before opening the case/JSON tabs; record decisions
+   in `Batch 9`. Both reviewers must review the critical FB-06 case. The
+   safety instruction already identifies the embedded instruction as untrusted
+   source text; record this exposure and do not claim blind classification of
+   that point. Assess the remaining learner findings independently.
 2. **Compare with the expected labels.** Read each expected fact and reason,
    including the source/observation IDs and revisions, expected outcome,
    prohibited claims and writes, and stage/stop reasons. Check whether the

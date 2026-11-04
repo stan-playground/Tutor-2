@@ -1,0 +1,337 @@
+{
+  "id": "HG-0012",
+  "title": "Learner-scoped evidence provenance and frozen context",
+  "tags": [],
+  "goal": "Preserve learner-scoped evidence identities, exact source provenance and an explicit frozen-context contract before downstream consumers exist.",
+  "rationale": "Global client IDs disclose collisions, source revisions are not attached to evidence, and unversioned contexts omit historical observations or retain invalid outcomes.",
+  "scope": "Stage 2R for synthetic development: independently reviewed forward migrations and application changes under the two Stage 1 repair backlogs. Keep server-generated learner IDs globally unique. Use learner-scoped client IDs, append-only source versions, database-enforced same-learner references, explicit safe legacy migration behavior, and a versioned context. Do not guess ambiguous provenance or erase shared data. Stage 3 remains blocked until the complete repair has real PostgreSQL checks and independent review. Source body omission is a separate restoration of HG-0003/HG-0007.",
+  "questions": [],
+  "depends_on": [],
+  "related_to": [
+    {
+      "id": "HG-0003",
+      "reason": "Restores and specifies durable learner evidence and frozen-context boundaries."
+    },
+    {
+      "id": "HG-0007",
+      "reason": "Preserves raw-source expiry and learner-data deletion."
+    }
+  ],
+  "operations": [
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0012-R1",
+        "title": "Learner-scoped identities and exact source provenance",
+        "statement": "Source, observation and activity client IDs are scoped to a globally unique server-generated learner ID. Preserve replay within that scope and do not reveal whether a foreign ID exists. Each evidence revision references its exact source revision using database-enforced same-learner keys; linked observations use the same learner and exact revision. Source versions retain original structured metadata and their body until its original expiry. A forward migration detects ambiguous provenance, invalid references or unsafe downgrade collisions and stops without guessing, merging or deleting records. Legacy frozen contexts require an explicit compatibility policy rather than inferred ownership or silently reinterpreting their shape. Application ownership checks and tutor-scoped RLS remain independently enforced for all learner tables; unset or foreign tutor context cannot read them. Owner deletion cascades through versions and evidence. For recent metrics, select each source session once using its current source-head date and kind, then retain each included evidence revision and its exact source-version metadata separately; source corrections do not create extra sessions or double-count evidence.",
+        "scenarios": [
+          {
+            "id": "HG-0012-S1",
+            "given": "Two learners of the same tutor and a learner of another tutor use identical source, observation and activity client IDs.",
+            "when": "Each tutor creates and replays their own records.",
+            "then": "All valid writes and replays succeed independently; foreign and nonexistent resources have indistinguishable responses and no foreign data is disclosed.",
+            "verification": "Real authenticated API and isolated PostgreSQL collision, replay and non-disclosure cases."
+          },
+          {
+            "id": "HG-0012-S2",
+            "given": "Two learners belong to one tutor and each owns sources and observations.",
+            "when": "A restricted-role database writer attempts a cross-learner source or observation reference.",
+            "then": "Composite database constraints reject the write without changing records.",
+            "verification": "Real restricted-role PostgreSQL inserts including same-tutor cross-learner references."
+          },
+          {
+            "id": "HG-0012-S3",
+            "given": "Evidence is confirmed against source revision 1 and that source is subsequently corrected to revision 2.",
+            "when": "Evidence history and old and new contexts are read.",
+            "then": "The evidence retains revision 1 metadata and exact references; existing frozen selections remain unchanged, and later evidence identifies its actual source version.",
+            "verification": "Real API and persisted source/evidence/frozen-context version comparisons."
+          },
+          {
+            "id": "HG-0012-S4",
+            "given": "Existing evidence has ambiguous source provenance or invalid cross-learner references, or scoped IDs collide during downgrade.",
+            "when": "The migration is attempted on an isolated database.",
+            "then": "It stops with a useful diagnostic and rolls back without guessing, silently deleting or merging records; unambiguous upgrade and downgrade preserve records.",
+            "verification": "Read-only isolated PostgreSQL audit of mismatched references before migration, followed by isolated upgrade, downgrade, collision and rollback assertions."
+          },
+          {
+            "id": "HG-0012-S5",
+            "given": "Several source versions contain raw bodies with different expiry deadlines.",
+            "when": "Time passes and retention cleanup runs.",
+            "then": "Each expired version becomes unavailable and is physically purged without deleting permitted structured evidence or extending another version's deadline.",
+            "verification": "Real PostgreSQL expiry guards and cleanup assertions across all versions."
+          },
+          {
+            "id": "HG-0012-S10",
+            "given": "A learner owns versioned sources, evidence, activities and frozen contexts under one tutor.",
+            "when": "An unset or foreign tutor reads each learner table, then the owner deletes the learner.",
+            "then": "RLS exposes no foreign rows, application authorization still rejects access, and the owner deletion cascades without cross-learner effects.",
+            "verification": "Restricted-role PostgreSQL reads plus real owner/foreign API deletion and cascade assertions."
+          },
+          {
+            "id": "HG-0012-S11",
+            "given": "Several confirmed evidence revisions reference different versions of one source whose head date or kind is corrected.",
+            "when": "Recent sessions and their measures are selected.",
+            "then": "Selection uses the current source head for the one stable session, applies the latest-four and 90-day rules once, retains each evidence revision exact source provenance and does not double-count or fabricate observations.",
+            "verification": "Real persistence and controlled-clock recent metric assertions across source corrections and 90-day boundaries."
+          }
+        ]
+      }
+    },
+    {
+      "action": "add",
+      "requirement": {
+        "id": "HG-0012-R2",
+        "title": "Versioned cumulative and frozen context",
+        "statement": "Current and frozen contexts have an explicitly identified schema. Preserve recent performance separately from bounded cumulative confirmed observations and activities, with exact evidence and source revisions and deterministic selection coverage. A numeric checked outcome is current only when its exact referenced observation is the current confirmed, nonwithdrawn revision; a pending correction keeps the prior confirmed reference, while a confirmed correction or withdrawal makes the old outcome stale for new contexts. Existing frozen selections are immutable and source availability resolves at read time. Consumers reject unknown context versions. Legacy snapshots are preserved and handled explicitly without representing them as newly complete contexts. The current schema exposes schema_version, learner/profile revision, as_of and selection; recent remains separate from history.observations and history.activities, with exact references and per-type matching, selected, omitted and limit coverage. An existing unversioned frozen snapshot stays immutable and is returned through an explicitly marked legacy version 0 reader using only its stored references; source availability is resolved dynamically. Missing or ambiguous references cause a clear unavailable result rather than a guessed revision. New snapshots use the new schema and unknown versions are rejected. For each observation, cumulative history selects the latest confirmed revision; an unconfirmed correction leaves the previous confirmed, nonwithdrawn revision visible, and a confirmed withdrawal removes it from new cumulative performance.",
+        "scenarios": [
+          {
+            "id": "HG-0012-S6",
+            "given": "A confirmed observation is 120 days old and recent counts have no qualifying evidence.",
+            "when": "A context is built and frozen.",
+            "then": "The observation and exact source revision appear in cumulative history but not recent rates or denominators, and coverage counts describe selected and omitted items.",
+            "verification": "Real intake and fixed-clock persisted context boundary with exact references and counts."
+          },
+          {
+            "id": "HG-0012-S7",
+            "given": "A checked outcome references a confirmed observation and a correction is pending, then confirmed or withdrawn.",
+            "when": "New contexts and a previously frozen context are read at each step.",
+            "then": "Pending changes retain the last confirmed outcome; confirmed correction or withdrawal excludes or marks the old outcome stale in new contexts, while the old frozen selection is unchanged.",
+            "verification": "Real PostgreSQL/API revision and frozen-context lifecycle cases."
+          },
+          {
+            "id": "HG-0012-S8",
+            "given": "History exceeds the configured selection limits, contains unconfirmed or withdrawn records, or has unknown dates and amounts.",
+            "when": "The context is built repeatedly.",
+            "then": "Selections and separate observation/activity coverage counts are deterministic, preserve unknowns and never invent opportunities, mastery or forgetting. A pending correction retains the last confirmed nonwithdrawn observation; a confirmed withdrawal removes that observation from new cumulative performance.",
+            "verification": "Controlled persisted boundary, limit, confirmation and unknown-field cases. Exercise pending correction and confirmed withdrawal through persisted observation revisions."
+          },
+          {
+            "id": "HG-0012-S9",
+            "given": "A stored context has the prior unversioned format or an unsupported schema version.",
+            "when": "A consumer reads it.",
+            "then": "The old selection is returned as explicitly marked legacy version 0, with source availability resolved from stored exact references; a missing or ambiguous reference is unavailable without inventing data, and an unsupported version is rejected.",
+            "verification": "Persisted legacy-context compatibility and unknown-version rejection cases."
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HG-0012-T1",
+      "description": "Implement and independently review safe forward migration and scoped source/evidence identities with exact provenance.",
+      "done": false
+    },
+    {
+      "id": "HG-0012-T2",
+      "description": "Implement and independently review versioned cumulative and frozen-context behavior and its legacy policy.",
+      "done": false
+    },
+    {
+      "id": "HG-0012-T3",
+      "description": "Run full real isolation, provenance, migration, expiry and context checks and independent whole-repair review.",
+      "done": false
+    }
+  ],
+  "checks": [
+    {
+      "id": "HG-0012-C1",
+      "action": "Create two learners under one tutor and one under another; write and replay matching source, observation and activity IDs.",
+      "file": "tests/integration/test_stage2r_identity.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/evidence.py",
+        "src/tutor_copilot/intake.py",
+        "src/tutor_copilot/schemas.py",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "tests/integration/test_evidence.py",
+        "tests/integration/test_intake.py",
+        "uv.lock"
+      ],
+      "observation": "Every isolated write and replay succeeds. Separate checks must cover foreign/nonexistent response equivalence.",
+      "preparation": "Create disposable PostgreSQL database, migrate to head and authenticate two synthetic tutors.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S1"
+      ],
+      "selector": "test_client_ids_are_scoped_to_each_learner"
+    },
+    {
+      "id": "HG-0012-C2",
+      "action": "Write observation and activity against source revision 1; correct its source date; read evidence history.",
+      "file": "tests/integration/test_stage2r_identity.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/evidence.py",
+        "src/tutor_copilot/intake.py",
+        "src/tutor_copilot/schemas.py",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "tests/integration/test_evidence.py",
+        "tests/integration/test_intake.py",
+        "uv.lock"
+      ],
+      "observation": "Both records return the original source date and revision 1. Separate checks must cover old and new frozen contexts.",
+      "preparation": "Create disposable PostgreSQL database and authenticated synthetic learner.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S3"
+      ],
+      "selector": "test_evidence_preserves_exact_source_version_after_correction"
+    },
+    {
+      "id": "HG-0012-C3",
+      "action": "Upgrade, attempt restricted-role cross-learner insert and downgrade.",
+      "file": "tests/integration/test_stage2r_migration.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "uv.lock"
+      ],
+      "observation": "Exact source revision remains; foreign-key violation rejects cross-learner insert; downgrade preserves legacy rows.",
+      "preparation": "Seed a source and observation under one learner, plus a second learner under the same tutor.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S2",
+        "HG-0012-S4"
+      ],
+      "selector": "test_migration_preserves_unambiguous_data_and_enforces_same_learner"
+    },
+    {
+      "id": "HG-0012-C4",
+      "action": "Attempt the upgrade.",
+      "file": "tests/integration/test_stage2r_migration.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "uv.lock"
+      ],
+      "observation": "Upgrade fails with ambiguity diagnostic and leaves the old rows and version unchanged.",
+      "preparation": "Seed evidence for a corrected source under the old schema.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S4"
+      ],
+      "selector": "test_migration_stops_without_guessing_ambiguous_provenance"
+    },
+    {
+      "id": "HG-0012-C5",
+      "action": "Attempt downgrade to 0005.",
+      "file": "tests/integration/test_stage2r_migration.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "uv.lock"
+      ],
+      "observation": "Downgrade rejects the collision and preserves both source versions and evidence.",
+      "preparation": "Upgrade unambiguous legacy data and add a second learner source with an identical client ID.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S4"
+      ],
+      "selector": "test_downgrade_refuses_colliding_scoped_ids_without_losing_data"
+    },
+    {
+      "id": "HG-0012-C6",
+      "action": "Read source versions with unset, foreign and owner tutor context; delete the learner as owner.",
+      "file": "tests/integration/test_stage2r_migration.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "uv.lock"
+      ],
+      "observation": "RLS hides rows in unset/foreign contexts; owner deletion removes their versions and observation only.",
+      "preparation": "Upgrade a source and observation belonging to a synthetic learner.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S10"
+      ],
+      "selector": "test_source_version_rls_and_owner_deletion_cascade"
+    },
+    {
+      "id": "HG-0012-C7",
+      "action": "Attempt restricted-role historical version mutation and inconsistent JSON activity references.",
+      "file": "tests/integration/test_stage2r_migration.py",
+      "inputs": [
+        "alembic.ini",
+        "migrations/env.py",
+        "migrations/versions/0001_vector.py",
+        "migrations/versions/0002_evidence.py",
+        "migrations/versions/0003_auth.py",
+        "migrations/versions/0004_materials.py",
+        "migrations/versions/0005_material_immutability.py",
+        "migrations/versions/0006_evidence_identity.py",
+        "pyproject.toml",
+        "src/tutor_copilot/settings.py",
+        "tests/integration/conftest.py",
+        "uv.lock"
+      ],
+      "observation": "Version update/delete and inconsistent JSON references are rejected without changing stored records.",
+      "preparation": "Upgrade data for two same-tutor learners and add a second source.",
+      "runner": "pytest",
+      "scenario_ids": [
+        "HG-0012-S2"
+      ],
+      "selector": "test_restricted_writer_cannot_mutate_versions_or_hide_json_references"
+    }
+  ],
+  "imports": {},
+  "baseline": {},
+  "scoped_baseline": true,
+  "created_at": 1793807800,
+  "archived": false,
+  "abandoned_reason": null
+}

@@ -50,6 +50,22 @@ Canaries are synthetic test markers. The tests observe local intake and shared
 arithmetic only, not a full homework or feedback job. Earlier tabs were not
 targeted while adding Batch 7.
 
+An eighth batch contains three ordinary drafts: a possible-regression alert,
+completion versus accuracy, and goal-led fluency retrieval. Use **B8 solve
+first** and the corresponding **B8 exercise** tabs before opening case/JSON
+tabs, then record decisions in **Batch 8**. The workload recommendation is an
+unexecuted draft label. The fluency private marker is synthetic and was not
+submitted as a learner record; the test observes retrieval only. Earlier tabs
+were not targeted while adding Batch 8.
+
+A ninth batch contains ordinary FB-01 and critical FB-06 feedback extraction
+drafts. Use **B9 solve first** and the matching exercise tabs before the
+case/JSON tabs; record decisions in **Batch 9**. Both reviewers review FB-06.
+The safety warning pre-shows that its embedded instruction is untrusted source
+text, so reviewers record that exposure and do not claim blind classification
+of that point. Other candidate findings can be assessed independently. These
+cases are synthetic and the feedback runtime has not been executed.
+
 - [Reviewer 1 workbook](https://docs.google.com/spreadsheets/d/19bL2AUKlSFJL4Obux4Q--ScUnUTdSnypLCs_cnxu_ko/edit)
 - [Reviewer 2 workbook](https://docs.google.com/spreadsheets/d/1w2bxtL2GhyMvYCOZnzlWYBSbR34_KYy1UHjW9hAWdoA/edit)
 - [Separate reviewer instructions](reviewer-instructions.md)
@@ -130,6 +146,22 @@ comments. The overview, solve-first and a representative input view were
 visually inspected; excessively tall frozen rows were corrected in both files
 and the representative views rechecked. This does not establish tutor access or
 completed review.
+
+For Batch 8, all 2,274 written values were read back across both workbooks,
+including exact original JSON; reviewer decision validation was checked. An
+independent readback confirmed the reviewer identities, case IDs, revisions,
+hashes and complete blind inputs without reading decisions or comments. A
+representative overview, solve-first and exercise view were visually inspected.
+This is a point-in-time handoff check, not proof of tutor access or review.
+
+For Batch 9, the author read back all written values and decision validation;
+an independent reviewer verified both workbooks' identities, exact original
+JSON, case IDs/revisions/hashes and every blind input field without reading
+reviewer decisions or comments. The initial warning revealed the untrusted-text
+classification; the correction explicitly marks that cue as pre-shown, and
+the independent reviewer rechecked it. Representative overview, solve-first
+and exercise views were visually inspected. This does not establish access,
+completed tutor review or application behavior.
 
 Langfuse annotation queues were considered first. The current documented queue
 operates on traces, observations or sessions, and no connected synthetic-only

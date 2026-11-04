@@ -19,9 +19,11 @@ async def source_metadata(connection: AsyncConnection, learner: UUID) -> list[di
     rows = (
         (
             await connection.execute(
-                text("""SELECT id,revision,kind,occurred_at,qualification,
-             (expires_at > now() AND raw_text IS NOT NULL) AS available
-             FROM sources WHERE learner_id=:id ORDER BY occurred_at DESC NULLS LAST,id"""),
+                text("""SELECT v.source_id AS id,v.revision,v.kind,v.occurred_at,v.qualification,
+             (v.expires_at > now() AND v.raw_text IS NOT NULL) AS available
+             FROM sources s JOIN source_versions v ON v.learner_id=s.learner_id
+               AND v.source_id=s.id AND v.revision=s.revision
+             WHERE s.learner_id=:id ORDER BY v.occurred_at DESC NULLS LAST,v.source_id"""),
                 {"id": learner},
             )
         )
@@ -109,10 +111,9 @@ async def resolve_availability(
     versions = (
         (
             await connection.execute(
-                text("""SELECT id,revision,
-        expires_at > now() AND raw_text IS NOT NULL AS available FROM sources WHERE learner_id=:id
-        UNION ALL SELECT source_id,revision,expires_at > now() AND raw_text IS NOT NULL
-        FROM source_history WHERE learner_id=:id"""),
+                text("""SELECT source_id AS id,revision,
+        expires_at > now() AND raw_text IS NOT NULL AS available
+        FROM source_versions WHERE learner_id=:id"""),
                 {"id": learner},
             )
         )

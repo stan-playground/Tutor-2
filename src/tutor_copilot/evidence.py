@@ -95,56 +95,74 @@ async def save_source(
     content["occurred_at"] = (
         source.occurred_at.astimezone(UTC).isoformat() if source.occurred_at else None
     )
-    fingerprint = hashlib.sha256(json.dumps(content, sort_keys=True).encode()).hexdigest()
+    raw_supplied = "raw_text" in source.model_fields_set
+    legacy_fingerprint = hashlib.sha256(json.dumps(content, sort_keys=True).encode()).hexdigest()
+    fingerprint = (
+        "v2:"
+        + hashlib.sha256(
+            json.dumps(
+                {"content": content, "raw_text_supplied": raw_supplied}, sort_keys=True
+            ).encode()
+        ).hexdigest()
+    )
     previous = (
         (
             await connection.execute(
-                text("SELECT learner_id,revision,fingerprint FROM sources WHERE id=:id"),
-                {"id": source.id},
+                text("""SELECT s.revision,v.fingerprint FROM sources s JOIN source_versions v
+                  ON v.learner_id=s.learner_id AND v.source_id=s.id AND v.revision=s.revision
+                  WHERE s.learner_id=:learner AND s.id=:id"""),
+                {"id": source.id, "learner": learner},
             )
         )
         .mappings()
         .first()
     )
     if previous:
-        if previous["learner_id"] != learner:
-            raise HTTPException(409, "Source identity already used")
         if (
             previous["fingerprint"] == fingerprint
-            and source.expected_revision == previous["revision"] - 1
-        ):
+            or (source.raw_text is not None and previous["fingerprint"] == legacy_fingerprint)
+        ) and source.expected_revision == previous["revision"] - 1:
             return {"id": str(source.id), "revision": previous["revision"]}
         if source.expected_revision != previous["revision"]:
             raise HTTPException(409, "Source revision changed")
         await connection.execute(
-            text("""INSERT INTO source_history
-            (source_id,learner_id,tutor_id,revision,kind,occurred_at,qualification,raw_text,
+            text("""INSERT INTO source_versions
+            (learner_id,source_id,revision,tutor_id,kind,occurred_at,qualification,raw_text,
              expires_at,fingerprint)
-            SELECT id,learner_id,tutor_id,revision,kind,occurred_at,qualification,raw_text,
-             expires_at,fingerprint FROM sources WHERE id=:id"""),
-            {"id": source.id},
-        )
-        await connection.execute(
-            text("""UPDATE sources SET revision=revision+1,kind=:kind,
-            occurred_at=:occurred,qualification=:qualification,raw_text=:raw,
-            expires_at=CASE WHEN raw_text IS NOT DISTINCT FROM :raw THEN expires_at
-                ELSE now()+interval '30 days' END,fingerprint=:fingerprint WHERE id=:id"""),
+            SELECT learner_id,source_id,revision+1,tutor_id,:kind,:occurred,:qualification,
+              CASE WHEN :raw_supplied THEN :raw ELSE raw_text END,
+              CASE WHEN NOT :raw_supplied OR raw_text IS NOT DISTINCT FROM :raw THEN expires_at
+                ELSE now()+interval '30 days' END,:fingerprint
+            FROM source_versions WHERE learner_id=:learner AND source_id=:id AND revision=:revision"""),
             {
                 "id": source.id,
+                "learner": learner,
+                "revision": previous["revision"],
                 "kind": source.kind,
                 "occurred": source.occurred_at,
                 "qualification": source.qualification,
                 "raw": source.raw_text,
+                "raw_supplied": raw_supplied,
                 "fingerprint": fingerprint,
             },
+        )
+        await connection.execute(
+            text("UPDATE sources SET revision=revision+1 WHERE learner_id=:learner AND id=:id"),
+            {"id": source.id, "learner": learner},
         )
     else:
         if source.expected_revision != 0:
             raise HTTPException(409, "Source revision changed")
         await connection.execute(
-            text("""INSERT INTO sources(id,learner_id,tutor_id,kind,occurred_at,qualification,
-                 raw_text,fingerprint) VALUES (:id,:learner,:tutor,:kind,:occurred,:qualification,
-                 :raw,:fingerprint)"""),
+            text("INSERT INTO sources(id,learner_id,tutor_id) VALUES (:id,:learner,:tutor)"),
+            {"id": source.id, "learner": learner, "tutor": tutor},
+        )
+        await connection.execute(
+            text("""INSERT INTO source_versions
+              (source_id,learner_id,tutor_id,revision,kind,occurred_at,qualification,
+               raw_text,expires_at,fingerprint)
+              VALUES (:id,:learner,:tutor,1,:kind,:occurred,:qualification,
+                :raw,now()+interval '30 days',:fingerprint)"""),
             {
                 "id": source.id,
                 "learner": learner,
@@ -166,16 +184,13 @@ async def read_source(
     row = (
         (
             await connection.execute(
-                text("""WITH versions AS (
-             SELECT id,revision,kind,occurred_at,qualification,raw_text,expires_at FROM sources
-               WHERE id=:id AND learner_id=:learner
-             UNION ALL SELECT source_id,revision,kind,occurred_at,qualification,raw_text,expires_at
-               FROM source_history WHERE source_id=:id AND learner_id=:learner)
-             SELECT id,revision,kind,occurred_at,qualification,
-             CASE WHEN expires_at > now() THEN raw_text ELSE NULL END AS raw_text,
-             (expires_at > now() AND raw_text IS NOT NULL) AS available
-             FROM versions WHERE CAST(:revision AS integer) IS NULL OR revision=:revision
-             ORDER BY revision DESC LIMIT 1"""),
+                text("""SELECT v.source_id AS id,v.revision,v.kind,v.occurred_at,v.qualification,
+             CASE WHEN v.expires_at > now() THEN v.raw_text ELSE NULL END AS raw_text,
+             (v.expires_at > now() AND v.raw_text IS NOT NULL) AS available
+             FROM source_versions v JOIN sources s
+               ON s.learner_id=v.learner_id AND s.id=v.source_id
+             WHERE v.source_id=:id AND v.learner_id=:learner
+             AND v.revision=COALESCE(CAST(:revision AS integer),s.revision)"""),
                 {"id": source, "learner": learner, "revision": revision},
             )
         )
@@ -191,7 +206,7 @@ async def save_revision(
     connection: AsyncConnection, learner: UUID, tutor: UUID, data: Observation | Activity
 ) -> dict[str, Any]:
     await lock_learner(connection, learner, tutor)
-    await read_source(connection, learner, data.source_id)
+    source = await read_source(connection, learner, data.source_id)
     table = "observations" if isinstance(data, Observation) else "activities"
     identity_fields = (
         ("response_ref", "subskill") if table == "observations" else ("activity_ref", "kind")
@@ -201,18 +216,16 @@ async def save_revision(
         (
             await connection.execute(
                 text(
-                    f"SELECT learner_id,revision,data FROM {table} WHERE id=:id "
+                    f"SELECT revision,data FROM {table} WHERE learner_id=:learner AND id=:id "
                     "ORDER BY revision DESC LIMIT 1"
                 ),
-                {"id": data.id},
+                {"id": data.id, "learner": learner},
             )
         )
         .mappings()
         .first()
     )
     current = previous["revision"] if previous else 0
-    if previous and previous["learner_id"] != learner:
-        raise HTTPException(409, "Evidence identity already used")
     # A retried identical correction returns its existing revision without another write.
     if previous and previous["data"] == payload and data.expected_revision == current - 1:
         return {"id": str(data.id), "revision": current}
@@ -235,10 +248,7 @@ async def save_revision(
     if duplicate:
         raise HTTPException(409, "Evidence already recorded under another identity")
     if isinstance(data, Observation):
-        kind = await connection.scalar(
-            text("SELECT kind FROM sources WHERE id=:id"), {"id": data.source_id}
-        )
-        if kind == "actual_use":
+        if source["kind"] == "actual_use":
             raise HTTPException(422, "Performance needs a lesson or homework source")
     elif data.observation_id is not None:
         linked = await connection.scalar(
@@ -248,18 +258,27 @@ async def save_revision(
         )
         if linked is None or data.kind != "checked_outcome":
             raise HTTPException(422, "Checked outcome needs an existing confirmed observation")
-    await connection.execute(
-        text(f"""INSERT INTO {table}(id,revision,learner_id,tutor_id,source_id,confirmed,data)
-             VALUES (:id,:revision,:learner,:tutor,:source,:confirmed,CAST(:data AS jsonb))"""),
-        {
+    parameters = {
             "id": data.id,
             "revision": current + 1,
             "learner": learner,
             "tutor": tutor,
             "source": data.source_id,
+            "source_revision": source["revision"],
             "confirmed": data.confirmed,
             "data": json.dumps(payload),
-        },
+        }
+    if isinstance(data, Activity):
+        parameters["observation_id"] = data.observation_id
+        parameters["observation_revision"] = data.observation_revision
+    extra_columns = ",observation_id,observation_revision" if isinstance(data, Activity) else ""
+    extra_values = ",:observation_id,:observation_revision" if isinstance(data, Activity) else ""
+    await connection.execute(
+        text(f"""INSERT INTO {table}
+             (id,revision,learner_id,tutor_id,source_id,source_revision,confirmed,data{extra_columns})
+             VALUES (:id,:revision,:learner,:tutor,:source,:source_revision,:confirmed,
+                     CAST(:data AS jsonb){extra_values})"""),
+        parameters,
     )
     await touch_learner(connection, learner)
     return {"id": str(data.id), "revision": current + 1}
@@ -278,10 +297,12 @@ async def current_records(
     rows = (
         (
             await connection.execute(
-                text(f"""SELECT {selection} r.id,r.revision,r.data,s.id AS source_id,
-             s.kind AS evidence_type,s.occurred_at AS source_date,s.qualification,
-             (s.expires_at > now() AND s.raw_text IS NOT NULL) AS source_available
-             FROM {table} r JOIN sources s ON s.id=r.source_id
+                text(f"""SELECT {selection} r.id,r.revision,r.data,v.source_id,
+             v.revision AS source_revision,v.kind AS evidence_type,
+             v.occurred_at AS source_date,v.qualification,
+             (v.expires_at > now() AND v.raw_text IS NOT NULL) AS source_available
+             FROM {table} r JOIN source_versions v ON v.learner_id=r.learner_id
+               AND v.source_id=r.source_id AND v.revision=r.source_revision
              WHERE r.learner_id=:learner{confirmation}
              ORDER BY r.id,r.revision DESC"""),
                 {"learner": learner},

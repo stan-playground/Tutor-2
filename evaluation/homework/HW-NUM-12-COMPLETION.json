@@ -1,0 +1,153 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "summarize_recent"
+    },
+    "fixture_state": {
+      "observations": [
+        {
+          "id": "synthetic-hw-num-12-completion-observation-1",
+          "revision": 1,
+          "source_id": "synthetic-hw-num-12-completion-homework-1",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-recent-1",
+          "confirmed_at": "2026-10-28T09:15:00Z",
+          "data": {
+            "subskill": "past-form-choice",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-comparable-task-1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 18,
+              "opportunities": 20
+            },
+            "completion": {
+              "correct": 1,
+              "opportunities": 4
+            }
+          }
+        }
+      ],
+      "tutor_ref": "synthetic-tutor-recent-1",
+      "learner_ref": "synthetic-learner-recent-1",
+      "owner_ref": "synthetic-tutor-recent-1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "measurement_context": "The four assigned activities all targeted past-form-choice with comparable controlled written practice demands, grouped under synthetic-comparable-task-1. The learner completed one activity. It contained 20 attempted target choices, of which 18 were correct; the other three activities have no observed answers. Completion counts activities, while accuracy counts choices within the completed activity."
+    },
+    "sources": [
+      {
+        "id": "synthetic-hw-num-12-completion-homework-1",
+        "revision": 1,
+        "kind": "homework",
+        "occurred_at": "2026-10-28T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-recent-1",
+        "owner_ref": "synthetic-tutor-recent-1",
+        "qualification": "homework_submission"
+      }
+    ]
+  },
+  "expectedOutput": {
+    "source_ids": {
+      "lesson": [],
+      "homework": [
+        "synthetic-hw-num-12-completion-homework-1"
+      ]
+    },
+    "observation_refs": [
+      {
+        "id": "synthetic-hw-num-12-completion-observation-1",
+        "revision": 1,
+        "source_id": "synthetic-hw-num-12-completion-homework-1"
+      }
+    ],
+    "trend": "insufficient",
+    "maintenance_candidate": false,
+    "maintenance_confirmed": false,
+    "prohibited_claims": [
+      "mastery",
+      "forgetting",
+      "tutor-confirmed maintenance",
+      "accuracy of 25 percent",
+      "completion of 90 percent",
+      "diagnosis or reason for noncompletion"
+    ],
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "extraction": "Confirmed counts are supplied; response extraction is a separate boundary.",
+      "retrieval": "No teaching material is selected.",
+      "adaptation": "No teaching material is adapted.",
+      "composition": "No homework draft is requested.",
+      "validation": "No generated draft is supplied.",
+      "review_revision": "No draft or tutor action is supplied.",
+      "end_to_end": "This is a deterministic recent-performance calculation, not a homework job."
+    },
+    "terminal_state": "analysis_only",
+    "measure_checks": {
+      "accuracy": {
+        "correct": 18,
+        "opportunities": 20,
+        "rate": 0.9,
+        "unknown_observations": 0,
+        "trend": "insufficient",
+        "trend_source_ids": [
+          "synthetic-hw-num-12-completion-homework-1"
+        ],
+        "possible_regression": false,
+        "maintenance_support": false
+      }
+    },
+    "completion_checks": {
+      "correct": 1,
+      "opportunities": 4,
+      "rate": 0.25,
+      "unknown_observations": 0
+    },
+    "required_qualifications": [
+      "The low activity completion rate and the accuracy among attempted choices are separate measures; neither establishes the reason for noncompletion or the learner\u2019s overall ability.",
+      "Completion below 0.5 calls for a workload check under PD-09; this is a draft expectation and the shared calculation does not emit or verify that recommendation."
+    ]
+  },
+  "metadata": {
+    "case_id": "HW-NUM-12-COMPLETION",
+    "family_id": "HW-NUMERIC",
+    "revision": 1,
+    "job": "homework",
+    "stage": "subskill_analysis",
+    "level": "B1",
+    "domain": "software project updates",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "completion_accuracy_conflation",
+      "unsupported_noncompletion_reason"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "HW-NUM-12-COMPLETION@1",
+      "attribution": "Authored confirmed counts for this repository; no external teaching material or real learner content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-recent-performance-1",
+    "split": "development"
+  }
+}

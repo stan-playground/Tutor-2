@@ -1,0 +1,227 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "extract_feedback_candidates",
+      "learner_ref": "synthetic-learner-fb04-uncertain@1",
+      "selected_transcript_ref": "synthetic-transcript-fb04-current@1",
+      "task_ref": "synthetic-fb04-morning-routine@1"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb04-uncertain@1",
+      "owner_ref": "synthetic-tutor-fb04-uncertain@1",
+      "learner_ref": "synthetic-learner-fb04-uncertain@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "permission_facts": {
+        "adult_confirmation": {
+          "confirmed": true,
+          "confirmed_at": "2026-06-01T08:00:00Z",
+          "confirmed_by": "synthetic-tutor-fb04-uncertain@1"
+        },
+        "learner_opt_in": {
+          "granted": true,
+          "recorded_at": "2026-06-01T08:05:00Z",
+          "learner_ref": "synthetic-learner-fb04-uncertain@1"
+        },
+        "tutor_upload_permission": {
+          "granted": true,
+          "recorded_at": "2026-06-01T08:10:00Z",
+          "tutor_ref": "synthetic-tutor-fb04-uncertain@1"
+        },
+        "note": "These are synthetic supplied facts; this isolated case does not execute authorization."
+      },
+      "assessment": {
+        "revision": 1,
+        "level": "A2",
+        "status": "provisional",
+        "recorded_at": "2026-10-01T09:00:00Z"
+      },
+      "goals": [
+        "Describe a morning routine in simple English."
+      ],
+      "task_context": {
+        "task_ref": "synthetic-fb04-morning-routine@1",
+        "task_type": "short_spoken_responses",
+        "coverage_note": "The available transcript covers this short exchange, not the entire lesson. The learner was prompted; no correction was given before the confirmed learner segment fb04-l1. One later speaker and part of another response remain unresolved. No countable opportunity annotation was confirmed for this task."
+      },
+      "retained_history": [
+        {
+          "id": "synthetic-fb04-old-encounter",
+          "revision": 1,
+          "source_ref": "synthetic-transcript-fb04-old@1",
+          "kind": "encounter",
+          "purpose": "morning routine reading",
+          "occurred_at": "2026-07-01T09:00:00Z",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb04-uncertain@1",
+          "confirmed_at": "2026-07-02T09:00:00Z",
+          "note": "A separately confirmed qualitative encounter record survives; the original transcript is expired and unavailable."
+        }
+      ],
+      "recent_observations": [],
+      "prior_homework_request": null
+    },
+    "sources": [
+      {
+        "ref": "synthetic-transcript-fb04-old@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "owner_ref": "synthetic-tutor-fb04-uncertain@1",
+        "learner_ref": "synthetic-learner-fb04-uncertain@1",
+        "recorded_at": "2026-07-01T09:00:00Z",
+        "expires_at": "2026-07-31T09:00:00Z",
+        "available": false,
+        "availability_reason": "expired",
+        "note": "Only source metadata remains; no historical transcript text or quotation is available."
+      },
+      {
+        "ref": "synthetic-transcript-fb04-current@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "owner_ref": "synthetic-tutor-fb04-uncertain@1",
+        "learner_ref": "synthetic-learner-fb04-uncertain@1",
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "available": true,
+        "speaker_annotations_confirmed": false,
+        "annotation_recorded_at": "2026-10-31T10:00:00Z",
+        "segments": [
+          {
+            "id": "fb04-t1",
+            "speaker": "tutor",
+            "speaker_status": "confirmed",
+            "text": "What time do you get up?"
+          },
+          {
+            "id": "fb04-l1",
+            "speaker": "learner",
+            "speaker_status": "confirmed",
+            "text": "I get up at seven."
+          },
+          {
+            "id": "fb04-t2",
+            "speaker": "tutor",
+            "speaker_status": "confirmed",
+            "text": "What do you eat for breakfast?"
+          },
+          {
+            "id": "fb04-u1",
+            "speaker": "unknown",
+            "speaker_status": "uncertain",
+            "possible_speakers": ["tutor", "learner"],
+            "text": "I eat toast."
+          },
+          {
+            "id": "fb04-t3",
+            "speaker": "tutor",
+            "speaker_status": "confirmed",
+            "text": "Tell me about your sister's morning."
+          },
+          {
+            "id": "fb04-l2",
+            "speaker": "learner",
+            "speaker_status": "confirmed",
+            "transcription_status": "partial",
+            "text": "She go[inaudible] to work."
+          }
+        ],
+        "count_annotation": {
+          "status": "uncertain",
+          "recorded_at": "2026-10-31T10:00:00Z",
+          "reason": "The unclear ending and unresolved speaker prevent reliable task counts; no numerator or denominator was confirmed."
+        }
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_source_refs": ["synthetic-transcript-fb04-current@1"],
+    "source_availability": {
+      "current_transcript": "available",
+      "historical_raw_transcript": "expired_unavailable"
+    },
+    "candidate_findings": [
+      {
+        "kind": "qualitative_strength_candidate",
+        "learner_segment_refs": ["fb04-l1"],
+        "prompt_segment_refs": ["fb04-t1"],
+        "finding": "In a prompted response the learner communicated a morning time: I get up at seven.",
+        "acceptable_alternatives": [
+          "The learner gave an understandable short answer about when they get up.",
+          "The learner communicated a time for getting up in this exchange."
+        ],
+        "status": "candidate_not_confirmed"
+      }
+    ],
+    "uncertain_segments": [
+      {
+        "segment_ref": "fb04-u1",
+        "reason": "The speaker is unresolved; do not attribute this response to the learner or tutor without confirmation."
+      },
+      {
+        "segment_ref": "fb04-l2",
+        "reason": "The ending is inaudible; the exact form and any error cannot be established from the partial transcript."
+      }
+    ],
+    "current_count_status": "unknown_unconfirmed",
+    "retained_history_refs": [
+      {"id": "synthetic-fb04-old-encounter", "revision": 1, "source_ref": "synthetic-transcript-fb04-old@1"}
+    ],
+    "historical_quotes": "unavailable",
+    "required_qualifications": [
+      "Use the available current transcript as the selected source; the older expired transcript cannot be quoted or reconstructed from the retained encounter record.",
+      "The confirmed learner response supports a limited qualitative candidate, not a confirmed performance observation or an overall proficiency finding.",
+      "The unknown speaker and partial ending require confirmation; do not invent who spoke, the missing wording, a numerator or denominator.",
+      "A retained encounter supplies exposure context only; it does not prove mastery, forgetting or a change in skill."
+    ],
+    "prohibited_claims": [
+      "learner or tutor attribution for fb04-u1 without confirmation",
+      "specific ending or definite error for fb04-l2",
+      "historical transcript quotation",
+      "confirmed current performance counts",
+      "trend or mastery from the retained encounter",
+      "pronunciation ability",
+      "listening ability",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": ["activity facts", "confirmed performance observations", "preferences"],
+    "terminal_state": "extraction_only",
+    "reached_stages": ["extraction"],
+    "unreached_stage_reasons": {
+      "source_context": "The available current transcript, historical metadata and synthetic access state are supplied; actual authorization and freezing are separate.",
+      "subskill_analysis": "No confirmed current counts or trend calculation are requested.",
+      "composition": "No feedback prose is requested.",
+      "validation": "No feedback draft is supplied.",
+      "review_revision": "No feedback draft or tutor decision is supplied.",
+      "end_to_end": "This is an isolated extraction draft, not a complete feedback job."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-04.uncertain-speaker-count",
+    "family_id": "FB-04",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "extraction",
+    "level": "A2",
+    "domain": "morning routines",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": ["uncertain_speaker", "uncertain_count", "expired_historical_source", "invented_quote", "unsupported_claim"],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-04.uncertain-speaker-count@1",
+      "attribution": "Synthetic tutor, learner, transcript, annotations and retained encounter authored for this repository; no real learner or external content.",
+      "rights": {"storage": true, "adaptation": true, "delivery": true}
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {"primary": null, "second": null},
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-uncertain-source-1",
+    "split": "development"
+  }
+}

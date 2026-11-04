@@ -96,6 +96,8 @@ def test_numeric_boundary_fixture_against_real_metrics(path: Path) -> None:
             "maintenance_support",
         }
         assert {key: group["measures"][name][key] for key in measure} == measure
+    if "completion_checks" in expected:
+        assert group["completion"] == expected["completion_checks"]
     assert group["trend"] == expected["trend"]
     assert group["maintenance_candidate"] == expected["maintenance_candidate"]
     assert group["maintenance_confirmed"] == expected["maintenance_confirmed"]

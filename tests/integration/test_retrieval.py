@@ -160,6 +160,52 @@ def test_domain_fixture_distinguishes_required_from_optional(bank):
         assert all(row["reviewed_by"] == access["asset_owner_id"] for row in result["candidates"])
 
 
+def test_goal_fluency_fixture_against_http_boundary(bank, monkeypatch):
+    path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-GOAL-FLUENCY-01.json"
+    item = json.loads(path.read_text())
+    case_input = item["input"]
+    state = case_input["fixture_state"]
+    access = state["access"]
+    assert bank.get("/auth/me").json()["tutor_id"] == access["acting_tutor_id"]
+    assert access["asset_owner_id"] == access["acting_tutor_id"]
+    assert access["visibility"] == "private"
+    assert state["learner_situation"]["confirmed_errors"] == []
+    for asset in state["assets"]:
+        response = bank.post("/teaching-assets", json=asset)
+        assert response.status_code == 200
+        assert response.json() == {"id": asset["id"], "revision": 1}
+
+    calls = []
+    original = LocalEmbeddings.embed
+
+    async def capture(self, description, *, passage=False):
+        calls.append((description, passage))
+        return await original(self, description, passage=passage)
+
+    monkeypatch.setattr(LocalEmbeddings, "embed", capture)
+    request = case_input["task_request"]
+    assert request["confusion"] is None
+    response = bank.post("/teaching-search", json=request)
+    assert response.status_code == 200
+    result = response.json()
+    expected = item["expectedOutput"]
+    assert result["status"] == expected["status"]
+    ids = [candidate["id"] for candidate in result["candidates"]]
+    assert ids == expected["candidate_ids"]
+    assert set(ids).isdisjoint(expected["excluded_ids"])
+    assert all(row["reviewed_by"] == access["asset_owner_id"] for row in result["candidates"])
+    selected = result["candidates"][0]["data"]
+    assert selected["target"] == state["assets"][0]["material"]["target"]
+    assert "planning_time" in selected["support"]
+    assert selected["duration_minutes"] <= request["max_minutes"]
+    assert len(calls) == expected["query_embedding_calls"]
+    description, passage = calls[0]
+    assert passage is False
+    assert all(phrase in description for phrase in expected["required_query_meaning"])
+    assert state["learner_situation"]["private_note"] in expected["prohibited_query_content"]
+    assert all(phrase not in description for phrase in expected["prohibited_query_content"])
+
+
 def test_outage_fixture_is_failure_not_content_gap(bank, monkeypatch, capsys):
     path = Path(__file__).resolve().parents[2] / "evaluation/homework/HW-RETRIEVAL-OUTAGE-01.json"
     item = json.loads(path.read_text())

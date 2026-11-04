@@ -1,0 +1,54 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____________ test_source_body_omission_clear_replacement_and_replay ____________
+
+intake = (<starlette.testclient.TestClient object at 0x10aeaaab0>, '3e170af4-9258-4372-8fa0-12e151654d48')
+database = Settings(database_name='tc_test_2603e66a8ccc426ba5bee80b48f79a62')
+
+    def test_source_body_omission_clear_replacement_and_replay(intake, database):
+        client, learner = intake
+        base = f"/learners/{learner}/sources"
+        source = add_source(client, learner)
+        admin = create_engine(database.database_url)
+        try:
+            with admin.connect() as connection:
+                original_expiry = connection.scalar(text("SELECT expires_at FROM sources"))
+    
+            omitted = {key: value for key, value in source.items() if key != "raw_text"}
+            omitted |= {"expected_revision": 1, "qualification": "transcript"}
+            saved = client.post(base, json=omitted)
+            assert saved.status_code == 200 and saved.json()["revision"] == 2
+            assert client.post(base, json=omitted).json()["revision"] == 2
+>           assert client.get(f"{base}/{source['id']}").json()["raw_text"] == source["raw_text"]
+E           AssertionError: assert None == 'PRIVATE_SYNTHETIC_SOURCE'
+
+tests/integration/test_stage2r_source.py:28: AssertionError
+_______________ test_ambiguous_legacy_body_retry_does_not_mutate _______________
+
+intake = (<starlette.testclient.TestClient object at 0x10af2bad0>, '76ff56c7-8b4c-432e-b5e7-a29cacd6da07')
+database = Settings(database_name='tc_test_178558ed1aa94ddb9bcc16301868c0c3')
+
+    def test_ambiguous_legacy_body_retry_does_not_mutate(intake, database):
+        client, learner = intake
+        base = f"/learners/{learner}/sources"
+        source = add_source(client, learner)
+        omitted = {key: value for key, value in source.items() if key != "raw_text"}
+        legacy = Source.model_validate(omitted)
+        content = legacy.model_dump(mode="json", exclude={"id", "expected_revision"})
+        content["occurred_at"] = legacy.occurred_at.astimezone(UTC).isoformat()
+        fingerprint = hashlib.sha256(json.dumps(content, sort_keys=True).encode()).hexdigest()
+        admin = create_engine(database.database_url)
+        try:
+            with admin.begin() as connection:
+                connection.execute(text("UPDATE sources SET fingerprint=:fingerprint"), {"fingerprint": fingerprint})
+>           assert client.post(base, json=omitted).status_code == 409
+E           AssertionError: assert 200 == 409
+E            +  where 200 = <Response [200 OK]>.status_code
+E            +    where <Response [200 OK]> = post('/learners/76ff56c7-8b4c-432e-b5e7-a29cacd6da07/sources', json={'id': '534ca989-b5fd-460e-bfdf-5eefe5f04be7', 'kind': 'lesson', 'occurred_at': '2026-11-04T15:55:36.508100+00:00', 'qualification': 'tutor_notes'})
+E            +      where post = <starlette.testclient.TestClient object at 0x10af2bad0>.post
+
+tests/integration/test_stage2r_source.py:68: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_stage2r_source.py::test_source_body_omission_clear_replacement_and_replay
+FAILED tests/integration/test_stage2r_source.py::test_ambiguous_legacy_body_retry_does_not_mutate
+2 failed in 1.49s

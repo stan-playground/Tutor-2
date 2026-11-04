@@ -1,0 +1,302 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "extract_feedback_candidates",
+      "learner_ref": "synthetic-learner-fb-01@1",
+      "selected_transcript_ref": "synthetic-transcript-fb-01-current@1",
+      "task_ref": "synthetic-fb01-everyday-routine@1"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb-01@1",
+      "owner_ref": "synthetic-tutor-fb-01@1",
+      "learner_ref": "synthetic-learner-fb-01@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "assessment": {
+        "revision": 1,
+        "level": "A2",
+        "status": "provisional",
+        "recorded_at": "2026-10-01T09:00:00Z"
+      },
+      "goals": [
+        "Describe everyday routines and a recent completed activity."
+      ],
+      "task_context": {
+        "task_ref": "synthetic-fb01-everyday-routine@1",
+        "task_type": "short_spoken_responses",
+        "coverage_note": "This is the complete recorded exchange for the short activity, not the complete lesson. No hint or correction was given before learner segments fb01-l1, fb01-l2 or fb01-l3. The tutor supplied the wording immediately before fb01-l4."
+      },
+      "prior_confirmed_observations": [
+        {
+          "id": "synthetic-fb01-prior-lesson-observation",
+          "revision": 1,
+          "source_id": "synthetic-fb01-prior-lesson",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb-01@1",
+          "confirmed_at": "2026-10-17T10:00:00Z",
+          "data": {
+            "subskill": "present-simple-everyday-routine",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-fb01-prior-lesson-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 4,
+              "opportunities": 5
+            }
+          },
+          "confirmation_basis": "Separately tutor-confirmed structured count; it is not derived from the current transcript."
+        },
+        {
+          "id": "synthetic-fb01-prior-homework-observation",
+          "revision": 1,
+          "source_id": "synthetic-fb01-prior-homework",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb-01@1",
+          "confirmed_at": "2026-10-22T10:00:00Z",
+          "data": {
+            "subskill": "present-simple-everyday-routine",
+            "task": "controlled_written_practice",
+            "task_ref": "synthetic-fb01-prior-homework-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 3,
+              "opportunities": 5
+            }
+          },
+          "confirmation_basis": "Separately tutor-confirmed structured count from a past submission; no homework request or new activity is supplied."
+        }
+      ],
+      "activity_fact_revisions": [],
+      "permission_facts": {
+        "adult_confirmation": {
+          "confirmed": true,
+          "confirmed_at": "2026-10-01T08:00:00Z",
+          "confirmed_by": "synthetic-tutor-fb-01@1"
+        },
+        "learner_opt_in": {
+          "granted": true,
+          "recorded_at": "2026-10-01T08:05:00Z",
+          "learner_ref": "synthetic-learner-fb-01@1"
+        },
+        "tutor_upload_permission": {
+          "granted": true,
+          "recorded_at": "2026-10-01T08:10:00Z",
+          "tutor_ref": "synthetic-tutor-fb-01@1"
+        },
+        "note": "Synthetic input facts; this isolated extraction case does not execute authorization."
+      }
+    },
+    "sources": [
+      {
+        "id": "synthetic-fb01-prior-lesson",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-17T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-fb-01@1",
+        "owner_ref": "synthetic-tutor-fb-01@1"
+      },
+      {
+        "id": "synthetic-fb01-prior-homework",
+        "revision": 1,
+        "kind": "homework",
+        "occurred_at": "2026-10-21T09:00:00Z",
+        "available": true,
+        "learner_ref": "synthetic-learner-fb-01@1",
+        "owner_ref": "synthetic-tutor-fb-01@1"
+      },
+      {
+        "id": "synthetic-fb01-current-lesson",
+        "ref": "synthetic-transcript-fb-01-current@1",
+        "kind": "lesson_transcript",
+        "revision": 1,
+        "learner_ref": "synthetic-learner-fb-01@1",
+        "owner_ref": "synthetic-tutor-fb-01@1",
+        "available": true,
+        "recorded_at": "2026-10-31T09:00:00Z",
+        "expires_at": "2026-11-30T09:00:00Z",
+        "speaker_annotations_confirmed": true,
+        "speaker_annotations_confirmed_at": "2026-10-31T10:00:00Z",
+        "segments": [
+          {
+            "id": "fb01-t1",
+            "speaker": "tutor",
+            "text": "Where do you go on Mondays?"
+          },
+          {
+            "id": "fb01-l1",
+            "speaker": "learner",
+            "text": "I go to the library on Mondays."
+          },
+          {
+            "id": "fb01-t2",
+            "speaker": "tutor",
+            "text": "What time do you go?"
+          },
+          {
+            "id": "fb01-l2",
+            "speaker": "learner",
+            "text": "I go at nine."
+          },
+          {
+            "id": "fb01-t3",
+            "speaker": "tutor",
+            "text": "Now tell me about yesterday. What did you do after lunch?"
+          },
+          {
+            "id": "fb01-l3",
+            "speaker": "learner",
+            "text": "Yesterday I go to the shop."
+          },
+          {
+            "id": "fb01-t4",
+            "speaker": "tutor",
+            "text": "For yesterday, you can say: Yesterday I went to the shop."
+          },
+          {
+            "id": "fb01-l4",
+            "speaker": "learner",
+            "text": "Yesterday I went to the shop."
+          }
+        ]
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_source_refs": [
+      "synthetic-transcript-fb-01-current@1"
+    ],
+    "candidate_findings": [
+      {
+        "kind": "strength_candidate",
+        "learner_segment_refs": [
+          "fb01-l1",
+          "fb01-l2"
+        ],
+        "prompt_segment_refs": [
+          "fb01-t1",
+          "fb01-t2"
+        ],
+        "finding": "The learner used short present-simple responses to convey a recurring place and a time in this prompted exchange.",
+        "assistance": "independent_before_tutor_model",
+        "status": "candidate_not_confirmed"
+      },
+      {
+        "kind": "difficulty_candidate",
+        "learner_segment_refs": [
+          "fb01-l3"
+        ],
+        "prompt_segment_refs": [
+          "fb01-t3"
+        ],
+        "finding": "In a finished-yesterday context the learner said 'go'; 'went' is a supported past-form correction for this sentence.",
+        "assistance": "independent_before_tutor_model",
+        "status": "candidate_not_confirmed"
+      },
+      {
+        "kind": "assisted_response_candidate",
+        "learner_segment_refs": [
+          "fb01-l4"
+        ],
+        "prompt_segment_refs": [
+          "fb01-t4"
+        ],
+        "finding": "The learner repeated 'went' after the tutor supplied that wording; this is not an independent unaided example.",
+        "assistance": "tutor_model_supplied",
+        "status": "candidate_not_confirmed"
+      }
+    ],
+    "tutor_segment_refs_not_learner_attempts": [
+      "fb01-t1",
+      "fb01-t2",
+      "fb01-t3",
+      "fb01-t4"
+    ],
+    "prior_context_refs": [
+      {
+        "observation_id": "synthetic-fb01-prior-lesson-observation",
+        "revision": 1,
+        "source_id": "synthetic-fb01-prior-lesson"
+      },
+      {
+        "observation_id": "synthetic-fb01-prior-homework-observation",
+        "revision": 1,
+        "source_id": "synthetic-fb01-prior-homework"
+      }
+    ],
+    "required_qualifications": [
+      "The current transcript findings are candidates for tutor confirmation; the prior confirmed counts are separate historical inputs and are not created or updated by extraction.",
+      "The earlier written lesson and homework records and current prompted spoken responses have different evidence types, tasks and demands. Do not pool their counts or claim a trend or improvement from this exchange.",
+      "The tutor's past-form model is not a learner attempt; the learner's repetition after it is assisted and cannot establish independent production.",
+      "This short exchange does not establish mastery, an overall proficiency change, pronunciation or listening ability."
+    ],
+    "prohibited_claims": [
+      "confirmed current observation",
+      "unqualified progress or established trend",
+      "independent production inferred from tutor-modeled repetition",
+      "mastery",
+      "pronunciation ability",
+      "listening ability",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": [
+      "activity facts",
+      "performance observations",
+      "preferences"
+    ],
+    "terminal_state": "extraction_only",
+    "reached_stages": [
+      "extraction"
+    ],
+    "unreached_stage_reasons": {
+      "source_context": "The transcript, prior observations and synthetic access state are supplied directly; authorization, selection and freezing are separate.",
+      "subskill_analysis": "No recent-rate or trend calculation is requested at this extraction boundary.",
+      "composition": "No student-facing feedback or private tutor note is generated.",
+      "validation": "No feedback draft is supplied.",
+      "review_revision": "No feedback draft or tutor decision is supplied.",
+      "end_to_end": "This is an isolated extraction item, not a complete feedback job."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-01-extraction-01",
+    "family_id": "FB-01",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "extraction",
+    "level": "A2",
+    "domain": "everyday routines",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "speaker_attribution",
+      "assistance_attribution",
+      "unsupported_comparison",
+      "candidate_as_confirmed",
+      "evidence_write"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-01-extraction-01@1",
+      "attribution": "Synthetic learner, transcript, prior counts and task context authored for this repository; no real learner or external teaching content.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-extraction-1",
+    "split": "development"
+  }
+}

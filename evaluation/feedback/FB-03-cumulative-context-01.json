@@ -1,0 +1,378 @@
+{
+  "input": {
+    "fixture_time": "2026-11-01T12:00:00Z",
+    "task_request": {
+      "operation": "summarize_feedback_with_cumulative_context",
+      "learner_ref": "synthetic-learner-fb03-cumulative@1",
+      "selected_transcript_ref": "synthetic-fb03-cum-current-transcript@1",
+      "target_subskill": "argument_linking"
+    },
+    "fixture_state": {
+      "tutor_ref": "synthetic-tutor-fb03-cumulative@1",
+      "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+      "learner_ref": "synthetic-learner-fb03-cumulative@1",
+      "adult_confirmed": true,
+      "processing_permission": true,
+      "permission_facts": {
+        "adult_confirmation": {
+          "confirmed": true,
+          "confirmed_at": "2026-01-01T08:00:00Z",
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1"
+        },
+        "learner_opt_in": {
+          "granted": true,
+          "recorded_at": "2026-01-01T08:05:00Z",
+          "learner_ref": "synthetic-learner-fb03-cumulative@1"
+        },
+        "tutor_upload_permission": {
+          "granted": true,
+          "recorded_at": "2026-01-01T08:10:00Z",
+          "tutor_ref": "synthetic-tutor-fb03-cumulative@1"
+        },
+        "note": "Synthetic input facts; this isolated case does not execute authorization."
+      },
+      "assessment": {
+        "revision": 1,
+        "level": "B2",
+        "status": "provisional",
+        "recorded_at": "2026-02-01T09:00:00Z"
+      },
+      "goals": [
+        "Connect reasons clearly to claims during a discussion."
+      ],
+      "observations": [
+        {
+          "id": "synthetic-fb03-cum-obs-1",
+          "revision": 1,
+          "source_id": "synthetic-fb03-cum-lesson-1",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1",
+          "confirmed_at": "2026-10-10T10:00:00Z",
+          "confirmation_basis": "Synthetic structured count independently confirmed by the tutor; not derived from the short current transcript.",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-cum-controlled-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 6,
+              "opportunities": 10
+            }
+          }
+        },
+        {
+          "id": "synthetic-fb03-cum-obs-2",
+          "revision": 1,
+          "source_id": "synthetic-fb03-cum-lesson-2",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1",
+          "confirmed_at": "2026-10-20T10:00:00Z",
+          "confirmation_basis": "Synthetic structured count independently confirmed by the tutor; not derived from the short current transcript.",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-cum-controlled-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 7,
+              "opportunities": 10
+            }
+          }
+        },
+        {
+          "id": "synthetic-fb03-cum-obs-3",
+          "revision": 1,
+          "source_id": "synthetic-fb03-cum-lesson-3",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1",
+          "confirmed_at": "2026-10-31T10:00:00Z",
+          "confirmation_basis": "Synthetic structured count independently confirmed by the tutor; not derived from the short current transcript.",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-cum-controlled-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 8,
+              "opportunities": 10
+            }
+          }
+        },
+        {
+          "id": "synthetic-fb03-cum-old-observation",
+          "revision": 1,
+          "source_id": "synthetic-fb03-cum-old-check-source",
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1",
+          "confirmed_at": "2026-04-01T10:00:00Z",
+          "confirmation_basis": "Synthetic structured count independently confirmed by the tutor; not derived from the short current transcript.",
+          "data": {
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-cum-controlled-task@1",
+            "assistance": "independent",
+            "accuracy": {
+              "correct": 9,
+              "opportunities": 10
+            }
+          }
+        }
+      ],
+      "activity_fact_revisions": [
+        {
+          "id": "synthetic-fb03-cum-old-encounter",
+          "revision": 1,
+          "source_id": "synthetic-fb03-cum-old-encounter-source",
+          "source_revision": 1,
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1",
+          "confirmed_at": "2026-03-01T10:00:00Z",
+          "data": {
+            "kind": "encounter",
+            "occurred_at": "2026-03-01T09:00:00Z",
+            "purpose": "Understand how reasons connect to claims",
+            "subskill": "argument_linking",
+            "task": "reading",
+            "task_ref": "synthetic-fb03-cum-reading@1",
+            "material_ref": "synthetic-fb03-cum-article@1",
+            "assistance": "unknown",
+            "amount": null
+          }
+        },
+        {
+          "id": "synthetic-fb03-cum-old-check",
+          "revision": 1,
+          "source_id": "synthetic-fb03-cum-old-check-source",
+          "source_revision": 1,
+          "confirmed": true,
+          "confirmed_by": "synthetic-tutor-fb03-cumulative@1",
+          "confirmed_at": "2026-04-01T10:00:00Z",
+          "data": {
+            "kind": "checked_outcome",
+            "occurred_at": "2026-04-01T09:00:00Z",
+            "purpose": "Check linking a claim to a reason",
+            "subskill": "argument_linking",
+            "task": "controlled_discussion",
+            "task_ref": "synthetic-fb03-cum-controlled-task@1",
+            "assistance": "independent",
+            "observation_id": "synthetic-fb03-cum-old-observation",
+            "observation_revision": 1
+          }
+        }
+      ],
+      "observation_note": "All counts are supplied confirmed facts; the current transcript excerpt alone does not establish them. Older facts are history, not recent rates."
+    },
+    "sources": [
+      {
+        "id": "synthetic-fb03-cum-lesson-1",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-10T09:00:00Z",
+        "learner_ref": "synthetic-learner-fb03-cumulative@1",
+        "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+        "available": true
+      },
+      {
+        "id": "synthetic-fb03-cum-lesson-2",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-20T09:00:00Z",
+        "learner_ref": "synthetic-learner-fb03-cumulative@1",
+        "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+        "available": true
+      },
+      {
+        "id": "synthetic-fb03-cum-lesson-3",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-10-31T09:00:00Z",
+        "learner_ref": "synthetic-learner-fb03-cumulative@1",
+        "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+        "available": true,
+        "transcript": {
+          "ref": "synthetic-fb03-cum-current-transcript@1",
+          "revision": 1,
+          "kind": "lesson_transcript",
+          "recorded_at": "2026-10-31T09:00:00Z",
+          "expires_at": "2026-11-30T09:00:00Z",
+          "available": true,
+          "learner_ref": "synthetic-learner-fb03-cumulative@1",
+          "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+          "speaker_annotations_confirmed": true,
+          "speaker_annotations_confirmed_at": "2026-10-31T10:15:00Z",
+          "segments": [
+            {
+              "id": "fb03-cum-t1",
+              "speaker": "tutor",
+              "text": "Give one reason why the town should improve buses."
+            },
+            {
+              "id": "fb03-cum-l1",
+              "speaker": "learner",
+              "text": "The town should improve buses because more people could reach work."
+            }
+          ],
+          "coverage_note": "Short current transcript excerpt is supplied for context; separately confirmed structured counts are not extracted from it."
+        }
+      },
+      {
+        "id": "synthetic-fb03-cum-old-encounter-source",
+        "revision": 1,
+        "kind": "actual_use",
+        "occurred_at": "2026-03-01T09:00:00Z",
+        "learner_ref": "synthetic-learner-fb03-cumulative@1",
+        "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+        "qualification": "tutor_report",
+        "available": true,
+        "raw_text_available": false,
+        "raw_text_expired_at": "2026-04-01T09:00:00Z"
+      },
+      {
+        "id": "synthetic-fb03-cum-old-check-source",
+        "revision": 1,
+        "kind": "lesson",
+        "occurred_at": "2026-04-01T09:00:00Z",
+        "learner_ref": "synthetic-learner-fb03-cumulative@1",
+        "owner_ref": "synthetic-tutor-fb03-cumulative@1",
+        "qualification": "tutor_notes",
+        "available": true,
+        "raw_text_available": false,
+        "raw_text_expired_at": "2026-05-01T09:00:00Z"
+      }
+    ]
+  },
+  "expectedOutput": {
+    "selected_transcript_ref": "synthetic-fb03-cum-current-transcript@1",
+    "source_ids": {
+      "lesson": [
+        "synthetic-fb03-cum-lesson-3",
+        "synthetic-fb03-cum-lesson-2",
+        "synthetic-fb03-cum-lesson-1"
+      ],
+      "homework": []
+    },
+    "recent_observation_refs": [
+      {
+        "id": "synthetic-fb03-cum-obs-1",
+        "revision": 1,
+        "source_id": "synthetic-fb03-cum-lesson-1"
+      },
+      {
+        "id": "synthetic-fb03-cum-obs-2",
+        "revision": 1,
+        "source_id": "synthetic-fb03-cum-lesson-2"
+      },
+      {
+        "id": "synthetic-fb03-cum-obs-3",
+        "revision": 1,
+        "source_id": "synthetic-fb03-cum-lesson-3"
+      }
+    ],
+    "accuracy": {
+      "correct": 21,
+      "opportunities": 30,
+      "rate": 0.7,
+      "unknown_observations": 0,
+      "trend": "improving",
+      "trend_source_ids": [
+        "synthetic-fb03-cum-lesson-1",
+        "synthetic-fb03-cum-lesson-2",
+        "synthetic-fb03-cum-lesson-3"
+      ],
+      "possible_regression": false,
+      "maintenance_support": false
+    },
+    "group_trend": "improving",
+    "maintenance_candidate": false,
+    "maintenance_confirmed": false,
+    "selected_history_refs": [
+      {
+        "activity_id": "synthetic-fb03-cum-old-encounter",
+        "activity_revision": 1,
+        "source_id": "synthetic-fb03-cum-old-encounter-source",
+        "source_revision": 1,
+        "raw_text_available": false
+      },
+      {
+        "activity_id": "synthetic-fb03-cum-old-check",
+        "activity_revision": 1,
+        "source_id": "synthetic-fb03-cum-old-check-source",
+        "source_revision": 1,
+        "raw_text_available": false
+      }
+    ],
+    "required_qualifications": [
+      "The three comparable recent lesson counts are 6/10, 7/10 and 8/10: 21/30 overall and an improving first-to-last trend under PD-09.",
+      "The older encounter and check can be considered as source-qualified history but their count and exposure do not enter the recent 90-day denominator.",
+      "Raw historical source text has expired; do not reconstruct or quote it from the retained structured facts.",
+      "The current available selected transcript is required; older history cannot replace a missing or expired current transcript.",
+      "Exposure alone is not mastery, elapsed time alone is not forgetting, and this case does not establish product-caused improvement."
+    ],
+    "prohibited_claims": [
+      "old count included in recent denominator",
+      "reconstructed historical quotation",
+      "mastery from exposure",
+      "forgetting from elapsed time",
+      "current transcript replaced by history",
+      "product-caused improvement"
+    ],
+    "prohibited_writes": [
+      "activity facts",
+      "performance observations",
+      "preferences"
+    ],
+    "terminal_state": "analysis_only",
+    "reached_stages": [
+      "subskill_analysis"
+    ],
+    "unreached_stage_reasons": {
+      "source_context": "Selected transcript, source revisions and permission are supplied; actual authorization, selection and freezing are separate.",
+      "extraction": "Confirmed structured observations are supplied rather than extracted.",
+      "composition": "No student feedback or private note is generated.",
+      "validation": "No feedback draft is supplied.",
+      "review_revision": "No feedback draft or tutor action is supplied.",
+      "end_to_end": "This is an isolated analysis draft, not a complete feedback job."
+    }
+  },
+  "metadata": {
+    "case_id": "FB-03.cumulative-context",
+    "family_id": "FB-03",
+    "variant_id": "FB-03.cumulative-context",
+    "revision": 1,
+    "job": "post_lesson_feedback",
+    "stage": "subskill_analysis",
+    "level": "B2",
+    "domain": "community transport discussion",
+    "teaching_route": null,
+    "priority_category": null,
+    "severity": "ordinary",
+    "failure_categories": [
+      "old_count_in_recent_denominator",
+      "unsupported_history_claim",
+      "expired_source_reconstruction",
+      "missing_current_transcript"
+    ],
+    "provenance": {
+      "source_type": "wholly_synthetic",
+      "source_version": "FB-03.cumulative-context@1",
+      "attribution": "Synthetic learner, transcript, history facts and structured observations authored for this repository.",
+      "rights": {
+        "storage": true,
+        "adaptation": true,
+        "delivery": true
+      }
+    },
+    "review": {
+      "state": "draft",
+      "reviewed": false,
+      "assignments": {
+        "primary": null,
+        "second": null
+      },
+      "decisions": []
+    },
+    "schema_version": "1",
+    "rubric_version": "draft-feedback-cumulative-1",
+    "split": "development"
+  }
+}

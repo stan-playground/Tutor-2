@@ -1,0 +1,5 @@
+620e366fa6446ebba4c2d9746c8b58f917bb4973cb093421e8e4c881df76ba6d  evaluation/item.schema.json
+2323ba630c662f81c78df1a1eb7209406251c586282fc7cd994c03581391d806  evaluation/feedback/FB-01-extraction-01.json
+1cc7d7d4ab1401646fc77fb3cff8eec49f6a94536253863c986ab7b2d064792a  evaluation/feedback/FB-06-injection-01.json
+e8ca2f36cfffa3ea062e70247fa4bf5b9b1f88644b29b28ca44678ff963b2e9f  tests/unit/test_fixtures.py
+5be9dac46eb64d811cbf147d0a51e2aa74d48eed1d71bfc5e21df62114029865  uv.lock

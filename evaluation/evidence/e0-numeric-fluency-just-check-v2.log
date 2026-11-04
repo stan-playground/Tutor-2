@@ -1,0 +1,21 @@
+uv run --locked ruff format --check src migrations tests
+unformatted: File would be reformatted
+  --> tests/integration/test_stage2r_source.py:45:16
+   |
+44 |         assert client.get(f"{base}/{source['id']}").json()["raw_text"] is None
+   -         assert client.get(f"{base}/{source['id']}?revision=2").json()["raw_text"] == source["raw_text"]
+45 +         assert (
+46 +             client.get(f"{base}/{source['id']}?revision=2").json()["raw_text"] == source["raw_text"]
+47 +         )
+48 |
+--------------------------------------------------------------------------------
+68 |         with admin.begin() as connection:
+   -             connection.execute(text("UPDATE sources SET fingerprint=:fingerprint"), {"fingerprint": fingerprint})
+69 +             connection.execute(
+70 +                 text("UPDATE sources SET fingerprint=:fingerprint"), {"fingerprint": fingerprint}
+71 +             )
+72 |         assert client.post(base, json=omitted).status_code == 409
+   |
+
+1 file would be reformatted, 36 files already formatted
+error: recipe `check` failed on line 48 with exit code 1

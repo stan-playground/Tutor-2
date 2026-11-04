@@ -1,0 +1,18 @@
+uv run --locked pytest tests/integration
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2
+configfile: pyproject.toml
+plugins: platformdirs-4.14.3, anyio-4.16.0
+collected 60 items
+
+tests/integration/test_auth.py ....                                      [  6%]
+tests/integration/test_evidence.py .                                     [  8%]
+tests/integration/test_foundation.py ......                              [ 18%]
+tests/integration/test_intake.py ...............                         [ 43%]
+tests/integration/test_lifecycle.py ......                               [ 53%]
+tests/integration/test_materials.py ...                                  [ 58%]
+tests/integration/test_retrieval.py ......................               [ 95%]
+tests/integration/test_stage2r_source.py ...                             [100%]
+
+============================= 60 passed in 35.62s ==============================

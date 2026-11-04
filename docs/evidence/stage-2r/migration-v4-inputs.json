@@ -1,0 +1,46 @@
+{
+  "command": [
+    "uv",
+    "--cache-dir",
+    ".uv-cache",
+    "run",
+    "--locked",
+    "pytest",
+    "tests/integration/test_stage2r_migration.py",
+    "-q"
+  ],
+  "started_utc": "2026-11-04T21:14:56.020350+00:00",
+  "completed_utc": "2026-11-04T21:14:59.438361+00:00",
+  "exit_code": 0,
+  "input_sha256_before": {
+    "tests/integration/test_stage2r_migration.py": "ce30d5c9fc36c767c8c87efd20479dc91ef07e7078946536969142189a6787dd",
+    "tests/integration/conftest.py": "cb4d6170eb47f9e74d0ea6128e2d812aeed985b60e23ec6fa3108f75f61c35c4",
+    "src/tutor_copilot/settings.py": "f35efbfe45143799aa60dc8d7bc0d5642fe7703ecd9f44d6053cc8ad41cbff95",
+    "alembic.ini": "d5bc114fe68813e83b863a6f45d816a6354fbfede50fb0597cdb41dfc2dedfd0",
+    "pyproject.toml": "9eef70affdc5c4ec7a8e58701935912e01c71324215fad783dea20867f805817",
+    "uv.lock": "5be9dac46eb64d811cbf147d0a51e2aa74d48eed1d71bfc5e21df62114029865",
+    "migrations/env.py": "3c6528c238a3d0c5a1d637aadebb9170245405817b78fba13b3d2b5ad5aae499",
+    "migrations/versions/0001_vector.py": "459df9630df5692abe3d67457c533c739563dca8b21adf7ce87e25e026e627e4",
+    "migrations/versions/0002_evidence.py": "d6228c711445793d4e3b12af8a4f447c639af77fe3cda9a5e9b07127ff6297f4",
+    "migrations/versions/0003_auth.py": "9ca7af2cc067691542c1fb7327747bbe3e6e355bc2d1c19853abbd02329a4b2f",
+    "migrations/versions/0004_materials.py": "78c7f3c8fe2e0f00926d994bd237cb9f2ce4d64489f3a643f33b77a1275f905b",
+    "migrations/versions/0005_material_immutability.py": "f9f16507b55ea1e00094c38ba8c492facb1ddc14f6a89e7e1657d3ab39f7c876",
+    "migrations/versions/0006_evidence_identity.py": "578e534611594fa9698328dbd1a9cff0dd21d986b9efe474716d50bfd1490ed0"
+  },
+  "input_sha256_after": {
+    "tests/integration/test_stage2r_migration.py": "ce30d5c9fc36c767c8c87efd20479dc91ef07e7078946536969142189a6787dd",
+    "tests/integration/conftest.py": "cb4d6170eb47f9e74d0ea6128e2d812aeed985b60e23ec6fa3108f75f61c35c4",
+    "src/tutor_copilot/settings.py": "f35efbfe45143799aa60dc8d7bc0d5642fe7703ecd9f44d6053cc8ad41cbff95",
+    "alembic.ini": "d5bc114fe68813e83b863a6f45d816a6354fbfede50fb0597cdb41dfc2dedfd0",
+    "pyproject.toml": "9eef70affdc5c4ec7a8e58701935912e01c71324215fad783dea20867f805817",
+    "uv.lock": "5be9dac46eb64d811cbf147d0a51e2aa74d48eed1d71bfc5e21df62114029865",
+    "migrations/env.py": "3c6528c238a3d0c5a1d637aadebb9170245405817b78fba13b3d2b5ad5aae499",
+    "migrations/versions/0001_vector.py": "459df9630df5692abe3d67457c533c739563dca8b21adf7ce87e25e026e627e4",
+    "migrations/versions/0002_evidence.py": "d6228c711445793d4e3b12af8a4f447c639af77fe3cda9a5e9b07127ff6297f4",
+    "migrations/versions/0003_auth.py": "9ca7af2cc067691542c1fb7327747bbe3e6e355bc2d1c19853abbd02329a4b2f",
+    "migrations/versions/0004_materials.py": "78c7f3c8fe2e0f00926d994bd237cb9f2ce4d64489f3a643f33b77a1275f905b",
+    "migrations/versions/0005_material_immutability.py": "f9f16507b55ea1e00094c38ba8c492facb1ddc14f6a89e7e1657d3ab39f7c876",
+    "migrations/versions/0006_evidence_identity.py": "578e534611594fa9698328dbd1a9cff0dd21d986b9efe474716d50bfd1490ed0"
+  },
+  "inputs_unchanged": true
+}

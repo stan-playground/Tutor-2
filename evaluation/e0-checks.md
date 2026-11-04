@@ -1,5 +1,63 @@
 # E0 local checks
 
+## Additional feedback extraction drafts, 4 November 2026
+
+`FB-01-extraction-01` is an ordinary A2 draft that separates prompted learner
+responses, a past-form difficulty, tutor-modeled repetition and prior confirmed
+lesson/homework facts. `FB-06.extraction-instruction-01` is a critical B1 draft
+containing an embedded instruction between legitimate learner responses. Its
+proposed labels treat source text as untrusted while retaining usable evidence.
+Both contain synthetic, dated confirmation and permission facts; those facts
+are inputs, not observed authorization or consent decisions.
+
+| Command | Observation | Original report |
+| --- | --- | --- |
+| `UV_CACHE_DIR=.uv-cache uv run --locked pytest -q --tb=short tests/unit/test_fixtures.py::test_fixtures_are_structurally_valid` | One structural check passed for all current fixtures, including both new cases. | [output](evidence/e0-feedback-expansion-schema-v2.log) |
+
+The [first schema run](evidence/e0-feedback-expansion-schema-v1.log) preceded an
+independent review finding that permission facts lacked dates. The revised
+drafts supply dates before the source events; the v2 structural check was
+rerun. [Selected hashes](evidence/e0-feedback-expansion-input-sha256-v2.txt)
+cover the new cases, schema, test and lockfile, not a complete experiment
+snapshot. The [independent review](evidence/e0-feedback-expansion-independent-review.md)
+is scoped to the draft content and schema check. No feedback authorization,
+extraction, instruction-injection enforcement, private-note containment,
+complete job or qualified tutor approval is established.
+
+## Possible regression, completion and fluency search, 4 November 2026
+
+Two ordinary numeric drafts check a single comparable 0.15 drop as a possible
+regression without an established trend, and separate completion of 1/4
+activities from 18/20 accuracy on attempted choices. The PD-09 workload check
+is a draft expectation: the shared calculator does not emit or verify it.
+
+`HW-GOAL-FLUENCY-01` is an ordinary isolated B2 goal-led search draft. The test
+imports an eight-minute synthetic speaking activity and a same-domain written
+discourse distractor, then checks the selected candidate and query-embedding
+text. The private-note canary is only in the fixture and is not submitted to
+the application; its absence from this query does not prove sanitization of
+supplied learner records. The distractor differs on several eligibility fields,
+so exclusion is not proof of one isolated route filter. This is not the
+complete `HW-02.goal-fluency` job, actual speaking assessment or content review.
+
+| Command | Observation | Original report |
+| --- | --- | --- |
+| `UV_CACHE_DIR=.uv-cache uv run --locked pytest -q --tb=short tests/integration/test_retrieval.py::test_goal_fluency_fixture_against_http_boundary` | One real local HTTP/pgvector search scenario passed after the activity's eight-minute sequence was clarified. | [output](evidence/e0-fluency-boundary-v3.log) |
+| `ruff format --check` and `ruff check` on the two changed test files, `mypy`, and `pytest tests/unit`, all via `UV_CACHE_DIR=.uv-cache uv run --locked` | Targeted formatting/lint and mypy passed; 92 unit tests passed, including both numeric cases and schema validation. | [output](evidence/e0-numeric-fluency-targeted-check-v3.log) |
+| `just check` | Failed at the formatting step on a concurrently added `tests/integration/test_stage2r_source.py`; the separate Stage 2R work was preserved. | [output](evidence/e0-numeric-fluency-just-check-v2.log) |
+
+The [v1 fluency run](evidence/e0-fluency-boundary-v1.log) preceded independent
+review's correction of the activity's timing; v3 checked the corrected input.
+The [selected v2 input hashes](evidence/e0-numeric-fluency-input-sha256-v2.txt)
+matched before and after the v3 runs, including concurrently modified
+`src/tutor_copilot/evidence.py`. Other services, migrations, helpers and model
+files also affect results. A later check found `evidence.py` changed again in
+the separate ongoing Stage 2R work, so the recorded integration snapshot is
+not a verification of the current combined tree. Recheck after that work
+settles. This is not a frozen experiment manifest. The
+[independent review](evidence/e0-numeric-fluency-independent-review.md) is scoped
+to the new drafts and checks; none is a qualified tutor approval.
+
 ## Private learner-source access and feedback trend, 4 November 2026
 
 `HW-LEARNER-ACCESS-01` is a critical draft with two synthetic tutors and learners.

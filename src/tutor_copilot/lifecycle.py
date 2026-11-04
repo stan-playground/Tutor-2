@@ -12,11 +12,7 @@ from tutor_copilot.settings import Settings
 async def cleanup(connection: AsyncConnection) -> dict[str, int]:
     # The maintenance account intentionally sees all tenants; request code never uses it.
     expired = await connection.execute(
-        text("""UPDATE sources SET raw_text=NULL
-        WHERE expires_at <= now() AND raw_text IS NOT NULL RETURNING id""")
-    )
-    expired_history = await connection.execute(
-        text("""UPDATE source_history SET raw_text=NULL
+        text("""UPDATE source_versions SET raw_text=NULL
         WHERE expires_at <= now() AND raw_text IS NOT NULL RETURNING source_id""")
     )
     inactive = await connection.execute(
@@ -25,7 +21,7 @@ async def cleanup(connection: AsyncConnection) -> dict[str, int]:
     )
     await connection.execute(text("DELETE FROM auth_sessions WHERE expires_at <= now()"))
     return {
-        "expired_sources": len(expired.all()) + len(expired_history.all()),
+        "expired_sources": len(expired.all()),
         "inactive_learners": len(inactive.all()),
     }
 
