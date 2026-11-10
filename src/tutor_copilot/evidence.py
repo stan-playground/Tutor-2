@@ -133,7 +133,8 @@ async def save_source(
               CASE WHEN :raw_supplied THEN :raw ELSE raw_text END,
               CASE WHEN NOT :raw_supplied OR raw_text IS NOT DISTINCT FROM :raw THEN expires_at
                 ELSE now()+interval '30 days' END,:fingerprint
-            FROM source_versions WHERE learner_id=:learner AND source_id=:id AND revision=:revision"""),
+            FROM source_versions
+            WHERE learner_id=:learner AND source_id=:id AND revision=:revision"""),
             {
                 "id": source.id,
                 "learner": learner,
@@ -259,15 +260,15 @@ async def save_revision(
         if linked is None or data.kind != "checked_outcome":
             raise HTTPException(422, "Checked outcome needs an existing confirmed observation")
     parameters = {
-            "id": data.id,
-            "revision": current + 1,
-            "learner": learner,
-            "tutor": tutor,
-            "source": data.source_id,
-            "source_revision": source["revision"],
-            "confirmed": data.confirmed,
-            "data": json.dumps(payload),
-        }
+        "id": data.id,
+        "revision": current + 1,
+        "learner": learner,
+        "tutor": tutor,
+        "source": data.source_id,
+        "source_revision": source["revision"],
+        "confirmed": data.confirmed,
+        "data": json.dumps(payload),
+    }
     if isinstance(data, Activity):
         parameters["observation_id"] = data.observation_id
         parameters["observation_revision"] = data.observation_revision

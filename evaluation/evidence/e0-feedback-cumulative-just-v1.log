@@ -1,0 +1,45 @@
+uv run --locked ruff format --check src migrations tests
+unformatted: File would be reformatted
+   --> src/tutor_copilot/evidence.py:262:9
+    |
+261 |     parameters = {
+    -             "id": data.id,
+    -             "revision": current + 1,
+    -             "learner": learner,
+    -             "tutor": tutor,
+    -             "source": data.source_id,
+    -             "source_revision": source["revision"],
+    -             "confirmed": data.confirmed,
+    -             "data": json.dumps(payload),
+    -         }
+262 +         "id": data.id,
+263 +         "revision": current + 1,
+264 +         "learner": learner,
+265 +         "tutor": tutor,
+266 +         "source": data.source_id,
+267 +         "source_revision": source["revision"],
+268 +         "confirmed": data.confirmed,
+269 +         "data": json.dumps(payload),
+270 +     }
+271 |     if isinstance(data, Activity):
+    |
+
+unformatted: File would be reformatted
+  --> tests/unit/test_feedback_cumulative_fixture.py:12:44
+   |
+11 |     path = (
+   -         Path(__file__).resolve().parents[2]
+   -         / "evaluation/feedback/FB-03-cumulative-context-01.json"
+12 +         Path(__file__).resolve().parents[2] / "evaluation/feedback/FB-03-cumulative-context-01.json"
+13 |     )
+--------------------------------------------------------------------------------
+23 |
+   -     recent_sources = [source for source in sources if source["occurred_at"] >= as_of - timedelta(days=90)]
+24 +     recent_sources = [
+25 +         source for source in sources if source["occurred_at"] >= as_of - timedelta(days=90)
+26 +     ]
+27 |     recent_ids = {source["id"] for source in recent_sources}
+   |
+
+2 files would be reformatted, 39 files already formatted
+error: recipe `check` failed on line 48 with exit code 1

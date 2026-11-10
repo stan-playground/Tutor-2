@@ -1,0 +1,18 @@
+1 file already formatted
+All checks passed!
+Success: no issues found in 25 source files
+============================= test session starts ==============================
+platform darwin -- Python 3.12.5, pytest-9.2.0, pluggy-1.7.0
+rootdir: /Users/HUAWEI/Yandex.Disk.localized/Coding-Ya/Legend2
+configfile: pyproject.toml
+plugins: platformdirs-4.14.3, anyio-4.16.0
+collected 93 items
+
+tests/unit/test_feedback_cumulative_fixture.py .                         [  1%]
+tests/unit/test_fixtures.py ...........................                  [ 30%]
+tests/unit/test_metrics.py ................                              [ 47%]
+tests/unit/test_retrieval.py ........................................... [ 93%]
+...                                                                      [ 96%]
+tests/unit/test_web.py ...                                               [100%]
+
+============================== 93 passed in 0.91s ==============================

@@ -1,5 +1,36 @@
 # E0 local checks
 
+## Cumulative feedback context and uncertain transcript, 5 November 2026
+
+`FB-03.cumulative-context` is a synthetic analysis draft with three recent
+observations and an older confirmed encounter/check. The shared fixed-clock
+calculation excludes the old 9/10 count from the recent 21/30 rate. The test
+also checks that the two supplied historical raw sources are marked unavailable
+and expired at the fixture clock. It does not execute history selection,
+current-transcript authorization or the feedback job.
+
+`FB-04.uncertain-speaker-count` is an extraction draft with an available A2
+current transcript, uncertain speaker and count annotations, and expired
+historical raw text. Its proposed qualitative labels are schema-validated only;
+no extraction, source selection or tutor approval has been observed.
+
+| Command | Observation | Original report |
+| --- | --- | --- |
+| `UV_CACHE_DIR=.uv-cache uv run --locked ruff format --check tests/unit/test_feedback_cumulative_fixture.py`, `ruff check` on that file, `mypy`, and `pytest tests/unit` | Targeted formatting/lint and mypy passed; 93 unit tests passed. | [output](evidence/e0-feedback-cumulative-targeted-v3.log) |
+| `just check` | Failed formatting on separately committed Stage 2R `src/tutor_copilot/evidence.py`; that file was left untouched. | [output](evidence/e0-feedback-cumulative-just-v2.log) |
+| `UV_CACHE_DIR=.uv-cache uv run --locked pytest -q --tb=short tests/integration/test_retrieval.py::test_goal_fluency_fixture_against_http_boundary` | One previously stale fluency search scenario passed against the current checked input snapshot. | [output](evidence/e0-fluency-refresh-v4.log) |
+
+The [initial full check](evidence/e0-feedback-cumulative-just-v1.log) also
+found formatting in the E0 test; that test was formatted. Independent review
+then found the old source metadata incorrectly marked raw text available; the
+draft and fixture consistency check were corrected and rerun. Selected input
+hashes for [feedback](evidence/e0-feedback-cumulative-input-sha256-v3.txt) and
+[fluency](evidence/e0-fluency-refresh-input-sha256-v4.txt) matched before and
+after the respective tests, not a full experiment manifest. The
+[independent review](evidence/e0-feedback-cumulative-independent-review.md)
+is scoped to these drafts and checks. No tutor review, feedback authorization,
+source freezing, extraction, full job or prohibited-output enforcement is claimed.
+
 ## Additional feedback extraction drafts, 4 November 2026
 
 `FB-01-extraction-01` is an ordinary A2 draft that separates prompted learner
@@ -12,7 +43,7 @@ are inputs, not observed authorization or consent decisions.
 
 | Command | Observation | Original report |
 | --- | --- | --- |
-| `UV_CACHE_DIR=.uv-cache uv run --locked pytest -q --tb=short tests/unit/test_fixtures.py::test_fixtures_are_structurally_valid` | One structural check passed for all current fixtures, including both new cases. | [output](evidence/e0-feedback-expansion-schema-v2.log) |
+| `UV_CACHE_DIR=.uv-cache uv run --locked pytest -q --tb=short tests/unit/test_fixtures.py::test_fixtures_are_structurally_valid` | One structural check passed for the fixtures present at that run, including both new cases. | [output](evidence/e0-feedback-expansion-schema-v2.log) |
 
 The [first schema run](evidence/e0-feedback-expansion-schema-v1.log) preceded an
 independent review finding that permission facts lacked dates. The revised

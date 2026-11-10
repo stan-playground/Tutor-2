@@ -223,7 +223,7 @@
         "learner_ref": "synthetic-learner-fb03-cumulative@1",
         "owner_ref": "synthetic-tutor-fb03-cumulative@1",
         "qualification": "tutor_report",
-        "available": true,
+        "available": false,
         "raw_text_available": false,
         "raw_text_expired_at": "2026-04-01T09:00:00Z"
       },
@@ -235,7 +235,7 @@
         "learner_ref": "synthetic-learner-fb03-cumulative@1",
         "owner_ref": "synthetic-tutor-fb03-cumulative@1",
         "qualification": "tutor_notes",
-        "available": true,
+        "available": false,
         "raw_text_available": false,
         "raw_text_expired_at": "2026-05-01T09:00:00Z"
       }

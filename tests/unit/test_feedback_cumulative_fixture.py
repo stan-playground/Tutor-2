@@ -9,8 +9,7 @@ from tutor_copilot.metrics import summarize_recent
 
 def test_feedback_cumulative_fixture_keeps_old_counts_out_of_recent_rates() -> None:
     path = (
-        Path(__file__).resolve().parents[2]
-        / "evaluation/feedback/FB-03-cumulative-context-01.json"
+        Path(__file__).resolve().parents[2] / "evaluation/feedback/FB-03-cumulative-context-01.json"
     )
     item = json.loads(path.read_text())
     case_input = item["input"]
@@ -22,7 +21,16 @@ def test_feedback_cumulative_fixture_keeps_old_counts_out_of_recent_rates() -> N
     observations = case_input["fixture_state"]["observations"]
     result = summarize_recent(observations, as_of, sources=sources)
 
-    recent_sources = [source for source in sources if source["occurred_at"] >= as_of - timedelta(days=90)]
+    expired_sources = [source for source in sources if source.get("raw_text_available") is False]
+    assert len(expired_sources) == 2
+    assert all(
+        source["available"] is False
+        and datetime.fromisoformat(source["raw_text_expired_at"]) < as_of
+        for source in expired_sources
+    )
+    recent_sources = [
+        source for source in sources if source["occurred_at"] >= as_of - timedelta(days=90)
+    ]
     recent_ids = {source["id"] for source in recent_sources}
     recent_observations = [row for row in observations if row["source_id"] in recent_ids]
     assert len(recent_observations) < len(observations)

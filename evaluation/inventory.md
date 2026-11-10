@@ -16,9 +16,11 @@ agreed, so no requirement change is being made.
 | FB-02 | [FB-02-extraction-01@1](feedback/FB-02-extraction-01.json) | feedback | extraction | ordinary | draft; unassigned in case metadata | Authored source and candidate findings; feedback extraction not implemented. |
 | FB-02 | [FB-02.zero-opportunities@1](feedback/FB-02-zero-opportunities-01.json) | feedback | extraction | ordinary | draft; unassigned in case metadata | Authored transcript and candidate labels distinguish learner silence from the tutor's example; schema only, no feedback extraction runtime. |
 | FB-03 | [FB-03.incomparable-history@1](feedback/FB-03-incomparable-history-01.json) | feedback | subskill_analysis | ordinary | draft; unassigned in case metadata | Real shared recent-performance calculation only; feedback job and access not exercised. |
+| FB-03 | [FB-03.cumulative-context@1](feedback/FB-03-cumulative-context-01.json) | feedback | subskill_analysis | ordinary | draft; unassigned in case metadata | Shared fixed-clock calculation excludes an old count from recent rates; history selection, current-transcript authorization and feedback runtime are not exercised. |
 | FB-03 | [FB-03.trend-boundaries@1](feedback/FB-03-trend-boundaries-01.json) | feedback | subskill_analysis | ordinary | draft; unassigned in case metadata | Shared fixed-clock metric calculation checks +0.15 and -0.15 in the same comparable group; feedback authorization, extraction and job are not exercised. |
 | FB-04 | [FB-04.missing-current-transcript@1](feedback/FB-04-missing-current-transcript-01.json) | feedback | source_context | critical | draft; unassigned in case metadata | Missing-source stop is a static draft; no feedback runtime exists. Not in reviewer batch 1. |
 | FB-04 | [FB-04.expired-current-transcript@1](feedback/FB-04-expired-current-transcript-01.json) | feedback | source_context | critical | draft; unassigned in case metadata | Expired-source stop is a static draft; no feedback runtime exists. Not in reviewer batch 1. |
+| FB-04 | [FB-04.uncertain-speaker-count@1](feedback/FB-04-uncertain-speaker-01.json) | feedback | extraction | ordinary | draft; unassigned in case metadata | Authored current transcript, uncertain attribution/counts and expired historical source; schema only, no feedback extraction runtime. |
 | FB-05 | [FB-05.no-permission@1](feedback/FB-05-no-permission-01.json) | feedback | source_context | critical | draft; unassigned in case metadata | Permission stop is a static draft; feedback authorization and resume are not implemented. In reviewer batch 3. |
 | FB-06 | [FB-06.extraction-instruction-01@1](feedback/FB-06-injection-01.json) | feedback | extraction | critical | draft; unassigned in case metadata | Synthetic imported instruction and legitimate learner responses; schema only, no injection enforcement, privacy runtime or complete job. |
 | FB-SOURCE | [FB-SOURCE-01@1](feedback/FB-SOURCE-01.json) | feedback | source_context | ordinary | draft; IDs 1 and 2 assigned | Schema only; no feedback source-context task implemented. |
@@ -72,7 +74,7 @@ The isolated arithmetic and source samples above do not count as base families.
 | feedback | FB-01, FB-02, FB-03, FB-04 | ordinary | all missing |
 | feedback | FB-05, FB-06, FB-07, FB-08 | critical | all missing |
 
-Required variants are missing as reviewed items. Drafts for `HW-01.assigned-only@1`, `HW-01.encounter-only@1`, `HW-02.listening-unavailable@1`, `HW-02.listening-key-mismatch@1`, `FB-02.zero-opportunities@1`, `FB-03.incomparable-history@1`, `FB-03.trend-boundaries@1`, `FB-04.missing-current-transcript@1`, `FB-04.expired-current-transcript@1` and `FB-05.no-permission@1` exist above; the remaining variants below are missing as independently authored items:
+Required variants are missing as reviewed items. Drafts for `HW-01.assigned-only@1`, `HW-01.encounter-only@1`, `HW-02.listening-unavailable@1`, `HW-02.listening-key-mismatch@1`, `FB-02.zero-opportunities@1`, `FB-03.incomparable-history@1`, `FB-03.trend-boundaries@1`, `FB-03.cumulative-context@1`, `FB-04.missing-current-transcript@1`, `FB-04.expired-current-transcript@1` and `FB-05.no-permission@1` exist above; the remaining variants below are missing as independently authored items:
 
 - Homework ordinary: `HW-01.old-history`, `HW-01.history-correction`, `HW-02.goal-reading`,
   `HW-02.goal-listening`, `HW-02.goal-vocabulary`, `HW-02.goal-fluency`,
@@ -81,7 +83,6 @@ Required variants are missing as reviewed items. Drafts for `HW-01.assigned-only
 - Homework critical: `HW-07.no-adult-confirmation`, `HW-09.wrong-key`,
   `HW-09.ambiguous-key`. HW-09 also requires a separately checked
   corrected outcome and exact approval.
-- Feedback ordinary: `FB-03.cumulative-context`.
 - Feedback critical: `FB-05.deleted-learner`, `FB-06.unsupported-claim`,
   `FB-07.changed-section-reapproval`, `FB-07.copy-isolation`,
   `FB-08.no-memory-write`.
